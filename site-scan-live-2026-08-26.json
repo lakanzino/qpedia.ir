@@ -1,0 +1,478 @@
+{
+  "generated_at": "2026-08-26 15:13:12",
+  "base": "https://qpedia.ir",
+  "key_endpoints": [
+    {
+      "path": "/",
+      "url": "https://qpedia.ir/",
+      "browser": {
+        "status": 200,
+        "final_url": "https://qpedia.ir/",
+        "redirects": 0,
+        "content_type": "text/html; charset=UTF-8",
+        "bytes": 56329
+      },
+      "googlebot": {
+        "status": 200,
+        "final_url": "https://qpedia.ir/",
+        "redirects": 0,
+        "content_type": "text/html; charset=UTF-8",
+        "bytes": 56329
+      }
+    },
+    {
+      "path": "/robots.txt",
+      "url": "https://qpedia.ir/robots.txt",
+      "browser": {
+        "status": 200,
+        "final_url": "https://qpedia.ir/robots.txt",
+        "redirects": 0,
+        "content_type": "text/plain; charset=utf-8",
+        "bytes": 1984
+      },
+      "googlebot": {
+        "status": 200,
+        "final_url": "https://qpedia.ir/robots.txt",
+        "redirects": 0,
+        "content_type": "text/plain; charset=utf-8",
+        "bytes": 1984
+      }
+    },
+    {
+      "path": "/wp-sitemap.xml",
+      "url": "https://qpedia.ir/wp-sitemap.xml",
+      "browser": {
+        "status": 200,
+        "final_url": "https://qpedia.ir/wp-sitemap.xml",
+        "redirects": 0,
+        "content_type": "application/xml; charset=UTF-8",
+        "bytes": 544
+      },
+      "googlebot": {
+        "status": 200,
+        "final_url": "https://qpedia.ir/wp-sitemap.xml",
+        "redirects": 0,
+        "content_type": "application/xml; charset=UTF-8",
+        "bytes": 544
+      }
+    },
+    {
+      "path": "/wp-sitemap-posts-quantum_article-1.xml",
+      "url": "https://qpedia.ir/wp-sitemap-posts-quantum_article-1.xml",
+      "browser": {
+        "status": 200,
+        "final_url": "https://qpedia.ir/wp-sitemap-posts-quantum_article-1.xml",
+        "redirects": 0,
+        "content_type": "application/xml; charset=UTF-8",
+        "bytes": 3792
+      },
+      "googlebot": {
+        "status": 200,
+        "final_url": "https://qpedia.ir/wp-sitemap-posts-quantum_article-1.xml",
+        "redirects": 0,
+        "content_type": "application/xml; charset=UTF-8",
+        "bytes": 3792
+      }
+    },
+    {
+      "path": "/wp-sitemap-posts-quantum_scientist-1.xml",
+      "url": "https://qpedia.ir/wp-sitemap-posts-quantum_scientist-1.xml",
+      "browser": {
+        "status": 200,
+        "final_url": "https://qpedia.ir/wp-sitemap-posts-quantum_scientist-1.xml",
+        "redirects": 0,
+        "content_type": "application/xml; charset=UTF-8",
+        "bytes": 2680
+      },
+      "googlebot": {
+        "status": 200,
+        "final_url": "https://qpedia.ir/wp-sitemap-posts-quantum_scientist-1.xml",
+        "redirects": 0,
+        "content_type": "application/xml; charset=UTF-8",
+        "bytes": 2680
+      }
+    },
+    {
+      "path": "/wp-sitemap-taxonomies-quantum_category-1.xml",
+      "url": "https://qpedia.ir/wp-sitemap-taxonomies-quantum_category-1.xml",
+      "browser": {
+        "status": 200,
+        "final_url": "https://qpedia.ir/wp-sitemap-taxonomies-quantum_category-1.xml",
+        "redirects": 0,
+        "content_type": "application/xml; charset=UTF-8",
+        "bytes": 903
+      },
+      "googlebot": {
+        "status": 200,
+        "final_url": "https://qpedia.ir/wp-sitemap-taxonomies-quantum_category-1.xml",
+        "redirects": 0,
+        "content_type": "application/xml; charset=UTF-8",
+        "bytes": 903
+      }
+    },
+    {
+      "path": "/sitemap.xml",
+      "url": "https://qpedia.ir/sitemap.xml",
+      "browser": {
+        "status": 404,
+        "final_url": "https://qpedia.ir/sitemap.xml",
+        "redirects": 0,
+        "content_type": "application/xml; charset=UTF-8",
+        "bytes": 544
+      },
+      "googlebot": {
+        "status": 404,
+        "final_url": "https://qpedia.ir/sitemap.xml",
+        "redirects": 0,
+        "content_type": "application/xml; charset=UTF-8",
+        "bytes": 544
+      }
+    },
+    {
+      "path": "/sitemap_index.xml",
+      "url": "https://qpedia.ir/sitemap_index.xml",
+      "browser": {
+        "status": 404,
+        "final_url": "https://qpedia.ir/sitemap_index.xml",
+        "redirects": 0,
+        "content_type": "text/html; charset=UTF-8",
+        "bytes": 33553
+      },
+      "googlebot": {
+        "status": 404,
+        "final_url": "https://qpedia.ir/sitemap_index.xml",
+        "redirects": 0,
+        "content_type": "text/html; charset=UTF-8",
+        "bytes": 33553
+      }
+    },
+    {
+      "path": "/qubit/",
+      "url": "https://qpedia.ir/qubit/",
+      "browser": {
+        "status": 200,
+        "final_url": "https://qpedia.ir/qubit/",
+        "redirects": 0,
+        "content_type": "text/html; charset=UTF-8",
+        "bytes": 47750
+      },
+      "googlebot": {
+        "status": 200,
+        "final_url": "https://qpedia.ir/qubit/",
+        "redirects": 0,
+        "content_type": "text/html; charset=UTF-8",
+        "bytes": 47750
+      }
+    },
+    {
+      "path": "/scientists/",
+      "url": "https://qpedia.ir/scientists/",
+      "browser": {
+        "status": 200,
+        "final_url": "https://qpedia.ir/scientists/",
+        "redirects": 0,
+        "content_type": "text/html; charset=UTF-8",
+        "bytes": 96274
+      },
+      "googlebot": {
+        "status": 200,
+        "final_url": "https://qpedia.ir/scientists/",
+        "redirects": 0,
+        "content_type": "text/html; charset=UTF-8",
+        "bytes": 96274
+      }
+    },
+    {
+      "path": "/scientists/pascual-jordan/",
+      "url": "https://qpedia.ir/scientists/pascual-jordan/",
+      "browser": {
+        "status": 200,
+        "final_url": "https://qpedia.ir/scientists/pascual-jordan/",
+        "redirects": 0,
+        "content_type": "text/html; charset=UTF-8",
+        "bytes": 44552
+      },
+      "googlebot": {
+        "status": 200,
+        "final_url": "https://qpedia.ir/scientists/pascual-jordan/",
+        "redirects": 0,
+        "content_type": "text/html; charset=UTF-8",
+        "bytes": 44552
+      }
+    },
+    {
+      "path": "/topic/fundamentals/",
+      "url": "https://qpedia.ir/topic/fundamentals/",
+      "browser": {
+        "status": 200,
+        "final_url": "https://qpedia.ir/topic/fundamentals/",
+        "redirects": 0,
+        "content_type": "text/html; charset=UTF-8",
+        "bytes": 42494
+      },
+      "googlebot": {
+        "status": 200,
+        "final_url": "https://qpedia.ir/topic/fundamentals/",
+        "redirects": 0,
+        "content_type": "text/html; charset=UTF-8",
+        "bytes": 42494
+      }
+    },
+    {
+      "path": "/topic/core-concepts/",
+      "url": "https://qpedia.ir/topic/core-concepts/",
+      "browser": {
+        "status": 200,
+        "final_url": "https://qpedia.ir/topic/core-concepts/",
+        "redirects": 0,
+        "content_type": "text/html; charset=UTF-8",
+        "bytes": 42436
+      },
+      "googlebot": {
+        "status": 200,
+        "final_url": "https://qpedia.ir/topic/core-concepts/",
+        "redirects": 0,
+        "content_type": "text/html; charset=UTF-8",
+        "bytes": 42436
+      }
+    },
+    {
+      "path": "/glossary/",
+      "url": "https://qpedia.ir/glossary/",
+      "browser": {
+        "status": 200,
+        "final_url": "https://qpedia.ir/",
+        "redirects": 1,
+        "content_type": "text/html; charset=UTF-8",
+        "bytes": 56329
+      },
+      "googlebot": {
+        "status": 200,
+        "final_url": "https://qpedia.ir/",
+        "redirects": 1,
+        "content_type": "text/html; charset=UTF-8",
+        "bytes": 56329
+      }
+    }
+  ],
+  "inventories": {
+    "quantum_article": {
+      "status": 200,
+      "total": 35
+    },
+    "quantum_scientist": {
+      "status": 200,
+      "total": 23
+    },
+    "quantum_category": {
+      "status": 200,
+      "total": 14
+    }
+  },
+  "scan_summary": {
+    "article": {
+      "total": 35,
+      "bad_status": 0,
+      "raw_content": 0,
+      "missing_h1": 0,
+      "missing_canonical": 0,
+      "missing_header_footer": 0
+    },
+    "scientist": {
+      "total": 23,
+      "bad_status": 0,
+      "raw_content": 0,
+      "missing_h1": 0,
+      "missing_canonical": 0,
+      "missing_header_footer": 0
+    },
+    "category": {
+      "total": 14,
+      "bad_status": 0,
+      "raw_content": 0,
+      "missing_h1": 2,
+      "missing_canonical": 14,
+      "missing_header_footer": 0
+    },
+    "page": {
+      "total": 1,
+      "bad_status": 0,
+      "raw_content": 0,
+      "missing_h1": 0,
+      "missing_canonical": 1,
+      "missing_header_footer": 0
+    },
+    "archive": {
+      "total": 1,
+      "bad_status": 0,
+      "raw_content": 0,
+      "missing_h1": 0,
+      "missing_canonical": 1,
+      "missing_header_footer": 0
+    }
+  },
+  "status_counts": {
+    "200": 74
+  },
+  "issues": [
+    {
+      "kind": "category",
+      "url": "https://qpedia.ir/topic/experiments/",
+      "type": "missing_canonical"
+    },
+    {
+      "kind": "category",
+      "url": "https://qpedia.ir/topic/phenomena/",
+      "type": "missing_canonical"
+    },
+    {
+      "kind": "category",
+      "url": "https://qpedia.ir/topic/history/",
+      "type": "missing_canonical"
+    },
+    {
+      "kind": "category",
+      "url": "https://qpedia.ir/topic/history-experiments/",
+      "type": "missing_canonical"
+    },
+    {
+      "kind": "category",
+      "url": "https://qpedia.ir/topic/interpretations/",
+      "type": "missing_canonical"
+    },
+    {
+      "kind": "category",
+      "url": "https://qpedia.ir/topic/particles/",
+      "type": "missing_h1"
+    },
+    {
+      "kind": "category",
+      "url": "https://qpedia.ir/topic/particles/",
+      "type": "missing_canonical"
+    },
+    {
+      "kind": "category",
+      "url": "https://qpedia.ir/topic/quantum-computing/",
+      "type": "missing_canonical"
+    },
+    {
+      "kind": "category",
+      "url": "https://qpedia.ir/topic/mathematics/",
+      "type": "missing_h1"
+    },
+    {
+      "kind": "category",
+      "url": "https://qpedia.ir/topic/mathematics/",
+      "type": "missing_canonical"
+    },
+    {
+      "kind": "category",
+      "url": "https://qpedia.ir/topic/quantum-biology/",
+      "type": "missing_canonical"
+    },
+    {
+      "kind": "category",
+      "url": "https://qpedia.ir/topic/technology/",
+      "type": "missing_canonical"
+    },
+    {
+      "kind": "category",
+      "url": "https://qpedia.ir/topic/everyday-tech/",
+      "type": "missing_canonical"
+    },
+    {
+      "kind": "category",
+      "url": "https://qpedia.ir/topic/fundamentals/",
+      "type": "missing_canonical"
+    },
+    {
+      "kind": "category",
+      "url": "https://qpedia.ir/topic/core-concepts/",
+      "type": "missing_canonical"
+    },
+    {
+      "kind": "category",
+      "url": "https://qpedia.ir/topic/pseudoscience/",
+      "type": "missing_canonical"
+    },
+    {
+      "kind": "page",
+      "url": "https://qpedia.ir/",
+      "type": "missing_canonical"
+    },
+    {
+      "kind": "archive",
+      "url": "https://qpedia.ir/scientists/",
+      "type": "missing_canonical"
+    }
+  ],
+  "robots_excerpt": "# As a condition of accessing this website, you agree to abide by the following\n# content signals:\n\n# (a)  If a Content-Signal = yes, you may collect content for the corresponding\n#      use.\n# (b)  If a Content-Signal = no, you may not collect content for the\n#      corresponding use.\n# (c)  If the website operator does not include a Content-Signal for a\n#      corresponding use, the website operator neither grants nor restricts\n#      permission via Content-Signal with respect to the corresponding use.\n\n# The content signals and their meanings are:\n\n# search:   building a search index and providing search results (e.g., returning\n#           hyperlinks and short excerpts from your website's contents). Search does not\n#           include providing AI-generated search summaries.\n# ai-input: inputting content into one or more AI models (e.g., retrieval\n#           augmented generation, grounding, or other real-time taking of content for\n#           generative AI search answers).\n# ai-train: training or fine-tuning AI models.\n# use:      how AI systems may consume the content (immediate, reference, or full).\n\n# ANY RESTRICTIONS EXPRESSED VIA CONTENT SIGNALS ARE EXPRESS RESERVATIONS OF\n# RIGHTS UNDER ARTICLE 4 OF THE EUROPEAN UNION DIRECTIVE 2019/790 ON COPYRIGHT\n# AND RELATED RIGHTS IN THE DIGITAL SINGLE MARKET.\n\n# BEGIN Cloudflare Managed content\n\nUser-agent: *\nContent-Signal: search=yes,ai-train=no,use=reference\nAllow: /\n\nUser-agent: Amazonbot\nDisallow: /\n\nUser-agent: Applebot-Extended\nDisallow: /\n\nUser-agent: Bytespider\nDisallow: /\n\nUser-agent: CCBot\nDisallow: /\n\nUser-agent: ClaudeBot\nDisallow: /\n\nUser-agent: CloudflareBrowserRenderingCrawler\nDisallow: /\n\nUser-agent: Google-Extended\nDisallow: /\n\nUser-agent: GPTBot\nDisallow: /\n\nUser-agent: meta-externalagent\nDisallow: /\n\n# END Cloudflare Managed Content\n\nUser-agent: *\nAllow: /\nDisallow: /wp-admin/\nDisallow: /wp-login.php\nDisallow: /xmlrpc.php\nCrawl-delay: 10\n\nSitemap: https://qpedia.ir/wp-sitemap.xml",
+  "robots_sitemap_lines": [
+    "Sitemap: https://qpedia.ir/wp-sitemap.xml"
+  ],
+  "sitemaps": {
+    "/wp-sitemap.xml": {
+      "status": 200,
+      "content_type": "application/xml; charset=UTF-8",
+      "contains_quantum_category": true,
+      "contains_scientist_field": false,
+      "contains_article_domain": false,
+      "contains_users_loc": false,
+      "excerpt": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<?xml-stylesheet type=\"text/xsl\" href=\"https://qpedia.ir/wp-sitemap-index.xsl\" ?>\n<sitemapindex xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\"><sitemap><loc>https://qpedia.ir/wp-sitemap-posts-page-1.xml</loc></sitemap><sitemap><loc>https://qpedia.ir/wp-sitemap-posts-quantum_article-1.xml</loc></sitemap><sitemap><loc>https://qpedia.ir/wp-sitemap-posts-quantum_scientist-1.xml</loc></sitemap><sitemap><loc>https://qpedia.ir/wp-sitemap-taxonomies-quantum_category-1.xml</loc></sitemap></sitemapindex>\n"
+    },
+    "/wp-sitemap-posts-quantum_article-1.xml": {
+      "status": 200,
+      "content_type": "application/xml; charset=UTF-8",
+      "contains_quantum_category": false,
+      "contains_scientist_field": false,
+      "contains_article_domain": false,
+      "contains_users_loc": false,
+      "excerpt": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<?xml-stylesheet type=\"text/xsl\" href=\"https://qpedia.ir/wp-sitemap.xsl\" ?>\n<urlset xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\"><url><loc>https://qpedia.ir/what-is-quantum/</loc><lastmod>2026-08-22T23:07:34+03:30</lastmod></url><url><loc>https://qpedia.ir/quantum-superposition/</loc><lastmod>2026-08-22T23:07:34+03:30</lastmod></url><url><loc>https://qpedia.ir/wave-particle-duality/</loc><lastmod>2026-08-22T23:07:34+03:30</lastmod></url><url><loc>https://qpedia.ir/wave-function/</loc><lastmod>2026-08-22T23:07:34+03:30</lastmod></url><url><loc>https://qpedia.ir/uncertainty-principle/</loc><lastmod>2026-08-22T23:07:34+03:30</lastmod></url><url><loc"
+    },
+    "/wp-sitemap-posts-quantum_scientist-1.xml": {
+      "status": 200,
+      "content_type": "application/xml; charset=UTF-8",
+      "contains_quantum_category": false,
+      "contains_scientist_field": false,
+      "contains_article_domain": false,
+      "contains_users_loc": false,
+      "excerpt": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<?xml-stylesheet type=\"text/xsl\" href=\"https://qpedia.ir/wp-sitemap.xsl\" ?>\n<urlset xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\"><url><loc>https://qpedia.ir/scientists/david-bohm/</loc><lastmod>2026-08-23T06:34:22+03:30</lastmod></url><url><loc>https://qpedia.ir/scientists/albert-einstein/</loc><lastmod>2026-08-23T06:34:22+03:30</lastmod></url><url><loc>https://qpedia.ir/scientists/alain-aspect/</loc><lastmod>2026-08-23T06:34:22+03:30</lastmod></url><url><loc>https://qpedia.ir/scientists/anton-zeilinger/</loc><lastmod>2026-08-23T06:34:22+03:30</lastmod></url><url><loc>https://qpedia.ir/scientists/arnold-sommerfeld/</loc><lastmod>2026-08-23T06:34:"
+    },
+    "/wp-sitemap-taxonomies-quantum_category-1.xml": {
+      "status": 200,
+      "content_type": "application/xml; charset=UTF-8",
+      "contains_quantum_category": false,
+      "contains_scientist_field": false,
+      "contains_article_domain": false,
+      "contains_users_loc": false,
+      "excerpt": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<?xml-stylesheet type=\"text/xsl\" href=\"https://qpedia.ir/wp-sitemap.xsl\" ?>\n<urlset xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\"><url><loc>https://qpedia.ir/topic/fundamentals/</loc></url><url><loc>https://qpedia.ir/topic/core-concepts/</loc></url><url><loc>https://qpedia.ir/topic/history-experiments/</loc></url><url><loc>https://qpedia.ir/topic/history/</loc></url><url><loc>https://qpedia.ir/topic/experiments/</loc></url><url><loc>https://qpedia.ir/topic/phenomena/</loc></url><url><loc>https://qpedia.ir/topic/technology/</loc></url><url><loc>https://qpedia.ir/topic/everyday-tech/</loc></url><url><loc>https://qpedia.ir/topic/quantum-computing/</l"
+    },
+    "/wp-sitemap-taxonomies-scientist_field-1.xml": {
+      "status": 404,
+      "content_type": "text/html; charset=UTF-8",
+      "contains_quantum_category": false,
+      "contains_scientist_field": false,
+      "contains_article_domain": false,
+      "contains_users_loc": false,
+      "excerpt": "<!doctype html>\n<html dir=\"rtl\" lang=\"fa-IR\">\n<head>\n\t<meta charset=\"UTF-8\">\n\t<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n\t<link rel=\"profile\" href=\"https://gmpg.org/xfn/11\">\n\t<title>برگه پیدا نشد &#8211; کوانتوم پدیا فارسی</title>\n<meta name='robots' content='max-image-preview:large' />\n<link rel='dns-prefetch' href='//cdnjs.cloudflare.com' />\n<link rel=\"alternate\" type=\"application/rss+xml\" title=\"کوانتوم پدیا فارسی &raquo; خوراک\" href=\"https://qpedia.ir/feed/\" />\n<link rel=\"alternate\" type=\"application/rss+xml\" title=\"کوانتوم پدیا فارسی &raquo; خوراک دیدگاه‌ها\" href=\"https://qpedia.ir/comments/feed/\" />\n<style id=\"wp-img-auto-sizes-contain-inline-css\">\nimg:is([siz"
+    },
+    "/wp-sitemap-taxonomies-article_domain-1.xml": {
+      "status": 404,
+      "content_type": "text/html; charset=UTF-8",
+      "contains_quantum_category": false,
+      "contains_scientist_field": false,
+      "contains_article_domain": false,
+      "contains_users_loc": false,
+      "excerpt": "<!doctype html>\n<html dir=\"rtl\" lang=\"fa-IR\">\n<head>\n\t<meta charset=\"UTF-8\">\n\t<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n\t<link rel=\"profile\" href=\"https://gmpg.org/xfn/11\">\n\t<title>برگه پیدا نشد &#8211; کوانتوم پدیا فارسی</title>\n<meta name='robots' content='max-image-preview:large' />\n<link rel='dns-prefetch' href='//cdnjs.cloudflare.com' />\n<link rel=\"alternate\" type=\"application/rss+xml\" title=\"کوانتوم پدیا فارسی &raquo; خوراک\" href=\"https://qpedia.ir/feed/\" />\n<link rel=\"alternate\" type=\"application/rss+xml\" title=\"کوانتوم پدیا فارسی &raquo; خوراک دیدگاه‌ها\" href=\"https://qpedia.ir/comments/feed/\" />\n<style id=\"wp-img-auto-sizes-contain-inline-css\">\nimg:is([siz"
+    },
+    "/wp-sitemap-users-1.xml": {
+      "status": 200,
+      "content_type": "text/html; charset=UTF-8",
+      "contains_quantum_category": false,
+      "contains_scientist_field": false,
+      "contains_article_domain": false,
+      "contains_users_loc": false,
+      "excerpt": "<!doctype html>\n<html dir=\"rtl\" lang=\"fa-IR\">\n<head>\n\t<meta charset=\"UTF-8\">\n\t<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n\t<link rel=\"profile\" href=\"https://gmpg.org/xfn/11\">\n\t<title>کوانتوم پدیا فارسی</title>\n<meta name='robots' content='max-image-preview:large' />\n<link rel='dns-prefetch' href='//cdnjs.cloudflare.com' />\n<link rel=\"alternate\" type=\"application/rss+xml\" title=\"کوانتوم پدیا فارسی &raquo; خوراک\" href=\"https://qpedia.ir/feed/\" />\n<link rel=\"alternate\" type=\"application/rss+xml\" title=\"کوانتوم پدیا فارسی &raquo; خوراک دیدگاه‌ها\" href=\"https://qpedia.ir/comments/feed/\" />\n<style id=\"wp-img-auto-sizes-contain-inline-css\">\nimg:is([sizes=auto i],[sizes^=\"au"
+    }
+  }
+}

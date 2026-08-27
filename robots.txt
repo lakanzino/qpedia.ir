@@ -1,0 +1,8 @@
+# robots.txt — qpedia.ir
+# دسترسی کاملاً آزاد برای همهٔ خزنده‌ها، بدون هیچ شرطی.
+# ۳ شهریور ۱۴۰۴
+
+User-agent: *
+Allow: /
+
+Sitemap: https://qpedia.ir/sitemap.xml
