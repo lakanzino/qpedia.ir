@@ -1,0 +1,1201 @@
+/* ═══════════════════════════════════════════════════
+   QPEDIA — چیدمان‌ها (نسخهٔ آزادسازی هدر/فوتر والد)
+   محل: quantum-pedia-child/assets/css/qpedia-layouts.css
+   توضیح: تمام ساختارهای محتوایی حفظ شده‌اند،
+   اما CSS هدر/فوتر سفارشی حذف شده تا هدر و فوتر قالب والد نمایش داده شوند.
+   ═══════════════════════════════════════════════════ */
+
+:root{
+  --qp-ink:#111827;
+  --qp-dim:#6b7280;
+  --qp-faint:#9ca3af;
+  --qp-line:#e5e7eb;
+  --qp-card:#ffffff;
+  --qp-accent:#0f766e;
+  --qp-accent-soft:#ccfbf1;
+  --qp-radius:12px;
+}
+
+/* ── فقط اگر بقایای هدر/فوتر سفارشی هنوز جایی تزریق می‌شود، مخفی بماند ── */
+.qp-hd,
+.qp-ft,
+.qp-bar,
+.qp-foot{display:none!important}
+
+/* ── حذف سایدبار، تمام‌عرض ── */
+#secondary,.widget-area,.sidebar,aside.widget-area{display:none!important}
+#primary,.content-area,#content,.site-main{
+  width:100%!important;
+  max-width:1120px!important;
+  float:none!important;
+  margin-inline:auto!important;
+}
+.entry-meta,.posted-on,.byline,.entry-footer,.author.vcard{display:none!important}
+
+/* ── هاب دسته‌ها ── */
+.qp-hub{margin:0 0 36px}
+.qp-hub__t{margin:0 0 4px;font-size:1.75rem;font-weight:800;letter-spacing:-.4px;color:var(--qp-ink)}
+.qp-hub__s{margin:0 0 20px;color:var(--qp-dim);font-size:.95rem}
+.qp-hub__g{display:grid;grid-template-columns:repeat(auto-fill,minmax(232px,1fr));gap:12px}
+
+.qp-hub__c{
+  display:block;
+  position:relative;
+  padding:17px 18px;
+  background:var(--qp-card);
+  border:1px solid var(--qp-line);
+  border-radius:var(--qp-radius);
+  text-decoration:none;
+  color:inherit;
+  transition:border-color .16s ease,transform .16s ease,box-shadow .16s ease;
+}
+.qp-hub__c:hover{
+  border-color:var(--qp-accent);
+  transform:translateY(-2px);
+  box-shadow:0 6px 18px rgba(15,118,110,.09);
+}
+.qp-hub__b{
+  position:absolute;
+  top:15px;
+  left:16px;
+  min-width:26px;
+  height:22px;
+  padding:0 7px;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  background:var(--qp-accent);
+  color:#fff;
+  border-radius:11px;
+  font-size:.76rem;
+  font-weight:700;
+  font-variant-numeric:tabular-nums;
+}
+.qp-hub__n{display:block;font-weight:700;font-size:1.02rem;margin:0 0 7px;padding-left:38px;color:var(--qp-ink)}
+.qp-hub__k{display:block;color:var(--qp-faint);font-size:.82rem;line-height:1.7}
+
+.qp-recent{margin:0 0 14px;font-size:1.12rem;font-weight:700;color:var(--qp-ink)}
+
+/* ── فهرست مقالات ── */
+.site-main article{
+  background:var(--qp-card);
+  border:1px solid var(--qp-line);
+  border-radius:10px;
+  padding:15px 19px;
+  margin:0 0 11px;
+}
+.site-main article .entry-title{margin:0;font-size:1.08rem;line-height:1.75}
+.site-main article .entry-title a{text-decoration:none;color:var(--qp-ink)}
+.site-main article .entry-title a:hover{color:var(--qp-accent)}
+
+/* ───────────────────────────────────────────────
+   QPEDIA — single.php + single-quantum_scientist.php
+   ─────────────────────────────────────────────── */
+
+.qp-shell{padding-inline:12px}
+.qp-shell--single,
+.qp-shell--scientist{padding-top:24px}
+
+.qp-single,
+.qp-scientist{
+  background:var(--qp-card);
+  border:1px solid var(--qp-line);
+  border-radius:16px;
+  padding:24px;
+  box-shadow:0 10px 28px rgba(17,24,39,.04);
+}
+
+.qp-single__header,
+.qp-scientist__header{margin:0 0 20px}
+
+.qp-single__eyebrow,
+.qp-scientist__eyebrow{
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  margin:0 0 10px;
+  padding:6px 10px;
+  border-radius:999px;
+  background:var(--qp-accent-soft);
+  color:var(--qp-accent);
+  font-size:.84rem;
+  font-weight:700;
+}
+
+.qp-single__title,
+.qp-scientist__title{
+  margin:0;
+  color:var(--qp-ink);
+  font-size:clamp(1.75rem,2.4vw,2.4rem);
+  line-height:1.35;
+  letter-spacing:-.03em;
+}
+
+.qp-single__meta,
+.qp-scientist__meta{
+  display:flex;
+  flex-wrap:wrap;
+  align-items:center;
+  gap:8px 12px;
+  margin:12px 0 0;
+  color:var(--qp-dim);
+  font-size:.92rem;
+}
+
+.qp-scientist__meta a{
+  color:var(--qp-accent);
+  text-decoration:none;
+}
+.qp-scientist__meta a:hover{text-decoration:underline}
+.qp-scientist__sep{color:var(--qp-faint)}
+
+.qp-single__excerpt,
+.qp-scientist__excerpt,
+.qp-scientist__latin{
+  margin:14px 0 0;
+  color:var(--qp-dim);
+  line-height:1.9;
+}
+
+.qp-scientist__latin{
+  font-size:1rem;
+  direction:ltr;
+  text-align:left;
+  font-weight:600;
+  color:var(--qp-ink);
+}
+
+.qp-scientist__chips{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+  margin:0 0 12px;
+}
+
+.qp-scientist__chip{
+  display:inline-flex;
+  align-items:center;
+  padding:6px 10px;
+  border:1px solid var(--qp-line);
+  border-radius:999px;
+  background:#fff;
+  color:var(--qp-dim);
+  text-decoration:none;
+  font-size:.84rem;
+  transition:all .16s ease;
+}
+
+.qp-scientist__chip:hover{
+  border-color:var(--qp-accent);
+  color:var(--qp-accent);
+  background:var(--qp-accent-soft);
+}
+
+.qp-single__media,
+.qp-scientist__media{margin:0 0 24px}
+
+.qp-single__image,
+.qp-scientist__image{
+  display:block;
+  width:100%;
+  height:auto;
+  border-radius:14px;
+}
+
+.qp-single__content,
+.qp-scientist__content{
+  color:var(--qp-ink);
+  font-size:1.02rem;
+  line-height:2.05;
+}
+
+.qp-single__content > *:first-child,
+.qp-scientist__content > *:first-child{margin-top:0}
+
+.qp-single__content h2,
+.qp-single__content h3,
+.qp-scientist__content h2,
+.qp-scientist__content h3{
+  color:var(--qp-ink);
+  line-height:1.5;
+  margin-top:2.1em;
+  margin-bottom:.7em;
+}
+
+.qp-single__content blockquote,
+.qp-scientist__content blockquote{
+  margin:1.4rem 0;
+  padding:14px 18px;
+  border-right:4px solid var(--qp-accent);
+  background:#fafafa;
+  color:#374151;
+}
+
+.qp-single__content img,
+.qp-scientist__content img{
+  max-width:100%;
+  height:auto;
+  border-radius:12px;
+}
+
+/* ───────────────────────────────────────────────
+   QPEDIA — archive-quantum_article.php + archive-quantum_scientist.php
+   ─────────────────────────────────────────────── */
+
+.qp-archive{padding:24px 12px}
+
+.qp-archive__hero{
+  margin:0 0 22px;
+  padding:20px 0 8px;
+}
+
+.qp-archive__eyebrow{
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  margin:0 0 10px;
+  padding:6px 10px;
+  border-radius:999px;
+  background:var(--qp-accent-soft);
+  color:var(--qp-accent);
+  font-size:.84rem;
+  font-weight:700;
+}
+
+.qp-archive__title{
+  margin:0;
+  color:var(--qp-ink);
+  font-size:clamp(1.8rem,2.5vw,2.6rem);
+  line-height:1.35;
+  letter-spacing:-.03em;
+}
+
+.qp-archive__desc{
+  max-width:760px;
+  margin:12px 0 0;
+  color:var(--qp-dim);
+  font-size:1rem;
+  line-height:1.95;
+}
+
+.qp-archive-list--articles{
+  display:grid;
+  gap:14px;
+}
+
+.qp-archive-grid--scientists{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:18px;
+}
+
+.qp-archive-card,
+.qp-scientist-card{
+  background:var(--qp-card);
+  border:1px solid var(--qp-line);
+  border-radius:16px;
+  box-shadow:0 10px 28px rgba(17,24,39,.04);
+}
+
+.qp-archive-card{padding:20px}
+
+.qp-archive-card__chips,
+.qp-scientist-card__chips{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+  margin:0 0 12px;
+}
+
+.qp-archive-card__chip,
+.qp-scientist-card__chip{
+  display:inline-flex;
+  align-items:center;
+  padding:6px 10px;
+  border-radius:999px;
+  border:1px solid var(--qp-line);
+  background:#fff;
+  color:var(--qp-dim);
+  text-decoration:none;
+  font-size:.82rem;
+  transition:all .16s ease;
+}
+
+.qp-archive-card__chip:hover,
+.qp-scientist-card__chip:hover{
+  border-color:var(--qp-accent);
+  color:var(--qp-accent);
+  background:var(--qp-accent-soft);
+}
+
+.qp-archive-card__title,
+.qp-scientist-card__title{
+  margin:0;
+  color:var(--qp-ink);
+  line-height:1.55;
+  font-size:1.2rem;
+}
+
+.qp-archive-card__title a,
+.qp-scientist-card__title a{
+  color:inherit;
+  text-decoration:none;
+}
+
+.qp-archive-card__title a:hover,
+.qp-scientist-card__title a:hover{
+  color:var(--qp-accent);
+}
+
+.qp-archive-card__excerpt,
+.qp-scientist-card__excerpt,
+.qp-scientist-card__latin{
+  margin:12px 0 0;
+  color:var(--qp-dim);
+  line-height:1.9;
+}
+
+.qp-scientist-card__latin{
+  direction:ltr;
+  text-align:left;
+  font-weight:600;
+  color:var(--qp-ink);
+  font-size:.95rem;
+}
+
+.qp-archive-card__meta,
+.qp-scientist-card__meta{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:space-between;
+  align-items:center;
+  gap:10px 14px;
+  margin:16px 0 0;
+  color:var(--qp-faint);
+  font-size:.9rem;
+}
+
+.qp-archive-card__more,
+.qp-scientist-card__more{
+  color:var(--qp-accent);
+  text-decoration:none;
+  font-weight:700;
+}
+
+.qp-archive-card__more:hover,
+.qp-scientist-card__more:hover{text-decoration:underline}
+
+.qp-scientist-card{overflow:hidden}
+
+.qp-scientist-card__media{
+  display:block;
+  aspect-ratio:1/1;
+  background:#eef2f7;
+  overflow:hidden;
+}
+
+.qp-scientist-card__image{
+  display:block;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  object-position:center;
+}
+
+.qp-scientist-card__placeholder{
+  display:grid;
+  place-items:center;
+  width:100%;
+  height:100%;
+  color:var(--qp-dim);
+  font-size:1rem;
+  font-weight:700;
+}
+
+.qp-scientist-card__body{padding:18px}
+
+.navigation.pagination,
+.nav-links{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+  align-items:center;
+  margin:26px 0 0;
+}
+
+.nav-links .page-numbers{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  min-width:40px;
+  height:40px;
+  padding:0 12px;
+  border:1px solid var(--qp-line);
+  border-radius:10px;
+  background:#fff;
+  color:var(--qp-dim);
+  text-decoration:none;
+}
+
+.nav-links .page-numbers.current,
+.nav-links .page-numbers:hover{
+  color:var(--qp-accent);
+  border-color:var(--qp-accent);
+  background:var(--qp-accent-soft);
+}
+
+.qp-empty-state{
+  background:var(--qp-card);
+  border:1px solid var(--qp-line);
+  border-radius:16px;
+  padding:24px;
+}
+
+.qp-empty-state__title{
+  margin:0;
+  color:var(--qp-ink);
+  font-size:1.2rem;
+}
+
+.qp-empty-state__desc{
+  margin:10px 0 0;
+  color:var(--qp-dim);
+  line-height:1.9;
+}
+
+/* ───────────────────────────────────────────────
+   QPEDIA — front-page.php
+   ─────────────────────────────────────────────── */
+
+.qp-front{padding:24px 12px 40px}
+
+.qp-front-hero{
+  padding:24px 0 10px;
+  margin:0 0 22px;
+}
+
+
+.qp-front-hero__emblem-wrap{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  margin:0 0 16px;
+  position:relative;
+}
+.qp-front-hero__emblem{
+  width:96px;
+  height:96px;
+  object-fit:contain;
+  filter:drop-shadow(0 0 20px rgba(0,229,255,0.45));
+  transition:transform .4s ease, filter .4s ease;
+  animation:qp-quantum-float 6s ease-in-out infinite;
+}
+.qp-front-hero__emblem:hover{
+  transform:scale(1.08) rotate(15deg);
+  filter:drop-shadow(0 0 30px rgba(0,229,255,0.8));
+}
+@keyframes qp-quantum-float{
+  0%,100%{transform:translateY(0)}
+  50%{transform:translateY(-6px)}
+}
+
+.qp-front-hero__badge,
+.qp-front-section__eyebrow{
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  margin:0 0 12px;
+  padding:6px 10px;
+  border-radius:999px;
+  background:var(--qp-accent-soft);
+  color:var(--qp-accent);
+  font-size:.84rem;
+  font-weight:700;
+}
+
+.qp-front-hero__title,
+.qp-front-section__title{
+  margin:0;
+  color:var(--qp-ink);
+  line-height:1.35;
+  letter-spacing:-.03em;
+}
+
+.qp-front-hero__title{font-size:clamp(1.9rem,3vw,3rem)}
+.qp-front-section__title{font-size:clamp(1.45rem,2.2vw,2rem)}
+
+.qp-front-hero__desc,
+.qp-front-section__desc{
+  max-width:760px;
+  margin:14px 0 0;
+  color:var(--qp-dim);
+  line-height:1.95;
+  font-size:1rem;
+}
+
+.qp-front-hero__stats{
+  display:grid;
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:12px;
+  margin:26px 0 0;
+}
+
+.qp-front-stat{
+  background:var(--qp-card);
+  border:1px solid var(--qp-line);
+  border-radius:14px;
+  padding:18px 16px;
+  text-align:center;
+}
+
+.qp-front-stat__num{
+  display:block;
+  color:var(--qp-ink);
+  font-size:1.65rem;
+  line-height:1;
+  font-weight:800;
+}
+
+.qp-front-stat__label{
+  display:block;
+  margin-top:8px;
+  color:var(--qp-dim);
+  font-size:.86rem;
+}
+
+.qp-front-hero__actions{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  margin:20px 0 0;
+}
+
+.qp-front-btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  min-height:46px;
+  padding:0 18px;
+  border-radius:12px;
+  text-decoration:none;
+  font-weight:700;
+  transition:all .16s ease;
+}
+
+.qp-front-btn--primary{
+  background:var(--qp-accent);
+  color:#fff;
+  border:1px solid var(--qp-accent);
+}
+.qp-front-btn--primary:hover{filter:brightness(.94)}
+
+.qp-front-btn--ghost{
+  background:#fff;
+  color:var(--qp-ink);
+  border:1px solid var(--qp-line);
+}
+.qp-front-btn--ghost:hover{border-color:var(--qp-accent);color:var(--qp-accent)}
+
+.qp-front-section{margin-top:26px}
+
+.qp-front-section__head{
+  display:flex;
+  align-items:end;
+  justify-content:space-between;
+  gap:18px;
+  flex-wrap:wrap;
+  margin:0 0 18px;
+}
+
+.qp-front-section__link{
+  color:var(--qp-accent);
+  text-decoration:none;
+  font-weight:700;
+}
+.qp-front-section__link:hover{text-decoration:underline}
+
+.qp-front-paths{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:14px;
+}
+
+.qp-front-path,
+.qp-front-cat,
+.qp-front-article,
+.qp-front-scientist{
+  background:var(--qp-card);
+  border:1px solid var(--qp-line);
+  border-radius:16px;
+  text-decoration:none;
+  color:inherit;
+  transition:border-color .16s ease,transform .16s ease,box-shadow .16s ease;
+  box-shadow:0 10px 28px rgba(17,24,39,.04);
+}
+
+.qp-front-path:hover,
+.qp-front-cat:hover,
+.qp-front-article:hover,
+.qp-front-scientist:hover{
+  border-color:var(--qp-accent);
+  transform:translateY(-2px);
+  box-shadow:0 14px 30px rgba(15,118,110,.08);
+}
+
+.qp-front-path{padding:20px}
+.qp-front-path__title{margin:0;color:var(--qp-ink);font-size:1.08rem}
+.qp-front-path__desc{margin:10px 0 0;color:var(--qp-dim);line-height:1.9}
+.qp-front-path__more{display:inline-block;margin-top:14px;color:var(--qp-accent);font-weight:700}
+
+.qp-front-cats{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:14px;
+}
+
+.qp-front-cat{display:block;padding:20px}
+.qp-front-cat__top{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:10px;
+  margin:0 0 12px;
+}
+.qp-front-cat__icon{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  min-width:54px;
+  height:32px;
+  padding:0 10px;
+  border-radius:999px;
+  background:var(--qp-accent-soft);
+  color:var(--qp-accent);
+  font-size:.76rem;
+  font-weight:700;
+}
+.qp-front-cat__count{
+  color:var(--qp-dim);
+  font-size:.82rem;
+  font-variant-numeric:tabular-nums;
+}
+.qp-front-cat__title{margin:0;color:var(--qp-ink);font-size:1.08rem;line-height:1.6}
+.qp-front-cat__desc{margin:10px 0 0;color:var(--qp-dim);line-height:1.9;font-size:.92rem}
+.qp-front-cat__subs{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0 0}
+.qp-front-cat__sub{
+  display:inline-flex;
+  align-items:center;
+  padding:5px 9px;
+  border-radius:999px;
+  background:#fff;
+  border:1px solid var(--qp-line);
+  color:var(--qp-dim);
+  font-size:.78rem;
+}
+
+.qp-front-articles{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:14px;
+}
+
+.qp-front-article{display:flex;flex-direction:column;padding:20px}
+.qp-front-article__meta{
+  display:flex;
+  flex-wrap:wrap;
+  align-items:center;
+  gap:8px 10px;
+  color:var(--qp-faint);
+  font-size:.8rem;
+}
+.qp-front-article__term{
+  display:inline-flex;
+  align-items:center;
+  padding:4px 8px;
+  border-radius:999px;
+  background:var(--qp-accent-soft);
+  color:var(--qp-accent);
+  font-weight:700;
+}
+.qp-front-article__title{margin:12px 0 0;color:var(--qp-ink);font-size:1.05rem;line-height:1.75}
+.qp-front-article__excerpt{margin:10px 0 0;color:var(--qp-dim);line-height:1.95}
+
+.qp-front-scientists{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:14px;
+}
+
+.qp-front-scientist{display:block;overflow:hidden}
+.qp-front-scientist__media{
+  aspect-ratio:1/1;
+  background:#eef2f7;
+  overflow:hidden;
+}
+.qp-front-scientist__image{
+  display:block;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  object-position:center;
+}
+.qp-front-scientist__placeholder{
+  display:grid;
+  place-items:center;
+  width:100%;
+  height:100%;
+  color:var(--qp-dim);
+  font-size:2rem;
+  font-weight:800;
+}
+.qp-front-scientist__body{padding:16px}
+.qp-front-scientist__name{margin:0;color:var(--qp-ink);font-size:1rem;line-height:1.6}
+.qp-front-scientist__latin{margin:8px 0 0;direction:ltr;text-align:left;color:var(--qp-dim);font-size:.88rem}
+
+/* ───────────────────────────────────────────────
+   QPEDIA — single-quantum_article.php
+   ─────────────────────────────────────────────── */
+
+.qp-shell--article{padding-top:24px}
+
+.qp-article{
+  background:var(--qp-card);
+  border:1px solid var(--qp-line);
+  border-radius:16px;
+  padding:24px;
+  box-shadow:0 10px 28px rgba(17,24,39,.04);
+}
+
+.qp-article__eyebrow{
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  margin:0 0 10px;
+  padding:6px 10px;
+  border-radius:999px;
+  background:var(--qp-accent-soft);
+  color:var(--qp-accent);
+  font-size:.84rem;
+  font-weight:700;
+}
+
+.qp-article__chips{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+  margin:0 0 12px;
+}
+
+.qp-article__chip{
+  display:inline-flex;
+  align-items:center;
+  padding:6px 10px;
+  border:1px solid var(--qp-line);
+  border-radius:999px;
+  background:#fff;
+  color:var(--qp-dim);
+  text-decoration:none;
+  font-size:.84rem;
+  transition:all .16s ease;
+}
+.qp-article__chip:hover{
+  border-color:var(--qp-accent);
+  color:var(--qp-accent);
+  background:var(--qp-accent-soft);
+}
+
+.qp-article__title{
+  margin:0;
+  color:var(--qp-ink);
+  font-size:clamp(1.8rem,2.5vw,2.6rem);
+  line-height:1.35;
+  letter-spacing:-.03em;
+}
+
+.qp-article__meta{
+  display:flex;
+  flex-wrap:wrap;
+  align-items:center;
+  gap:8px 12px;
+  margin:14px 0 0;
+  color:var(--qp-dim);
+  font-size:.92rem;
+}
+.qp-article__sep{color:var(--qp-faint)}
+
+.qp-article__excerpt{
+  margin:14px 0 0;
+  color:var(--qp-dim);
+  line-height:1.95;
+}
+
+.qp-article__media{margin:22px 0}
+.qp-article__image{
+  display:block;
+  width:100%;
+  height:auto;
+  border-radius:14px;
+}
+
+.qp-article-toc{
+  margin:0 0 22px;
+  padding:18px;
+  border:1px solid var(--qp-line);
+  border-radius:14px;
+  background:#fafafa;
+}
+.qp-article-toc__title{
+  margin:0 0 10px;
+  color:var(--qp-ink);
+  font-size:1rem;
+}
+.qp-article-toc__list,
+.qp-article-toc__sub{
+  margin:0;
+  padding-right:20px;
+  color:var(--qp-dim);
+}
+.qp-article-toc__list li,
+.qp-article-toc__sub li{margin:7px 0}
+.qp-article-toc a{
+  color:var(--qp-dim);
+  text-decoration:none;
+}
+.qp-article-toc a:hover{color:var(--qp-accent)}
+
+.qp-article__content{
+  color:var(--qp-ink);
+  font-size:1.03rem;
+  line-height:2.08;
+}
+.qp-article__content > *:first-child{margin-top:0}
+.qp-article__content h2,
+.qp-article__content h3{
+  color:var(--qp-ink);
+  line-height:1.5;
+  margin-top:2.1em;
+  margin-bottom:.7em;
+}
+.qp-article__content blockquote{
+  margin:1.4rem 0;
+  padding:14px 18px;
+  border-right:4px solid var(--qp-accent);
+  background:#fafafa;
+  color:#374151;
+}
+.qp-article__content img{
+  max-width:100%;
+  height:auto;
+  border-radius:12px;
+}
+
+.qp-related{margin-top:22px}
+.qp-related__title{
+  margin:0 0 14px;
+  color:var(--qp-ink);
+  font-size:1.2rem;
+}
+.qp-related__grid{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:14px;
+}
+.qp-related-card{
+  background:var(--qp-card);
+  border:1px solid var(--qp-line);
+  border-radius:14px;
+  padding:18px;
+}
+.qp-related-card__title{
+  margin:0;
+  color:var(--qp-ink);
+  font-size:1rem;
+  line-height:1.7;
+}
+.qp-related-card__title a{
+  color:inherit;
+  text-decoration:none;
+}
+.qp-related-card__title a:hover{color:var(--qp-accent)}
+.qp-related-card__excerpt{
+  margin:10px 0 0;
+  color:var(--qp-dim);
+  line-height:1.9;
+  font-size:.92rem;
+}
+
+.post-navigation{margin-top:22px}
+.post-navigation .nav-links{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:14px;
+}
+.post-navigation .nav-previous,
+.post-navigation .nav-next{
+  padding:16px 18px;
+  border:1px solid var(--qp-line);
+  border-radius:14px;
+  background:#fff;
+}
+.post-navigation a{
+  text-decoration:none;
+  color:var(--qp-ink);
+}
+.post-navigation .nav-subtitle{
+  display:block;
+  color:var(--qp-dim);
+  font-size:.84rem;
+  margin-bottom:6px;
+}
+.post-navigation .nav-title{
+  display:block;
+  line-height:1.8;
+}
+.post-navigation a:hover .nav-title{color:var(--qp-accent)}
+
+/* ── واکنش‌گرا ── */
+@media (max-width:900px){
+  .qp-front-hero__stats,
+  .qp-front-paths,
+  .qp-front-articles,
+  .qp-front-scientists{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .qp-related__grid{grid-template-columns:1fr}
+}
+
+@media (max-width:700px){
+  .qp-single,
+  .qp-scientist,
+  .qp-article{padding:18px}
+
+  .qp-shell,
+  .qp-archive,
+  .qp-front{padding-inline:8px}
+
+  .qp-archive-card{padding:18px}
+  .qp-scientist-card__body{padding:16px}
+  .qp-archive-card__meta,
+  .qp-scientist-card__meta{justify-content:flex-start}
+  .qp-ft__in{flex-direction:column}
+  .post-navigation .nav-links{grid-template-columns:1fr}
+}
+
+@media (max-width:640px){
+  .qp-front-hero__stats,
+  .qp-front-paths,
+  .qp-front-articles,
+  .qp-front-scientists,
+  .qp-front-cats,
+  .qp-hub__g{grid-template-columns:1fr}
+  .qp-front-hero{padding-top:18px}
+  .qp-hub__t{font-size:1.45rem}
+}
+
+/* ==========================================================================
+   QPEDIA MODERN HOMEPAGE STYLES (SPACETIME MESH & ORBITING EMBLEM)
+   ========================================================================== */
+.qp-hero-wrap {
+  padding: 20px 0 16px;
+}
+
+.qp-hero-box {
+  background: radial-gradient(circle at 50% 30%, #0c1836 0%, #060b18 75%, #040812 100%);
+  border: 1px solid rgba(0, 229, 255, 0.35);
+  border-radius: 24px;
+  padding: 42px 18px 36px;
+  text-align: center;
+  box-shadow: 0 16px 45px rgba(6, 11, 24, 0.25);
+  position: relative;
+  overflow: hidden;
+}
+
+.qp-hero-box::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0; height: 3px;
+  background: linear-gradient(90deg, transparent, #00e5ff, transparent);
+  z-index: 4;
+}
+
+.qp-spacetime-canvas {
+  position: absolute;
+  inset: -20px;
+  perspective: 350px;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0.55;
+}
+
+.qp-spacetime-mesh {
+  position: absolute;
+  width: 140%;
+  height: 140%;
+  left: -20%;
+  top: -10%;
+  background-image: 
+    linear-gradient(to right, rgba(0, 229, 255, 0.4) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0, 229, 255, 0.4) 1px, transparent 1px);
+  background-size: 18px 18px;
+  transform: rotateX(54deg) scale(1.2);
+  transform-origin: center center;
+  mask-image: radial-gradient(ellipse 75% 70% at 50% 50%, black 40%, transparent 85%);
+  -webkit-mask-image: radial-gradient(ellipse 75% 70% at 50% 50%, black 40%, transparent 85%);
+  animation: qpMeshWarp 10s ease-in-out infinite alternate;
+}
+
+@keyframes qpMeshWarp {
+  0% { transform: rotateX(54deg) translateY(0) scale(1.15); }
+  100% { transform: rotateX(48deg) translateY(-20px) scale(1.28); }
+}
+
+.qp-hero-content {
+  position: relative;
+  z-index: 3;
+}
+
+.qp-hero-emblem-stage {
+  width: 126px;
+  height: 126px;
+  margin: 0 auto 16px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.qp-hero-logo-img {
+  width: 86px;
+  height: 86px;
+  object-fit: contain;
+  filter: drop-shadow(0 0 18px rgba(0, 229, 255, 0.5));
+  position: relative;
+  z-index: 2;
+}
+
+.qp-orbit-system {
+  position: absolute;
+  width: 118px;
+  height: 118px;
+  border: 1.5px dashed rgba(0, 229, 255, 0.7);
+  border-radius: 50%;
+  box-shadow: 0 0 14px rgba(0, 229, 255, 0.25), inset 0 0 14px rgba(0, 229, 255, 0.15);
+  animation: qpOrbitSpin 7s linear infinite;
+  z-index: 3;
+}
+
+.qp-orbit-particle {
+  position: absolute;
+  top: -5px;
+  left: calc(50% - 5px);
+  width: 10px;
+  height: 10px;
+  background: #ffffff;
+  border: 2px solid #00e5ff;
+  border-radius: 50%;
+  box-shadow: 0 0 12px #00e5ff, 0 0 20px #00e5ff;
+}
+
+@keyframes qpOrbitSpin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.qp-search-wrap {
+  max-width: 520px;
+  margin: 0 auto 28px;
+  width: 100%;
+}
+
+.qp-sec {
+  padding: 24px 0 12px;
+}
+
+.qp-sec-bar {
+  background: #070d1e;
+  border: 1px solid rgba(0, 229, 255, 0.35);
+  border-radius: 12px;
+  padding: 10px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 18px;
+  box-shadow: 0 4px 14px rgba(7, 13, 30, 0.15);
+  white-space: nowrap;
+  gap: 10px;
+}
+
+.qp-sec-title {
+  font-size: clamp(0.92rem, 3.4vw, 1.2rem);
+  font-weight: 800;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin: 0;
+}
+
+.qp-sec-title::before {
+  content: "";
+  display: inline-block;
+  flex-shrink: 0;
+  width: 4px;
+  height: 16px;
+  background: #00e5ff;
+  border-radius: 3px;
+  box-shadow: 0 0 8px #00e5ff;
+}
+
+.qp-sec-link {
+  flex-shrink: 0;
+  color: #00e5ff;
+  text-decoration: none;
+  font-size: clamp(0.75rem, 2.6vw, 0.86rem);
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.qp-cat-card {
+  background: linear-gradient(180deg, #ffffff 0%, #f6faff 100%);
+  border: 1.5px solid rgba(0, 102, 255, 0.25);
+  border-radius: 16px;
+  padding: 18px 16px;
+  text-decoration: none;
+  color: inherit;
+  box-shadow: 0 4px 16px rgba(0, 85, 255, 0.07);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.qp-cat-card:hover {
+  border-color: #0077ff;
+  transform: translateY(-3px);
+  box-shadow: 0 10px 25px rgba(0, 102, 255, 0.15);
+  background: #ffffff;
+}
+
+.qp-mission-box {
+  background: linear-gradient(135deg, #070d1e 0%, #0d1a38 100%);
+  border: 1px solid rgba(0, 229, 255, 0.35);
+  border-radius: 18px;
+  padding: 30px 20px;
+  text-align: center;
+  margin: 24px 0 40px;
+  box-shadow: 0 4px 16px rgba(0, 85, 255, 0.07);
+}
+
+.qp-mission-title {
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: #ffffff;
+  margin: 0 0 8px;
+}
+
+.qp-mission-text {
+  font-size: 0.92rem;
+  color: #94a3b8;
+  max-width: 740px;
+  margin: 0 auto;
+  line-height: 1.85;
+}
