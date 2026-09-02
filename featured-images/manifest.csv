@@ -1,0 +1,75 @@
+﻿#,slug,title_fa,title_en,mood
+1,what-is-quantum,کوانتوم یعنی چه؟,What Is Quantum?,blue
+2,quantum-superposition,برهم‌نهی کوانتومی,Quantum Superposition,blue
+3,wave-particle-duality,دوگانگی موج و ذره,Wave–Particle Duality,blue
+4,wave-function,تابع موج چیست؟,The Wave Function,blue
+5,quantum-measurement,اندازه‌گیری و فروپاشی,Measurement & Collapse,blue
+6,quantum-spin,اسپین؛ چرخشی که چرخش نیست,Quantum Spin,blue
+7,energy-levels,ترازهای انرژی و کوانتش,Energy Levels,blue
+8,decoherence,واهم‌دوسی؛ چرا دنیا عادی است!,Decoherence,blue
+9,planck-constant,ثابت پلانک؛ کوچک‌ترین واحد جهان,Planck's Constant,blue
+10,pauli-exclusion-principle,اصل طرد پاولی دقیقاً چه می‌گوید؟ به زبان ساده,Pauli Exclusion Principle,blue
+11,photon,فوتون دقیقا چیست؟,The Photon,orange
+12,electron,الکترون چیست؟ ویژگی‌ها، نقش در اتم و برق,The Electron,orange
+13,photoelectric-effect,اثر فوتوالکتریک,Photoelectric Effect,orange
+14,ultraviolet-catastrophe,فاجعهٔ فرابنفش,Ultraviolet Catastrophe,orange
+15,bohr-atomic-model,مدل اتمی بور,Bohr's Atomic Model,orange
+16,bell-inequality,نامساوی بل,Bell's Inequality,orange
+17,double-slit-experiment,آزمایش دو شکاف,Double-Slit Experiment,orange
+18,quantum-zeno-effect,اثر زنون کوانتومی,Quantum Zeno Effect,orange
+19,quantum-entanglement-explained,درهم‌تنیدگی کوانتومی,Quantum Entanglement,blue
+20,quantum-tunneling,تونل‌زنی کوانتومی,Quantum Tunneling,blue
+21,schrodinger-cat,گربهٔ شرودینگر,Schrödinger's Cat,purple
+22,vacuum-fluctuations,نوسانات خلأ,Vacuum Fluctuations,orange
+23,casimir-effect,اثر کازیمیر,The Casimir Effect,orange
+24,superconductivity,ابررسانایی,Superconductivity,blue
+25,superfluidity,ابرشارگی؛ مایعی که از لیوان بالا می‌رود,Superfluidity,blue
+26,mri-quantum,ام‌آرآی (MRI) چگونه کار می‌کند؟ ریشهٔ کوانتومی آن,MRI & Quantum Spin,blue
+27,how-lasers-work,لیزر چطور کار می‌کند؟,How Lasers Work,orange
+28,transistor-quantum,ترانزیستور؛ کوانتوم در جیب شما,Transistors: Quantum in Your Pocket,blue
+29,atomic-clock-gps,ساعت اتمی و جی‌پی‌اس,Atomic Clocks & GPS,blue
+30,qubit,کیوبیت چیست؟,The Qubit,blue
+31,quantum-cryptography-internet-security,رمزنگاری کوانتومی و آیندهٔ امنیت اینترنت,Quantum Cryptography,blue
+32,bird-quantum-compass,قطب‌نمای پرندگان,The Bird's Quantum Compass,blue
+33,quantum-smell,حس بویایی؛ شکل یا ارتعاش؟,Quantum Smell,blue
+34,enzyme-quantum-tunneling,آنزیم‌ها؛ عبور از دیوار به‌جای پریدن,Enzyme Quantum Tunneling,blue
+35,quantum-photosynthesis,فتوسنتز؛ کارآمدترین ماشین جهان و رد پای کوانتوم,Quantum Photosynthesis,orange
+36,copenhagen-interpretation,تفسیر کپنهاگی,Copenhagen Interpretation,purple
+37,many-worlds-interpretation,تفسیر جهان‌های موازی,Many-Worlds Interpretation,purple
+38,quantum-alternative-medicine-science,کوانتوم و پزشکی جایگزین: کجا علم است، کجا نیست,Quantum Alternative Medicine,purple
+39,everything-is-energy-claim,«همه‌چیز انرژی است» — بررسی یک ادعا,'Everything Is Energy'?,purple
+40,is-the-brain-quantum,آیا مغز کوانتومی است؟,Is the Brain Quantum?,purple
+41,spot-pseudoscience-one-sentence,چگونه ادعای شبه‌علمی را در یک جمله تشخیص دهیم,Spotting Pseudoscience,purple
+42,quantum-computer-reality,کامپیوتر کوانتومی چیست و چقدر با واقعیت فاصله دارد,The Quantum Computer,blue
+43,why-quantum-math-works,چرا ریاضیات کوانتوم درست است ولی «فهمش» سخت است,Why Quantum Math Works,purple
+44,solar-cells-photoelectric,پنل خورشیدی و اثر فوتوالکتریک؛ تبدیل نور به جریان زندگی,Solar Cells & Photoelectric Effect,orange
+45,max-planck-blackbody,پلانک و بحران تابش جسم سیاه؛ جرقه‌ای که فیزیک را متحول کرد,Planck & Blackbody Radiation,orange
+46,einstein-bohr-debate,نبرد اینشتین و بور بر سر معنای کوانتوم,Einstein vs. Bohr,orange
+47,quantum-learning-resources,منابع معتبر فارسی و انگلیسی برای یادگیری عمیق‌تر کوانتوم,Learning Quantum Physics,blue
+48,feynman-quantum-explainer,فاینمن: نابغه‌ای که کوانتوم را ساده توضیح می‌داد,Feynman Explains Quantum,orange
+49,schrodinger-life-equation,شرودینگر: زندگی، معادله و گربه‌ای که هرگز نداشت,Schrödinger: Life & Equation,purple
+50,forgotten-women-quantum,زنان فراموش‌شدهٔ فیزیک کوانتوم,Forgotten Women of Quantum,orange
+51,dirac-antimatter,دیراک و پیش‌بینی پادماده؛ وقتی ریاضیات از واقعیت جلو زد,Dirac & Antimatter,orange
+52,entanglement-quantum-computers,درهم‌تنیدگی در کامپیوترهای کوانتومی امروزی,Entanglement in Quantum Computers,blue
+53,quantum-sensors,حسگرهای کوانتومی؛ آیندهٔ دقت اندازه‌گیری,Quantum Sensors,blue
+54,quantum-fivefold-mental-map,نقشهٔ ذهنی پنج‌گانه برای فهم درست کوانتوم,A Mental Map of Quantum,purple
+55,quantum-understanding-achievement,جمع بندی نهایی: چرا «نفهمیدنِ درست» کوانتوم خودش یک دستاورد است؟,Understanding Quantum,purple
+56,quantum-analogy-exercise-boundary,تمرین ذهنی: خودتان یک تمثیل بسازید و مرزش را پیدا کنید,Building Quantum Analogies,purple
+57,coin-vs-dice-quantum-uncertainty,تمثیل تاس در مقابل تمثیل سکه: کدام برای عدم قطعیت بهتر است؟,Coin vs. Dice,purple
+58,quantum-physics-vs-quantum-mechanics,تفاوت فیزیک کوانتوم و مکانیک کوانتومی چیست؟,Quantum Physics vs. Mechanics,blue
+59,determinism-vs-probability,تفاوت جبرگرایی کلاسیک و احتمال کوانتومی,Determinism vs. Probability,purple
+60,why-large-objects-dont-superpose,برهم‌نهی یعنی چه، و چرا اشیای بزرگ برهم‌نهی نمی‌شوند,Why Big Things Don't Superpose,blue
+61,superposition-explained,برهم‌نهی چیست؟ وقتی یک ذره «هم این است هم آن»,Superposition Explained,blue
+62,heisenberg-uncertainty-principle,اصل عدم قطعیت هایزنبرگ به زبان ساده,Heisenberg Uncertainty,blue
+63,quantum-career-future-learn,آینده شغلی: آیا باید فیزیک کوانتوم یاد بگیریم؟,A Career in Quantum?,blue
+64,is-many-worlds-real,آیا کوانتوم یعنی چندجهانی واقعی است؟,Are Many Worlds Real?,purple
+65,does-ai-use-quantum,آیا هوش مصنوعی از کوانتوم استفاده می‌کند؟,Does AI Use Quantum?,blue
+66,brain-quantum-phenomena,آیا مغز انسان از پدیده‌های کوانتومی استفاده می‌کند؟ (بررسی ادعا‌ها),Quantum in the Brain?,purple
+67,quantum-interpretation-debate,آیا فیزیک‌دانان بر سر معنای اندازه‌گیری توافق دارند؟,The Measurement Debate,purple
+68,is-classical-physics-wrong,آیا فیزیک کلاسیک اشتباه بود؟ نه، محدود بود,Was Classical Physics Wrong?,orange
+69,einstein-photoelectric-effect,اینشتین و اثر فوتوالکتریک (نه فقط نسبیت),Einstein & Photoelectric Effect,orange
+70,does-quantum-prove-god,آیا کوانتوم ثابت می‌کند خدا وجود دارد یا ندارد؟,Does Quantum Prove God?,purple
+71,entanglement-myths,آیا درهم‌تنیدگی یعنی اطلاعات سریع‌تر از نور منتقل می‌شود؟,Entanglement Myths,purple
+72,bell-experiments,آزمایش‌های بل: چگونه درهم‌تنیدگی اثبات شد!,Bell's Experiments,orange
+73,mind-quantum-reality,آیا با فکر کردن می‌توان واقعیت کوانتومی را تغییر داد؟,Can Mind Change Reality?,purple
+74,quantum-teleportation,تله‌پورت کوانتومی چیست؟,Quantum Teleportation,blue
