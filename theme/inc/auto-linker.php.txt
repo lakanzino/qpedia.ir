@@ -1,0 +1,138 @@
+<?php
+/**
+ * QPedia Knowledge Graph Auto-Linker
+ *
+ * Automatically and safely links quantum concepts and scientist names
+ * to their respective QPedia encyclopedia articles and biographies.
+ *
+ * @package Quantum_Pedia_Child
+ */
+
+defined( 'ABSPATH' ) || exit;
+
+/**
+ * دریافت دیکشنری کلیدواژه‌ها و آدرس مقاصد
+ *
+ * @return array<string,string>
+ */
+function qpedia_get_autolink_dictionary() {
+	return array(
+		'درهم‌تنیدگی کوانتومی' => '/quantum-entanglement/',
+		'درهم تنیدگی کوانتومی' => '/quantum-entanglement/',
+		'درهم‌تنیدگی'           => '/quantum-entanglement/',
+		'درهم تنیدگی'           => '/quantum-entanglement/',
+		'برهم‌نهی کوانتومی'     => '/quantum-superposition/',
+		'برهم نهی کوانتومی'     => '/quantum-superposition/',
+		'برهم‌نهی'              => '/quantum-superposition/',
+		'برهم نهی'              => '/quantum-superposition/',
+		'دوگانگی موج و ذره'     => '/wave-particle-duality/',
+		'دوگانگی موج-ذره'      => '/wave-particle-duality/',
+		'اصل عدم‌قطعیت هایزنبرگ' => '/uncertainty-principle/',
+		'اصل عدم قطعیت هایزنبرگ' => '/uncertainty-principle/',
+		'اصل عدم‌قطعیت'         => '/uncertainty-principle/',
+		'اصل عدم قطعیت'         => '/uncertainty-principle/',
+		'اصل طرد پاولی'         => '/pauli-exclusion-principle/',
+		'تابع موج'              => '/wave-function/',
+		'فروپاشی تابع موج'     => '/quantum-measurement/',
+		'واهم‌دوسی کوانتومی'     => '/decoherence/',
+		'واهم‌دوسی'             => '/decoherence/',
+		'واهم دوسی'             => '/decoherence/',
+		'کامپیوتر کوانتومی'     => '/quantum-computer/',
+		'رایانش کوانتومی'       => '/quantum-computer/',
+		'دورنوردی کوانتومی'     => '/quantum-teleportation/',
+		'تله‌پورت کوانتومی'     => '/quantum-teleportation/',
+		'رمزنگاری کوانتومی'     => '/quantum-cryptography/',
+		'رمزنگاری پساکوانتومی'  => '/post-quantum-cryptography/',
+		'تونل‌زنی کوانتومی'     => '/quantum-tunneling/',
+		'تونل زنی کوانتومی'     => '/quantum-tunneling/',
+		'کیوبیت'                => '/qubit/',
+		'آزمایش دوشکاف'         => '/double-slit-experiment/',
+		'آزمایش دو شکاف'        => '/double-slit-experiment/',
+		'ماکس پلانک'            => '/scientists/max-planck/',
+		'آلبرت اینشتین'         => '/scientists/albert-einstein/',
+		'نیلز بور'              => '/scientists/niels-bohr/',
+		'نیلزبور'               => '/scientists/niels-bohr/',
+		'ورنر هایزنبرگ'         => '/scientists/werner-heisenberg/',
+		'اروین شرودینگر'        => '/scientists/erwin-schrodinger/​',
+		'پل دیراک'              => '/scientists/paul-dirac/',
+		'ریچارد فاینمن'         => '/scientists/richard-feynman/',
+		'جان استوارت بل'        => '/scientists/john-bell/',
+	);
+}
+
+/**
+ * فیلتر هوشمند متن برای اعمال لینک‌دهی خودکار بدون آسیب به تگ‌های HTML
+ *
+ * @param string $content محتوای مقاله.
+ * @return string
+ */
+function qpedia_apply_auto_links( $content ) {
+	if ( ! is_singular( 'quantum_article' ) && ! is_singular( 'quantum_scientist' ) ) {
+		return $content;
+	}
+
+	if ( is_admin() || empty( $content ) ) {
+		return $content;
+	}
+
+	global $post;
+	$current_slug = is_object( $post ) ? $post->post_name : '';
+	$dictionary   = qpedia_get_autolink_dictionary();
+
+	// مرتب‌سازی کلیدواژه‌ها بر اساس طول متن (عبارات طولانی‌تر اولویت دارند تا بخشی از آن‌ها خراب نشود)
+	uksort( $dictionary, function( $a, $b ) {
+		return mb_strlen( $b, 'UTF-8' ) <=> mb_strlen( $a, 'UTF-8' );
+	} );
+
+	// جداسازی بلاک‌های محافظت‌شده (تگ‌های a, h1-h6, pre, code, script, style, details)
+	$protected_blocks = array();
+	$pattern_protect  = '/(<a\b[^>]*>.*?<\/a>|<h[1-6]\b[^>]*>.*?<\/h[1-6]>|<pre\b[^>]*>.*?<\/pre>|<code\b[^>]*>.*?<\/code>|<script\b[^>]*>.*?<\/script>|<style\b[^>]*>.*?<\/style>|<details\b[^>]*>.*?<\/details>|<img\b[^>]*>)/isu';
+
+	$content = preg_replace_callback( $pattern_protect, function( $matches ) use ( &$protected_blocks ) {
+		$index = '###QP_PROTECTED_' . count( $protected_blocks ) . '###';
+		$protected_blocks[ $index ] = $matches[0];
+		return $index;
+	}, $content );
+
+	$total_links_added = 0;
+	$max_total_links   = 7; // حداکثر لینک‌های خودکار در هر مقاله جهت جلوگیری از بیش‌بهینه‌سازی
+
+	foreach ( $dictionary as $keyword => $target_path ) {
+		if ( $total_links_added >= $max_total_links ) {
+			break;
+		}
+
+		// جلوگیری از لینک دادن به صفحه جاری (Self-linking)
+		$clean_target_slug = trim( $target_path, '/' );
+		if ( false !== strpos( $clean_target_slug, '/' ) ) {
+			$parts = explode( '/', $clean_target_slug );
+			$clean_target_slug = end( $parts );
+		}
+		if ( $current_slug && $clean_target_slug === $current_slug ) {
+			continue;
+		}
+
+		$escaped_keyword = preg_quote( $keyword, '/' );
+		// تطابق امن کلمه با فاصله یا نیم‌فاصله در مرزها
+		$regex = '/(?<![\p{L}\p{N}_])(' . $escaped_keyword . ')(?![\p{L}\p{N}_])/u';
+
+		$matched = false;
+		$content = preg_replace_callback( $regex, function( $matches ) use ( $target_path, &$matched, &$total_links_added ) {
+			if ( $matched ) {
+				return $matches[0]; // فقط اولین رخداد هر کلیدواژه لینک می‌شود
+			}
+			$matched = true;
+			$total_links_added++;
+			$url = home_url( $target_path );
+			return '<a class="qp-autolink" href="' . esc_url( $url ) . '" title="مشاهده دانشنامه: ' . esc_attr( $matches[1] ) . '">' . $matches[1] . '</a>';
+		}, $content, 1 );
+	}
+
+	// بازگردانی بلاک‌های محافظت‌شده
+	if ( ! empty( $protected_blocks ) ) {
+		$content = str_replace( array_keys( $protected_blocks ), array_values( $protected_blocks ), $content );
+	}
+
+	return $content;
+}
+add_filter( 'the_content', 'qpedia_apply_auto_links', 20 );

@@ -1,0 +1,242 @@
+<?php
+/**
+ * Single template for quantum_article.
+ *
+ * Fully modernized with Table of Contents, Reading Time, Schema tags,
+ * and Scientific References box.
+ *
+ * @package Quantum_Pedia_Child
+ */
+
+defined( 'ABSPATH' ) || exit;
+
+if ( ! function_exists( 'qpedia_prepare_article_content' ) ) {
+	/**
+	 * محتوا را تمیز کرده و ساختار فهرست سرفصل‌ها (TOC) را می‌سازد.
+	 *
+	 * @param string $content محتوای خام.
+	 * @return array{content:string,toc:string}
+	 */
+	function qpedia_prepare_article_content( $content ) {
+		$content = (string) $content;
+
+		// پاک‌سازی کدهای منسوخ قدیمی
+		$content = preg_replace( '/^\s*\[(?:qpt[^\]]*|qterm[^\]]*|related[^\]]*)\]\s*/u', '', $content );
+
+		$matches = array();
+		preg_match_all( '/<(h[2-3])([^>]*)>(.*?)<\/h[2-3]>/iu', $content, $matches, PREG_SET_ORDER );
+
+		if ( count( $matches ) < 2 ) {
+			return array(
+				'content' => $content,
+				'toc'     => '',
+			);
+		}
+
+		$toc_items  = '';
+		$counter    = 0;
+		$in_sublist = false;
+		$prev_level = 'h2';
+
+		foreach ( $matches as $match ) {
+			$counter++;
+			$tag   = strtolower( $match[1] );
+			$attrs = $match[2];
+			$title = trim( wp_strip_all_tags( $match[3] ) );
+			$id    = 'sec-' . $counter;
+
+			$new_heading = '<' . $match[1] . $attrs . ' id="' . esc_attr( $id ) . '" class="qp-scroll-heading">' . $match[3] . '</' . $match[1] . '>';
+			$content     = str_replace( $match[0], $new_heading, $content );
+
+			if ( 'h3' === $tag && 'h2' === $prev_level && ! $in_sublist ) {
+				$toc_items .= '<ol class="qp-article-toc__sub">';
+				$in_sublist = true;
+			}
+
+			if ( 'h2' === $tag && $in_sublist ) {
+				$toc_items .= '</ol></li>';
+				$in_sublist = false;
+			}
+
+			$toc_items .= '<li><a href="#' . esc_attr( $id ) . '" class="qp-toc-link">' . esc_html( $title ) . '</a>';
+			if ( 'h3' === $tag ) {
+				$toc_items .= '</li>';
+			}
+
+			$prev_level = $tag;
+		}
+
+		if ( $in_sublist ) {
+			$toc_items .= '</ol></li>';
+		}
+
+		$toc  = '<aside class="qp-article-toc" aria-label="فهرست مطالب">';
+		$toc .= '<div class="qp-article-toc__header">';
+		$toc .= '<span class="qp-article-toc__icon">📑</span>';
+		$toc .= '<h2 class="qp-article-toc__title">فهرست سرفصل‌های این مقاله</h2>';
+		$toc .= '</div>';
+		$toc .= '<ol class="qp-article-toc__list">' . $toc_items . '</ol>';
+		$toc .= '</aside>';
+
+		return array(
+			'content' => $content,
+			'toc'     => $toc,
+		);
+	}
+}
+
+get_header();
+?>
+<main id="primary" class="site-main">
+	<div class="container qp-shell qp-shell--article">
+		<?php while ( have_posts() ) : the_post(); ?>
+			<?php
+			$post_id      = get_the_ID();
+			$terms        = get_the_terms( $post_id, 'quantum_category' );
+			$raw_content  = get_the_content();
+			$reading_time = function_exists( 'qpedia_get_reading_time' ) ? qpedia_get_reading_time( $raw_content ) : 4;
+			$prepared     = qpedia_prepare_article_content( $raw_content );
+			$content      = $prepared['content'];
+			$toc          = $prepared['toc'];
+
+			$related_posts = array();
+			if ( ! is_wp_error( $terms ) && ! empty( $terms ) ) {
+				$related_query = new WP_Query(
+					array(
+						'post_type'              => 'quantum_article',
+						'post_status'            => 'publish',
+						'posts_per_page'         => 3,
+						'post__not_in'           => array( $post_id ),
+						'ignore_sticky_posts'    => true,
+						'no_found_rows'          => true,
+						'update_post_meta_cache' => false,
+						'tax_query'              => array(
+							array(
+								'taxonomy' => 'quantum_category',
+								'field'    => 'term_id',
+								'terms'    => wp_list_pluck( $terms, 'term_id' ),
+							),
+						),
+					)
+				);
+
+				if ( $related_query->have_posts() ) {
+					$related_posts = $related_query->posts;
+				}
+				wp_reset_postdata();
+			}
+			?>
+
+			<article id="post-<?php the_ID(); ?>" <?php post_class( 'qp-article' ); ?>>
+				<header class="qp-article__header">
+					<div class="qp-article__top-meta">
+						<span class="qp-badge">دانشنامه فیزیک کوانتوم</span>
+						<span class="qp-read-time">⏱️ زمان مطالعه: <?php echo esc_html( number_format_i18n( $reading_time ) ); ?> دقیقه</span>
+					</div>
+
+					<?php if ( ! is_wp_error( $terms ) && ! empty( $terms ) ) : ?>
+						<div class="qp-article__chips" aria-label="دسته‌بندی‌ها">
+							<?php foreach ( $terms as $term ) : ?>
+								<a class="qp-article__chip" href="<?php echo esc_url( get_term_link( $term ) ); ?>">
+									📂 <?php echo esc_html( $term->name ); ?>
+								</a>
+							<?php endforeach; ?>
+						</div>
+					<?php endif; ?>
+
+					<h1 class="qp-article__title"><?php the_title(); ?></h1>
+
+					<div class="qp-article__meta">
+						<span>تاریخ انتشار: <time datetime="<?php echo esc_attr( get_the_date( 'c' ) ); ?>"><?php echo esc_html( get_the_date( 'j F Y' ) ); ?></time></span>
+						<?php if ( get_the_modified_date( 'U' ) !== get_the_date( 'U' ) ) : ?>
+							<span class="qp-article__sep">•</span>
+							<span>آخرین به‌روزرسانی علمی: <?php echo esc_html( get_the_modified_date( 'j F Y' ) ); ?></span>
+						<?php endif; ?>
+					</div>
+
+					<?php if ( has_excerpt() ) : ?>
+						<div class="qp-article__lead">
+							<?php echo esc_html( get_the_excerpt() ); ?>
+						</div>
+					<?php endif; ?>
+				</header>
+
+				<?php if ( has_post_thumbnail() ) : ?>
+					<figure class="qp-article__media">
+						<?php echo get_the_post_thumbnail( $post_id, 'large', array( 'class' => 'qp-article__image' ) ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
+					</figure>
+				<?php endif; ?>
+
+				<?php if ( $toc ) : ?>
+					<?php echo $toc; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
+				<?php endif; ?>
+
+				<div class="qp-article__content entry-content">
+					<?php echo wp_kses_post( do_shortcode( $content ) ); ?>
+				</div>
+
+				<!-- جعبه مراجع و اسناد معتبر علمی -->
+				<?php
+				if ( function_exists( 'qpedia_render_scientific_references_box' ) ) {
+					echo qpedia_render_scientific_references_box( $post_id ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+				}
+				?>
+
+				<!-- جعبه هیئت تحریریه و اعتبار علمی -->
+				<div class="qp-editorial-box">
+					<div class="qp-editorial-icon">⚛️</div>
+					<div class="qp-editorial-text">
+						<strong>تدوین و ارزیابی علمی: هیئت تحریریه دانشنامه کوانتوم‌پدیا</strong>
+						<p>این نوشتار به منظور ترویج دانش عمومی و دانشگاهی فیزیک ذرات، بر اساس متون استاندارد بین‌المللی و متناسب با اصول یادگیری شهودی تألیف شده است.</p>
+					</div>
+				</div>
+
+			</article>
+
+			<?php if ( ! empty( $related_posts ) ) : ?>
+				<section class="qp-related" aria-label="مقاله‌های مرتبط">
+					<div class="qp-sec-bar">
+						<h2 class="qp-sec-title">مقاله‌های پیشنهادی و مرتبط</h2>
+					</div>
+					<div class="qp-related__grid">
+						<?php foreach ( $related_posts as $related_post ) : ?>
+							<article class="qp-art-card">
+								<a class="qp-art-media" href="<?php echo esc_url( get_permalink( $related_post->ID ) ); ?>">
+									<?php if ( has_post_thumbnail( $related_post->ID ) ) : ?>
+										<?php echo get_the_post_thumbnail( $related_post->ID, 'medium_large' ); ?>
+									<?php else : ?>
+										<img src="<?php echo esc_url( get_stylesheet_directory_uri() . '/assets/images/qpedia-hero-emblem.png' ); ?>" alt="<?php echo esc_attr( get_the_title( $related_post->ID ) ); ?>" />
+									<?php endif; ?>
+								</a>
+								<div class="qp-art-body">
+									<div>
+										<h3 class="qp-art-title">
+											<a href="<?php echo esc_url( get_permalink( $related_post->ID ) ); ?>"><?php echo esc_html( get_the_title( $related_post->ID ) ); ?></a>
+										</h3>
+										<?php if ( has_excerpt( $related_post->ID ) ) : ?>
+											<p class="qp-art-excerpt"><?php echo esc_html( wp_trim_words( get_the_excerpt( $related_post->ID ), 15 ) ); ?></p>
+										<?php endif; ?>
+									</div>
+									<div class="qp-art-meta">
+										<a class="qp-art-readmore" href="<?php echo esc_url( get_permalink( $related_post->ID ) ); ?>">مطالعه مقاله ←</a>
+									</div>
+								</div>
+							</article>
+						<?php endforeach; ?>
+					</div>
+				</section>
+			<?php endif; ?>
+
+			<?php
+			the_post_navigation(
+				array(
+					'prev_text' => '<span class="nav-subtitle">← مقاله قبلی</span> <span class="nav-title">%title</span>',
+					'next_text' => '<span class="nav-subtitle">مقاله بعدی →</span> <span class="nav-title">%title</span>',
+				)
+			);
+			?>
+		<?php endwhile; ?>
+	</div>
+</main>
+<?php
+get_footer();

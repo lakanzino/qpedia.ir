@@ -1,0 +1,100 @@
+<?php
+/**
+ * QPedia Reading Experience Enhancements
+ *
+ * Provides estimated reading time, reading progress bar, sticky TOC,
+ * and scientific references box.
+ *
+ * @package Quantum_Pedia_Child
+ */
+
+defined( 'ABSPATH' ) || exit;
+
+/**
+ * محاسبه زمان تقریبی مطالعه مقاله به زبان فارسی
+ *
+ * @param string $content متن مقاله.
+ * @return int زمان مطالعه بر حسب دقیقه.
+ */
+function qpedia_get_reading_time( $content ) {
+	$clean_text = wp_strip_all_tags( $content );
+	$clean_text = preg_replace( '/\s+/u', ' ', $clean_text );
+	$word_count = count( preg_split( '/[\s\x{200C}]+/u', trim( $clean_text ) ) );
+
+	$words_per_minute = 180; // سرعت میانگین مطالعه متن‌های علمی-تخصصی فارسی
+	$minutes = (int) ceil( $word_count / $words_per_minute );
+
+	return max( 1, $minutes );
+}
+
+/**
+ * نوار پیشرفت مطالعه بالای صفحه (Scroll Progress Bar)
+ */
+function qpedia_render_reading_progress_bar() {
+	if ( is_singular( 'quantum_article' ) || is_singular( 'quantum_scientist' ) ) {
+		echo '<div class="qp-reading-progress" id="qpReadingProgress" role="progressbar" aria-label="پیشرفت مطالعه مقاله" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"><div class="qp-reading-progress-bar" id="qpReadingProgressBar"></div></div>';
+	}
+}
+add_action( 'wp_body_open', 'qpedia_render_reading_progress_bar', 5 );
+
+/**
+ * رندر باکس منابع و مراجع معتبر علمی در انتهای مقالات
+ *
+ * @param int $post_id شناسه مقاله.
+ * @return string
+ */
+function qpedia_render_scientific_references_box( $post_id ) {
+	$custom_refs = get_post_meta( $post_id, '_qpedia_references', true );
+	if ( empty( $custom_refs ) || ! is_array( $custom_refs ) ) {
+		// مراجع استاندارد و پایگاه‌های علمی معتبر پیش‌فرض دانشنامه
+		$custom_refs = array(
+			array(
+				'title' => 'بنیاد جایزه نوبل — فیزیک کوانتوم و دستاوردها',
+				'url'   => 'https://www.nobelprize.org/prizes/physics/',
+				'badge' => 'NobelPrize.org',
+			),
+			array(
+				'title' => 'نشریه علمی Nature — بخش تحقیقات فیزیک و اطلاعات کوانتومی',
+				'url'   => 'https://www.nature.com/subjects/quantum-physics',
+				'badge' => 'Nature Physics',
+			),
+			array(
+				'title' => 'آزمایشگاه سرن (CERN) — فیزیک ذرات بنیادی',
+				'url'   => 'https://home.cern/',
+				'badge' => 'CERN Open Science',
+			),
+			array(
+				'title' => 'مؤسسه ملی استانداردها و فناوری آمریکا (NIST) — محاسبات کوانتومی',
+				'url'   => 'https://www.nist.gov/quantum-information-science',
+				'badge' => 'NIST Quantum',
+			),
+		);
+	}
+
+	$html  = '<div class="qp-references-box" id="references">';
+	$html .= '<div class="qp-references-header">';
+	$html .= '<span class="qp-references-icon">🔬</span>';
+	$html .= '<h3 class="qp-references-title">منابع و پایگاه‌های مرجع علمی (External References)</h3>';
+	$html .= '</div>';
+	$html .= '<p class="qp-references-intro">این مقاله بر اساس اسناد آکادمیک و آخرین دستاوردهای تأییدشدهٔ مراجع جهانی فیزیک ذرات گردآوری و تدوین شده است:</p>';
+	$html .= '<ul class="qp-references-list">';
+
+	foreach ( $custom_refs as $ref ) {
+		$title = esc_html( $ref['title'] ?? 'مرجع علمی' );
+		$url   = esc_url( $ref['url'] ?? '#' );
+		$badge = esc_html( $ref['badge'] ?? 'Verified' );
+
+		$html .= '<li class="qp-references-item">';
+		$html .= '<a href="' . $url . '" target="_blank" rel="noopener noreferrer" class="qp-references-link">';
+		$html .= '<span class="qp-references-badge">' . $badge . '</span>';
+		$html .= '<span class="qp-references-name">' . $title . '</span>';
+		$html .= '<span class="qp-references-arrow">↗</span>';
+		$html .= '</a>';
+		$html .= '</li>';
+	}
+
+	$html .= '</ul>';
+	$html .= '</div>';
+
+	return $html;
+}

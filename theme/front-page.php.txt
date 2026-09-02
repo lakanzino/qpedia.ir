@@ -1,0 +1,231 @@
+<?php
+/**
+ * Modern Homepage Template for QPedia Child Theme
+ *
+ * @package Quantum_Pedia_Child
+ */
+
+defined( "ABSPATH" ) || exit;
+
+get_header();
+
+// 1. Dynamic Counts
+$article_count_obj   = wp_count_posts( "quantum_article" );
+$article_total       = isset( $article_count_obj->publish ) ? (int) $article_count_obj->publish : 0;
+
+$scientist_count_obj = wp_count_posts( "quantum_scientist" );
+$scientist_total     = isset( $scientist_count_obj->publish ) ? (int) $scientist_count_obj->publish : 0;
+
+$parent_categories = get_terms(
+	array(
+		"taxonomy"   => "quantum_category",
+		"parent"     => 0,
+		"hide_empty" => false,
+	)
+);
+
+// 2. Recent Articles Query
+$recent_articles = new WP_Query(
+	array(
+		"post_type"              => "quantum_article",
+		"posts_per_page"         => 6,
+		"post_status"            => "publish",
+		"orderby"                => "date",
+		"order"                  => "DESC",
+		"ignore_sticky_posts"    => true,
+		"no_found_rows"          => true,
+		"update_post_meta_cache" => false,
+	)
+);
+
+// 3. Featured Scientists Query
+$scientists_query = new WP_Query(
+	array(
+		"post_type"              => "quantum_scientist",
+		"posts_per_page"         => 4,
+		"post_status"            => "publish",
+		"orderby"                => "date",
+		"order"                  => "DESC",
+		"ignore_sticky_posts"    => true,
+		"no_found_rows"          => true,
+		"update_post_meta_cache" => false,
+	)
+);
+?>
+<main id="primary" class="site-main">
+	<div class="container qp-container qp-front">
+
+		<!-- 1. HERO SECTION IN DARK CAPSULE WITH 3D SPACETIME GRID -->
+		<div class="qp-hero-wrap">
+			<section class="qp-hero-box">
+				
+				<!-- 3D Spacetime Curvature Wireframe Grid -->
+				<div class="qp-spacetime-canvas" aria-hidden="true">
+					<div class="qp-spacetime-mesh"></div>
+				</div>
+
+				<div class="qp-hero-content">
+					<!-- Stationary 3D Logo with Orbiting Electron Satellite -->
+					<div class="qp-hero-emblem-stage">
+						<img class="qp-hero-logo-img" src="<?php echo esc_url( get_stylesheet_directory_uri() . "/assets/images/qpedia-hero-emblem.png" ); ?>" alt="<?php esc_attr_e( "لوگوی هیرو کوانتوم پدیا", "quantum-pedia-child" ); ?>" width="86" height="86" decoding="async" />
+						<div class="qp-orbit-system" aria-hidden="true">
+							<div class="qp-orbit-particle"></div>
+						</div>
+					</div>
+
+					<div>
+						<span class="qp-badge">⚡ ساده، روان و بدون فرمول پیچیده</span>
+					</div>
+
+					<h1 class="qp-hero-title">
+						کوانتوم را از پایه، <span>ملموس و شفاف</span> یاد بگیرید
+					</h1>
+					<p class="qp-hero-desc">
+						از رازهای برهم‌نهی و درهم‌تنیدگی تا کامپیوترهای کوانتومی؛ پلی مطمئن میان ژرفای علم فیزیک ذرات و نسل جوان ایران آینده.
+					</p>
+
+					<!-- 100% Responsive Search Bar -->
+					<div class="qp-search-wrap">
+						<?php get_search_form(); ?>
+					</div>
+
+					<!-- Stats Grid -->
+					<div class="qp-stats-grid" aria-label="آمار دانشنامه">
+						<div class="qp-stat-card">
+							<span class="qp-stat-num"><?php echo esc_html( number_format_i18n( $article_total ) ); ?></span>
+							<span class="qp-stat-label">مقالهٔ منتشرشده</span>
+						</div>
+						<div class="qp-stat-card">
+							<span class="qp-stat-num"><?php echo esc_html( number_format_i18n( is_wp_error( $parent_categories ) ? 0 : count( $parent_categories ) ) ); ?></span>
+							<span class="qp-stat-label">خوشهٔ اصلی</span>
+						</div>
+						<div class="qp-stat-card">
+							<span class="qp-stat-num"><?php echo esc_html( number_format_i18n( $scientist_total ) ); ?></span>
+							<span class="qp-stat-label">دانشمند کوانتوم</span>
+						</div>
+						<div class="qp-stat-card">
+							<span class="qp-stat-num">۱۰۰٪</span>
+							<span class="qp-stat-label">محتوای علمی آزاد</span>
+						</div>
+					</div>
+				</div>
+
+			</section>
+		</div>
+
+		<!-- 2. CORE CATEGORIES SECTION -->
+		<section class="qp-sec" id="categories">
+			<div class="qp-sec-bar">
+				<h2 class="qp-sec-title">دسته‌بندی‌های اصلی دانشنامه</h2>
+				<a class="qp-sec-link" href="<?php echo esc_url( home_url( "/topics/" ) ); ?>">مشاهده همه شاخه‌ها ←</a>
+			</div>
+
+			<?php if ( ! is_wp_error( $parent_categories ) && ! empty( $parent_categories ) ) : ?>
+				<div class="qp-cat-grid">
+					<?php foreach ( $parent_categories as $term ) : ?>
+						<?php
+						$term_link = get_term_link( $term );
+						$count     = (int) $term->count;
+						?>
+						<a class="qp-cat-card" href="<?php echo esc_url( $term_link ); ?>">
+							<div class="qp-cat-head">
+								<h3 class="qp-cat-title"><?php echo esc_html( $term->name ); ?></h3>
+								<span class="qp-cat-count"><?php echo esc_html( sprintf( "%d مقاله", $count ) ); ?></span>
+							</div>
+							<p class="qp-cat-desc">
+								<?php echo esc_html( $term->description ? $term->description : "بررسی مفاهیم، پدیده‌ها و کاربردهای " . $term->name ); ?>
+							</p>
+						</a>
+					<?php endforeach; ?>
+				</div>
+			<?php endif; ?>
+		</section>
+
+		<!-- 3. FEATURED & RECENT ARTICLES -->
+		<section class="qp-sec" id="articles">
+			<div class="qp-sec-bar">
+				<h2 class="qp-sec-title">تازه‌ترین مقالات</h2>
+				<a class="qp-sec-link" href="<?php echo esc_url( home_url( "/articles/" ) ); ?>">آرشیو همه مقالات ←</a>
+			</div>
+
+			<?php if ( $recent_articles->have_posts() ) : ?>
+				<div class="qp-art-grid">
+					<?php while ( $recent_articles->have_posts() ) : $recent_articles->the_post(); ?>
+						<?php
+						$terms = get_the_terms( get_the_ID(), "quantum_category" );
+						$primary_term = ( ! empty( $terms ) && ! is_wp_error( $terms ) ) ? $terms[0]->name : "کوانتوم";
+						?>
+						<article class="qp-art-card">
+							<a class="qp-art-media" href="<?php the_permalink(); ?>">
+								<?php if ( has_post_thumbnail() ) : ?>
+									<?php the_post_thumbnail( "medium_large" ); ?>
+								<?php else : ?>
+									<img src="<?php echo esc_url( get_stylesheet_directory_uri() . "/assets/images/qpedia-hero-emblem.png" ); ?>" alt="<?php the_title_attribute(); ?>" />
+								<?php endif; ?>
+								<span class="qp-art-badge"><?php echo esc_html( $primary_term ); ?></span>
+							</a>
+							<div class="qp-art-body">
+								<div>
+									<h3 class="qp-art-title">
+										<a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
+									</h3>
+									<p class="qp-art-excerpt"><?php echo esc_html( wp_trim_words( get_the_excerpt(), 18 ) ); ?></p>
+								</div>
+								<div class="qp-art-meta">
+									<time datetime="<?php echo esc_attr( get_the_date( "c" ) ); ?>"><?php echo esc_html( get_the_date( "j F Y" ) ); ?></time>
+									<a class="qp-art-readmore" href="<?php the_permalink(); ?>">مطالعه مقاله ←</a>
+								</div>
+							</div>
+						</article>
+					<?php endwhile; wp_reset_postdata(); ?>
+				</div>
+			<?php endif; ?>
+		</section>
+
+		<!-- 4. SCIENTISTS SHOWCASE -->
+		<section class="qp-sec" id="scientists">
+			<div class="qp-sec-bar">
+				<h2 class="qp-sec-title">تالار دانشمندان کوانتوم</h2>
+				<?php
+				$sci_archive = get_post_type_archive_link( "quantum_scientist" ) ?: home_url( "/scientists/" );
+				?>
+				<a class="qp-sec-link" href="<?php echo esc_url( $sci_archive ); ?>">مشاهده ۲۳ دانشمند ←</a>
+			</div>
+
+			<?php if ( $scientists_query->have_posts() ) : ?>
+				<div class="qp-sci-grid">
+					<?php while ( $scientists_query->have_posts() ) : $scientists_query->the_post(); ?>
+						<?php
+						$en_name = trim( (string) get_post_meta( get_the_ID(), "_scientist_en_name", true ) );
+						?>
+						<a class="qp-sci-card" href="<?php the_permalink(); ?>">
+							<div class="qp-sci-avatar">
+								<?php if ( has_post_thumbnail() ) : ?>
+									<?php the_post_thumbnail( "thumbnail" ); ?>
+								<?php else : ?>
+									<img src="<?php echo esc_url( get_stylesheet_directory_uri() . "/assets/images/qpedia-hero-emblem.png" ); ?>" alt="<?php the_title_attribute(); ?>" />
+								<?php endif; ?>
+							</div>
+							<div class="qp-sci-name"><?php the_title(); ?></div>
+							<?php if ( $en_name ) : ?>
+								<div class="qp-sci-latin"><?php echo esc_html( $en_name ); ?></div>
+							<?php endif; ?>
+							<span class="qp-sci-tag">پروفایل علمی ←</span>
+						</a>
+					<?php endwhile; wp_reset_postdata(); ?>
+				</div>
+			<?php endif; ?>
+		</section>
+
+		<!-- 5. MISSION IN DARK BOX -->
+		<div class="qp-mission-box">
+			<h3 class="qp-mission-title">دانش کوانتوم برای نسل آیندهٔ ایران</h3>
+			<p class="qp-mission-text">
+				هدف کوانتوم‌پدیا ایجاد مسیری ساده، دقیق و رایگان برای فراگیری ژرف‌ترین قوانین طبیعت است؛ تا با دانایی و آگاهی علمی، خط زمانی عقب‌ماندگی را جبران کنیم و به دوران شکوه علم و مدنیت بازگردیم.
+			</p>
+		</div>
+
+	</div>
+</main>
+<?php
+get_footer();
