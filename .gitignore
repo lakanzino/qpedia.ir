@@ -1,0 +1,6 @@
+# Generated thumbnail deliverables (large, downloadable — keep out of git)
+featured-images/
+
+# Python caches
+__pycache__/
+*.pyc
