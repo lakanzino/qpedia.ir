@@ -2,53 +2,13 @@
 /**
  * Single template for quantum_scientist — نسخهٔ پایهٔ جدید (یکپارچه).
  *
- * تغییرات نسبت به نسخهٔ قبلی:
- *  - گریدِ «شناسنامهٔ سریع» دانشمند از متاها رندر می‌شود تا همهٔ مدخل‌ها یک شکل شوند.
- *  - استایل‌ها از qpedia-scientist.css می‌آیند (قلاب، گرید، نقل‌قول، گاه‌شمار، آکاردئون).
+ * توسط افزونهٔ «QPedia — قالب دانشمندان کوانتوم» از مسیر templates/ بارگذاری می‌شود.
+ * گریدِ شناسنامهٔ سریع از متاها رندر می‌شود تا همهٔ مدخل‌ها یک‌شکل شوند.
  *
- * @package Quantum_Pedia_Child
+ * @package QPedia
  */
 
 defined( 'ABSPATH' ) || exit;
-
-if ( ! function_exists( 'qpedia_scientist_identity_grid' ) ) {
-	/**
-	 * گرید شناسنامهٔ دانشمند از متاها.
-	 *
-	 * @param int $post_id شناسهٔ مدخل.
-	 * @return string HTML گرید (در صورت نبود متا، رشتهٔ خالی).
-	 */
-	function qpedia_scientist_identity_grid( $post_id ) {
-		$fields = array(
-			'نام کامل'             => '_scientist_fullname',
-			'زادروز و درگذشت'      => '_scientist_born_died',
-			'زادگاه و ملیت'        => '_scientist_birthplace',
-			'پایگاه‌های دانشگاهی'   => '_scientist_institutions',
-			'دستاورد کلیدی در کوانتوم' => '_scientist_achievement',
-			'جایزهٔ نوبل'           => '_scientist_nobel',
-			'مفاهیم و فرمول‌های جاودانه' => '_scientist_concepts',
-			'خانواده'               => '_scientist_family',
-		);
-
-		$cells = '';
-		foreach ( $fields as $label => $key ) {
-			$value = trim( (string) get_post_meta( $post_id, $key, true ) );
-			if ( '' === $value ) {
-				continue;
-			}
-			$cells .= '<div class="qp-ident-cell">'
-				. '<div class="qp-ident-cell__k">' . esc_html( $label ) . '</div>'
-				. '<div class="qp-ident-cell__v">' . esc_html( $value ) . '</div>'
-				. '</div>';
-		}
-
-		if ( '' === $cells ) {
-			return '';
-		}
-
-		return '<div class="qp-ident-grid">' . $cells . '</div>';
-	}
-}
 
 get_header();
 ?>
@@ -73,7 +33,9 @@ get_header();
 				$scientist_tax = array_merge( $scientist_tax, $terms );
 			}
 
-			$identity_grid = qpedia_scientist_identity_grid( get_the_ID() );
+			$identity_grid = function_exists( 'qpedia_sci_identity_grid' )
+				? qpedia_sci_identity_grid( get_the_ID() )
+				: '';
 
 			$content = get_the_content();
 			$content = preg_replace( '/^\s*\[qsci_card\]\s*/u', '', $content );
