@@ -51,6 +51,7 @@ summary{cursor:pointer;font-weight:600;padding:6px 0}
 ul.tight{margin:.4em 0;padding-inline-start:22px}
 ul.tight li{margin:.25em 0}
 .mono{direction:ltr;unicode-bidi:embed}
+.alert{background:#fff4e5;border:1px solid #ffd9a8;border-radius:12px;padding:14px 18px;margin:0 0 22px;font-weight:600}
 footer{color:var(--muted);font-size:.82rem;text-align:center;margin-top:26px}
 a{color:var(--acc)}
 @media print{body{background:#fff}section{border:none;page-break-inside:avoid}}
@@ -61,7 +62,7 @@ a{color:var(--acc)}
 
 <header class="hero">
   <h1>کوانتوم پدیا — نمای کلی پروژه و چنج‌لاگ</h1>
-  <div class="sub">سند واحد وضعیت سایت و پیشرفت تولید محتوا · نسخهٔ 1.0.0 · آخرین به‌روزرسانی: 2026-09-03 · شاخه: <span class="mono">arena/01a063c9-qpedia-ir</span></div>
+  <div class="sub">سند واحد وضعیت سایت و پیشرفت تولید محتوا · نسخهٔ 1.1.0 · آخرین به‌روزرسانی: 2026-09-03 · شاخه: <span class="mono">arena/01a063c9-qpedia-ir</span></div>
   <div class="badges">
     <span class="badge">qpedia.ir</span>
     <span class="badge">وردپرس فارسی</span>
@@ -69,6 +70,8 @@ a{color:var(--acc)}
     <span class="badge">دانشمندان: 50 هدف</span>
   </div>
 </header>
+
+<div class="alert">📦 <strong>قانون تحویل (ثبت‌شده):</strong> فایل‌های قابل‌دانلود همیشه به‌صورت بستهٔ ZIP با لینک مستقیم دانلود داده می‌شوند؛ متن‌های قابل‌کپی مستقیم در صفحهٔ گفتگو قرار می‌گیرند.</div>
 
 <nav class="toc">
   <a href="#identity">۱. شناسنامهٔ سایت</a>
@@ -116,19 +119,19 @@ a{color:var(--acc)}
     <tr><td>۶</td><td>بیوگرافی دانشمندان باقی‌مانده</td><td class="warn">در انتظار</td></tr>
     <tr><td>۷</td><td>مقالات باقی‌ماندهٔ فهرست ۱۶۰تایی</td><td class="warn">در انتظار</td></tr>
   </table>
-  <p class="warn">* از ۲۰ مقاله، ۱ مورد («نیروهای بنیادی») با مقالهٔ منتشرشدهٔ جدید سایت هم‌اسلاگ است و به‌عنوان تکراری باید تعیین‌تکلیف شود.</p>
+  <p class="warn">* تعارض «نیروهای بنیادی» (هم‌اسلاگ با مقالهٔ منتشرشدهٔ سایت، id 2214) حل شد: نسخهٔ تکراری از بستهٔ ورود حذف شد → مجموعهٔ آمادهٔ ورود = ۱۹ مقالهٔ خالص.</p>
 </section>
 
 <section id="progress">
   <h2>۳. پیشرفت کلی</h2>
   <div class="cards">
     <div class="stat"><b>75</b><span>مقالهٔ منتشرشده (زنده)</span></div>
-    <div class="stat"><b>20</b><span>مقالهٔ آمادهٔ ورود (پیش‌نویس)</span></div>
+    <div class="stat"><b>19</b><span>مقالهٔ آمادهٔ ورود (پیش‌نویس)</span></div>
     <div class="stat"><b>160</b><span>هدف مقالات (۱۶۰تایی)</span></div>
     <div class="stat"><b>18 / 50</b><span>دانشمند منتشرشده از هدف ۵۰</span></div>
   </div>
-  <h3>مقالات — تولیدشده 95 از 160</h3>
-  <div class="bar"><div class="bar-fill" style="width:59%"></div><span class="bar-label">59٪ (تقریبی؛ با احتساب ۱ مورد تکراری)</span></div>
+  <h3>مقالات — تولیدشده 94 از 160</h3>
+  <div class="bar"><div class="bar-fill" style="width:59%"></div><span class="bar-label">59٪ (تقریبی)</span></div>
   <h3>دانشمندان — 18 از 50 در فهرست هدف</h3>
   <div class="bar"><div class="bar-fill" style="width:36%"></div><span class="bar-label">36٪ (۳۲ نفر باقی)</span></div>
   <p style="color:#5a6b83;font-size:.85rem">نکتهٔ صادقانه: فهرست ۱۶۰تایی و موجودی سایت کاملاً یک‌به‌یک نیستند (برخی مقالات منتشرشده، مکمل و خارج از فهرست‌اند). تطبیق دقیق عنوان‌ها با اسلاگ‌ها در فاز بعد ثبت می‌شود.</p>
@@ -139,7 +142,7 @@ a{color:var(--acc)}
   <p>۱۵ دستهٔ زندهٔ <code>quantum_category</code> به‌همراه شمارش مقالات منتشر / آماده / هدف:</p>
   <table><thead><tr><th>دسته / زیردسته</th><th>منتشر</th><th>آماده</th><th>هدف</th></tr></thead><tbody><tr><td>مبانی و مفاهیم کوانتوم <code>fundamentals</code></td><td>6</td><td>0</td><td>15</td></tr>
 <tr><td>　مفاهیم پایه <code>core-concepts</code></td><td>16</td><td>4</td><td>0</td></tr>
-<tr><td>　ذرات بنیادی <code>particles</code></td><td>3</td><td>8</td><td>10</td></tr>
+<tr><td>　ذرات بنیادی <code>particles</code></td><td>3</td><td>7</td><td>10</td></tr>
 <tr><td>تاریخ و آزمایش‌های کوانتوم <code>history-experiments</code></td><td>0</td><td>0</td><td>0</td></tr>
 <tr><td>　تاریخ کوانتوم <code>history</code></td><td>11</td><td>2</td><td>20</td></tr>
 <tr><td>　آزمایش‌های کوانتومی <code>experiments</code></td><td>3</td><td>2</td><td>12</td></tr>
@@ -154,7 +157,7 @@ a{color:var(--acc)}
   <h3>جزئیات هر شاخه</h3>
   <details class="catbox"><summary>مبانی و مفاهیم کوانتوم <code>fundamentals</code></summary><div class="catbody"><p class="lbl">منتشرشده (6):</p><div class="tags"><span class="tag pub"><a href="https://qpedia.ir/quantum-understanding-achievement/" target="_blank" rel="noopener">quantum-understanding-achievement</a><i>چرا «نفهمیدنِ درست» کوانتوم، خودش یک دستاورد است؟</i></span><span class="tag pub"><a href="https://qpedia.ir/determinism-vs-probability/" target="_blank" rel="noopener">determinism-vs-probability</a><i>تفاوت جبرگرایی کلاسیک و احتمال کوانتومی</i></span><span class="tag pub"><a href="https://qpedia.ir/why-large-objects-dont-superpose/" target="_blank" rel="noopener">why-large-objects-dont-superpose</a><i>برهم‌نهی یعنی چه، و چرا اشیای بزرگ برهم‌نهی نمی‌شوند</i></span><span class="tag pub"><a href="https://qpedia.ir/is-classical-physics-wrong/" target="_blank" rel="noopener">is-classical-physics-wrong</a><i>آیا فیزیک کلاسیک اشتباه بود؟ نه، محدود بود</i></span><span class="tag pub"><a href="https://qpedia.ir/quantum-analogy-exercise-boundary/" target="_blank" rel="noopener">quantum-analogy-exercise-boundary</a><i>تمرین ذهنی: خودتان یک تمثیل بسازید و مرزش را پیدا کنید</i></span><span class="tag pub"><a href="https://qpedia.ir/coin-vs-dice-quantum-uncertainty/" target="_blank" rel="noopener">coin-vs-dice-quantum-uncertainty</a><i>تمثیل تاس در مقابل تمثیل سکه</i></span></div><p class="lbl">هدف (فهرست ۱۶۰تایی، 15):</p><div class="tags"><span class="tag tgt">کوانتوم یعنی چه؟</span><span class="tag tgt">برهم‌نهی کوانتومی</span><span class="tag tgt">دوگانگی موج-ذره</span><span class="tag tgt">تابع موج</span><span class="tag tgt">اصل عدم قطعیت</span><span class="tag tgt">اندازه‌گیری و فروپاشی</span><span class="tag tgt">اسپین</span><span class="tag tgt">ترازهای انرژی</span><span class="tag tgt">واهمدوسی</span><span class="tag tgt">ثابت پلانک</span><span class="tag tgt">حالت کوانتومی</span><span class="tag tgt">عدد کوانتومی</span><span class="tag tgt">ناظر</span><span class="tag tgt">اصل مکملیت</span><span class="tag tgt">اصل طرد پاولی</span></div></div></details>
 <details class="catbox"><summary>مفاهیم پایه <code>core-concepts</code></summary><div class="catbody"><p class="lbl">منتشرشده (16):</p><div class="tags"><span class="tag pub"><a href="https://qpedia.ir/wave-particle-duality/" target="_blank" rel="noopener">wave-particle-duality</a><i>دوگانگی موج و ذره</i></span><span class="tag pub"><a href="https://qpedia.ir/wave-function/" target="_blank" rel="noopener">wave-function</a><i>تابع موج چیست؟</i></span><span class="tag pub"><a href="https://qpedia.ir/quantum-measurement/" target="_blank" rel="noopener">quantum-measurement</a><i>اندازه‌گیری و فروپاشی</i></span><span class="tag pub"><a href="https://qpedia.ir/quantum-spin/" target="_blank" rel="noopener">quantum-spin</a><i>اسپین؛ چرخشی که چرخش نیست</i></span><span class="tag pub"><a href="https://qpedia.ir/energy-levels/" target="_blank" rel="noopener">energy-levels</a><i>ترازهای انرژی و کوانتش</i></span><span class="tag pub"><a href="https://qpedia.ir/planck-constant/" target="_blank" rel="noopener">planck-constant</a><i>ثابت پلانک؛ کوچک‌ترین واحد جهان</i></span><span class="tag pub"><a href="https://qpedia.ir/decoherence/" target="_blank" rel="noopener">decoherence</a><i>واهمدوسی؛ چرا دنیا عادی است!</i></span><span class="tag pub"><a href="https://qpedia.ir/pauli-exclusion-principle/" target="_blank" rel="noopener">pauli-exclusion-principle</a><i>اصل طرد پاولی دقیقاً چه می‌گوید؟ به زبان ساده</i></span><span class="tag pub"><a href="https://qpedia.ir/superposition-explained/" target="_blank" rel="noopener">superposition-explained</a><i>برهم‌نهی چیست؟ وقتی یک ذره «هم این است هم آن»</i></span><span class="tag pub"><a href="https://qpedia.ir/quantum-fivefold-mental-map/" target="_blank" rel="noopener">quantum-fivefold-mental-map</a><i>نقشهٔ ذهنی پنج‌گانه برای فهم درست کوانتوم</i></span><span class="tag pub"><a href="https://qpedia.ir/why-quantum-math-works/" target="_blank" rel="noopener">why-quantum-math-works</a><i>چرا ریاضیات کوانتوم درست است ولی فهمش سخت است؟</i></span><span class="tag pub"><a href="https://qpedia.ir/quantum-learning-resources/" target="_blank" rel="noopener">quantum-learning-resources</a><i>منابع معتبر فارسی و انگلیسی برای یادگیری عمیق‌تر کوانتوم</i></span><span class="tag pub"><a href="https://qpedia.ir/quantum-physics-vs-quantum-mechanics/" target="_blank" rel="noopener">quantum-physics-vs-quantum-mechanics</a><i>تفاوت فیزیک کوانتوم و مکانیک کوانتومی چیست؟</i></span><span class="tag pub"><a href="https://qpedia.ir/heisenberg-uncertainty-principle/" target="_blank" rel="noopener">heisenberg-uncertainty-principle</a><i>اصل عدم قطعیت هایزنبرگ به زبان ساده</i></span><span class="tag pub"><a href="https://qpedia.ir/quantum-superposition/" target="_blank" rel="noopener">quantum-superposition</a><i>برهم‌نهی کوانتومی</i></span><span class="tag pub"><a href="https://qpedia.ir/what-is-quantum/" target="_blank" rel="noopener">what-is-quantum</a><i>کوانتوم یعنی چه؟</i></span></div><p class="lbl">آمادهٔ ورود (4):</p><div class="tags"><span class="tag prep">quantum-state<i>حالت کوانتومی</i></span><span class="tag prep">quantum-number<i>عدد کوانتومی</i></span><span class="tag prep">observer<i>ناظر</i></span><span class="tag prep">complementarity-principle<i>اصل مکملیت</i></span></div></div></details>
-<details class="catbox"><summary>ذرات بنیادی <code>particles</code></summary><div class="catbody"><p class="lbl">منتشرشده (3):</p><div class="tags"><span class="tag pub"><a href="https://qpedia.ir/fundamental-forces/" target="_blank" rel="noopener">fundamental-forces</a><i>نیروهای بنیادی چیستند؟</i></span><span class="tag pub"><a href="https://qpedia.ir/photon/" target="_blank" rel="noopener">photon</a><i>فوتون دقیقا چیست؟</i></span><span class="tag pub"><a href="https://qpedia.ir/electron/" target="_blank" rel="noopener">electron</a><i>الکترون چیست؟ ویژگی‌ها، نقش در اتم و برق</i></span></div><p class="lbl">آمادهٔ ورود (8):</p><div class="tags"><span class="tag prep">quark<i>کوارک</i></span><span class="tag prep">neutrino<i>نوترینو</i></span><span class="tag prep">higgs-boson<i>بوزون هیگز</i></span><span class="tag prep">antimatter<i>پادماده</i></span><span class="tag prep">standard-model<i>مدل استاندارد</i></span><span class="tag prep">virtual-particles<i>ذرات مجازی</i></span><span class="tag prep">fundamental-forces<i>نیروهای بنیادی</i></span><span class="tag prep">nuclear-spin<i>اسپین هسته‌ای</i></span></div><p class="lbl">هدف (فهرست ۱۶۰تایی، 10):</p><div class="tags"><span class="tag tgt">فوتون</span><span class="tag tgt">الکترون</span><span class="tag tgt">کوارک</span><span class="tag tgt">نوترینو</span><span class="tag tgt">بوزون هیگز</span><span class="tag tgt">پادماده</span><span class="tag tgt">مدل استاندارد</span><span class="tag tgt">ذرات مجازی</span><span class="tag tgt">نیروهای بنیادی</span><span class="tag tgt">اسپین هسته‌ای</span></div></div></details>
+<details class="catbox"><summary>ذرات بنیادی <code>particles</code></summary><div class="catbody"><p class="lbl">منتشرشده (3):</p><div class="tags"><span class="tag pub"><a href="https://qpedia.ir/fundamental-forces/" target="_blank" rel="noopener">fundamental-forces</a><i>نیروهای بنیادی چیستند؟</i></span><span class="tag pub"><a href="https://qpedia.ir/photon/" target="_blank" rel="noopener">photon</a><i>فوتون دقیقا چیست؟</i></span><span class="tag pub"><a href="https://qpedia.ir/electron/" target="_blank" rel="noopener">electron</a><i>الکترون چیست؟ ویژگی‌ها، نقش در اتم و برق</i></span></div><p class="lbl">آمادهٔ ورود (7):</p><div class="tags"><span class="tag prep">quark<i>کوارک</i></span><span class="tag prep">neutrino<i>نوترینو</i></span><span class="tag prep">higgs-boson<i>بوزون هیگز</i></span><span class="tag prep">antimatter<i>پادماده</i></span><span class="tag prep">standard-model<i>مدل استاندارد</i></span><span class="tag prep">virtual-particles<i>ذرات مجازی</i></span><span class="tag prep">nuclear-spin<i>اسپین هسته‌ای</i></span></div><p class="lbl">هدف (فهرست ۱۶۰تایی، 10):</p><div class="tags"><span class="tag tgt">فوتون</span><span class="tag tgt">الکترون</span><span class="tag tgt">کوارک</span><span class="tag tgt">نوترینو</span><span class="tag tgt">بوزون هیگز</span><span class="tag tgt">پادماده</span><span class="tag tgt">مدل استاندارد</span><span class="tag tgt">ذرات مجازی</span><span class="tag tgt">نیروهای بنیادی</span><span class="tag tgt">اسپین هسته‌ای</span></div></div></details>
 <details class="catbox"><summary>تاریخ و آزمایش‌های کوانتوم <code>history-experiments</code></summary><div class="catbody"><p>فعلاً خالی.</p></div></details>
 <details class="catbox"><summary>تاریخ کوانتوم <code>history</code></summary><div class="catbody"><p class="lbl">منتشرشده (11):</p><div class="tags"><span class="tag pub"><a href="https://qpedia.ir/photoelectric-effect/" target="_blank" rel="noopener">photoelectric-effect</a><i>اثر فوتوالکتریک</i></span><span class="tag pub"><a href="https://qpedia.ir/bell-inequality/" target="_blank" rel="noopener">bell-inequality</a><i>نامساوی بل</i></span><span class="tag pub"><a href="https://qpedia.ir/einstein-photoelectric-effect/" target="_blank" rel="noopener">einstein-photoelectric-effect</a><i>اینشتین و اثر فوتوالکتریک (نه فقط نسبیت)</i></span><span class="tag pub"><a href="https://qpedia.ir/schrodinger-life-equation/" target="_blank" rel="noopener">schrodinger-life-equation</a><i>شرودینگر: زندگی، معادله و گربه‌ای که هرگز نداشت</i></span><span class="tag pub"><a href="https://qpedia.ir/max-planck-blackbody/" target="_blank" rel="noopener">max-planck-blackbody</a><i>پلانک و بحران تابش جسم سیاه؛ جرقه‌ای که فیزیک را متحول کرد</i></span><span class="tag pub"><a href="https://qpedia.ir/dirac-antimatter/" target="_blank" rel="noopener">dirac-antimatter</a><i>دیراک و پیش‌بینی پادماده؛ وقتی ریاضیات از واقعیت جلو زد</i></span><span class="tag pub"><a href="https://qpedia.ir/einstein-bohr-debate/" target="_blank" rel="noopener">einstein-bohr-debate</a><i>نبرد اینشتین و بور بر سر معنای کوانتوم</i></span><span class="tag pub"><a href="https://qpedia.ir/feynman-quantum-explainer/" target="_blank" rel="noopener">feynman-quantum-explainer</a><i>فاینمن: نابغه‌ای که کوانتوم را ساده توضیح می‌داد</i></span><span class="tag pub"><a href="https://qpedia.ir/forgotten-women-quantum/" target="_blank" rel="noopener">forgotten-women-quantum</a><i>زنان فراموش‌شدهٔ فیزیک کوانتوم</i></span><span class="tag pub"><a href="https://qpedia.ir/bohr-atomic-model/" target="_blank" rel="noopener">bohr-atomic-model</a><i>مدل اتمی بور</i></span><span class="tag pub"><a href="https://qpedia.ir/ultraviolet-catastrophe/" target="_blank" rel="noopener">ultraviolet-catastrophe</a><i>فاجعهٔ فرابنفش</i></span></div><p class="lbl">آمادهٔ ورود (2):</p><div class="tags"><span class="tag prep">solvay-conference-1927<i>کنفرانس سولوی ۱۹۲۷</i></span><span class="tag prep">epr-paradox<i>مقالهٔ EPR</i></span></div><p class="lbl">هدف (فهرست ۱۶۰تایی، 20):</p><div class="tags"><span class="tag tgt">فاجعهٔ فرابنفش</span><span class="tag tgt">پلانک و کوانتوم ناخواسته</span><span class="tag tgt">تابش جسم سیاه</span><span class="tag tgt">اینشتین و فوتون</span><span class="tag tgt">مدل اتمی بور</span><span class="tag tgt">اثر فوتوالکتریک</span><span class="tag tgt">کنفرانس سولوی ۱۹۲۷</span><span class="tag tgt">مناظرهٔ بور و اینشتین</span><span class="tag tgt">مقالهٔ EPR</span><span class="tag tgt">نامساوی بل</span><span class="tag tgt">آزمایش‌های آسپه</span><span class="tag tgt">نوبل فیزیک ۲۰۲۲</span><span class="tag tgt">تولد مکانیک ماتریسی</span><span class="tag tgt">معادلهٔ شرودینگر (تاریخ)</span><span class="tag tgt">دیراک و پادماده</span><span class="tag tgt">فاینمن و QED</span><span class="tag tgt">بل و پایان متغیرهای پنهان</span><span class="tag tgt">اورت و جهان‌های موازی</span><span class="tag tgt">صد سال کوانتوم</span><span class="tag tgt">زنان فراموش‌شدهٔ کوانتوم</span></div></div></details>
 <details class="catbox"><summary>آزمایش‌های کوانتومی <code>experiments</code></summary><div class="catbody"><p class="lbl">منتشرشده (3):</p><div class="tags"><span class="tag pub"><a href="https://qpedia.ir/bell-experiments/" target="_blank" rel="noopener">bell-experiments</a><i>آزمایش‌های بل: چگونه درهم‌تنیدگی اثبات شد!</i></span><span class="tag pub"><a href="https://qpedia.ir/quantum-zeno-effect/" target="_blank" rel="noopener">quantum-zeno-effect</a><i>اثر زنون کوانتومی</i></span><span class="tag pub"><a href="https://qpedia.ir/double-slit-experiment/" target="_blank" rel="noopener">double-slit-experiment</a><i>آزمایش دو شکاف</i></span></div><p class="lbl">آمادهٔ ورود (2):</p><div class="tags"><span class="tag prep">stern-gerlach-experiment<i>اشترن-گرلاخ</i></span><span class="tag prep">aspect-experiment-1982<i>آزمایش آسپه ۱۹۸۲</i></span></div><p class="lbl">هدف (فهرست ۱۶۰تایی، 12):</p><div class="tags"><span class="tag tgt">آزمایش دو شکاف</span><span class="tag tgt">اشترن-گرلاخ</span><span class="tag tgt">آزمایش تک‌الکترونی تونومورا</span><span class="tag tgt">اثر زنون کوانتومی</span><span class="tag tgt">پاک‌کن کوانتومی</span><span class="tag tgt">انتخاب تأخیری</span><span class="tag tgt">تداخل‌سنج ماخ-زندر</span><span class="tag tgt">آزمایش آسپه ۱۹۸۲</span><span class="tag tgt">تله‌های یونی</span><span class="tag tgt">چگالش بوز-اینشتین</span><span class="tag tgt">طیف‌سنجی اتمی</span><span class="tag tgt">منحنی لیساژو</span></div></div></details>
@@ -236,6 +239,8 @@ a{color:var(--acc)}
     <li>✅ تصاویر شاخص ۷۴ مقاله تولید و تحویل شد (zip تیره + روشن).</li>
     <li>✅ ایمپورتر ایمن شد: مقالهٔ «منتشرشده» هرگز بازنویسی نمی‌شود (گارد ضد بازنویسی).</li>
     <li>✅ تحویل‌پذیری: افزونه به‌صورت بستهٔ zip برای دانلود مستقیم آماده شد.</li>
+    <li>✅ تعارض اسلاگ <code>fundamental-forces</code> حل شد: نسخهٔ تکراری از بستهٔ ورود حذف (۱۹ مقالهٔ خالص)؛ مقالهٔ زندهٔ «نیروهای بنیادی چیستند؟» (id 2214) نسخهٔ رسمی ماند.</li>
+    <li>✅ افزونهٔ اصلاح ساختاری (<code>qpedia-site-fixes</code>) آماده شد: حذف اینشتینِ تکراری + اصلاح اسلاگ ماکس پلانک.</li>
   </ul>
 </section>
 
@@ -243,10 +248,9 @@ a{color:var(--acc)}
   <h2>۷. مشکلات باز و اولویت‌بندی</h2>
   <table>
     <tr><th>اولویت</th><th>دسته</th><th>مشکل / کار باقی</th><th>اقدام پیشنهادی</th></tr>
-    <tr><td><span class="pill p1">P1</span></td><td>محتوا</td><td>تعارض اسلاگ <code>fundamental-forces</code>: مقالهٔ «نیروهای بنیادی چیستند؟» تازه در سایت منتشر شده (id 2214) و نسخهٔ آمادهٔ ما تکراری است.</td><td>حذف/ادغام نسخهٔ آماده؛ ورود ۱۹ مقالهٔ خالص به‌جای ۲۰.</td></tr>
-    <tr><td><span class="pill p1">P1</span></td><td>اجرا</td><td>نصب افزونه و ورود مقالات جدید (هنوز روی سایت اعمال نشده).</td><td>دانلود zip → نصب → ابزار ← ورود.</td></tr>
-    <tr><td><span class="pill p2">P2</span></td><td>ساختار</td><td>رکورد تکراری اینشتین (slug عددی <code>2060</code>).</td><td>حذف رکورد تکراری.</td></tr>
-    <tr><td><span class="pill p2">P2</span></td><td>ساختار</td><td>املای غلط اسلاگ ماکس پلانک: <code>max-plank</code> به‌جای <code>max-planck</code>.</td><td>اصلاح اسلاگ + ریدایرکت.</td></tr>
+        <tr><td><span class="pill p1">P1</span></td><td>اجرا</td><td>نصب افزونه و ورود مقالات جدید (هنوز روی سایت اعمال نشده).</td><td>دانلود zip → نصب → ابزار ← ورود.</td></tr>
+    <tr><td><span class="pill p2">P2</span></td><td>ساختار</td><td>رکورد تکراری اینشتین (slug عددی <code>2060</code>).</td><td>افزونهٔ <code>qpedia-site-fixes</code> آماده — اجرا در پیشخوان (۱ کلیک).</td></tr>
+    <tr><td><span class="pill p2">P2</span></td><td>ساختار</td><td>املای غلط اسلاگ ماکس پلانک: <code>max-plank</code> به‌جای <code>max-planck</code>.</td><td>افزونهٔ <code>qpedia-site-fixes</code> آماده — اجرا در پیشخوان (۱ کلیک).</td></tr>
     <tr><td><span class="pill p2">P2</span></td><td>ساختار</td><td>نبود تاکسونومی تگ برای مقاله‌ها.</td><td>ثبت تاکسونومی تگ یا نگه‌داشتن تگ‌ها در متای <code>_qpedia_tags</code>.</td></tr>
     <tr><td><span class="pill p3">P3</span></td><td>محتوا</td><td>دستهٔ <code>mathematics</code> (ریاضیات) هنوز ۰ مقاله دارد.</td><td>نوشتن مقالات ریاضی (آخرین شاخه طبق برنامه).</td></tr>
     <tr><td><span class="pill p3">P3</span></td><td>محتوا</td><td>32 بیوگرافی دانشمند باقی مانده.</td><td>نوشتن بیوگرافی‌ها.</td></tr>
@@ -260,7 +264,7 @@ a{color:var(--acc)}
   <h2>۸. قوانین ثبت و تحویل</h2>
   <ul class="tight">
     <li><strong>چنج‌لاگ واحد:</strong> فقط همین یک سند نسخه‌دار است؛ با هر تغییر به‌روزرسانی و شمارهٔ نسخه بالا می‌رود.</li>
-    <li><strong>تحویل:</strong> فقط متن قابل‌کپی در صفحه، یا بستهٔ zip با دانلود مستقیم (لینک گیت‌هاب).</li>
+    <li><strong>تحویل (الزامی):</strong> هیچ لینک خامِ تک‌فایلی نده؛ هر فایل قابل‌دانلود را به‌صورت ZIP کن و لینک مستقیم دانلود بده (<code>github.com/…/raw/…/*.zip</code>)؛ متن‌های قابل‌کپی مستقیم در چت. افزونهٔ وردپرس = zip استاندارد (پوشهٔ افزونه داخل zip).</li>
     <li><strong>مقاله:</strong> بدون H1 در بدنه؛ ۱–۲ منبع معتبر خارجی در پایان؛ ≥۵ لینک داخلی؛ عنوان کوتاه؛ هوک؛ سئو جدا از متن؛ انتشار فقط پیش‌نویس.</li>
     <li><strong>دانلودها:</strong> لینک <code>github.com/lakanzino/qpedia.ir/raw/&lt;شاخه&gt;/&lt;مسیر&gt;</code> (رلیز فقط اگر موجود باشد).</li>
   </ul>
@@ -270,12 +274,13 @@ a{color:var(--acc)}
   <h2>۹. تاریخچهٔ نسخه‌ها</h2>
   <table>
     <tr><th>نسخه</th><th>تاریخ</th><th>تغییر</th></tr>
+    <tr><td><code>v1.1.0</code></td><td>2026-09-03</td><td>ثبت قانون تحویل (ZIP مستقیم + متن قابل‌کپی)؛ حل تعارض fundamental-forces (۱۹ مقالهٔ خالص)؛ افزودن افزونهٔ اصلاح ساختاری (اینشتین تکراری + اسلاگ پلانک).</td></tr>
     <tr><td><code>v1.0.0</code></td><td>2026-09-03</td><td>نسخهٔ اولیهٔ سند واحد: شناسنامهٔ سایت، هدف/برنامه، پیشرفت، درخت ۱۵ دسته، فهرست ۵۰ دانشمند، مشکلات رفع‌شده/باز با اولویت. کشف تعارض اسلاگ fundamental-forces و ایمن‌سازی ایمپورتر.</td></tr>
   </table>
 </section>
 
 <footer>
-  کوانتوم پدیا — سند وضعیت پروژه · نسخهٔ 1.0.0 · تولید خودکار از دادهٔ زندهٔ سایت در 2026-09-03
+  کوانتوم پدیا — سند وضعیت پروژه · نسخهٔ 1.1.0 · تولید خودکار از دادهٔ زندهٔ سایت در 2026-09-03
 </footer>
 
 </div>
