@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>وضعیت پروژهٔ کوانتوم پدیا — CHANGELOG</title>
+<style>
+:root{--ink:#0f1b2d;--muted:#5a6b83;--line:#e3e9f2;--bg:#f5f8fc;--card:#ffffff;--acc:#1f6feb;--acc2:#7b3fe4;--ok:#18794e;--warn:#b35600;--bad:#b3261e;}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Vazirmatn","Segoe UI",Tahoma,Arial,sans-serif;line-height:1.75;direction:rtl}
+.wrap{max-width:1080px;margin:0 auto;padding:24px 18px 80px}
+header.hero{background:linear-gradient(135deg,#0f1b2d 0%,#1f2c4d 45%,#3a2a6b 100%);color:#fff;border-radius:16px;padding:34px 30px;margin-bottom:26px}
+header.hero h1{margin:0 0 6px;font-size:1.9rem}
+header.hero .sub{opacity:.85;font-size:.95rem}
+.badges{margin-top:14px;display:flex;flex-wrap:wrap;gap:8px}
+.badge{background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.25);padding:4px 12px;border-radius:999px;font-size:.82rem}
+nav.toc{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 20px;margin-bottom:26px}
+nav.toc a{color:var(--acc);text-decoration:none;margin-inline-end:14px;font-size:.92rem}
+nav.toc a:hover{text-decoration:underline}
+section{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:24px 26px;margin-bottom:22px}
+section h2{margin:0 0 14px;font-size:1.35rem;border-inline-start:5px solid var(--acc);padding-inline-start:12px}
+section h3{font-size:1.05rem;margin:18px 0 8px}
+p{margin:.4em 0}
+code{background:#eef2f9;border-radius:6px;padding:1px 7px;font-size:.85em;direction:ltr;display:inline-block}
+table{width:100%;border-collapse:collapse;margin:12px 0;font-size:.92rem}
+th,td{border:1px solid var(--line);padding:7px 10px;text-align:right;vertical-align:top}
+th{background:#eef2f9;font-weight:600}
+.bar{background:#e7edf6;border-radius:999px;height:22px;position:relative;overflow:hidden;margin:10px 0}
+.bar-fill{background:linear-gradient(90deg,var(--acc),var(--acc2));height:100%}
+.bar-label{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:.8rem;color:#0f1b2d;font-weight:600}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;margin:12px 0}
+.stat{background:#f7faff;border:1px solid var(--line);border-radius:12px;padding:14px 16px}
+.stat b{display:block;font-size:1.5rem;color:var(--acc)}
+.stat span{color:var(--muted);font-size:.85rem}
+.lbl{color:var(--muted);font-size:.82rem;margin:8px 0 4px;font-weight:600}
+.tags{display:flex;flex-wrap:wrap;gap:6px}
+.tag{border:1px solid var(--line);border-radius:8px;padding:2px 9px;font-size:.82rem;background:#fbfcfe}
+.tag i{display:block;font-style:normal;color:var(--muted);font-size:.72rem}
+.tag.pub{border-color:#b7e1c8;background:#eefaf2}
+.tag.prep{border-color:#ffe1b8;background:#fff7ec}
+.tag.tgt{border-color:#d9dff0;background:#f2f4fb}
+summary{cursor:pointer;font-weight:600;padding:6px 0}
+.catbody{padding:4px 8px 10px}
+.ok{color:var(--ok);font-weight:600}
+.warn{color:var(--warn);font-weight:600}
+.bad{color:var(--bad);font-weight:600}
+.pill{display:inline-block;padding:1px 9px;border-radius:999px;font-size:.78rem;font-weight:600}
+.pill.p1{background:#fdecea;color:var(--bad)}
+.pill.p2{background:#fff3e0;color:var(--warn)}
+.pill.p3{background:#e8f0fe;color:var(--acc)}
+ul.tight{margin:.4em 0;padding-inline-start:22px}
+ul.tight li{margin:.25em 0}
+.mono{direction:ltr;unicode-bidi:embed}
+footer{color:var(--muted);font-size:.82rem;text-align:center;margin-top:26px}
+a{color:var(--acc)}
+@media print{body{background:#fff}section{border:none;page-break-inside:avoid}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header class="hero">
+  <h1>کوانتوم پدیا — نمای کلی پروژه و چنج‌لاگ</h1>
+  <div class="sub">سند واحد وضعیت سایت و پیشرفت تولید محتوا · نسخهٔ 1.0.0 · آخرین به‌روزرسانی: 2026-09-03 · شاخه: <span class="mono">arena/01a063c9-qpedia-ir</span></div>
+  <div class="badges">
+    <span class="badge">qpedia.ir</span>
+    <span class="badge">وردپرس فارسی</span>
+    <span class="badge">مقالات: 75 منتشر</span>
+    <span class="badge">دانشمندان: 50 هدف</span>
+  </div>
+</header>
+
+<nav class="toc">
+  <a href="#identity">۱. شناسنامهٔ سایت</a>
+  <a href="#goal">۲. هدف و برنامه</a>
+  <a href="#progress">۳. پیشرفت</a>
+  <a href="#tree">۴. درخت مقالات</a>
+  <a href="#scientists">۵. تالار دانشمندان</a>
+  <a href="#fixed">۶. رفع‌شده‌ها</a>
+  <a href="#open">۷. مشکلات باز</a>
+  <a href="#rules">۸. قوانین</a>
+  <a href="#history">۹. تاریخچهٔ نسخه‌ها</a>
+</nav>
+
+<section id="identity">
+  <h2>۱. شناسنامهٔ سایت (از ریشه)</h2>
+  <table>
+    <tr><th>دامنه / عنوان</th><td>qpedia.ir — «کوانتوم پدیا فارسی» (دانشنامهٔ فارسی مفاهیم کوانتوم)</td></tr>
+    <tr><th>پلتفرم</th><td>وردپرس (فارسی، RTL) + قالب فرزند <code>Quantum_Pedia_Child</code></td></tr>
+    <tr><th>میزبانی</th><td>هاست ایران — «میزبان‌فا»</td></tr>
+    <tr><th>زبان / منطقه</th><td>fa_IR، تهران</td></tr>
+    <tr><th>نوع نوشتهٔ مقاله</th><td><code>quantum_article</code> (بدون آرشیو، بازنویسی مسطح <code>/slug/</code>)</td></tr>
+    <tr><th>نوع نوشتهٔ دانشمند</th><td><code>quantum_scientist</code> (بازنویسی <code>scientists</code>)</td></tr>
+    <tr><th>دسته‌بندی مقاله</th><td><code>quantum_category</code> (سلسله‌مراتبی؛ بازنویسی <code>topic</code>)</td></tr>
+    <tr><th>تگ</th><td>برای مقاله تاکسونومی تگ ثبت نشده (تگ‌ها فعلاً در متای <code>_qpedia_tags</code>)</td></tr>
+    <tr><th>سئو</th><td>خودکار: عنوان = عنوان + « | دانشنامه کوانتوم پدیا»، توضیحات = خلاصه (excerpt)، JSON-LD و نقشهٔ <code>/quantum-sitemap.xml</code></td></tr>
+    <tr><th>قالب مقاله</th><td>H1 از عنوان پست؛ TOC خودکار از H2/H3؛ بخش‌های FAQ/نویسنده/مرتبط در قالب</td></tr>
+  </table>
+</section>
+
+<section id="goal">
+  <h2>۲. هدف و برنامه</h2>
+  <p>هدف این سایت، آموزش مفاهیم کوانتوم با تمثیل‌های ملموس روزمره و به‌زبان فارسی است. برنامهٔ کنونی، فاز دوم توسعهٔ سایت است و دو مسیر هدف دارد:</p>
+  <ul class="tight">
+    <li><strong>مسیر ۱ — مقالات:</strong> تکمیل <strong>160 مقاله</strong> (فهرست هدف ۱۶۰تایی) در ۱۵ دسته.</li>
+    <li><strong>مسیر ۲ — تالار دانشمندان:</strong> تکمیل <strong>50 بیوگرافی</strong> از دانشمندان کوانتوم.</li>
+  </ul>
+  <h3>مراحل انجام‌شده (خط زمانی)</h3>
+  <table>
+    <tr><th>فاز</th><th>شرح</th><th>وضعیت</th></tr>
+    <tr><td>۱</td><td>تولید تصاویر شاخص ۷۴ مقالهٔ منتشرشده (تیره + روشن)</td><td class="ok">انجام شد</td></tr>
+    <tr><td>۲</td><td>نوشتن ۵ بستهٔ مقاله (۲۰ مقاله: مبانی، ذرات، تاریخ/آزمایش، پدیده‌ها)</td><td class="ok">انجام شد*</td></tr>
+    <tr><td>۳</td><td>ایمپورتر یک‌بارمصرف (quantum_article + quantum_category)</td><td class="ok">انجام شد</td></tr>
+    <tr><td>۴</td><td>سند واحد وضعیت/چنج‌لاگ (همین سند)</td><td class="ok">انجام شد</td></tr>
+    <tr><td>۵</td><td>نصب افزونه و ورود/انتشار مقالات جدید</td><td class="warn">در انتظار</td></tr>
+    <tr><td>۶</td><td>بیوگرافی دانشمندان باقی‌مانده</td><td class="warn">در انتظار</td></tr>
+    <tr><td>۷</td><td>مقالات باقی‌ماندهٔ فهرست ۱۶۰تایی</td><td class="warn">در انتظار</td></tr>
+  </table>
+  <p class="warn">* از ۲۰ مقاله، ۱ مورد («نیروهای بنیادی») با مقالهٔ منتشرشدهٔ جدید سایت هم‌اسلاگ است و به‌عنوان تکراری باید تعیین‌تکلیف شود.</p>
+</section>
+
+<section id="progress">
+  <h2>۳. پیشرفت کلی</h2>
+  <div class="cards">
+    <div class="stat"><b>75</b><span>مقالهٔ منتشرشده (زنده)</span></div>
+    <div class="stat"><b>20</b><span>مقالهٔ آمادهٔ ورود (پیش‌نویس)</span></div>
+    <div class="stat"><b>160</b><span>هدف مقالات (۱۶۰تایی)</span></div>
+    <div class="stat"><b>18 / 50</b><span>دانشمند منتشرشده از هدف ۵۰</span></div>
+  </div>
+  <h3>مقالات — تولیدشده 95 از 160</h3>
+  <div class="bar"><div class="bar-fill" style="width:59%"></div><span class="bar-label">59٪ (تقریبی؛ با احتساب ۱ مورد تکراری)</span></div>
+  <h3>دانشمندان — 18 از 50 در فهرست هدف</h3>
+  <div class="bar"><div class="bar-fill" style="width:36%"></div><span class="bar-label">36٪ (۳۲ نفر باقی)</span></div>
+  <p style="color:#5a6b83;font-size:.85rem">نکتهٔ صادقانه: فهرست ۱۶۰تایی و موجودی سایت کاملاً یک‌به‌یک نیستند (برخی مقالات منتشرشده، مکمل و خارج از فهرست‌اند). تطبیق دقیق عنوان‌ها با اسلاگ‌ها در فاز بعد ثبت می‌شود.</p>
+</section>
+
+<section id="tree">
+  <h2>۴. درخت کامل دسته‌بندی‌ها و مقالات</h2>
+  <p>۱۵ دستهٔ زندهٔ <code>quantum_category</code> به‌همراه شمارش مقالات منتشر / آماده / هدف:</p>
+  <table><thead><tr><th>دسته / زیردسته</th><th>منتشر</th><th>آماده</th><th>هدف</th></tr></thead><tbody><tr><td>مبانی و مفاهیم کوانتوم <code>fundamentals</code></td><td>6</td><td>0</td><td>15</td></tr>
+<tr><td>　مفاهیم پایه <code>core-concepts</code></td><td>16</td><td>4</td><td>0</td></tr>
+<tr><td>　ذرات بنیادی <code>particles</code></td><td>3</td><td>8</td><td>10</td></tr>
+<tr><td>تاریخ و آزمایش‌های کوانتوم <code>history-experiments</code></td><td>0</td><td>0</td><td>0</td></tr>
+<tr><td>　تاریخ کوانتوم <code>history</code></td><td>11</td><td>2</td><td>20</td></tr>
+<tr><td>　آزمایش‌های کوانتومی <code>experiments</code></td><td>3</td><td>2</td><td>12</td></tr>
+<tr><td>پدیده‌های کوانتومی <code>phenomena</code></td><td>7</td><td>4</td><td>23</td></tr>
+<tr><td>ریاضیات و فرمالیسم کوانتومی <code>mathematics</code></td><td>0</td><td>0</td><td>18</td></tr>
+<tr><td>فناوری و کاربردهای کوانتومی <code>technology</code></td><td>0</td><td>0</td><td>3</td></tr>
+<tr><td>　فناوری‌های روزمره <code>everyday-tech</code></td><td>5</td><td>0</td><td>10</td></tr>
+<tr><td>　رایانش و ارتباطات کوانتومی <code>quantum-computing</code></td><td>8</td><td>0</td><td>20</td></tr>
+<tr><td>　زیست‌شناسی کوانتومی <code>quantum-biology</code></td><td>4</td><td>0</td><td>9</td></tr>
+<tr><td>تفسیرها و فلسفهٔ کوانتوم <code>interpretations</code></td><td>4</td><td>0</td><td>10</td></tr>
+<tr><td>نقد شبه‌علم <code>pseudoscience</code></td><td>8</td><td>0</td><td>10</td></tr></tbody></table>
+  <h3>جزئیات هر شاخه</h3>
+  <details class="catbox"><summary>مبانی و مفاهیم کوانتوم <code>fundamentals</code></summary><div class="catbody"><p class="lbl">منتشرشده (6):</p><div class="tags"><span class="tag pub"><a href="https://qpedia.ir/quantum-understanding-achievement/" target="_blank" rel="noopener">quantum-understanding-achievement</a><i>چرا «نفهمیدنِ درست» کوانتوم، خودش یک دستاورد است؟</i></span><span class="tag pub"><a href="https://qpedia.ir/determinism-vs-probability/" target="_blank" rel="noopener">determinism-vs-probability</a><i>تفاوت جبرگرایی کلاسیک و احتمال کوانتومی</i></span><span class="tag pub"><a href="https://qpedia.ir/why-large-objects-dont-superpose/" target="_blank" rel="noopener">why-large-objects-dont-superpose</a><i>برهم‌نهی یعنی چه، و چرا اشیای بزرگ برهم‌نهی نمی‌شوند</i></span><span class="tag pub"><a href="https://qpedia.ir/is-classical-physics-wrong/" target="_blank" rel="noopener">is-classical-physics-wrong</a><i>آیا فیزیک کلاسیک اشتباه بود؟ نه، محدود بود</i></span><span class="tag pub"><a href="https://qpedia.ir/quantum-analogy-exercise-boundary/" target="_blank" rel="noopener">quantum-analogy-exercise-boundary</a><i>تمرین ذهنی: خودتان یک تمثیل بسازید و مرزش را پیدا کنید</i></span><span class="tag pub"><a href="https://qpedia.ir/coin-vs-dice-quantum-uncertainty/" target="_blank" rel="noopener">coin-vs-dice-quantum-uncertainty</a><i>تمثیل تاس در مقابل تمثیل سکه</i></span></div><p class="lbl">هدف (فهرست ۱۶۰تایی، 15):</p><div class="tags"><span class="tag tgt">کوانتوم یعنی چه؟</span><span class="tag tgt">برهم‌نهی کوانتومی</span><span class="tag tgt">دوگانگی موج-ذره</span><span class="tag tgt">تابع موج</span><span class="tag tgt">اصل عدم قطعیت</span><span class="tag tgt">اندازه‌گیری و فروپاشی</span><span class="tag tgt">اسپین</span><span class="tag tgt">ترازهای انرژی</span><span class="tag tgt">واهمدوسی</span><span class="tag tgt">ثابت پلانک</span><span class="tag tgt">حالت کوانتومی</span><span class="tag tgt">عدد کوانتومی</span><span class="tag tgt">ناظر</span><span class="tag tgt">اصل مکملیت</span><span class="tag tgt">اصل طرد پاولی</span></div></div></details>
+<details class="catbox"><summary>مفاهیم پایه <code>core-concepts</code></summary><div class="catbody"><p class="lbl">منتشرشده (16):</p><div class="tags"><span class="tag pub"><a href="https://qpedia.ir/wave-particle-duality/" target="_blank" rel="noopener">wave-particle-duality</a><i>دوگانگی موج و ذره</i></span><span class="tag pub"><a href="https://qpedia.ir/wave-function/" target="_blank" rel="noopener">wave-function</a><i>تابع موج چیست؟</i></span><span class="tag pub"><a href="https://qpedia.ir/quantum-measurement/" target="_blank" rel="noopener">quantum-measurement</a><i>اندازه‌گیری و فروپاشی</i></span><span class="tag pub"><a href="https://qpedia.ir/quantum-spin/" target="_blank" rel="noopener">quantum-spin</a><i>اسپین؛ چرخشی که چرخش نیست</i></span><span class="tag pub"><a href="https://qpedia.ir/energy-levels/" target="_blank" rel="noopener">energy-levels</a><i>ترازهای انرژی و کوانتش</i></span><span class="tag pub"><a href="https://qpedia.ir/planck-constant/" target="_blank" rel="noopener">planck-constant</a><i>ثابت پلانک؛ کوچک‌ترین واحد جهان</i></span><span class="tag pub"><a href="https://qpedia.ir/decoherence/" target="_blank" rel="noopener">decoherence</a><i>واهمدوسی؛ چرا دنیا عادی است!</i></span><span class="tag pub"><a href="https://qpedia.ir/pauli-exclusion-principle/" target="_blank" rel="noopener">pauli-exclusion-principle</a><i>اصل طرد پاولی دقیقاً چه می‌گوید؟ به زبان ساده</i></span><span class="tag pub"><a href="https://qpedia.ir/superposition-explained/" target="_blank" rel="noopener">superposition-explained</a><i>برهم‌نهی چیست؟ وقتی یک ذره «هم این است هم آن»</i></span><span class="tag pub"><a href="https://qpedia.ir/quantum-fivefold-mental-map/" target="_blank" rel="noopener">quantum-fivefold-mental-map</a><i>نقشهٔ ذهنی پنج‌گانه برای فهم درست کوانتوم</i></span><span class="tag pub"><a href="https://qpedia.ir/why-quantum-math-works/" target="_blank" rel="noopener">why-quantum-math-works</a><i>چرا ریاضیات کوانتوم درست است ولی فهمش سخت است؟</i></span><span class="tag pub"><a href="https://qpedia.ir/quantum-learning-resources/" target="_blank" rel="noopener">quantum-learning-resources</a><i>منابع معتبر فارسی و انگلیسی برای یادگیری عمیق‌تر کوانتوم</i></span><span class="tag pub"><a href="https://qpedia.ir/quantum-physics-vs-quantum-mechanics/" target="_blank" rel="noopener">quantum-physics-vs-quantum-mechanics</a><i>تفاوت فیزیک کوانتوم و مکانیک کوانتومی چیست؟</i></span><span class="tag pub"><a href="https://qpedia.ir/heisenberg-uncertainty-principle/" target="_blank" rel="noopener">heisenberg-uncertainty-principle</a><i>اصل عدم قطعیت هایزنبرگ به زبان ساده</i></span><span class="tag pub"><a href="https://qpedia.ir/quantum-superposition/" target="_blank" rel="noopener">quantum-superposition</a><i>برهم‌نهی کوانتومی</i></span><span class="tag pub"><a href="https://qpedia.ir/what-is-quantum/" target="_blank" rel="noopener">what-is-quantum</a><i>کوانتوم یعنی چه؟</i></span></div><p class="lbl">آمادهٔ ورود (4):</p><div class="tags"><span class="tag prep">quantum-state<i>حالت کوانتومی</i></span><span class="tag prep">quantum-number<i>عدد کوانتومی</i></span><span class="tag prep">observer<i>ناظر</i></span><span class="tag prep">complementarity-principle<i>اصل مکملیت</i></span></div></div></details>
+<details class="catbox"><summary>ذرات بنیادی <code>particles</code></summary><div class="catbody"><p class="lbl">منتشرشده (3):</p><div class="tags"><span class="tag pub"><a href="https://qpedia.ir/fundamental-forces/" target="_blank" rel="noopener">fundamental-forces</a><i>نیروهای بنیادی چیستند؟</i></span><span class="tag pub"><a href="https://qpedia.ir/photon/" target="_blank" rel="noopener">photon</a><i>فوتون دقیقا چیست؟</i></span><span class="tag pub"><a href="https://qpedia.ir/electron/" target="_blank" rel="noopener">electron</a><i>الکترون چیست؟ ویژگی‌ها، نقش در اتم و برق</i></span></div><p class="lbl">آمادهٔ ورود (8):</p><div class="tags"><span class="tag prep">quark<i>کوارک</i></span><span class="tag prep">neutrino<i>نوترینو</i></span><span class="tag prep">higgs-boson<i>بوزون هیگز</i></span><span class="tag prep">antimatter<i>پادماده</i></span><span class="tag prep">standard-model<i>مدل استاندارد</i></span><span class="tag prep">virtual-particles<i>ذرات مجازی</i></span><span class="tag prep">fundamental-forces<i>نیروهای بنیادی</i></span><span class="tag prep">nuclear-spin<i>اسپین هسته‌ای</i></span></div><p class="lbl">هدف (فهرست ۱۶۰تایی، 10):</p><div class="tags"><span class="tag tgt">فوتون</span><span class="tag tgt">الکترون</span><span class="tag tgt">کوارک</span><span class="tag tgt">نوترینو</span><span class="tag tgt">بوزون هیگز</span><span class="tag tgt">پادماده</span><span class="tag tgt">مدل استاندارد</span><span class="tag tgt">ذرات مجازی</span><span class="tag tgt">نیروهای بنیادی</span><span class="tag tgt">اسپین هسته‌ای</span></div></div></details>
+<details class="catbox"><summary>تاریخ و آزمایش‌های کوانتوم <code>history-experiments</code></summary><div class="catbody"><p>فعلاً خالی.</p></div></details>
+<details class="catbox"><summary>تاریخ کوانتوم <code>history</code></summary><div class="catbody"><p class="lbl">منتشرشده (11):</p><div class="tags"><span class="tag pub"><a href="https://qpedia.ir/photoelectric-effect/" target="_blank" rel="noopener">photoelectric-effect</a><i>اثر فوتوالکتریک</i></span><span class="tag pub"><a href="https://qpedia.ir/bell-inequality/" target="_blank" rel="noopener">bell-inequality</a><i>نامساوی بل</i></span><span class="tag pub"><a href="https://qpedia.ir/einstein-photoelectric-effect/" target="_blank" rel="noopener">einstein-photoelectric-effect</a><i>اینشتین و اثر فوتوالکتریک (نه فقط نسبیت)</i></span><span class="tag pub"><a href="https://qpedia.ir/schrodinger-life-equation/" target="_blank" rel="noopener">schrodinger-life-equation</a><i>شرودینگر: زندگی، معادله و گربه‌ای که هرگز نداشت</i></span><span class="tag pub"><a href="https://qpedia.ir/max-planck-blackbody/" target="_blank" rel="noopener">max-planck-blackbody</a><i>پلانک و بحران تابش جسم سیاه؛ جرقه‌ای که فیزیک را متحول کرد</i></span><span class="tag pub"><a href="https://qpedia.ir/dirac-antimatter/" target="_blank" rel="noopener">dirac-antimatter</a><i>دیراک و پیش‌بینی پادماده؛ وقتی ریاضیات از واقعیت جلو زد</i></span><span class="tag pub"><a href="https://qpedia.ir/einstein-bohr-debate/" target="_blank" rel="noopener">einstein-bohr-debate</a><i>نبرد اینشتین و بور بر سر معنای کوانتوم</i></span><span class="tag pub"><a href="https://qpedia.ir/feynman-quantum-explainer/" target="_blank" rel="noopener">feynman-quantum-explainer</a><i>فاینمن: نابغه‌ای که کوانتوم را ساده توضیح می‌داد</i></span><span class="tag pub"><a href="https://qpedia.ir/forgotten-women-quantum/" target="_blank" rel="noopener">forgotten-women-quantum</a><i>زنان فراموش‌شدهٔ فیزیک کوانتوم</i></span><span class="tag pub"><a href="https://qpedia.ir/bohr-atomic-model/" target="_blank" rel="noopener">bohr-atomic-model</a><i>مدل اتمی بور</i></span><span class="tag pub"><a href="https://qpedia.ir/ultraviolet-catastrophe/" target="_blank" rel="noopener">ultraviolet-catastrophe</a><i>فاجعهٔ فرابنفش</i></span></div><p class="lbl">آمادهٔ ورود (2):</p><div class="tags"><span class="tag prep">solvay-conference-1927<i>کنفرانس سولوی ۱۹۲۷</i></span><span class="tag prep">epr-paradox<i>مقالهٔ EPR</i></span></div><p class="lbl">هدف (فهرست ۱۶۰تایی، 20):</p><div class="tags"><span class="tag tgt">فاجعهٔ فرابنفش</span><span class="tag tgt">پلانک و کوانتوم ناخواسته</span><span class="tag tgt">تابش جسم سیاه</span><span class="tag tgt">اینشتین و فوتون</span><span class="tag tgt">مدل اتمی بور</span><span class="tag tgt">اثر فوتوالکتریک</span><span class="tag tgt">کنفرانس سولوی ۱۹۲۷</span><span class="tag tgt">مناظرهٔ بور و اینشتین</span><span class="tag tgt">مقالهٔ EPR</span><span class="tag tgt">نامساوی بل</span><span class="tag tgt">آزمایش‌های آسپه</span><span class="tag tgt">نوبل فیزیک ۲۰۲۲</span><span class="tag tgt">تولد مکانیک ماتریسی</span><span class="tag tgt">معادلهٔ شرودینگر (تاریخ)</span><span class="tag tgt">دیراک و پادماده</span><span class="tag tgt">فاینمن و QED</span><span class="tag tgt">بل و پایان متغیرهای پنهان</span><span class="tag tgt">اورت و جهان‌های موازی</span><span class="tag tgt">صد سال کوانتوم</span><span class="tag tgt">زنان فراموش‌شدهٔ کوانتوم</span></div></div></details>
+<details class="catbox"><summary>آزمایش‌های کوانتومی <code>experiments</code></summary><div class="catbody"><p class="lbl">منتشرشده (3):</p><div class="tags"><span class="tag pub"><a href="https://qpedia.ir/bell-experiments/" target="_blank" rel="noopener">bell-experiments</a><i>آزمایش‌های بل: چگونه درهم‌تنیدگی اثبات شد!</i></span><span class="tag pub"><a href="https://qpedia.ir/quantum-zeno-effect/" target="_blank" rel="noopener">quantum-zeno-effect</a><i>اثر زنون کوانتومی</i></span><span class="tag pub"><a href="https://qpedia.ir/double-slit-experiment/" target="_blank" rel="noopener">double-slit-experiment</a><i>آزمایش دو شکاف</i></span></div><p class="lbl">آمادهٔ ورود (2):</p><div class="tags"><span class="tag prep">stern-gerlach-experiment<i>اشترن-گرلاخ</i></span><span class="tag prep">aspect-experiment-1982<i>آزمایش آسپه ۱۹۸۲</i></span></div><p class="lbl">هدف (فهرست ۱۶۰تایی، 12):</p><div class="tags"><span class="tag tgt">آزمایش دو شکاف</span><span class="tag tgt">اشترن-گرلاخ</span><span class="tag tgt">آزمایش تک‌الکترونی تونومورا</span><span class="tag tgt">اثر زنون کوانتومی</span><span class="tag tgt">پاک‌کن کوانتومی</span><span class="tag tgt">انتخاب تأخیری</span><span class="tag tgt">تداخل‌سنج ماخ-زندر</span><span class="tag tgt">آزمایش آسپه ۱۹۸۲</span><span class="tag tgt">تله‌های یونی</span><span class="tag tgt">چگالش بوز-اینشتین</span><span class="tag tgt">طیف‌سنجی اتمی</span><span class="tag tgt">منحنی لیساژو</span></div></div></details>
+<details class="catbox"><summary>پدیده‌های کوانتومی <code>phenomena</code></summary><div class="catbody"><p class="lbl">منتشرشده (7):</p><div class="tags"><span class="tag pub"><a href="https://qpedia.ir/superconductivity/" target="_blank" rel="noopener">superconductivity</a><i>ابررسانایی</i></span><span class="tag pub"><a href="https://qpedia.ir/superfluidity/" target="_blank" rel="noopener">superfluidity</a><i>ابرشارگی؛ مایعی که از لیوان بالا می‌رود</i></span><span class="tag pub"><a href="https://qpedia.ir/casimir-effect/" target="_blank" rel="noopener">casimir-effect</a><i>اثر کازیمیر</i></span><span class="tag pub"><a href="https://qpedia.ir/vacuum-fluctuations/" target="_blank" rel="noopener">vacuum-fluctuations</a><i>نوسانات خلأ</i></span><span class="tag pub"><a href="https://qpedia.ir/schrodinger-cat/" target="_blank" rel="noopener">schrodinger-cat</a><i>گربهٔ شرودینگر</i></span><span class="tag pub"><a href="https://qpedia.ir/quantum-tunneling/" target="_blank" rel="noopener">quantum-tunneling</a><i>تونل‌زنی کوانتومی</i></span><span class="tag pub"><a href="https://qpedia.ir/quantum-entanglement-explained/" target="_blank" rel="noopener">quantum-entanglement-explained</a><i>درهم‌تنیدگی کوانتومی</i></span></div><p class="lbl">آمادهٔ ورود (4):</p><div class="tags"><span class="tag prep">coherence<i>همدوسی</i></span><span class="tag prep">absolute-zero<i>صفر مطلق</i></span><span class="tag prep">alpha-decay<i>واپاشی آلفا</i></span><span class="tag prep">stimulated-emission<i>گسیل تحریکی</i></span></div><p class="lbl">هدف (فهرست ۱۶۰تایی، 23):</p><div class="tags"><span class="tag tgt">درهم‌تنیدگی کوانتومی</span><span class="tag tgt">تونل‌زنی کوانتومی</span><span class="tag tgt">گربهٔ شرودینگر</span><span class="tag tgt">نوسانات خلأ</span><span class="tag tgt">اثر کازیمیر</span><span class="tag tgt">ابررسانایی</span><span class="tag tgt">ابرشارگی هلیوم</span><span class="tag tgt">اثر هال کوانتومی</span><span class="tag tgt">اثر جوزفسون</span><span class="tag tgt">گسیل تحریکی</span><span class="tag tgt">واپاشی آلفا</span><span class="tag tgt">همجوشی در ستارگان</span><span class="tag tgt">اثر آهارونوف-بوهم</span><span class="tag tgt">همدوسی</span><span class="tag tgt">نویز کوانتومی</span><span class="tag tgt">حد استاندارد کوانتومی</span><span class="tag tgt">فشرده‌سازی کوانتومی</span><span class="tag tgt">اندازه‌گیری ضعیف</span><span class="tag tgt">توموگرافی حالت</span><span class="tag tgt">زمان همدوسی</span><span class="tag tgt">دمای بحرانی</span><span class="tag tgt">صفر مطلق</span><span class="tag tgt">خلأ کوانتومی</span></div></div></details>
+<details class="catbox"><summary>ریاضیات و فرمالیسم کوانتومی <code>mathematics</code></summary><div class="catbody"><p class="lbl">هدف (فهرست ۱۶۰تایی، 18):</p><div class="tags"><span class="tag tgt">فضای هیلبرت</span><span class="tag tgt">نماد براکت</span><span class="tag tgt">عملگر</span><span class="tag tgt">عملگر هرمیتی</span><span class="tag tgt">مقدار ویژه</span><span class="tag tgt">تابع ویژه</span><span class="tag tgt">ماتریس چگالی</span><span class="tag tgt">دامنهٔ احتمال</span><span class="tag tgt">قاعدهٔ بورن</span><span class="tag tgt">کموتاتور</span><span class="tag tgt">معادلهٔ شرودینگر</span><span class="tag tgt">معادلهٔ دیراک</span><span class="tag tgt">معادلهٔ کلاین-گوردون</span><span class="tag tgt">تبدیل فوریه در کوانتوم</span><span class="tag tgt">اصل برهم‌نهی خطی</span><span class="tag tgt">انتگرال مسیر فاینمن</span><span class="tag tgt">نمایش تعامل</span><span class="tag tgt">بازبهنجارش</span></div></div></details>
+<details class="catbox"><summary>فناوری و کاربردهای کوانتومی <code>technology</code></summary><div class="catbody"><p class="lbl">هدف (فهرست ۱۶۰تایی، 3):</p><div class="tags"><span class="tag tgt">وضعیت کوانتوم در ایران</span><span class="tag tgt">حسگر کوانتومی</span><span class="tag tgt">شبیه‌سازی کوانتومی</span></div></div></details>
+<details class="catbox"><summary>فناوری‌های روزمره <code>everyday-tech</code></summary><div class="catbody"><p class="lbl">منتشرشده (5):</p><div class="tags"><span class="tag pub"><a href="https://qpedia.ir/mri-quantum/" target="_blank" rel="noopener">mri-quantum</a><i>ام‌آرآی (MRI) چگونه کار می‌کند؟</i></span><span class="tag pub"><a href="https://qpedia.ir/atomic-clock-gps/" target="_blank" rel="noopener">atomic-clock-gps</a><i>ساعت اتمی و جی‌پی‌اس</i></span><span class="tag pub"><a href="https://qpedia.ir/transistor-quantum/" target="_blank" rel="noopener">transistor-quantum</a><i>ترانزیستور؛ کوانتوم در جیب شما</i></span><span class="tag pub"><a href="https://qpedia.ir/how-lasers-work/" target="_blank" rel="noopener">how-lasers-work</a><i>لیزر چطور کار می‌کند؟</i></span><span class="tag pub"><a href="https://qpedia.ir/solar-cells-photoelectric/" target="_blank" rel="noopener">solar-cells-photoelectric</a><i>پنل خورشیدی و اثر فوتوالکتریک؛ تبدیل نور به جریان زندگی</i></span></div><p class="lbl">هدف (فهرست ۱۶۰تایی، 10):</p><div class="tags"><span class="tag tgt">لیزر</span><span class="tag tgt">ترانزیستور</span><span class="tag tgt">MRI</span><span class="tag tgt">ساعت اتمی و GPS</span><span class="tag tgt">میکروسکوپ الکترونی</span><span class="tag tgt">سلول خورشیدی</span><span class="tag tgt">LED</span><span class="tag tgt">حافظهٔ فلش</span><span class="tag tgt">میکروسکوپ تونلی</span><span class="tag tgt">فیبر نوری</span></div></div></details>
+<details class="catbox"><summary>رایانش و ارتباطات کوانتومی <code>quantum-computing</code></summary><div class="catbody"><p class="lbl">منتشرشده (8):</p><div class="tags"><span class="tag pub"><a href="https://qpedia.ir/quantum-cryptography-internet-security/" target="_blank" rel="noopener">quantum-cryptography-internet-security</a><i>رمزنگاری کوانتومی و آیندهٔ امنیت اینترنت</i></span><span class="tag pub"><a href="https://qpedia.ir/does-ai-use-quantum/" target="_blank" rel="noopener">does-ai-use-quantum</a><i>آیا هوش مصنوعی از کوانتوم استفاده می‌کند؟</i></span><span class="tag pub"><a href="https://qpedia.ir/quantum-sensors/" target="_blank" rel="noopener">quantum-sensors</a><i>حسگرهای کوانتومی؛ آیندهٔ دقت اندازه‌گیری</i></span><span class="tag pub"><a href="https://qpedia.ir/quantum-computer-reality/" target="_blank" rel="noopener">quantum-computer-reality</a><i>کامپیوتر کوانتومی چیست و چقدر با واقعیت فاصله دارد؟</i></span><span class="tag pub"><a href="https://qpedia.ir/entanglement-quantum-computers/" target="_blank" rel="noopener">entanglement-quantum-computers</a><i>درهم‌تنیدگی در کامپیوترهای کوانتومی امروزی</i></span><span class="tag pub"><a href="https://qpedia.ir/quantum-career-future-learn/" target="_blank" rel="noopener">quantum-career-future-learn</a><i>آینده شغلی: آیا باید فیزیک کوانتوم یاد بگیریم؟</i></span><span class="tag pub"><a href="https://qpedia.ir/quantum-teleportation/" target="_blank" rel="noopener">quantum-teleportation</a><i>تله‌پورت کوانتومی چیست؟</i></span><span class="tag pub"><a href="https://qpedia.ir/qubit/" target="_blank" rel="noopener">qubit</a><i>کیوبیت چیست؟</i></span></div><p class="lbl">هدف (فهرست ۱۶۰تایی، 20):</p><div class="tags"><span class="tag tgt">الگوریتم شور</span><span class="tag tgt">الگوریتم گرور</span><span class="tag tgt">تصحیح خطای کوانتومی</span><span class="tag tgt">گیت کوانتومی</span><span class="tag tgt">مدار کوانتومی</span><span class="tag tgt">قضیهٔ عدم‌کپی</span><span class="tag tgt">پیچیدگی کوانتومی</span><span class="tag tgt">کیوبیت</span><span class="tag tgt">رایانش کوانتومی</span><span class="tag tgt">کیوبیت ابررسانا</span><span class="tag tgt">یون به‌دام‌افتاده</span><span class="tag tgt">کوانتوم فوتونیکی</span><span class="tag tgt">اتم خنثی</span><span class="tag tgt">گوگل ویلو</span><span class="tag tgt">برتری کوانتومی</span><span class="tag tgt">رمزنگاری کوانتومی</span><span class="tag tgt">رمزنگاری پساکوانتومی</span><span class="tag tgt">توزیع کلید کوانتومی</span><span class="tag tgt">فرابرد کوانتومی</span><span class="tag tgt">ارتباطات کوانتومی</span></div></div></details>
+<details class="catbox"><summary>زیست‌شناسی کوانتومی <code>quantum-biology</code></summary><div class="catbody"><p class="lbl">منتشرشده (4):</p><div class="tags"><span class="tag pub"><a href="https://qpedia.ir/quantum-smell/" target="_blank" rel="noopener">quantum-smell</a><i>حس بویایی؛ شکل یا ارتعاش؟</i></span><span class="tag pub"><a href="https://qpedia.ir/bird-quantum-compass/" target="_blank" rel="noopener">bird-quantum-compass</a><i>قطب‌نمای پرندگان</i></span><span class="tag pub"><a href="https://qpedia.ir/quantum-photosynthesis/" target="_blank" rel="noopener">quantum-photosynthesis</a><i>فتوسنتز؛ کارآمدترین ماشین جهان و رد پای کوانتوم</i></span><span class="tag pub"><a href="https://qpedia.ir/enzyme-quantum-tunneling/" target="_blank" rel="noopener">enzyme-quantum-tunneling</a><i>آنزیم‌ها؛ عبور از دیوار به‌جای پریدن</i></span></div><p class="lbl">هدف (فهرست ۱۶۰تایی، 9):</p><div class="tags"><span class="tag tgt">فتوسنتز کوانتومی</span><span class="tag tgt">قطب‌نمای پرندگان</span><span class="tag tgt">حس بویایی</span><span class="tag tgt">آنزیم‌ها و تونل‌زنی</span><span class="tag tgt">بینایی</span><span class="tag tgt">جهش ژنتیکی</span><span class="tag tgt">زیست‌شناسی کوانتومی چیست</span><span class="tag tgt">نور خورشید تا برگ</span><span class="tag tgt">کوانتوم در آشپزخانه</span></div></div></details>
+<details class="catbox"><summary>تفسیرها و فلسفهٔ کوانتوم <code>interpretations</code></summary><div class="catbody"><p class="lbl">منتشرشده (4):</p><div class="tags"><span class="tag pub"><a href="https://qpedia.ir/many-worlds-interpretation/" target="_blank" rel="noopener">many-worlds-interpretation</a><i>تفسیر جهان‌های موازی</i></span><span class="tag pub"><a href="https://qpedia.ir/copenhagen-interpretation/" target="_blank" rel="noopener">copenhagen-interpretation</a><i>تفسیر کپنهاگی</i></span><span class="tag pub"><a href="https://qpedia.ir/is-many-worlds-real/" target="_blank" rel="noopener">is-many-worlds-real</a><i>آیا کوانتوم یعنی چندجهانی واقعی است؟</i></span><span class="tag pub"><a href="https://qpedia.ir/quantum-interpretation-debate/" target="_blank" rel="noopener">quantum-interpretation-debate</a><i>آیا فیزیک‌دانان بر سر معنای اندازه‌گیری توافق دارند؟</i></span></div><p class="lbl">هدف (فهرست ۱۶۰تایی، 10):</p><div class="tags"><span class="tag tgt">تفسیر کپنهاگی</span><span class="tag tgt">جهان‌های موازی</span><span class="tag tgt">تفسیر دوبوم</span><span class="tag tgt">فروپاشی عینی</span><span class="tag tgt">کیوبیسم</span><span class="tag tgt">تاریخ‌های سازگار</span><span class="tag tgt">ترامعاملاتی</span><span class="tag tgt">ابرجبرگرایی</span><span class="tag tgt">مسئلهٔ اندازه‌گیری</span><span class="tag tgt">کدام تفسیر درست است؟</span></div></div></details>
+<details class="catbox"><summary>نقد شبه‌علم <code>pseudoscience</code></summary><div class="catbody"><p class="lbl">منتشرشده (8):</p><div class="tags"><span class="tag pub"><a href="https://qpedia.ir/quantum-alternative-medicine-science/" target="_blank" rel="noopener">quantum-alternative-medicine-science</a><i>کوانتوم و پزشکی</i></span><span class="tag pub"><a href="https://qpedia.ir/is-the-brain-quantum/" target="_blank" rel="noopener">is-the-brain-quantum</a><i>آیا مغز کوانتومی است؟</i></span><span class="tag pub"><a href="https://qpedia.ir/spot-pseudoscience-one-sentence/" target="_blank" rel="noopener">spot-pseudoscience-one-sentence</a><i>چگونه ادعای شبه‌علمی را در یک جمله تشخیص دهیم</i></span><span class="tag pub"><a href="https://qpedia.ir/entanglement-myths/" target="_blank" rel="noopener">entanglement-myths</a><i>آیا درهم‌تنیدگی یعنی اطلاعات سریع‌تر از نور منتقل می‌شود؟</i></span><span class="tag pub"><a href="https://qpedia.ir/mind-quantum-reality/" target="_blank" rel="noopener">mind-quantum-reality</a><i>آیا با فکر کردن می‌توان واقعیت کوانتومی را تغییر داد؟</i></span><span class="tag pub"><a href="https://qpedia.ir/does-quantum-prove-god/" target="_blank" rel="noopener">does-quantum-prove-god</a><i>آیا کوانتوم ثابت می‌کند خدا وجود دارد یا ندارد؟</i></span><span class="tag pub"><a href="https://qpedia.ir/brain-quantum-phenomena/" target="_blank" rel="noopener">brain-quantum-phenomena</a><i>آیا مغز انسان از پدیده‌های کوانتومی استفاده می‌کند؟ (بررسی ادعاها)</i></span><span class="tag pub"><a href="https://qpedia.ir/everything-is-energy-claim/" target="_blank" rel="noopener">everything-is-energy-claim</a><i>«همه‌چیز انرژی است» — بررسی یک ادعا</i></span></div><p class="lbl">هدف (فهرست ۱۶۰تایی، 10):</p><div class="tags"><span class="tag tgt">«همه‌چیز انرژی است»</span><span class="tag tgt">کوانتوم و پزشکی</span><span class="tag tgt">تشخیص ادعای شبه‌علمی در یک جمله</span><span class="tag tgt">قانون جذب کوانتومی</span><span class="tag tgt">آگاهی و فروپاشی</span><span class="tag tgt">نقل‌قول‌های جعلی از اینشتین</span><span class="tag tgt">سوءاستفاده از عدم قطعیت</span><span class="tag tgt">محصولات کوانتومی تقلبی</span><span class="tag tgt">مرز علم و شبه‌علم</span><span class="tag tgt">آیا مغز کوانتومی است؟</span></div></div></details>
+</section>
+
+<section id="scientists">
+  <h2>۵. تالار دانشمندان — فهرست هدف (50 نفر)</h2>
+  <p>✓ = قبلاً در سایت منتشر شده است. این فهرست «مسیر هدف» بخش بیوگرافی سایت است.</p>
+  <table><thead><tr><th>#</th><th>منتشر</th><th>نام</th><th>شهرت / اثر</th><th>جوایز مهم</th></tr></thead><tbody><tr><td>1</td><td><span class="ok">✓</span></td><td>ماکس پلانک<br><span class="mono" style="color:#5a6b83;font-size:.85rem">Max Planck</span></td><td>بنیان‌گذار نظریهٔ کوانتوم؛ ثابت پلانک و فرمول تابش جسم سیاه</td><td>نوبل فیزیک ۱۹۱۸</td></tr>
+<tr><td>2</td><td><span class="ok">✓</span></td><td>آلبرت اینشتین<br><span class="mono" style="color:#5a6b83;font-size:.85rem">Albert Einstein</span></td><td>نسبیت خاص و عام، E=mc² و توضیح اثر فوتوالکتریک</td><td>نوبل فیزیک ۱۹۲۱</td></tr>
+<tr><td>3</td><td><span class="ok">✓</span></td><td>نیلز بور<br><span class="mono" style="color:#5a6b83;font-size:.85rem">Niels Bohr</span></td><td>مدل اتمی بور، اصل مکملیت و تفسیر کپنهاگی</td><td>نوبل فیزیک ۱۹۲۲</td></tr>
+<tr><td>4</td><td>—</td><td>لویی دوبروی<br><span class="mono" style="color:#5a6b83;font-size:.85rem">Louis de Broglie</span></td><td>فرضیهٔ موجی بودن ماده (طول موج دوبروی)</td><td>نوبل فیزیک ۱۹۲۹</td></tr>
+<tr><td>5</td><td>—</td><td>اروین شرودینگر<br><span class="mono" style="color:#5a6b83;font-size:.85rem">Erwin Schrödinger</span></td><td>معادلهٔ موج شرودینگر و مکانیک موجی</td><td>نوبل فیزیک ۱۹۳۳</td></tr>
+<tr><td>6</td><td>—</td><td>ورنر هایزنبرگ<br><span class="mono" style="color:#5a6b83;font-size:.85rem">Werner Heisenberg</span></td><td>اصل عدم قطعیت و مکانیک ماتریسی</td><td>نوبل فیزیک ۱۹۳۲</td></tr>
+<tr><td>7</td><td><span class="ok">✓</span></td><td>پل دیراک<br><span class="mono" style="color:#5a6b83;font-size:.85rem">Paul Dirac</span></td><td>معادلهٔ دیراک و پیش‌بینی پادماده</td><td>نوبل فیزیک ۱۹۳۳</td></tr>
+<tr><td>8</td><td>—</td><td>ماکس بورن<br><span class="mono" style="color:#5a6b83;font-size:.85rem">Max Born</span></td><td>تفسیر احتمالاتی تابع موج (قاعدهٔ بورن)</td><td>نوبل فیزیک ۱۹۵۴</td></tr>
+<tr><td>9</td><td><span class="ok">✓</span></td><td>ولفگانگ پاولی<br><span class="mono" style="color:#5a6b83;font-size:.85rem">Wolfgang Pauli</span></td><td>اصل طرد پاولی و پیش‌بینی نوترینو</td><td>نوبل فیزیک ۱۹۴۵</td></tr>
+<tr><td>10</td><td><span class="ok">✓</span></td><td>پاسکوال یوردان<br><span class="mono" style="color:#5a6b83;font-size:.85rem">Pascual Jordan</span></td><td>از بنیان‌گذاران مکانیک ماتریسی و QED</td><td>مدال ماکس پلانک ۱۹۴۲</td></tr>
+<tr><td>11</td><td>—</td><td>هندریک کرامرس<br><span class="mono" style="color:#5a6b83;font-size:.85rem">Hendrik Kramers</span></td><td>رابطهٔ کرامرس–کرونیگ و تقریب WKB</td><td>مدال لورنتس ۱۹۴۷</td></tr>
+<tr><td>12</td><td><span class="ok">✓</span></td><td>آرنولد زومرفلد<br><span class="mono" style="color:#5a6b83;font-size:.85rem">Arnold Sommerfeld</span></td><td>مدل بور–زومرفلد و اعداد کوانتومی</td><td>مدال لورنتس ۱۹۳۹</td></tr>
+<tr><td>13</td><td>—</td><td>ریچارد فاینمن<br><span class="mono" style="color:#5a6b83;font-size:.85rem">Richard Feynman</span></td><td>QED، نمودارهای فاینمن و انتگرال مسیر</td><td>نوبل فیزیک ۱۹۶۵</td></tr>
+<tr><td>14</td><td>—</td><td>جولیان شوینگر<br><span class="mono" style="color:#5a6b83;font-size:.85rem">Julian Schwinger</span></td><td>QED و بازبهنجارش</td><td>نوبل فیزیک ۱۹۶۵</td></tr>
+<tr><td>15</td><td>—</td><td>سین-ایتیرو توموناگا<br><span class="mono" style="color:#5a6b83;font-size:.85rem">Sin-Itiro Tomonaga</span></td><td>QED و بازبهنجارش</td><td>نوبل فیزیک ۱۹۶۵</td></tr>
+<tr><td>16</td><td><span class="ok">✓</span></td><td>فریمن دایسون<br><span class="mono" style="color:#5a6b83;font-size:.85rem">Freeman Dyson</span></td><td>وحدت فرمول‌بندی‌های QED</td><td>جایزهٔ ولف فیزیک ۱۹۸۱</td></tr>
+<tr><td>17</td><td><span class="ok">✓</span></td><td>هرمان وایل<br><span class="mono" style="color:#5a6b83;font-size:.85rem">Hermann Weyl</span></td><td>نظریهٔ گروه و نظریهٔ پیمانه‌ای در کوانتوم</td><td>جایزهٔ لوباچفسکی ۱۹۲۷</td></tr>
+<tr><td>18</td><td><span class="ok">✓</span></td><td>هیدکی یوکاوا<br><span class="mono" style="color:#5a6b83;font-size:.85rem">Hideki Yukawa</span></td><td>پیش‌بینی مزون (پیون) و نیروی قوی هسته‌ای</td><td>نوبل فیزیک ۱۹۴۹</td></tr>
+<tr><td>19</td><td><span class="ok">✓</span></td><td>ساتیندرا بوز<br><span class="mono" style="color:#5a6b83;font-size:.85rem">Satyendra Bose</span></td><td>آمار بوز–اینشتین و بوزون‌ها</td><td>پادما ویبوشان ۱۹۵۴</td></tr>
+<tr><td>20</td><td><span class="ok">✓</span></td><td>انریکو فرمی<br><span class="mono" style="color:#5a6b83;font-size:.85rem">Enrico Fermi</span></td><td>آمار فرمی–دیراک و اولین واکنش زنجیره‌ای</td><td>نوبل فیزیک ۱۹۳۸</td></tr>
+<tr><td>21</td><td>—</td><td>یوجین ویگنر<br><span class="mono" style="color:#5a6b83;font-size:.85rem">Eugene Wigner</span></td><td>کاربرد نظریهٔ گروه در مکانیک کوانتومی</td><td>نوبل فیزیک ۱۹۶۳</td></tr>
+<tr><td>22</td><td>—</td><td>هانس بته<br><span class="mono" style="color:#5a6b83;font-size:.85rem">Hans Bethe</span></td><td>نظریهٔ تولید انرژی ستارگان</td><td>نوبل فیزیک ۱۹۶۷</td></tr>
+<tr><td>23</td><td>—</td><td>جرج گاموف<br><span class="mono" style="color:#5a6b83;font-size:.85rem">George Gamow</span></td><td>تونل‌زنی کوانتومی و نظریهٔ مهبانگ</td><td>جایزهٔ کالینگا ۱۹۵۶</td></tr>
+<tr><td>24</td><td>—</td><td>لو لاندائو<br><span class="mono" style="color:#5a6b83;font-size:.85rem">Lev Landau</span></td><td>نظریهٔ ابرشارگی و مادهٔ چگال</td><td>نوبل فیزیک ۱۹۶۲</td></tr>
+<tr><td>25</td><td><span class="ok">✓</span></td><td>جان بل<br><span class="mono" style="color:#5a6b83;font-size:.85rem">John Bell</span></td><td>نامساوی بل (قضیهٔ بل)</td><td>نامزد نوبل؛ درگذشت ۱۹۹۰</td></tr>
+<tr><td>26</td><td><span class="ok">✓</span></td><td>هیو اورت<br><span class="mono" style="color:#5a6b83;font-size:.85rem">Hugh Everett</span></td><td>تفسیر چندجهانی (جهان‌های موازی)</td><td>شناخت پس از مرگ</td></tr>
+<tr><td>27</td><td><span class="ok">✓</span></td><td>دیوید بوهم<br><span class="mono" style="color:#5a6b83;font-size:.85rem">David Bohm</span></td><td>نظریهٔ موج راهنما (مکانیک بوهمی)</td><td>—</td></tr>
+<tr><td>28</td><td>—</td><td>جان ویلر<br><span class="mono" style="color:#5a6b83;font-size:.85rem">John Wheeler</span></td><td>سیاه‌چاله‌ها و نام‌گذاری «سیاه‌چاله»</td><td>جایزهٔ انریکو فرمی ۱۹۶۸</td></tr>
+<tr><td>29</td><td>—</td><td>وویچیخ زورک<br><span class="mono" style="color:#5a6b83;font-size:.85rem">Wojciech Zurek</span></td><td>نظریهٔ واهمدوسی کوانتومی</td><td>—</td></tr>
+<tr><td>30</td><td><span class="ok">✓</span></td><td>آلن آسپه<br><span class="mono" style="color:#5a6b83;font-size:.85rem">Alain Aspect</span></td><td>آزمایش‌های نابرابری بل و درهم‌تنیدگی</td><td>نوبل فیزیک ۲۰۲۲</td></tr>
+<tr><td>31</td><td>—</td><td>جان کلاوزر<br><span class="mono" style="color:#5a6b83;font-size:.85rem">John Clauser</span></td><td>آزمایش‌های درهم‌تنیدگی (نابرابری بل)</td><td>نوبل فیزیک ۲۰۲۲</td></tr>
+<tr><td>32</td><td><span class="ok">✓</span></td><td>آنتونی زایلینگر<br><span class="mono" style="color:#5a6b83;font-size:.85rem">Anton Zeilinger</span></td><td>فرابرد کوانتومی و درهم‌تنیدگی</td><td>نوبل فیزیک ۲۰۲۲</td></tr>
+<tr><td>33</td><td>—</td><td>جان فون‌نویمان<br><span class="mono" style="color:#5a6b83;font-size:.85rem">John von Neumann</span></td><td>مبانی ریاضی مکانیک کوانتومی</td><td>جایزهٔ انریکو فرمی ۱۹۵۶</td></tr>
+<tr><td>34</td><td>—</td><td>پل اهرنفست<br><span class="mono" style="color:#5a6b83;font-size:.85rem">Paul Ehrenfest</span></td><td>قضیهٔ اهرنفست (گذار به مکانیک کلاسیک)</td><td>—</td></tr>
+<tr><td>35</td><td>—</td><td>ارنست رادرفورد<br><span class="mono" style="color:#5a6b83;font-size:.85rem">Ernest Rutherford</span></td><td>کشف هستهٔ اتم</td><td>نوبل شیمی ۱۹۰۸</td></tr>
+<tr><td>36</td><td>—</td><td>رابرت میلیکان<br><span class="mono" style="color:#5a6b83;font-size:.85rem">Robert Millikan</span></td><td>اندازه‌گیری بار الکترون (قطرهٔ روغن)</td><td>نوبل فیزیک ۱۹۲۳</td></tr>
+<tr><td>37</td><td>—</td><td>کلینتون دیویسون<br><span class="mono" style="color:#5a6b83;font-size:.85rem">Clinton Davisson</span></td><td>پراش الکترون؛ اثبات موجی بودن الکترون</td><td>نوبل فیزیک ۱۹۳۷</td></tr>
+<tr><td>38</td><td>—</td><td>اتو اشترن<br><span class="mono" style="color:#5a6b83;font-size:.85rem">Otto Stern</span></td><td>آزمایش اشترن–گرلاخ و کوانتش اسپین</td><td>نوبل فیزیک ۱۹۴۳</td></tr>
+<tr><td>39</td><td>—</td><td>والتر گرلاخ<br><span class="mono" style="color:#5a6b83;font-size:.85rem">Walther Gerlach</span></td><td>آزمایش اشترن–گرلاخ</td><td>—</td></tr>
+<tr><td>40</td><td>—</td><td>لئو اساکی<br><span class="mono" style="color:#5a6b83;font-size:.85rem">Leo Esaki</span></td><td>تونل‌زنی الکترون در نیمه‌هادی‌ها</td><td>نوبل فیزیک ۱۹۷۳</td></tr>
+<tr><td>41</td><td>—</td><td>گرد بینیگ<br><span class="mono" style="color:#5a6b83;font-size:.85rem">Gerd Binnig</span></td><td>میکروسکوپ تونلی روبشی (STM)</td><td>نوبل فیزیک ۱۹۸۶</td></tr>
+<tr><td>42</td><td>—</td><td>هاینریش روهرر<br><span class="mono" style="color:#5a6b83;font-size:.85rem">Heinrich Rohrer</span></td><td>میکروسکوپ تونلی روبشی (STM)</td><td>نوبل فیزیک ۱۹۸۶</td></tr>
+<tr><td>43</td><td>—</td><td>برایان جوزفسون<br><span class="mono" style="color:#5a6b83;font-size:.85rem">Brian Josephson</span></td><td>اثر جوزفسون در ابررسانایی</td><td>نوبل فیزیک ۱۹۷۳</td></tr>
+<tr><td>44</td><td>—</td><td>آکیرا تونومورا<br><span class="mono" style="color:#5a6b83;font-size:.85rem">Akira Tonomura</span></td><td>آزمایش تک‌الکترونی دو شکاف</td><td>—</td></tr>
+<tr><td>45</td><td><span class="ok">✓</span></td><td>آیزاک نیوتن<br><span class="mono" style="color:#5a6b83;font-size:.85rem">Isaac Newton</span></td><td>مکانیک کلاسیک، گرانش و حسابان</td><td>پیش از عصر نوبل</td></tr>
+<tr><td>46</td><td>—</td><td>جیمز کلرک ماکسول<br><span class="mono" style="color:#5a6b83;font-size:.85rem">James Clerk Maxwell</span></td><td>معادلات ماکسول و الکترومغناطیس</td><td>پیش از عصر نوبل</td></tr>
+<tr><td>47</td><td>—</td><td>لودویگ بولتزمن<br><span class="mono" style="color:#5a6b83;font-size:.85rem">Ludwig Boltzmann</span></td><td>مکانیک آماری و توزیع بولتزمن</td><td>پیش از عصر نوبل</td></tr>
+<tr><td>48</td><td>—</td><td>ماری کوری<br><span class="mono" style="color:#5a6b83;font-size:.85rem">Marie Curie</span></td><td>رادیواکتیویته؛ پولونیوم و رادیوم</td><td>نوبل فیزیک ۱۹۰۳ و شیمی ۱۹۱۱</td></tr>
+<tr><td>49</td><td>—</td><td>امی نوتر<br><span class="mono" style="color:#5a6b83;font-size:.85rem">Emmy Noether</span></td><td>قضیهٔ نوتر (تقارن و پایستگی)</td><td>افتخارات پس از مرگ</td></tr>
+<tr><td>50</td><td>—</td><td>لیزه مایتنر<br><span class="mono" style="color:#5a6b83;font-size:.85rem">Lise Meitner</span></td><td>تفسیر نظری شکافت هسته‌ای</td><td>جایزهٔ انریکو فرمی ۱۹۶۶</td></tr></tbody></table>
+  <h3>دانشمندان منتشرشده که در فهرست ۵۰تایی نبودند (۵ نفر)</h3>
+  <table><thead><tr><th>منتشر</th><th>نام</th><th>شهرت</th><th>جایزه</th></tr></thead><tbody><tr><td><span class="ok">✓</span></td><td>آرتور کامپتون<br><span class="mono" style="color:#5a6b83;font-size:.85rem">Arthur Compton</span></td><td>اثر کامپتون</td><td>نوبل فیزیک ۱۹۲۷</td></tr><tr><td><span class="ok">✓</span></td><td>چارلز ویلسون<br><span class="mono" style="color:#5a6b83;font-size:.85rem">Charles Wilson</span></td><td>اتاقک ابر (اتاقک ویلسون)</td><td>نوبل فیزیک ۱۹۲۷</td></tr><tr><td><span class="ok">✓</span></td><td>دیوید هیلبرت<br><span class="mono" style="color:#5a6b83;font-size:.85rem">David Hilbert</span></td><td>فضای هیلبرت</td><td>ریاضیدان (بدون نوبل)</td></tr><tr><td><span class="ok">✓</span></td><td>پیتر شور<br><span class="mono" style="color:#5a6b83;font-size:.85rem">Peter Shor</span></td><td>الگوریتم شور</td><td>مدال دیراک ۲۰۱۷</td></tr><tr><td><span class="ok">✓</span></td><td>دیوید دوویچ<br><span class="mono" style="color:#5a6b83;font-size:.85rem">David Deutsch</span></td><td>پایه‌گذار رایانش کوانتومی</td><td>جایزهٔ بریک‌ترو ۲۰۲۳</td></tr></tbody></table>
+  <p style="color:#5a6b83;font-size:.85rem">مجموع دانشمندان یکتای سایت: ۲۳ نفر (۲۴ رکورد — اینشتین دوبار ثبت شده).</p>
+</section>
+
+<section id="fixed">
+  <h2>۶. مشکلاتی که رفع شد</h2>
+  <ul class="tight">
+    <li>✅ ایمپورتر قدیمی (مبتنی بر <code>quantum_term</code>) با ایمپورتر جدید <code>quantum_article</code>/<code>quantum_category</code> جایگزین شد.</li>
+    <li>✅ لینک‌های منبعِ بازنشسته/خراب جایگزین شدند (SEP: <code>qt-measurement</code>→<code>qt-issues</code>؛ بریتانیکا: virtual-particle ۴۰۴→QED؛ آهارونوف-بوهم حذف‌شده→تغییر موضوع گسیل تحریکی).</li>
+    <li>✅ بخش ۱۴ (اصلاحات مالک + سیاست نیم‌فاصله) به دستورالعمل مقاله‌نویسی اضافه شد.</li>
+    <li>✅ لینک‌های داخلی ناقص چند مقاله تکمیل شد (quantum-number، fundamental-forces، alpha-decay، stimulated-emission، solvay، EPR، stern-gerlach).</li>
+    <li>✅ تصاویر شاخص ۷۴ مقاله تولید و تحویل شد (zip تیره + روشن).</li>
+    <li>✅ ایمپورتر ایمن شد: مقالهٔ «منتشرشده» هرگز بازنویسی نمی‌شود (گارد ضد بازنویسی).</li>
+    <li>✅ تحویل‌پذیری: افزونه به‌صورت بستهٔ zip برای دانلود مستقیم آماده شد.</li>
+  </ul>
+</section>
+
+<section id="open">
+  <h2>۷. مشکلات باز و اولویت‌بندی</h2>
+  <table>
+    <tr><th>اولویت</th><th>دسته</th><th>مشکل / کار باقی</th><th>اقدام پیشنهادی</th></tr>
+    <tr><td><span class="pill p1">P1</span></td><td>محتوا</td><td>تعارض اسلاگ <code>fundamental-forces</code>: مقالهٔ «نیروهای بنیادی چیستند؟» تازه در سایت منتشر شده (id 2214) و نسخهٔ آمادهٔ ما تکراری است.</td><td>حذف/ادغام نسخهٔ آماده؛ ورود ۱۹ مقالهٔ خالص به‌جای ۲۰.</td></tr>
+    <tr><td><span class="pill p1">P1</span></td><td>اجرا</td><td>نصب افزونه و ورود مقالات جدید (هنوز روی سایت اعمال نشده).</td><td>دانلود zip → نصب → ابزار ← ورود.</td></tr>
+    <tr><td><span class="pill p2">P2</span></td><td>ساختار</td><td>رکورد تکراری اینشتین (slug عددی <code>2060</code>).</td><td>حذف رکورد تکراری.</td></tr>
+    <tr><td><span class="pill p2">P2</span></td><td>ساختار</td><td>املای غلط اسلاگ ماکس پلانک: <code>max-plank</code> به‌جای <code>max-planck</code>.</td><td>اصلاح اسلاگ + ریدایرکت.</td></tr>
+    <tr><td><span class="pill p2">P2</span></td><td>ساختار</td><td>نبود تاکسونومی تگ برای مقاله‌ها.</td><td>ثبت تاکسونومی تگ یا نگه‌داشتن تگ‌ها در متای <code>_qpedia_tags</code>.</td></tr>
+    <tr><td><span class="pill p3">P3</span></td><td>محتوا</td><td>دستهٔ <code>mathematics</code> (ریاضیات) هنوز ۰ مقاله دارد.</td><td>نوشتن مقالات ریاضی (آخرین شاخه طبق برنامه).</td></tr>
+    <tr><td><span class="pill p3">P3</span></td><td>محتوا</td><td>32 بیوگرافی دانشمند باقی مانده.</td><td>نوشتن بیوگرافی‌ها.</td></tr>
+    <tr><td><span class="pill p3">P3</span></td><td>چک</td><td>تطبیق دقیق فهرست ۱۶۰تایی با موجودی (بعضی عنوان‌ها با اسلاگ‌های دیگر پوشش داده شده‌اند).</td><td>جدول تطبیق در نسخهٔ بعدی چنج‌لاگ.</td></tr>
+    <tr><td><span class="pill p3">P3</span></td><td>چک</td><td>تصویر شاخص مقالهٔ جدید «نیروهای بنیادی چیستند؟» و هر مقالهٔ تازه‌منتشرشده.</td><td>بررسی و تولید در صورت نبود.</td></tr>
+    <tr><td><span class="pill p3">P3</span></td><td>چک</td><td>مصرف متاهای سئوی <code>_qpedia_*</code> توسط قالب (قالب فعلاً از excerpt استفاده می‌کند).</td><td>تأیید/اتصال در صورت نیاز.</td></tr>
+  </table>
+</section>
+
+<section id="rules">
+  <h2>۸. قوانین ثبت و تحویل</h2>
+  <ul class="tight">
+    <li><strong>چنج‌لاگ واحد:</strong> فقط همین یک سند نسخه‌دار است؛ با هر تغییر به‌روزرسانی و شمارهٔ نسخه بالا می‌رود.</li>
+    <li><strong>تحویل:</strong> فقط متن قابل‌کپی در صفحه، یا بستهٔ zip با دانلود مستقیم (لینک گیت‌هاب).</li>
+    <li><strong>مقاله:</strong> بدون H1 در بدنه؛ ۱–۲ منبع معتبر خارجی در پایان؛ ≥۵ لینک داخلی؛ عنوان کوتاه؛ هوک؛ سئو جدا از متن؛ انتشار فقط پیش‌نویس.</li>
+    <li><strong>دانلودها:</strong> لینک <code>github.com/lakanzino/qpedia.ir/raw/&lt;شاخه&gt;/&lt;مسیر&gt;</code> (رلیز فقط اگر موجود باشد).</li>
+  </ul>
+</section>
+
+<section id="history">
+  <h2>۹. تاریخچهٔ نسخه‌ها</h2>
+  <table>
+    <tr><th>نسخه</th><th>تاریخ</th><th>تغییر</th></tr>
+    <tr><td><code>v1.0.0</code></td><td>2026-09-03</td><td>نسخهٔ اولیهٔ سند واحد: شناسنامهٔ سایت، هدف/برنامه، پیشرفت، درخت ۱۵ دسته، فهرست ۵۰ دانشمند، مشکلات رفع‌شده/باز با اولویت. کشف تعارض اسلاگ fundamental-forces و ایمن‌سازی ایمپورتر.</td></tr>
+  </table>
+</section>
+
+<footer>
+  کوانتوم پدیا — سند وضعیت پروژه · نسخهٔ 1.0.0 · تولید خودکار از دادهٔ زندهٔ سایت در 2026-09-03
+</footer>
+
+</div>
+</body>
+</html>

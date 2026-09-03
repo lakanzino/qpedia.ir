@@ -2302,7 +2302,7 @@ function qpai_screen() {
 	echo '<p>' . count( $items ) . ' مقاله از ۵ بسته، آمادهٔ ورود به‌صورت <strong>پیش‌نویس</strong> در «مقالات کوانتوم» (quantum_article).</p>';
 
 	if ( isset( $_POST['qpai_go'] ) && check_admin_referer( 'qpai_run' ) ) {
-		$new = 0; $upd = 0; $err = 0;
+		$new = 0; $upd = 0; $err = 0; $skip = 0;
 		echo '<div class="notice notice-info"><ul>';
 		foreach ( $items as $it ) {
 			$slug    = isset( $it['slug'] ) ? sanitize_title( $it['slug'] ) : '';
@@ -2331,6 +2331,13 @@ function qpai_screen() {
 			);
 
 			if ( ! empty( $existing ) ) {
+				$prev_status = get_post_status( (int) $existing[0] );
+				if ( 'publish' === $prev_status ) {
+					// مقالهٔ منتشرشده را دست نمی‌زنیم؛ فقط گزارش می‌دهیم (جلوگیری از بازنویسی محتوای زنده).
+					$skip++;
+					echo '<li>⚠️ رد شد (قبلاً در سایت منتشر شده) — <a href="' . esc_url( get_edit_post_link( (int) $existing[0] ) ) . '">' . esc_html( $title ) . '</a></li>';
+					continue;
+				}
 				$args['ID'] = (int) $existing[0];
 				$id         = wp_update_post( $args );
 				$verb       = 'به‌روزرسانی';
@@ -2367,20 +2374,36 @@ function qpai_screen() {
 				echo '<li>❌ ناموفق — ' . esc_html( $title ) . '</li>';
 			}
 		}
-		echo '</ul><p><strong>' . intval( $new ) . ' ایجاد · ' . intval( $upd ) . ' به‌روزرسانی · ' . intval( $err ) . ' خطا</strong></p></div>';
+		echo '</ul><p><strong>' . intval( $new ) . ' ایجاد · ' . intval( $upd ) . ' به‌روزرسانی · ' . intval( $skip ) . ' ردشده (منتشر) · ' . intval( $err ) . ' خطا</strong></p></div>';
 		echo '<p><a class="button button-primary" href="' . esc_url( admin_url( 'edit.php?post_type=quantum_article&post_status=draft' ) ) . '">دیدن پیش‌نویس‌ها</a></p>';
 		echo '<div class="notice notice-warning"><p>ورود تمام شد. پس از بررسی و انتشار مقاله‌ها، <strong>این افزونه را حذف کنید</strong>.</p></div>';
 	} else {
-		echo '<table class="widefat striped" style="max-width:960px"><thead><tr><th>عنوان</th><th>اسلاگ</th><th>دسته‌ها</th><th>حجم</th></tr></thead><tbody>';
+		echo '<table class="widefat striped" style="max-width:960px"><thead><tr><th>عنوان</th><th>اسلاگ</th><th>دسته‌ها</th><th>حجم</th><th>وضعیت</th></tr></thead><tbody>';
 		foreach ( $items as $it ) {
 			$cats = ( isset( $it['categories'] ) && is_array( $it['categories'] ) ) ? implode( '، ', $it['categories'] ) : '';
 			$size = isset( $it['content'] ) ? mb_strlen( $it['content'] ) : 0;
-			echo '<tr><td>' . esc_html( isset( $it['title'] ) ? $it['title'] : '' ) . '</td><td><code>' . esc_html( isset( $it['slug'] ) ? $it['slug'] : '' ) . '</code></td><td>' . esc_html( $cats ) . '</td><td>' . number_format_i18n( $size ) . ' نویسه</td></tr>';
+			$status = '—';
+			$slug   = isset( $it['slug'] ) ? sanitize_title( $it['slug'] ) : '';
+			if ( '' !== $slug ) {
+				$ex = get_posts(
+					array(
+						'post_type'      => 'quantum_article',
+						'name'           => $slug,
+						'post_status'    => array( 'publish', 'draft', 'pending', 'private', 'future' ),
+						'posts_per_page' => 1,
+						'fields'         => 'ids',
+					)
+				);
+				if ( ! empty( $ex ) ) {
+					$status = ( 'publish' === get_post_status( (int) $ex[0] ) ) ? '<span style="color:#b32d2e">⚠ منتشر است</span>' : '<span style="color:#997404">پیش‌نویس موجود</span>';
+				}
+			}
+			echo '<tr><td>' . esc_html( isset( $it['title'] ) ? $it['title'] : '' ) . '</td><td><code>' . esc_html( $slug ) . '</code></td><td>' . esc_html( $cats ) . '</td><td>' . number_format_i18n( $size ) . ' نویسه</td><td>' . $status . '</td></tr>';
 		}
 		echo '</tbody></table><form method="post" style="margin-top:18px">';
 		wp_nonce_field( 'qpai_run' );
 		echo '<button name="qpai_go" class="button button-primary button-hero">ورود ۲۰ مقاله به‌صورت پیش‌نویس</button></form>';
-		echo '<div class="notice notice-info"><p>نکته: اگر مقاله‌ای با همان slug وجود داشته باشد به‌روزرسانی می‌شود. تگ‌ها و فیلدهای سئو به‌صورت متای سفارشی (<code>_qpedia_*</code>) ذخیره می‌شوند.</p></div>';
+		echo '<div class="notice notice-info"><p>نکته: مقاله‌ای که <strong>منتشر شده</strong> باشد هرگز بازنویسی نمی‌شود و رد می‌شود؛ پیش‌نویسِ موجود به‌روزرسانی می‌شود. تگ‌ها و فیلدهای سئو به‌صورت متای سفارشی (<code>_qpedia_*</code>) ذخیره می‌شوند.</p></div>';
 	}
 
 	echo '</div>';
