@@ -1,0 +1,104 @@
+/* ============================================================
+   QPedia — استایل مدخل دانشمندان (پایهٔ جدید یکپارچه)
+   بخشی از قالب فرزند: به انتهای style.css فرزند یا assets/css/custom.css اضافه شود.
+   متکی بر متغیرهای :root موجود در پوسته (--qp-dark-*, --qp-neon, --qp-ink ...).
+   ============================================================ */
+
+.qp-scientist-profile{max-width:100%;}
+
+/* ---------- ۱) گرید شناسنامهٔ سریع ---------- */
+.qp-ident-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(225px,1fr));
+  gap:14px;
+  margin:0 0 28px;
+}
+.qp-ident-cell{
+  background:linear-gradient(180deg,var(--qp-dark-2,#0a2038),var(--qp-dark-1,#041425));
+  border:1px solid rgba(57,255,20,.16);
+  border-radius:14px;
+  padding:15px 16px;
+  box-shadow:0 10px 26px rgba(3,15,32,.10);
+}
+.qp-ident-cell__k{
+  display:flex;align-items:center;gap:8px;
+  color:var(--qp-neon,#39ff14);
+  font-size:.76rem;font-weight:700;
+  margin-bottom:7px;
+}
+.qp-ident-cell__k::before{
+  content:"";flex:0 0 auto;width:8px;height:8px;border-radius:50%;
+  background:var(--qp-neon,#39ff14);box-shadow:0 0 10px var(--qp-neon,#39ff14);
+}
+.qp-ident-cell__v{color:#eaf6ff;font-size:.92rem;line-height:1.9;}
+
+/* ---------- ۲) قلاب (اپی‌گراف) ---------- */
+.qp-epigraph{
+  font-size:1.22rem;font-weight:700;color:#fff;
+  background:linear-gradient(135deg,var(--qp-dark-1,#041425),var(--qp-dark-3,#123254));
+  border-right:4px solid var(--qp-neon,#39ff14);
+  padding:18px 20px;border-radius:14px;margin:0 0 24px;line-height:1.95;
+  box-shadow:0 16px 40px rgba(3,15,32,.16);
+}
+
+/* ---------- ۳) نقل‌قول (بلوک‌کوت) ---------- */
+.qp-quote{
+  background:linear-gradient(135deg,var(--qp-dark-2,#0a2038),var(--qp-dark-1,#041425));
+  color:#eaf6ff;border-right:4px solid var(--qp-neon,#39ff14);
+  border-radius:14px;padding:20px 22px;margin:20px 0;
+}
+.qp-quote p{color:#eaf6ff;font-size:1.04rem;font-style:italic;margin:0;}
+.qp-quote cite{display:block;margin-top:10px;font-style:normal;font-size:.82rem;color:#9fb3c8;}
+
+/* ---------- ۴) گاه‌شمار ---------- */
+.qp-timeline{list-style:none;margin:0;padding:0;}
+.qp-timeline li{
+  position:relative;padding:9px 26px 9px 0;
+  border-right:2px solid var(--qp-dark-3,#123254);margin-right:10px;
+}
+.qp-timeline li::before{
+  content:"";position:absolute;right:-7px;top:17px;width:12px;height:12px;
+  border-radius:50%;background:var(--qp-neon,#39ff14);
+  box-shadow:0 0 10px var(--qp-neon,#39ff14);border:2px solid #fff;
+}
+.qp-timeline b{color:var(--qp-dark-3,#123254);}
+.qp-timeline span{color:#4b5563;}
+
+/* ---------- ۵) پرسش‌های پرتکرار — آکاردئون جعبه‌ای ---------- */
+.qp-faq{
+  background:var(--qp-surface,#fff);
+  border:1px solid #e3e9f2;border-radius:14px;margin:12px 0;
+  box-shadow:0 6px 18px rgba(3,15,32,.05);overflow:hidden;
+  transition:border-color .2s, box-shadow .2s;
+}
+.qp-faq:hover{border-color:rgba(57,255,20,.45);}
+.qp-faq[open]{border-color:var(--qp-neon,#39ff14);box-shadow:0 12px 30px rgba(3,15,32,.10);}
+.qp-faq summary{
+  list-style:none;cursor:pointer;
+  display:flex;align-items:center;justify-content:space-between;gap:12px;
+  padding:15px 18px;font-weight:700;color:var(--qp-ink,#111827);
+}
+.qp-faq summary::-webkit-details-marker{display:none;}
+.qp-faq .ic{
+  flex:0 0 auto;width:26px;height:26px;border-radius:8px;
+  background:var(--qp-neon-soft,rgba(57,255,20,.14));color:#0b6e3a;
+  display:grid;place-items:center;font-weight:800;font-size:1.15rem;
+  transition:transform .25s, background .25s, color .25s;
+}
+.qp-faq[open] .ic{transform:rotate(45deg);background:var(--qp-neon,#39ff14);color:#041425;}
+.qp-faq .body{padding:0 18px 16px;color:#4b5563;font-size:.95rem;}
+
+/* ---------- ۶) کاوش بیشتر و منابع ---------- */
+.qp-explore{
+  background:var(--qp-surface,#fff);border:1px solid #e3e9f2;
+  border-radius:14px;padding:16px 20px;margin:16px 0;
+}
+.qp-explore ul{margin:8px 0 0;padding-right:20px;}
+.qp-explore li{margin:5px 0;}
+.qp-sources{
+  background:var(--qp-surface,#fff);border:1px solid #e3e9f2;
+  border-radius:14px;padding:16px 20px;margin-top:16px;
+}
+.qp-sources ol{margin:0;padding-right:20px;}
+.qp-sources li{margin:6px 0;}
+.qp-kicker{color:#4b5563;font-size:.85rem;}
