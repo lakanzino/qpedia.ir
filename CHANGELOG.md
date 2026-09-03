@@ -276,3 +276,17 @@ quantum_article  59    quantum_term  0    quantum_scientist  23
 | `AGENT/theme/qpedia-layouts-FINAL.css` | CSS نهایی |
 | `AGENT/test/wp-stub.php` + `run.php` | محیط تست PHP |
 | `qpedia-audit/وصله-نقشه-سایت.md` | وصلهٔ نقشه |
+
+## ایمپورتر ۲۰ مقاله (یک‌بارمصرف)
+
+| آیتم | مقدار |
+|---|---|
+| فایل | `qpedia-articles-importer.php` |
+| نوع | افزونهٔ وردپرس یک‌بارمصرف (ابزار → «ورود مقالات کیوپدیا») |
+| محتوا | ۲۰ مقالهٔ ۵ بسته (مبانی، ذرات، تاریخ/آزمایش، پدیده‌ها) به‌صورت پیش‌نویس |
+| نوع نوشته | `quantum_article` |
+| دسته‌بندی | `quantum_category` (با نگاشت اسلاگ→نام فارسی) |
+| تگ‌ها | متای سفارشی `_qpedia_tags` (تاکسونومی تگ برای مقاله در سایت ثبت نشده) |
+| سئو | متای سفارشی `_qpedia_seo_title`، `_qpedia_meta_description`، `_qpedia_focus_keyphrase`، `_qpedia_secondary_keyphrases` |
+| نویسنده | `_qpedia_author_en`؛ در صورت نبودِ کاربر منطبق، نویسندهٔ جاری |
+| لینک دانلود | https://github.com/lakanzino/qpedia.ir/raw/arena/01a063c9-qpedia-ir/qpedia-articles-importer.php |
