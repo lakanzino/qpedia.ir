@@ -9,7 +9,8 @@
 ## فایل‌های تحویلی
 
 - سند وضعیت/چنج‌لاگ: `CHANGELOG.html` · بستهٔ دانلود: `qpedia-status.zip`
-- افزونهٔ ایمپورتر (zip): `qpedia-articles-importer.zip`
+- افزونهٔ ایمپورتر (zip): `qpedia-articles-importer.zip` (۲۳ مقاله)
+- ایمپورتر مجزای بستهٔ ششم (zip): `qpedia-articles-importer-batch06.zip` (فقط ۴ مقالهٔ جدید — برای ورود پس از ۱۹ مقالهٔ قبلی)
 - افزونهٔ اصلاح ساختاری (zip): `qpedia-site-fixes.zip`
 - فهرست دانشمندان (قابل‌کپی): `quantum-scientists-list.txt`
 
