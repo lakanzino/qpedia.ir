@@ -12,6 +12,7 @@
 - افزونهٔ ایمپورتر (zip): `qpedia-articles-importer.zip` (۲۳ مقاله)
 - ایمپورتر مجزای بستهٔ ششم (zip): `qpedia-articles-importer-batch06.zip` (فقط ۴ مقالهٔ جدید — برای ورود پس از ۱۹ مقالهٔ قبلی)
 - ایمپورتر مجزای بستهٔ هفتم (zip): `qpedia-articles-importer-batch07.zip` (۴ مقالهٔ رایانش و فناوری‌های کوانتومی)
+- **ایمپورتر واحد ۱۵ مقالهٔ جدید (zip): `qpedia-articles-importer-15.zip`** — بسته‌های ۶+۷+۸ (برای ورود پس از ۱۹ مقالهٔ قبلی)
 - افزونهٔ اصلاح ساختاری (zip): `qpedia-site-fixes.zip`
 - فهرست دانشمندان (قابل‌کپی): `quantum-scientists-list.txt`
 
