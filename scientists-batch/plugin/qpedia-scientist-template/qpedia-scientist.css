@@ -6,12 +6,18 @@
 
 .qp-scientist-profile{max-width:100%;}
 
-/* ---------- ۱) گرید شناسنامهٔ سریع ---------- */
+/* ---------- ۱) گرید شناسنامهٔ سریع (۶ کادر = ۳ ستون × ۲ ردیف) ---------- */
 .qp-ident-grid{
   display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(225px,1fr));
+  grid-template-columns:repeat(3, 1fr);
   gap:14px;
   margin:0 0 28px;
+}
+@media (max-width:900px){
+  .qp-ident-grid{grid-template-columns:repeat(2, 1fr);}
+}
+@media (max-width:640px){
+  .qp-ident-grid{grid-template-columns:1fr;}
 }
 .qp-ident-cell{
   background:linear-gradient(180deg,var(--qp-dark-2,#0a2038),var(--qp-dark-1,#041425));

@@ -3,7 +3,7 @@
  * Plugin Name:       QPedia — قالب دانشمندان کوانتوم
  * Plugin URI:        https://qpedia.ir/
  * Description:       گریدِ «شناسنامهٔ سریع»، قلاب، نقل‌قول، گاه‌شمار و پرسش‌های آکاردئونی برای مدخل‌های دانشمندان کوانتوم (نوع نوشتهٔ quantum_scientist). قالب تک‌مدخلی و باکسِ ورود اطلاعات را بدونِ دست‌زدن به فایل‌های پوسته فراهم می‌کند.
- * Version:           1.0.0
+ * Version:           1.1.0
  * Requires at least: 5.6
  * Requires PHP:      7.2
  * Author:            QPedia
@@ -21,7 +21,7 @@ if ( ! class_exists( 'QPedia_Scientist_Template' ) ) {
 	 */
 	final class QPedia_Scientist_Template {
 
-		const VERSION = '1.0.0';
+		const VERSION = '1.1.0';
 
 		/**
 		 * @var QPedia_Scientist_Template|null
@@ -53,19 +53,32 @@ if ( ! class_exists( 'QPedia_Scientist_Template' ) ) {
 		/**
 		 * فیلدهای گرید: کلیدِ متا => برچسب فارسی.
 		 *
+		 * شش کادرِ ثابتِ «شناسنامهٔ سریع» — همان اطلاعات پایه‌ای که هر دانشمندی دارد.
+		 *
 		 * @return array<string,string>
 		 */
 		public static function identity_fields() {
 			return array(
-				'_scientist_en_name'      => 'نام لاتین (زیر عنوان)',
 				'_scientist_fullname'     => 'نام کامل',
 				'_scientist_born_died'    => 'زادروز و درگذشت',
 				'_scientist_birthplace'   => 'زادگاه و ملیت',
 				'_scientist_institutions' => 'پایگاه‌های دانشگاهی',
-				'_scientist_achievement'  => 'دستاورد کلیدی در کوانتوم',
-				'_scientist_nobel'        => 'جایزهٔ نوبل',
-				'_scientist_concepts'     => 'مفاهیم و فرمول‌های جاودانه',
-				'_scientist_family'       => 'خانواده',
+				'_scientist_honors'       => 'جایزه و افتخارات علمی',
+				'_scientist_personal'     => 'زندگی شخصی',
+			);
+		}
+
+		/**
+		 * آیا این فیلد چندخطی (textarea) است؟
+		 *
+		 * @param string $key کلید متا.
+		 * @return bool
+		 */
+		public static function is_long( $key ) {
+			return in_array(
+				$key,
+				array( '_scientist_institutions', '_scientist_honors', '_scientist_personal' ),
+				true
 			);
 		}
 
@@ -130,14 +143,21 @@ if ( ! class_exists( 'QPedia_Scientist_Template' ) ) {
 
 			echo '<style>.qp-meta-row{margin:12px 0}.qp-meta-row label{display:block;font-weight:600;margin-bottom:4px}.qp-meta-row input,.qp-meta-row textarea{width:100%;max-width:640px}</style>';
 
+			// نام لاتین — زیرِ عنوان نمایش داده می‌شود، نه داخل گرید.
+			$en_name = (string) get_post_meta( $post->ID, '_scientist_en_name', true );
+
+			echo '<div class="qp-meta-row">';
+			echo '<label for="_scientist_en_name">نام لاتین (زیر عنوان)</label>';
+			echo '<input type="text" id="_scientist_en_name" name="_scientist_en_name" value="' . esc_attr( $en_name ) . '" />';
+			echo '</div>';
+
 			foreach ( self::identity_fields() as $key => $label ) {
-				$value   = (string) get_post_meta( $post->ID, $key, true );
-				$is_long = in_array( $key, array( '_scientist_institutions', '_scientist_achievement', '_scientist_concepts', '_scientist_family' ), true );
+				$value = (string) get_post_meta( $post->ID, $key, true );
 
 				echo '<div class="qp-meta-row">';
 				echo '<label for="' . esc_attr( $key ) . '">' . esc_html( $label ) . '</label>';
 
-				if ( $is_long ) {
+				if ( self::is_long( $key ) ) {
 					echo '<textarea id="' . esc_attr( $key ) . '" name="' . esc_attr( $key ) . '" rows="2">' . esc_textarea( $value ) . '</textarea>';
 				} else {
 					echo '<input type="text" id="' . esc_attr( $key ) . '" name="' . esc_attr( $key ) . '" value="' . esc_attr( $value ) . '" />';
@@ -171,11 +191,16 @@ if ( ! class_exists( 'QPedia_Scientist_Template' ) ) {
 					continue;
 				}
 
-				$value = in_array( $key, array( '_scientist_institutions', '_scientist_achievement', '_scientist_concepts', '_scientist_family' ), true )
+				$value = self::is_long( $key )
 					? sanitize_textarea_field( wp_unslash( $_POST[ $key ] ) )
 					: sanitize_text_field( wp_unslash( $_POST[ $key ] ) );
 
 				update_post_meta( $post_id, $key, $value );
+			}
+
+			// نام لاتین (زیر عنوان).
+			if ( isset( $_POST['_scientist_en_name'] ) ) {
+				update_post_meta( $post_id, '_scientist_en_name', sanitize_text_field( wp_unslash( $_POST['_scientist_en_name'] ) ) );
 			}
 		}
 
@@ -189,10 +214,6 @@ if ( ! class_exists( 'QPedia_Scientist_Template' ) ) {
 			$cells = '';
 
 			foreach ( self::identity_fields() as $key => $label ) {
-				if ( '_scientist_en_name' === $key ) {
-					continue; // نام لاتین زیرِ عنوان می‌آید، نه داخل گرید.
-				}
-
 				$value = trim( (string) get_post_meta( $post_id, $key, true ) );
 				if ( '' === $value ) {
 					continue;

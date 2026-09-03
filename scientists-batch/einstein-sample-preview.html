@@ -24,7 +24,9 @@ body{margin:0;background:var(--paper);font-family:'Vazirmatn','Segoe UI',Tahoma,
 .qp-epigraph{font-size:1.22rem;font-weight:700;color:#fff;background:linear-gradient(135deg,var(--dark-1) 0%,var(--dark-3) 100%);border-right:4px solid var(--neon);padding:18px 20px;border-radius:14px;margin:0 0 24px;line-height:1.95;box-shadow:0 16px 40px rgba(3,15,32,.16)}
 
 /* identity grid */
-.qp-ident{display:grid;grid-template-columns:repeat(auto-fit,minmax(225px,1fr));gap:14px;margin:0 0 28px}
+.qp-ident{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:0 0 28px}
+@media (max-width:900px){.qp-ident{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:640px){.qp-ident{grid-template-columns:1fr}}
 .qp-cell{background:linear-gradient(180deg,var(--dark-2),var(--dark-1));border:1px solid rgba(57,255,20,.16);border-radius:14px;padding:15px 16px;box-shadow:0 10px 26px rgba(3,15,32,.10)}
 .qp-cell .k{display:flex;align-items:center;gap:8px;color:var(--neon);font-size:.76rem;font-weight:700;margin-bottom:7px}
 .qp-cell .k::before{content:"";flex:0 0 auto;width:8px;height:8px;border-radius:50%;background:var(--neon);box-shadow:0 0 10px var(--neon)}
@@ -77,16 +79,14 @@ body{margin:0;background:var(--paper);font-family:'Vazirmatn','Segoe UI',Tahoma,
   <!-- ۰. قلاب احساسی (اپی‌گراف) -->
   <p class="qp-epigraph">او از میز کارمندیِ ادارهٔ ثبت اختراع، جهان را عوض کرد؛ و تا آخر عمر با جهانی که خودش ساخته بود، سرِ ناسازگاری داشت.</p>
 
-  <!-- ۱. شناسنامهٔ سریع — شبکهٔ گرید -->
+  <!-- ۱. شناسنامهٔ سریع — شبکهٔ گرید (۶ کادر = ۳ ستون × ۲ ردیف) -->
   <div class="qp-ident">
     <div class="qp-cell"><div class="k">نام کامل</div><div class="v">آلبرت اینشتین (Albert Einstein)</div></div>
     <div class="qp-cell"><div class="k">زادروز و درگذشت</div><div class="v">۱۴ مارس ۱۸۷۹ – ۱۸ آوریل ۱۹۵۵ (۷۶ سال)</div></div>
-    <div class="qp-cell"><div class="k">زادگاه و ملیت</div><div class="v">اولم، آلمان؛ ملیت آلمانی (بعدها سوئیسی و آمریکایی)</div></div>
+    <div class="qp-cell"><div class="k">زادگاه و ملیت</div><div class="v">اولم، آلمان؛ آلمانی (بعدها سوئیسی و آمریکایی)</div></div>
     <div class="qp-cell"><div class="k">پایگاه‌های دانشگاهی</div><div class="v">ETH زوریخ · دانشگاه برلین · مؤسسهٔ مطالعات پیشرفتهٔ پرینستون (IAS)</div></div>
-    <div class="qp-cell"><div class="k">دستاورد کلیدی در کوانتوم</div><div class="v">کوانتش نور (کشف فوتون) و تبیین اثر فوتوالکتریک</div></div>
-    <div class="qp-cell"><div class="k">جایزهٔ نوبل</div><div class="v">فیزیک ۱۹۲۱ (کشف قانون اثر فوتوالکتریک)</div></div>
-    <div class="qp-cell"><div class="k">مفاهیم و فرمول‌های جاودانه</div><div class="v">E=mc² · معادلهٔ فوتوالکتریک · آمار بوز-اینشتین · پارادوکس EPR</div></div>
-    <div class="qp-cell"><div class="k">خانواده</div><div class="v">دو ازدواج: میلوا ماریچ و الزا لوونتال · سه فرزند: لیزرل، هانس آلبرت، ادوارد</div></div>
+    <div class="qp-cell"><div class="k">جایزه و افتخارات علمی</div><div class="v">نوبل فیزیک ۱۹۲۱ · مدال کاپلی ۱۹۲۵ · مدال ماکس پلانک ۱۹۲۹ · شخصیت قرن تایم ۱۹۹۹</div></div>
+    <div class="qp-cell"><div class="k">زندگی شخصی</div><div class="v">دو ازدواج (میلوا ماریچ، الزا لوونتال) · سه فرزند: لیزرل، هانس آلبرت، ادوارد · علاقه‌مند به نوازندگی ویولن</div></div>
   </div>
 
   <!-- ۲. قلاب آغازین -->
