@@ -1,6 +1,2 @@
-# Generated thumbnail deliverables (large, downloadable — keep out of git)
-featured-images/
-
-# Python caches
-__pycache__/
-*.pyc
+# Intermediate full-size scientist poster PNGs (only the final WebP is committed)
+scientists-thumbs/png/
