@@ -18,6 +18,9 @@
 - **پوسترهای شاخص دانشمندان (zip): `qpedia-scientist-posters.zip`** — ۵۵ تصویر WebP 800×450 (۳۲ مدخل جدید + ۲۳ منتشرشده)، ماسک رنگی ۱۰رنگه با نام حک‌شده
 - **افزونهٔ اعمال تصاویر شاخص (zip): `qpedia-scientist-posters-importer.zip`** — کامل، همراه ۵۵ پوستر؛ ابزارها ← تصاویر شاخص دانشمندان ← یک کلیک
 - **افزونهٔ اعمال تصاویر شاخص — نسخهٔ سبک (zip): `qpedia-scientist-posters-importer-light.zip`** — بدون تصویر؛ از پوشهٔ `wp-content/uploads/qpedia-scientist-posters/` می‌خواند
+- **تصاویر شاخص ۳۴ مقالهٔ جدید (zip): `qpedia-article-thumbnails.zip`** — WebP 900×450 با نام اسلاگ
+- **افزونهٔ اعمال تصاویر شاخص مقالات (zip): `qpedia-article-thumbnails-importer.zip`** — کامل، همراه ۳۴ هدر؛ ابزارها ← تصاویر شاخص مقالات ← یک کلیک
+- **افزونهٔ اعمال تصاویر شاخص مقالات — نسخهٔ سبک (zip): `qpedia-article-thumbnails-importer-light.zip`** — بدون تصویر؛ از پوشهٔ `wp-content/uploads/qpedia-article-thumbnails/` می‌خواند
 - افزونهٔ ایمپورتر (zip): `qpedia-articles-importer.zip` (۲۳ مقاله)
 - ایمپورتر مجزای بستهٔ ششم (zip): `qpedia-articles-importer-batch06.zip` (فقط ۴ مقالهٔ جدید — برای ورود پس از ۱۹ مقالهٔ قبلی)
 - ایمپورتر مجزای بستهٔ هفتم (zip): `qpedia-articles-importer-batch07.zip` (۴ مقالهٔ رایانش و فناوری‌های کوانتومی)
