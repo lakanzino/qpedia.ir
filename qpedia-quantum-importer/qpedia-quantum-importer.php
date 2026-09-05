@@ -3,7 +3,7 @@
  * Plugin Name: QPedia Quantum Importer - Package 3
  * Plugin URI: https://qpedia.ir
  * Description: Automated 1-click importer for 11 quantum articles into QPedia encyclopedia.
- * Version: 3.0.0
+ * Version: 3.1.0
  * Author: QPedia Scientific Team
  * Author URI: https://qpedia.ir
  * License: GPLv2 or later
@@ -14,7 +14,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'QPEDIA_IMP_PKG3_VERSION', '3.0.0' );
+define( 'QPEDIA_IMP_PKG3_VERSION', '3.1.0' );
 define( 'QPEDIA_IMP_PKG3_CPT', 'quantum_article' );
 define( 'QPEDIA_IMP_PKG3_TAX', 'quantum_category' );
 
@@ -80,7 +80,7 @@ function qpedia_imp_pkg3_register_cpt_tax() {
 add_action( 'admin_menu', 'qpedia_imp_pkg3_admin_menu' );
 function qpedia_imp_pkg3_admin_menu() {
 	add_management_page(
-		'درون‌ریز ۱۱ مقاله QPedia (بسته ۳)',
+		'درون‌ریز ۱۱ مقاله جدید کوانتوم‌پدیا (بسته ۳)',
 		'درون‌ریز ۱۱ مقاله QPedia (بسته ۳)',
 		'manage_options',
 		'qpedia-quantum-importer-pkg3',
@@ -89,16 +89,24 @@ function qpedia_imp_pkg3_admin_menu() {
 }
 
 function qpedia_imp_pkg3_get_articles() {
+	$raw = '';
 	$json_file = dirname( __FILE__ ) . '/articles.json';
 	if ( file_exists( $json_file ) ) {
 		$raw = file_get_contents( $json_file );
-		$data = json_decode( $raw, true );
-		if ( ! empty( $data ) && is_array( $data ) ) {
+	}
+	if ( empty( $raw ) && defined( 'QPEDIA_IMP_PKG3_PAYLOAD' ) ) {
+		$raw = base64_decode( QPEDIA_IMP_PKG3_PAYLOAD );
+	}
+	$data = json_decode( $raw, true );
+	if ( ! empty( $data ) && is_array( $data ) ) {
+		if ( isset( $data['articles'] ) && is_array( $data['articles'] ) ) {
+			return $data['articles'];
+		}
+		if ( isset( $data[0] ) && is_array( $data[0] ) ) {
 			return $data;
 		}
 	}
-	$decoded = base64_decode( QPEDIA_IMP_PKG3_PAYLOAD );
-	return json_decode( $decoded, true );
+	return array();
 }
 
 function qpedia_imp_pkg3_render_admin_page() {
@@ -112,12 +120,16 @@ function qpedia_imp_pkg3_render_admin_page() {
 
 	if ( isset( $_POST['qpedia_imp_pkg3_run'] ) && check_admin_referer( 'qpedia_imp_pkg3_action', 'qpedia_imp_pkg3_nonce' ) ) {
 		foreach ( $articles as $art ) {
+			if ( ! is_array( $art ) || empty( $art['slug'] ) || empty( $art['title'] ) ) {
+				continue;
+			}
+
 			$existing = get_page_by_path( $art['slug'], OBJECT, QPEDIA_IMP_PKG3_CPT );
 			$post_data = array(
 				'post_title'    => $art['title'],
 				'post_name'     => $art['slug'],
-				'post_content'  => $art['content'],
-				'post_excerpt'  => $art['excerpt'],
+				'post_content'  => $art['content'] ?? '',
+				'post_excerpt'  => $art['excerpt'] ?? '',
 				'post_status'   => 'publish',
 				'post_type'     => QPEDIA_IMP_PKG3_CPT,
 				'post_author'   => get_current_user_id(),
@@ -154,7 +166,7 @@ function qpedia_imp_pkg3_render_admin_page() {
 					'id'      => $post_id,
 					'title'   => $art['title'],
 					'slug'    => $art['slug'],
-					'cat'     => $art['category_name'],
+					'cat'     => $art['category_name'] ?? 'کوانتوم',
 					'status'  => $status,
 					'url'     => get_permalink( $post_id ),
 				);
@@ -209,9 +221,10 @@ function qpedia_imp_pkg3_render_admin_page() {
 			<h2 style="margin-top: 0;">لیست مقالات آماده درون‌ریزی (<?php echo $total; ?> مقاله):</h2>
 			<ol style="line-height: 1.8; margin-bottom: 25px;">
 				<?php foreach ( $articles as $a ) : ?>
-					<li>
-						<strong><?php echo esc_html( $a['title'] ); ?></strong> 
-						<span style="color: #666; font-size: 12px;">(دسته: <?php echo esc_html( $a['category_name'] ); ?> | اسلاگ: <code><?php echo esc_html( $a['slug'] ); ?></code>)</span>
+					<?php if ( ! is_array( $a ) ) continue; ?>
+					<li style="margin-bottom: 8px;">
+						<strong><?php echo esc_html( $a['title'] ?? '' ); ?></strong> 
+						<span style="color: #666; font-size: 12px;">(دسته: <?php echo esc_html( $a['category_name'] ?? 'کوانتوم' ); ?> | اسلاگ: <code><?php echo esc_html( $a['slug'] ?? '' ); ?></code>)</span>
 					</li>
 				<?php endforeach; ?>
 			</ol>
