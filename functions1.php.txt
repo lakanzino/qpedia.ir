@@ -741,7 +741,7 @@ function qpedia_sc_cats( $atts ) {
 }
 add_shortcode( 'qp_cats', 'qpedia_sc_cats' );
 
-/* ── مطالب (زنده): [qp_posts eyebrow="..." title="..." count="6" orderby="date" order="DESC" category="" show_excerpt="yes"] ──
+/* ── مطالب (زنده): [qp_posts eyebrow="..." title="..." count="6" orderby="date" order="DESC" category="" exclude="" show_excerpt="yes"] ──
    orderby: تاریخ date | ویرایش modified | پربحث‌ترین comment_count | تصادفی rand | الفبا title */
 function qpedia_sc_posts( $atts ) {
 	$a = shortcode_atts(
@@ -752,6 +752,7 @@ function qpedia_sc_posts( $atts ) {
 			'orderby'      => 'date',
 			'order'        => 'DESC',
 			'category'     => '',
+			'exclude'      => '',
 			'show_excerpt' => 'yes',
 		),
 		$atts,
@@ -780,6 +781,28 @@ function qpedia_sc_posts( $atts ) {
 				'terms'    => array_map( 'trim', explode( ',', sanitize_text_field( $a['category'] ) ) ),
 			),
 		);
+	}
+	if ( '' !== trim( $a['exclude'] ) ) {
+		$not_in = array();
+		foreach ( array_map( 'trim', explode( ',', sanitize_text_field( $a['exclude'] ) ) ) as $token ) {
+			if ( '' === $token ) {
+				continue;
+			}
+			if ( is_numeric( $token ) ) {
+				$not_in[] = absint( $token );
+				continue;
+			}
+			$found = get_page_by_path( $token, OBJECT, 'quantum_article' );
+			if ( ! $found instanceof WP_Post ) {
+				$found = get_page_by_title( $token, OBJECT, 'quantum_article' );
+			}
+			if ( $found instanceof WP_Post ) {
+				$not_in[] = $found->ID;
+			}
+		}
+		if ( ! empty( $not_in ) ) {
+			$args['post__not_in'] = array_unique( array_map( 'absint', $not_in ) );
+		}
 	}
 
 	$query = new WP_Query( $args );
