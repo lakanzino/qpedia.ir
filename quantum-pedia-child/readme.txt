@@ -3,7 +3,7 @@ Contributors: qpedia
 Requires at least: 6.0
 Tested up to: 6.5
 Requires PHP: 7.4
-Stable tag: 1.3.1
+Stable tag: 1.4.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Tags: rtl-language-support, custom-menu, featured-images, threaded-comments, translation-ready
@@ -37,6 +37,12 @@ Tags: rtl-language-support, custom-menu, featured-images, threaded-comments, tra
 
 نسخهٔ جدید زیپ را از همین روش بارگذاری کنید؛ وردپرس فایل‌های قالب فرزند را جایگزین می‌کند.
 تنظیمات، برگه‌ها و مقالات شما دست نمی‌خورند.
+
+== تغییرات 1.4.0 ==
+* حذف کامل front-page: صفحه اول ۱۰۰٪ از پیشخوان کنترل می‌شود
+* ۸ شورت‌کد جدید صفحه اصلی با آمار و مطالب زنده (qp_hero، qp_stats، qp_search، qp_cta_cards، qp_cats، qp_posts، qp_scientists، qp_band)
+* قالب برگه «صفحه اصلی»: بوم خالی تمام‌عرض بدون تیتر و سایدبار
+* محتوای آماده home.html فقط با شورت‌کد + راهنمای فارسی داخل فایل
 
 == تغییرات 1.3.1 ==
 * همگام‌سازی front-page با طرح جدید: ۴ شمارشگر داینامیک، حذف دکمه‌های هیرو

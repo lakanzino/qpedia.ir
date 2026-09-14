@@ -274,3 +274,45 @@
   .qp-guide-box{padding:20px 18px}
   .qp-guide-step{flex-direction:column;gap:8px}
 }
+
+/* ── بوم برگهٔ «صفحه اصلی» ── */
+.qp-home-canvas{padding:26px 0 44px}
+
+/* ── گرید دانشمندان (شورت‌کد qp_scientists) ── */
+.qp-sc-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(160px,1fr));
+  gap:12px;
+}
+.qp-sc-card{
+  background:var(--qp-card,#fff);
+  border:1px solid var(--qp-line,#e5e7eb);
+  border-radius:14px;
+  padding:18px 12px;
+  text-align:center;
+  text-decoration:none;
+  color:inherit;
+  transition:border-color .16s ease,transform .16s ease,box-shadow .16s ease;
+}
+.qp-sc-card:hover{
+  border-color:var(--qp-accent,#0f766e);
+  transform:translateY(-3px);
+  box-shadow:0 12px 26px rgba(15,118,110,.1);
+}
+.qp-sc-ava{
+  width:72px;
+  height:72px;
+  border-radius:50%;
+  margin:0 auto 10px;
+  background:linear-gradient(135deg,#0f766e,#a855f7);
+  color:#fff;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:1.6rem;
+  font-weight:800;
+  overflow:hidden;
+}
+.qp-sc-ava img{width:100%;height:100%;object-fit:cover;display:block}
+.qp-sc-name{margin:0;font-size:.95rem;font-weight:800;color:var(--qp-ink,#0f172a)}
+.qp-sc-latin{margin:4px 0 0;font-size:.78rem;color:var(--qp-dim,#6b7280);direction:ltr}
