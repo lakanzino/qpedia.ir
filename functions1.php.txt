@@ -928,3 +928,95 @@ function qpedia_sc_band( $atts ) {
 	return $out . '</div>';
 }
 add_shortcode( 'qp_band', 'qpedia_sc_band' );
+
+/* ══════════════════════════════════════════════════════════════
+   ۲۰. بلوک‌های صفحه اصلی — ویرایش دیداری بدون شورت‌کد (v1.5.0)
+   سه بلوک داینامیک (هیرو/دسته‌ها/مطالب) که سمت سرور رندر می‌شوند
+   و تنظیماتشان (تیتر، تعداد، ترتیب) در ستون کناری ویرایشگر است.
+   ══════════════════════════════════════════════════════════════ */
+function qpedia_block_atts( $attributes, $keys ) {
+	$out = array();
+	if ( ! is_array( $attributes ) ) {
+		return $out;
+	}
+	foreach ( $keys as $key ) {
+		if ( isset( $attributes[ $key ] ) && '' !== $attributes[ $key ] ) {
+			$out[ $key ] = $attributes[ $key ];
+		}
+	}
+	return $out;
+}
+
+function qpedia_block_hero( $attributes ) {
+	$atts = qpedia_block_atts( $attributes, array( 'badge', 'title', 'desc' ) );
+	$atts['stats'] = ( ! isset( $attributes['showStats'] ) || false !== $attributes['showStats'] ) ? 'yes' : 'no';
+	return qpedia_sc_hero( $atts );
+}
+
+function qpedia_block_cats( $attributes ) {
+	return qpedia_sc_cats( qpedia_block_atts( $attributes, array( 'eyebrow', 'title', 'desc', 'count' ) ) );
+}
+
+function qpedia_block_posts( $attributes ) {
+	return qpedia_sc_posts( qpedia_block_atts( $attributes, array( 'title', 'count', 'orderby', 'exclude' ) ) );
+}
+
+function qpedia_register_blocks() {
+	wp_register_script(
+		'qpedia-blocks',
+		get_stylesheet_directory_uri() . '/assets/js/blocks.js',
+		array( 'wp-blocks', 'wp-element', 'wp-block-editor', 'wp-components', 'wp-i18n' ),
+		'1.5.0',
+		true
+	);
+	wp_register_style(
+		'qpedia-blocks-editor',
+		get_stylesheet_directory_uri() . '/assets/css/blocks-editor.css',
+		array(),
+		'1.5.0'
+	);
+
+	register_block_type(
+		'qp/hero',
+		array(
+			'editor_script'   => 'qpedia-blocks',
+			'editor_style'    => 'qpedia-blocks-editor',
+			'attributes'      => array(
+				'badge'     => array( 'type' => 'string' ),
+				'title'     => array( 'type' => 'string' ),
+				'desc'      => array( 'type' => 'string' ),
+				'showStats' => array( 'type' => 'boolean', 'default' => true ),
+			),
+			'render_callback' => 'qpedia_block_hero',
+		)
+	);
+	register_block_type(
+		'qp/cats',
+		array(
+			'editor_script'   => 'qpedia-blocks',
+			'editor_style'    => 'qpedia-blocks-editor',
+			'attributes'      => array(
+				'eyebrow' => array( 'type' => 'string' ),
+				'title'   => array( 'type' => 'string' ),
+				'desc'    => array( 'type' => 'string' ),
+				'count'   => array( 'type' => 'number', 'default' => 7 ),
+			),
+			'render_callback' => 'qpedia_block_cats',
+		)
+	);
+	register_block_type(
+		'qp/posts',
+		array(
+			'editor_script'   => 'qpedia-blocks',
+			'editor_style'    => 'qpedia-blocks-editor',
+			'attributes'      => array(
+				'title'   => array( 'type' => 'string' ),
+				'count'   => array( 'type' => 'number', 'default' => 6 ),
+				'orderby' => array( 'type' => 'string', 'default' => 'date' ),
+				'exclude' => array( 'type' => 'string', 'default' => 'start,شروع' ),
+			),
+			'render_callback' => 'qpedia_block_posts',
+		)
+	);
+}
+add_action( 'init', 'qpedia_register_blocks' );

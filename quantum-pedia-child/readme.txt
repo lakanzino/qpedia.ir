@@ -3,7 +3,7 @@ Contributors: qpedia
 Requires at least: 6.0
 Tested up to: 6.5
 Requires PHP: 7.4
-Stable tag: 1.4.1
+Stable tag: 1.5.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Tags: rtl-language-support, custom-menu, featured-images, threaded-comments, translation-ready
@@ -37,6 +37,11 @@ Tags: rtl-language-support, custom-menu, featured-images, threaded-comments, tra
 
 نسخهٔ جدید زیپ را از همین روش بارگذاری کنید؛ وردپرس فایل‌های قالب فرزند را جایگزین می‌کند.
 تنظیمات، برگه‌ها و مقالات شما دست نمی‌خورند.
+
+== تغییرات 1.5.0 ==
+* ۳ بلوک گوتنبرگ صفحه اصلی: هیرو، دسته‌بندی‌ها، مطالب — ویرایش دیداری بدون شورت‌کد
+* تنظیمات بلوک‌ها در ستون کناری: تیتر، تعداد، ترتیب (تازه‌ترین/پربحث‌ترین/تصادفی)
+* محتوای آماده home-blocks.html برای چسباندن در ویرایشگر کد
 
 == تغییرات 1.4.1 ==
 * افزودن exclude به شورت‌کد qp_posts (حذف مقاله خاص از لیست با نامک یا تیتر)
