@@ -1,0 +1,1429 @@
+<!DOCTYPE html><html lang='fa' dir='rtl'><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>پیش‌نمایش: از کجا شروع کنیم؟</title>
+<style>
+body{font-family:Tahoma,"Vazirmatn",sans-serif;background:#f1f5f9;color:#111827;margin:0;padding:28px 16px}
+.qp-preview-wrap{max-width:880px;margin:0 auto;background:#fff;border-radius:20px;padding:34px 30px;box-shadow:0 10px 40px rgba(0,0,0,.08)}
+.qp-preview-note{background:#0f172a;color:#e2e8f0;font-size:12px;text-align:center;border-radius:10px;padding:8px;margin-bottom:20px}
+h2{color:#0f172a}
+</style><style>
+/* ═══════════════════════════════════════════════════
+   QPEDIA — چیدمان‌ها (نسخهٔ آزادسازی هدر/فوتر والد)
+   محل: quantum-pedia-child/assets/css/qpedia-layouts.css
+   توضیح: تمام ساختارهای محتوایی حفظ شده‌اند،
+   اما CSS هدر/فوتر سفارشی حذف شده تا هدر و فوتر قالب والد نمایش داده شوند.
+   ═══════════════════════════════════════════════════ */
+
+:root{
+  --qp-ink:#111827;
+  --qp-dim:#6b7280;
+  --qp-faint:#9ca3af;
+  --qp-line:#e5e7eb;
+  --qp-card:#ffffff;
+  --qp-accent:#0f766e;
+  --qp-accent-soft:#ccfbf1;
+  --qp-radius:12px;
+}
+
+/* ── فقط اگر بقایای هدر/فوتر سفارشی هنوز جایی تزریق می‌شود، مخفی بماند ── */
+.qp-hd,
+.qp-ft,
+.qp-bar,
+.qp-foot{display:none!important}
+
+/* ── حذف سایدبار، تمام‌عرض ── */
+#secondary,.widget-area,.sidebar,aside.widget-area{display:none!important}
+#primary,.content-area,#content,.site-main{
+  width:100%!important;
+  max-width:1120px!important;
+  float:none!important;
+  margin-inline:auto!important;
+}
+.entry-meta,.posted-on,.byline,.entry-footer,.author.vcard{display:none!important}
+
+/* ── هاب دسته‌ها ── */
+.qp-hub{margin:0 0 36px}
+.qp-hub__t{margin:0 0 4px;font-size:1.75rem;font-weight:800;letter-spacing:-.4px;color:var(--qp-ink)}
+.qp-hub__s{margin:0 0 20px;color:var(--qp-dim);font-size:.95rem}
+.qp-hub__g{display:grid;grid-template-columns:repeat(auto-fill,minmax(232px,1fr));gap:12px}
+
+.qp-hub__c{
+  display:block;
+  position:relative;
+  padding:17px 18px;
+  background:var(--qp-card);
+  border:1px solid var(--qp-line);
+  border-radius:var(--qp-radius);
+  text-decoration:none;
+  color:inherit;
+  transition:border-color .16s ease,transform .16s ease,box-shadow .16s ease;
+}
+.qp-hub__c:hover{
+  border-color:var(--qp-accent);
+  transform:translateY(-2px);
+  box-shadow:0 6px 18px rgba(15,118,110,.09);
+}
+.qp-hub__b{
+  position:absolute;
+  top:15px;
+  left:16px;
+  min-width:26px;
+  height:22px;
+  padding:0 7px;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  background:var(--qp-accent);
+  color:#fff;
+  border-radius:11px;
+  font-size:.76rem;
+  font-weight:700;
+  font-variant-numeric:tabular-nums;
+}
+.qp-hub__n{display:block;font-weight:700;font-size:1.02rem;margin:0 0 7px;padding-left:38px;color:var(--qp-ink)}
+.qp-hub__k{display:block;color:var(--qp-faint);font-size:.82rem;line-height:1.7}
+
+.qp-recent{margin:0 0 14px;font-size:1.12rem;font-weight:700;color:var(--qp-ink)}
+
+/* ── فهرست مقالات ── */
+.site-main article{
+  background:var(--qp-card);
+  border:1px solid var(--qp-line);
+  border-radius:10px;
+  padding:15px 19px;
+  margin:0 0 11px;
+}
+.site-main article .entry-title{margin:0;font-size:1.08rem;line-height:1.75}
+.site-main article .entry-title a{text-decoration:none;color:var(--qp-ink)}
+.site-main article .entry-title a:hover{color:var(--qp-accent)}
+
+/* ───────────────────────────────────────────────
+   QPEDIA — single.php + single-quantum_scientist.php
+   ─────────────────────────────────────────────── */
+
+.qp-shell{padding-inline:12px}
+.qp-shell--single,
+.qp-shell--scientist{padding-top:24px}
+
+.qp-single,
+.qp-scientist{
+  background:var(--qp-card);
+  border:1px solid var(--qp-line);
+  border-radius:16px;
+  padding:24px;
+  box-shadow:0 10px 28px rgba(17,24,39,.04);
+}
+
+.qp-single__header,
+.qp-scientist__header{margin:0 0 20px}
+
+.qp-single__eyebrow,
+.qp-scientist__eyebrow{
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  margin:0 0 10px;
+  padding:6px 10px;
+  border-radius:999px;
+  background:var(--qp-accent-soft);
+  color:var(--qp-accent);
+  font-size:.84rem;
+  font-weight:700;
+}
+
+.qp-single__title,
+.qp-scientist__title{
+  margin:0;
+  color:var(--qp-ink);
+  font-size:clamp(1.75rem,2.4vw,2.4rem);
+  line-height:1.35;
+  letter-spacing:-.03em;
+}
+
+.qp-single__meta,
+.qp-scientist__meta{
+  display:flex;
+  flex-wrap:wrap;
+  align-items:center;
+  gap:8px 12px;
+  margin:12px 0 0;
+  color:var(--qp-dim);
+  font-size:.92rem;
+}
+
+.qp-scientist__meta a{
+  color:var(--qp-accent);
+  text-decoration:none;
+}
+.qp-scientist__meta a:hover{text-decoration:underline}
+.qp-scientist__sep{color:var(--qp-faint)}
+
+.qp-single__excerpt,
+.qp-scientist__excerpt,
+.qp-scientist__latin{
+  margin:14px 0 0;
+  color:var(--qp-dim);
+  line-height:1.9;
+}
+
+.qp-scientist__latin{
+  font-size:1rem;
+  direction:ltr;
+  text-align:left;
+  font-weight:600;
+  color:var(--qp-ink);
+}
+
+.qp-scientist__chips{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+  margin:0 0 12px;
+}
+
+.qp-scientist__chip{
+  display:inline-flex;
+  align-items:center;
+  padding:6px 10px;
+  border:1px solid var(--qp-line);
+  border-radius:999px;
+  background:#fff;
+  color:var(--qp-dim);
+  text-decoration:none;
+  font-size:.84rem;
+  transition:all .16s ease;
+}
+
+.qp-scientist__chip:hover{
+  border-color:var(--qp-accent);
+  color:var(--qp-accent);
+  background:var(--qp-accent-soft);
+}
+
+.qp-single__media,
+.qp-scientist__media{margin:0 0 24px}
+
+.qp-single__image,
+.qp-scientist__image{
+  display:block;
+  width:100%;
+  height:auto;
+  border-radius:14px;
+}
+
+.qp-single__content,
+.qp-scientist__content{
+  color:var(--qp-ink);
+  font-size:1.02rem;
+  line-height:2.05;
+}
+
+.qp-single__content > *:first-child,
+.qp-scientist__content > *:first-child{margin-top:0}
+
+.qp-single__content h2,
+.qp-single__content h3,
+.qp-scientist__content h2,
+.qp-scientist__content h3{
+  color:var(--qp-ink);
+  line-height:1.5;
+  margin-top:2.1em;
+  margin-bottom:.7em;
+}
+
+.qp-single__content blockquote,
+.qp-scientist__content blockquote{
+  margin:1.4rem 0;
+  padding:14px 18px;
+  border-right:4px solid var(--qp-accent);
+  background:#fafafa;
+  color:#374151;
+}
+
+.qp-single__content img,
+.qp-scientist__content img{
+  max-width:100%;
+  height:auto;
+  border-radius:12px;
+}
+
+/* ───────────────────────────────────────────────
+   QPEDIA — archive-quantum_article.php + archive-quantum_scientist.php
+   ─────────────────────────────────────────────── */
+
+.qp-archive{padding:24px 12px}
+
+.qp-archive__hero{
+  margin:0 0 22px;
+  padding:20px 0 8px;
+}
+
+.qp-archive__eyebrow{
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  margin:0 0 10px;
+  padding:6px 10px;
+  border-radius:999px;
+  background:var(--qp-accent-soft);
+  color:var(--qp-accent);
+  font-size:.84rem;
+  font-weight:700;
+}
+
+.qp-archive__title{
+  margin:0;
+  color:var(--qp-ink);
+  font-size:clamp(1.8rem,2.5vw,2.6rem);
+  line-height:1.35;
+  letter-spacing:-.03em;
+}
+
+.qp-archive__desc{
+  max-width:760px;
+  margin:12px 0 0;
+  color:var(--qp-dim);
+  font-size:1rem;
+  line-height:1.95;
+}
+
+.qp-archive-list--articles{
+  display:grid;
+  gap:14px;
+}
+
+.qp-archive-grid--scientists{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:18px;
+}
+
+.qp-archive-card,
+.qp-scientist-card{
+  background:var(--qp-card);
+  border:1px solid var(--qp-line);
+  border-radius:16px;
+  box-shadow:0 10px 28px rgba(17,24,39,.04);
+}
+
+.qp-archive-card{padding:20px}
+
+.qp-archive-card__chips,
+.qp-scientist-card__chips{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+  margin:0 0 12px;
+}
+
+.qp-archive-card__chip,
+.qp-scientist-card__chip{
+  display:inline-flex;
+  align-items:center;
+  padding:6px 10px;
+  border-radius:999px;
+  border:1px solid var(--qp-line);
+  background:#fff;
+  color:var(--qp-dim);
+  text-decoration:none;
+  font-size:.82rem;
+  transition:all .16s ease;
+}
+
+.qp-archive-card__chip:hover,
+.qp-scientist-card__chip:hover{
+  border-color:var(--qp-accent);
+  color:var(--qp-accent);
+  background:var(--qp-accent-soft);
+}
+
+.qp-archive-card__title,
+.qp-scientist-card__title{
+  margin:0;
+  color:var(--qp-ink);
+  line-height:1.55;
+  font-size:1.2rem;
+}
+
+.qp-archive-card__title a,
+.qp-scientist-card__title a{
+  color:inherit;
+  text-decoration:none;
+}
+
+.qp-archive-card__title a:hover,
+.qp-scientist-card__title a:hover{
+  color:var(--qp-accent);
+}
+
+.qp-archive-card__excerpt,
+.qp-scientist-card__excerpt,
+.qp-scientist-card__latin{
+  margin:12px 0 0;
+  color:var(--qp-dim);
+  line-height:1.9;
+}
+
+.qp-scientist-card__latin{
+  direction:ltr;
+  text-align:left;
+  font-weight:600;
+  color:var(--qp-ink);
+  font-size:.95rem;
+}
+
+.qp-archive-card__meta,
+.qp-scientist-card__meta{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:space-between;
+  align-items:center;
+  gap:10px 14px;
+  margin:16px 0 0;
+  color:var(--qp-faint);
+  font-size:.9rem;
+}
+
+.qp-archive-card__more,
+.qp-scientist-card__more{
+  color:var(--qp-accent);
+  text-decoration:none;
+  font-weight:700;
+}
+
+.qp-archive-card__more:hover,
+.qp-scientist-card__more:hover{text-decoration:underline}
+
+.qp-scientist-card{overflow:hidden}
+
+.qp-scientist-card__media{
+  display:block;
+  aspect-ratio:1/1;
+  background:#eef2f7;
+  overflow:hidden;
+}
+
+.qp-scientist-card__image{
+  display:block;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  object-position:center;
+}
+
+.qp-scientist-card__placeholder{
+  display:grid;
+  place-items:center;
+  width:100%;
+  height:100%;
+  color:var(--qp-dim);
+  font-size:1rem;
+  font-weight:700;
+}
+
+.qp-scientist-card__body{padding:18px}
+
+.navigation.pagination,
+.nav-links{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+  align-items:center;
+  margin:26px 0 0;
+}
+
+.nav-links .page-numbers{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  min-width:40px;
+  height:40px;
+  padding:0 12px;
+  border:1px solid var(--qp-line);
+  border-radius:10px;
+  background:#fff;
+  color:var(--qp-dim);
+  text-decoration:none;
+}
+
+.nav-links .page-numbers.current,
+.nav-links .page-numbers:hover{
+  color:var(--qp-accent);
+  border-color:var(--qp-accent);
+  background:var(--qp-accent-soft);
+}
+
+.qp-empty-state{
+  background:var(--qp-card);
+  border:1px solid var(--qp-line);
+  border-radius:16px;
+  padding:24px;
+}
+
+.qp-empty-state__title{
+  margin:0;
+  color:var(--qp-ink);
+  font-size:1.2rem;
+}
+
+.qp-empty-state__desc{
+  margin:10px 0 0;
+  color:var(--qp-dim);
+  line-height:1.9;
+}
+
+/* ───────────────────────────────────────────────
+   QPEDIA — front-page.php
+   ─────────────────────────────────────────────── */
+
+.qp-front{padding:24px 12px 40px}
+
+.qp-front-hero{
+  padding:24px 0 10px;
+  margin:0 0 22px;
+}
+
+.qp-front-hero__badge,
+.qp-front-section__eyebrow{
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  margin:0 0 12px;
+  padding:6px 10px;
+  border-radius:999px;
+  background:var(--qp-accent-soft);
+  color:var(--qp-accent);
+  font-size:.84rem;
+  font-weight:700;
+}
+
+.qp-front-hero__title,
+.qp-front-section__title{
+  margin:0;
+  color:var(--qp-ink);
+  line-height:1.35;
+  letter-spacing:-.03em;
+}
+
+.qp-front-hero__title{font-size:clamp(1.9rem,3vw,3rem)}
+.qp-front-section__title{font-size:clamp(1.45rem,2.2vw,2rem)}
+
+.qp-front-hero__desc,
+.qp-front-section__desc{
+  max-width:760px;
+  margin:14px 0 0;
+  color:var(--qp-dim);
+  line-height:1.95;
+  font-size:1rem;
+}
+
+.qp-front-hero__stats{
+  display:grid;
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:12px;
+  margin:26px 0 0;
+}
+
+.qp-front-stat{
+  background:var(--qp-card);
+  border:1px solid var(--qp-line);
+  border-radius:14px;
+  padding:18px 16px;
+  text-align:center;
+}
+
+.qp-front-stat__num{
+  display:block;
+  color:var(--qp-ink);
+  font-size:1.65rem;
+  line-height:1;
+  font-weight:800;
+}
+
+.qp-front-stat__label{
+  display:block;
+  margin-top:8px;
+  color:var(--qp-dim);
+  font-size:.86rem;
+}
+
+.qp-front-hero__actions{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  margin:20px 0 0;
+}
+
+.qp-front-btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  min-height:46px;
+  padding:0 18px;
+  border-radius:12px;
+  text-decoration:none;
+  font-weight:700;
+  transition:all .16s ease;
+}
+
+.qp-front-btn--primary{
+  background:var(--qp-accent);
+  color:#fff;
+  border:1px solid var(--qp-accent);
+}
+.qp-front-btn--primary:hover{filter:brightness(.94)}
+
+.qp-front-btn--ghost{
+  background:#fff;
+  color:var(--qp-ink);
+  border:1px solid var(--qp-line);
+}
+.qp-front-btn--ghost:hover{border-color:var(--qp-accent);color:var(--qp-accent)}
+
+.qp-front-section{margin-top:26px}
+
+.qp-front-section__head{
+  display:flex;
+  align-items:end;
+  justify-content:space-between;
+  gap:18px;
+  flex-wrap:wrap;
+  margin:0 0 18px;
+}
+
+.qp-front-section__link{
+  color:var(--qp-accent);
+  text-decoration:none;
+  font-weight:700;
+}
+.qp-front-section__link:hover{text-decoration:underline}
+
+.qp-front-paths{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:14px;
+}
+
+.qp-front-path,
+.qp-front-cat,
+.qp-front-article,
+.qp-front-scientist{
+  background:var(--qp-card);
+  border:1px solid var(--qp-line);
+  border-radius:16px;
+  text-decoration:none;
+  color:inherit;
+  transition:border-color .16s ease,transform .16s ease,box-shadow .16s ease;
+  box-shadow:0 10px 28px rgba(17,24,39,.04);
+}
+
+.qp-front-path:hover,
+.qp-front-cat:hover,
+.qp-front-article:hover,
+.qp-front-scientist:hover{
+  border-color:var(--qp-accent);
+  transform:translateY(-2px);
+  box-shadow:0 14px 30px rgba(15,118,110,.08);
+}
+
+.qp-front-path{padding:20px}
+.qp-front-path__title{margin:0;color:var(--qp-ink);font-size:1.08rem}
+.qp-front-path__desc{margin:10px 0 0;color:var(--qp-dim);line-height:1.9}
+.qp-front-path__more{display:inline-block;margin-top:14px;color:var(--qp-accent);font-weight:700}
+
+.qp-front-cats{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:14px;
+}
+
+.qp-front-cat{display:block;padding:20px}
+.qp-front-cat__top{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:10px;
+  margin:0 0 12px;
+}
+.qp-front-cat__icon{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  min-width:54px;
+  height:32px;
+  padding:0 10px;
+  border-radius:999px;
+  background:var(--qp-accent-soft);
+  color:var(--qp-accent);
+  font-size:.76rem;
+  font-weight:700;
+}
+.qp-front-cat__count{
+  color:var(--qp-dim);
+  font-size:.82rem;
+  font-variant-numeric:tabular-nums;
+}
+.qp-front-cat__title{margin:0;color:var(--qp-ink);font-size:1.08rem;line-height:1.6}
+.qp-front-cat__desc{margin:10px 0 0;color:var(--qp-dim);line-height:1.9;font-size:.92rem}
+.qp-front-cat__subs{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0 0}
+.qp-front-cat__sub{
+  display:inline-flex;
+  align-items:center;
+  padding:5px 9px;
+  border-radius:999px;
+  background:#fff;
+  border:1px solid var(--qp-line);
+  color:var(--qp-dim);
+  font-size:.78rem;
+}
+
+.qp-front-articles{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:14px;
+}
+
+.qp-front-article{display:flex;flex-direction:column;padding:20px}
+.qp-front-article__meta{
+  display:flex;
+  flex-wrap:wrap;
+  align-items:center;
+  gap:8px 10px;
+  color:var(--qp-faint);
+  font-size:.8rem;
+}
+.qp-front-article__term{
+  display:inline-flex;
+  align-items:center;
+  padding:4px 8px;
+  border-radius:999px;
+  background:var(--qp-accent-soft);
+  color:var(--qp-accent);
+  font-weight:700;
+}
+.qp-front-article__title{margin:12px 0 0;color:var(--qp-ink);font-size:1.05rem;line-height:1.75}
+.qp-front-article__excerpt{margin:10px 0 0;color:var(--qp-dim);line-height:1.95}
+
+.qp-front-scientists{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:14px;
+}
+
+.qp-front-scientist{display:block;overflow:hidden}
+.qp-front-scientist__media{
+  aspect-ratio:1/1;
+  background:#eef2f7;
+  overflow:hidden;
+}
+.qp-front-scientist__image{
+  display:block;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  object-position:center;
+}
+.qp-front-scientist__placeholder{
+  display:grid;
+  place-items:center;
+  width:100%;
+  height:100%;
+  color:var(--qp-dim);
+  font-size:2rem;
+  font-weight:800;
+}
+.qp-front-scientist__body{padding:16px}
+.qp-front-scientist__name{margin:0;color:var(--qp-ink);font-size:1rem;line-height:1.6}
+.qp-front-scientist__latin{margin:8px 0 0;direction:ltr;text-align:left;color:var(--qp-dim);font-size:.88rem}
+
+/* ───────────────────────────────────────────────
+   QPEDIA — single-quantum_article.php
+   ─────────────────────────────────────────────── */
+
+.qp-shell--article{padding-top:24px}
+
+.qp-article{
+  background:var(--qp-card);
+  border:1px solid var(--qp-line);
+  border-radius:16px;
+  padding:24px;
+  box-shadow:0 10px 28px rgba(17,24,39,.04);
+}
+
+.qp-article__eyebrow{
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  margin:0 0 10px;
+  padding:6px 10px;
+  border-radius:999px;
+  background:var(--qp-accent-soft);
+  color:var(--qp-accent);
+  font-size:.84rem;
+  font-weight:700;
+}
+
+.qp-article__chips{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+  margin:0 0 12px;
+}
+
+.qp-article__chip{
+  display:inline-flex;
+  align-items:center;
+  padding:6px 10px;
+  border:1px solid var(--qp-line);
+  border-radius:999px;
+  background:#fff;
+  color:var(--qp-dim);
+  text-decoration:none;
+  font-size:.84rem;
+  transition:all .16s ease;
+}
+.qp-article__chip:hover{
+  border-color:var(--qp-accent);
+  color:var(--qp-accent);
+  background:var(--qp-accent-soft);
+}
+
+.qp-article__title{
+  margin:0;
+  color:var(--qp-ink);
+  font-size:clamp(1.8rem,2.5vw,2.6rem);
+  line-height:1.35;
+  letter-spacing:-.03em;
+}
+
+.qp-article__meta{
+  display:flex;
+  flex-wrap:wrap;
+  align-items:center;
+  gap:8px 12px;
+  margin:14px 0 0;
+  color:var(--qp-dim);
+  font-size:.92rem;
+}
+.qp-article__sep{color:var(--qp-faint)}
+
+.qp-article__excerpt{
+  margin:14px 0 0;
+  color:var(--qp-dim);
+  line-height:1.95;
+}
+
+.qp-article__media{margin:22px 0}
+.qp-article__image{
+  display:block;
+  width:100%;
+  height:auto;
+  border-radius:14px;
+}
+
+.qp-article-toc{
+  margin:0 0 22px;
+  padding:18px;
+  border:1px solid var(--qp-line);
+  border-radius:14px;
+  background:#fafafa;
+}
+.qp-article-toc__title{
+  margin:0 0 10px;
+  color:var(--qp-ink);
+  font-size:1rem;
+}
+.qp-article-toc__list,
+.qp-article-toc__sub{
+  margin:0;
+  padding-right:20px;
+  color:var(--qp-dim);
+}
+.qp-article-toc__list li,
+.qp-article-toc__sub li{margin:7px 0}
+.qp-article-toc a{
+  color:var(--qp-dim);
+  text-decoration:none;
+}
+.qp-article-toc a:hover{color:var(--qp-accent)}
+
+.qp-article__content{
+  color:var(--qp-ink);
+  font-size:1.03rem;
+  line-height:2.08;
+}
+.qp-article__content > *:first-child{margin-top:0}
+.qp-article__content h2,
+.qp-article__content h3{
+  color:var(--qp-ink);
+  line-height:1.5;
+  margin-top:2.1em;
+  margin-bottom:.7em;
+}
+.qp-article__content blockquote{
+  margin:1.4rem 0;
+  padding:14px 18px;
+  border-right:4px solid var(--qp-accent);
+  background:#fafafa;
+  color:#374151;
+}
+.qp-article__content img{
+  max-width:100%;
+  height:auto;
+  border-radius:12px;
+}
+
+.qp-related{margin-top:22px}
+.qp-related__title{
+  margin:0 0 14px;
+  color:var(--qp-ink);
+  font-size:1.2rem;
+}
+.qp-related__grid{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:14px;
+}
+.qp-related-card{
+  background:var(--qp-card);
+  border:1px solid var(--qp-line);
+  border-radius:14px;
+  padding:18px;
+}
+.qp-related-card__title{
+  margin:0;
+  color:var(--qp-ink);
+  font-size:1rem;
+  line-height:1.7;
+}
+.qp-related-card__title a{
+  color:inherit;
+  text-decoration:none;
+}
+.qp-related-card__title a:hover{color:var(--qp-accent)}
+.qp-related-card__excerpt{
+  margin:10px 0 0;
+  color:var(--qp-dim);
+  line-height:1.9;
+  font-size:.92rem;
+}
+
+.post-navigation{margin-top:22px}
+.post-navigation .nav-links{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:14px;
+}
+.post-navigation .nav-previous,
+.post-navigation .nav-next{
+  padding:16px 18px;
+  border:1px solid var(--qp-line);
+  border-radius:14px;
+  background:#fff;
+}
+.post-navigation a{
+  text-decoration:none;
+  color:var(--qp-ink);
+}
+.post-navigation .nav-subtitle{
+  display:block;
+  color:var(--qp-dim);
+  font-size:.84rem;
+  margin-bottom:6px;
+}
+.post-navigation .nav-title{
+  display:block;
+  line-height:1.8;
+}
+.post-navigation a:hover .nav-title{color:var(--qp-accent)}
+
+/* ── واکنش‌گرا ── */
+@media (max-width:900px){
+  .qp-front-hero__stats,
+  .qp-front-paths,
+  .qp-front-articles,
+  .qp-front-scientists{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .qp-related__grid{grid-template-columns:1fr}
+}
+
+@media (max-width:700px){
+  .qp-single,
+  .qp-scientist,
+  .qp-article{padding:18px}
+
+  .qp-shell,
+  .qp-archive,
+  .qp-front{padding-inline:8px}
+
+  .qp-archive-card{padding:18px}
+  .qp-scientist-card__body{padding:16px}
+  .qp-archive-card__meta,
+  .qp-scientist-card__meta{justify-content:flex-start}
+  .qp-ft__in{flex-direction:column}
+  .post-navigation .nav-links{grid-template-columns:1fr}
+}
+
+@media (max-width:640px){
+  .qp-front-hero__stats,
+  .qp-front-paths,
+  .qp-front-articles,
+  .qp-front-scientists,
+  .qp-front-cats,
+  .qp-hub__g{grid-template-columns:1fr}
+  .qp-front-hero{padding-top:18px}
+  .qp-hub__t{font-size:1.45rem}
+}
+/* ══════════════════════════════════════════════════════════════════
+   QPEDIA — استایل‌های مدرن و فناورانهٔ بدنهٔ مقالات علمی
+   ══════════════════════════════════════════════════════════════════ */
+
+.qp-article__content {
+  color: #1e293b;
+  font-size: 1.05rem;
+  line-height: 2.15;
+}
+
+.qp-article__content p {
+  margin-bottom: 1.4rem;
+  text-align: justify;
+}
+
+/* ── تیترهای مقاله با تم علمی و خط آبی نئونی ── */
+.qp-article__content h2 {
+  color: #0f172a;
+  font-size: 1.45rem;
+  font-weight: 800;
+  margin-top: 2.5rem;
+  margin-bottom: 1rem;
+  padding-bottom: 8px;
+  border-bottom: 2px solid #e2e8f0;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.qp-article__content h2::before {
+  content: '';
+  display: inline-block;
+  width: 8px;
+  height: 22px;
+  background: linear-gradient(180deg, #0f766e, #00d4ff);
+  border-radius: 4px;
+  margin-left: 10px;
+}
+
+.qp-article__content h3 {
+  color: #0f766e;
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin-top: 1.8rem;
+  margin-bottom: 0.8rem;
+}
+
+/* ── نقل‌قول‌ها و تعاریف ── */
+.qp-article__content blockquote {
+  margin: 1.8rem 0;
+  padding: 18px 24px;
+  background: #f0fdfa;
+  border-right: 4px solid #0f766e;
+  border-radius: 8px 0 0 8px;
+  color: #134e4a;
+  font-style: normal;
+  line-height: 1.9;
+}
+
+.qp-article__content blockquote p {
+  margin-bottom: 0;
+}
+
+/* ── کادرهای هایلایت و پیام علمی (تکنولوژیک) ── */
+.qp-callout {
+  margin: 2rem 0;
+  padding: 20px 22px;
+  border-radius: 12px;
+  background: #f8fafc;
+  border: 1px solid #cbd5e1;
+  border-right: 4px solid #00d4ff;
+  box-shadow: 0 4px 15px -3px rgba(0, 212, 255, 0.08);
+}
+
+.qp-callout--key {
+  background: #f0fdf4;
+  border: 1px solid #bbf7d0;
+  border-right: 4px solid #16a34a;
+  box-shadow: none;
+}
+
+.qp-callout__title {
+  font-weight: 700;
+  font-size: 1.05rem;
+  margin: 0 0 8px;
+  color: #0f172a;
+}
+
+.qp-callout p:last-child {
+  margin-bottom: 0;
+}
+
+/* ══════════════════════════════════════════════════════════════════
+   QPEDIA — برگهٔ راهنمای ورود («از کجا شروع کنیم»)
+   محل: quantum-pedia-child/assets/css/qpedia-guide.css
+   هر بخش رنگ خودش را دارد؛ مینیمال، تکنولوژیک و راست‌به‌چپ.
+   ══════════════════════════════════════════════════════════════════ */
+
+/* ── سربرگ صفحه ── */
+.qp-guide-hero{
+  background:linear-gradient(135deg,#0b1f2a 0%,#0f766e 60%,#14b8a6 100%);
+  color:#fff;
+  border-radius:18px;
+  padding:40px 32px;
+  margin:0 0 26px;
+  position:relative;
+  overflow:hidden;
+}
+.qp-guide-hero::after{
+  content:"";
+  position:absolute;
+  inset-inline-end:-60px;
+  top:-60px;
+  width:220px;
+  height:220px;
+  border:2px solid rgba(255,255,255,.14);
+  border-radius:50%;
+}
+.qp-guide-hero::before{
+  content:"";
+  position:absolute;
+  inset-inline-end:-30px;
+  top:-30px;
+  width:140px;
+  height:140px;
+  border:2px solid rgba(255,255,255,.1);
+  border-radius:50%;
+}
+.qp-guide-hero__badge{
+  display:inline-block;
+  background:rgba(255,255,255,.16);
+  border:1px solid rgba(255,255,255,.3);
+  font-size:.8rem;
+  font-weight:700;
+  padding:5px 16px;
+  border-radius:999px;
+  margin-bottom:14px;
+}
+.qp-guide-hero__title{
+  margin:0 0 10px;
+  font-size:2rem;
+  font-weight:800;
+  color:#fff;
+}
+.qp-guide-hero__desc{
+  margin:0 0 18px;
+  line-height:2.1;
+  color:#e6fffa;
+  max-width:60ch;
+}
+.qp-guide-hero__times{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+}
+.qp-guide-hero__times a{
+  color:#fff;
+  text-decoration:none;
+  font-size:.85rem;
+  font-weight:700;
+  background:rgba(255,255,255,.12);
+  border:1px solid rgba(255,255,255,.35);
+  padding:8px 18px;
+  border-radius:999px;
+  transition:background .15s ease;
+}
+.qp-guide-hero__times a:hover{background:rgba(255,255,255,.25)}
+
+/* ── باکس‌های رنگی ── */
+.qp-guide-box{
+  border-radius:14px;
+  padding:24px 26px;
+  margin:0 0 22px;
+  border:1px solid;
+  border-right-width:5px;
+}
+.qp-guide-box__title{
+  margin:0 0 12px;
+  font-size:1.3rem;
+  font-weight:800;
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+.qp-guide-box__icon{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  width:38px;
+  height:38px;
+  border-radius:10px;
+  font-size:1.15rem;
+  flex:none;
+}
+.qp-guide-box p{margin:0 0 12px;line-height:2.05}
+.qp-guide-box p:last-child{margin-bottom:0}
+.qp-guide-box ul,.qp-guide-box ol{margin:0 0 12px;padding-right:1.3rem;line-height:2}
+.qp-guide-box li{margin-bottom:6px}
+.qp-guide-box a{font-weight:700;text-decoration:none;border-bottom:1px dashed currentColor}
+.qp-guide-box a:hover{border-bottom-style:solid}
+
+/* خاکستری — ۶۰ ثانیه‌ای */
+.qp-guide-box--slate{background:#f8fafc;border-color:#e2e8f0;border-right-color:#64748b}
+.qp-guide-box--slate .qp-guide-box__title{color:#0f172a}
+.qp-guide-box--slate .qp-guide-box__icon{background:#e2e8f0}
+.qp-guide-box--slate a{color:#0f766e}
+
+/* کهربایی — ۵ دقیقه‌ای */
+.qp-guide-box--amber{background:#fffbeb;border-color:#fde68a;border-right-color:#f59e0b}
+.qp-guide-box--amber .qp-guide-box__title{color:#92400e}
+.qp-guide-box--amber .qp-guide-box__icon{background:#fef3c7}
+.qp-guide-box--amber a{color:#b45309}
+
+/* آبی — ۳۰ دقیقه‌ای */
+.qp-guide-box--blue{background:#eff6ff;border-color:#bfdbfe;border-right-color:#2563eb}
+.qp-guide-box--blue .qp-guide-box__title{color:#1e40af}
+.qp-guide-box--blue .qp-guide-box__icon{background:#dbeafe}
+.qp-guide-box--blue a{color:#1d4ed8}
+
+/* بنفش — مسیر کامل */
+.qp-guide-box--violet{background:#f5f3ff;border-color:#ddd6fe;border-right-color:#7c3aed}
+.qp-guide-box--violet .qp-guide-box__title{color:#5b21b6}
+.qp-guide-box--violet .qp-guide-box__icon{background:#ede9fe}
+.qp-guide-box--violet a{color:#6d28d9}
+
+/* سبز — حال‌وهوا */
+.qp-guide-box--green{background:#f0fdf4;border-color:#bbf7d0;border-right-color:#16a34a}
+.qp-guide-box--green .qp-guide-box__title{color:#14532d}
+.qp-guide-box--green .qp-guide-box__icon{background:#dcfce7}
+.qp-guide-box--green a{color:#15803d}
+
+/* فیروزه‌ای — نقشه سایت */
+.qp-guide-box--cyan{background:#ecfeff;border-color:#a5f3fc;border-right-color:#0891b2}
+.qp-guide-box--cyan .qp-guide-box__title{color:#155e75}
+.qp-guide-box--cyan .qp-guide-box__icon{background:#cffafe}
+.qp-guide-box--cyan a{color:#0e7490}
+
+/* رز — هشدار شبه‌علم */
+.qp-guide-box--rose{background:#fff1f2;border-color:#fecdd3;border-right-color:#e11d48}
+.qp-guide-box--rose .qp-guide-box__title{color:#881337}
+.qp-guide-box--rose .qp-guide-box__icon{background:#ffe4e6}
+.qp-guide-box--rose a{color:#be123c}
+
+/* ── گام‌های مسیر ── */
+.qp-guide-steps{list-style:none;margin:0;padding:0}
+.qp-guide-step{
+  background:#fff;
+  border:1px solid #e5e7eb;
+  border-radius:12px;
+  padding:14px 16px;
+  margin:0 0 10px;
+  display:flex;
+  gap:14px;
+  align-items:flex-start;
+}
+.qp-guide-step:last-child{margin-bottom:0}
+.qp-guide-step__num{
+  flex:none;
+  width:36px;
+  height:36px;
+  border-radius:50%;
+  background:linear-gradient(135deg,#7c3aed,#a855f7);
+  color:#fff;
+  font-weight:800;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:1rem;
+}
+.qp-guide-step__body{flex:1;min-width:0}
+.qp-guide-step__level{
+  display:inline-block;
+  font-size:.72rem;
+  font-weight:700;
+  background:#ede9fe;
+  color:#6d28d9;
+  padding:2px 10px;
+  border-radius:999px;
+  margin-bottom:6px;
+}
+.qp-guide-step__title{margin:0 0 4px;font-size:1.05rem}
+.qp-guide-step__title a{border-bottom:none}
+.qp-guide-step__desc{margin:0!important;color:#4b5563;font-size:.92rem}
+
+/* ── کارت‌های حال‌وهوا ── */
+.qp-guide-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(215px,1fr));
+  gap:12px;
+  margin-top:14px;
+}
+.qp-guide-card{
+  background:#fff;
+  border:1px solid #e5e7eb;
+  border-top:4px solid #16a34a;
+  border-radius:12px;
+  padding:16px 18px;
+}
+.qp-guide-card--cyan{border-top-color:#0891b2}
+.qp-guide-card--rose{border-top-color:#e11d48}
+.qp-guide-card__title{margin:0 0 8px;font-size:1rem;font-weight:800}
+.qp-guide-card__desc{margin:0 0 10px!important;font-size:.88rem;color:#4b5563}
+.qp-guide-card ul{margin:0;padding-right:1.1rem;font-size:.88rem}
+.qp-guide-card li{margin-bottom:4px}
+
+/* ── چیپ‌های نقشه سایت ── */
+.qp-guide-chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:12px}
+.qp-guide-chips a{
+  background:#fff;
+  border:1px solid #a5f3fc;
+  color:#155e75!important;
+  font-weight:700;
+  font-size:.88rem;
+  padding:9px 18px;
+  border-radius:999px;
+  text-decoration:none;
+  border-bottom:1px solid #a5f3fc;
+  transition:background .15s ease,transform .15s ease;
+}
+.qp-guide-chips a:hover{background:#cffafe;transform:translateY(-2px)}
+
+/* ── جعبه پایانی + دکمه‌ها ── */
+.qp-guide-cta{
+  background:linear-gradient(135deg,#0f172a 0%,#1e3a5f 60%,#0f766e 100%);
+  color:#fff;
+  border-radius:18px;
+  padding:36px 30px;
+  margin:0 0 26px;
+  text-align:center;
+}
+.qp-guide-cta__title{margin:0 0 10px;font-size:1.5rem;font-weight:800;color:#fff}
+.qp-guide-cta__desc{margin:0 auto 20px;line-height:2;color:#e2e8f0;max-width:56ch}
+.qp-guide-cta__actions{display:flex;flex-wrap:wrap;gap:12px;justify-content:center}
+.qp-guide-promise{
+  list-style:none;
+  margin:0 auto 22px;
+  padding:0;
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  justify-content:center;
+}
+.qp-guide-promise li{
+  background:rgba(255,255,255,.1);
+  border:1px solid rgba(255,255,255,.25);
+  font-size:.83rem;
+  padding:7px 16px;
+  border-radius:999px;
+}
+
+/* ── سوالات متداول صفحه راهنما ── */
+.qp-guide-faq{margin:0 0 10px}
+.qp-guide-faq details{
+  background:#fff;
+  border:1px solid #e5e7eb;
+  border-radius:10px;
+  padding:12px 18px;
+  margin-bottom:10px;
+}
+.qp-guide-faq summary{cursor:pointer;font-weight:700;color:#0f172a}
+.qp-guide-faq details p{margin:10px 0 2px;line-height:2;color:#374151}
+
+@media (max-width:640px){
+  .qp-guide-hero{padding:30px 22px}
+  .qp-guide-hero__title{font-size:1.6rem}
+  .qp-guide-box{padding:20px 18px}
+  .qp-guide-step{flex-direction:column;gap:8px}
+}
+
+</style></head><body><div class='qp-preview-wrap'><div class='qp-preview-note'>پیش‌نمایش برگه «از کجا شروع کنیم؟» — start.html + استایل قالب فرزند</div>
+<div class="qp-guide-hero">
+<div class="qp-guide-hero__badge">راهنمای ورود به سایت</div>
+<h1 class="qp-guide-hero__title">از کجا شروع کنیم؟</h1>
+<p class="qp-guide-hero__desc"><strong>از اینجا شروع کنید.</strong> کوانتوم‌پدیا دانشنامهٔ فارسی فیزیک کوانتوم است: مقاله‌های کوتاه، دقیق و خوش‌خوان، بدون فرمول‌هراسی و بدون شعبده‌بازی. این صفحه نقشهٔ راه توست — بگو چقدر وقت داری، ما مسیرت را نشان می‌دهیم.</p>
+<div class="qp-guide-hero__times"><a href="#qp-60s">۶۰ ثانیه: ۳ جمله</a><a href="#qp-5min">۵ دقیقه: ۳ مقاله</a><a href="#qp-30min">۳۰ دقیقه: مسیر کوتاه</a></div>
+</div>
+
+<div class="qp-guide-box qp-guide-box--slate" id="qp-60s">
+<h2 class="qp-guide-box__title"><span class="qp-guide-box__icon">⏱</span> کوانتوم در ۶۰ ثانیه</h2>
+<p>اگر فقط یک دقیقه وقت داری، همین ۳ جمله را ببر:</p>
+<ol><li><strong>در دنیای خیلی کوچک، ذره‌ها مثل توپ بیلیارد رفتار نمی‌کنند؛</strong> هم موج‌اند هم ذره، و این را آزمایش ثابت کرده نه حدس.</li><li><strong>تا اندازه نگیری، حالت دقیق‌شان نامشخص است</strong> — و این نادانیِ ما نیست، قانون طبیعت است.</li><li><strong>همین قوانین عجیب پشت فناوری‌های واقعی‌اند:</strong> لیزر، ترانزیستور، GPS و کامپیوتر کوانتومی.</li></ol>
+<p>تمام شد — همین. اگر کنجکاو شدی «چرا؟»، برو بخش بعد.</p>
+</div>
+
+<div class="qp-guide-box qp-guide-box--amber" id="qp-5min">
+<h2 class="qp-guide-box__title"><span class="qp-guide-box__icon">⚡</span> اگر فقط ۵ دقیقه وقت داری</h2>
+<p>این ۳ مقاله را بخوان؛ هر کدام قلب یک ایدهٔ بزرگ است:</p>
+<ul><li><a href="https://qpedia.ir/quantum-superposition/">برهم‌نهی کوانتومی</a> — یک ذره چطور می‌تواند «هم این باشد هم آن»؟</li><li><a href="https://qpedia.ir/quantum-entanglement-explained/">درهم‌تنیدگی کوانتومی</a> — همان «عمل شبح‌وار» معروفی که اینشتین باورش نمی‌کرد.</li><li><a href="https://qpedia.ir/heisenberg-uncertainty-principle/">اصل عدم قطعیت هایزنبرگ</a> — چرا نمی‌شود همه‌چیز را هم‌زمان دقیق دانست؟</li></ul>
+<p>بعد از این ۳ تا، دیگر «کوانتوم» برایت یک کلمهٔ ترسناک نیست؛ ۳ تا تصویر ذهنی داری که خیلی‌ها ندارند.</p>
+</div>
+
+<div class="qp-guide-box qp-guide-box--blue" id="qp-30min">
+<h2 class="qp-guide-box__title"><span class="qp-guide-box__icon">🧭</span> اگر ۳۰ دقیقه وقت داری</h2>
+<p>این ۵ مقاله را <strong>به همین ترتیب</strong> بخوان — مثل یک مینی‌دورهٔ فشرده:</p>
+<ol><li><a href="https://qpedia.ir/wave-particle-duality/">دوگانگی موج و ذره</a> — نور و ماده، بالاخره کدام‌اند؟</li><li><a href="https://qpedia.ir/double-slit-experiment/">آزمایش دوشکاف</a> — مشهورترین آزمایش تاریخ فیزیک، قدم‌به‌قدم.</li><li><a href="https://qpedia.ir/quantum-measurement/">اندازه‌گیری کوانتومی</a> — لحظه‌ای که «مشاهده» همه‌چیز را عوض می‌کند.</li><li><a href="https://qpedia.ir/decoherence/">واهم‌دوسی</a> — چرا دنیای بزرگ، کوانتومی به نظر نمی‌رسد؟</li><li><a href="https://qpedia.ir/why-large-objects-dont-superpose/">چرا اشیای بزرگ برهم‌نهی نمی‌شوند؟</a> — جواب سؤالی که حتماً تا اینجا برایت پیش آمده.</li></ol>
+<p>قول می‌دهیم: بعد از این مسیر کوتاه، ۸۰٪ حرف‌های روزمره دربارهٔ کوانتوم را می‌فهمی — و مهم‌تر، می‌فهمی کدام حرف‌ها چرند است.</p>
+</div>
+
+<div class="qp-guide-box qp-guide-box--violet" id="qp-path">
+<h2 class="qp-guide-box__title"><span class="qp-guide-box__icon">🪜</span> مسیر کامل: ۶ گام از صفر تا عمیق</h2>
+<p>اگر جدی هستی، این مسیر قدم‌به‌قدم را برو. هر گام یک دستهٔ کامل از دانشنامه است:</p>
+<ol class="qp-guide-steps">
+<li class="qp-guide-step"><span class="qp-guide-step__num">۱</span><div class="qp-guide-step__body"><span class="qp-guide-step__level">سطح: همه</span><h3 class="qp-guide-step__title"><a href="https://qpedia.ir/topic/fundamentals/">مبانی کوانتوم</a></h3><p class="qp-guide-step__desc">کوانتوم یعنی چه؟ از ذره و موج تا فوتون و الکترون — الفبای کل ماجرا.</p></div></li>
+<li class="qp-guide-step"><span class="qp-guide-step__num">۲</span><div class="qp-guide-step__body"><span class="qp-guide-step__level">سطح: مبتدی تا متوسط</span><h3 class="qp-guide-step__title"><a href="https://qpedia.ir/topic/phenomena/">پدیده‌های کوانتومی</a></h3><p class="qp-guide-step__desc">درهم‌تنیدگی، تونل‌زنی، ابررسانایی — جاهایی که شهود روزمره می‌شکند.</p></div></li>
+<li class="qp-guide-step"><span class="qp-guide-step__num">۳</span><div class="qp-guide-step__body"><span class="qp-guide-step__level">سطح: متوسط</span><h3 class="qp-guide-step__title"><a href="https://qpedia.ir/topic/mathematics/">ریاضیات کوانتوم</a></h3><p class="qp-guide-step__desc">زبان دقیق نظریه: تابع موج، فضای هیلبرت و معادلهٔ شرودینگر — برای ذهن‌های دقیق.</p></div></li>
+<li class="qp-guide-step"><span class="qp-guide-step__num">۴</span><div class="qp-guide-step__body"><span class="qp-guide-step__level">سطح: کاربردی</span><h3 class="qp-guide-step__title"><a href="https://qpedia.ir/topic/technology/">فناوری و کاربردها</a></h3><p class="qp-guide-step__desc">از لیزر و GPS تا کیوبیت و <a href="https://qpedia.ir/quantum-cryptography-internet-security/">رمزنگاری کوانتومی</a> — کوانتومی که الان دارد کار می‌کند.</p></div></li>
+<li class="qp-guide-step"><span class="qp-guide-step__num">۵</span><div class="qp-guide-step__body"><span class="qp-guide-step__level">سطح: داستانی</span><h3 class="qp-guide-step__title"><a href="https://qpedia.ir/topic/history-experiments/">تاریخ و آزمایش‌ها</a></h3><p class="qp-guide-step__desc">از فاجعهٔ فرابنفش تا <a href="https://qpedia.ir/bell-inequality/">نامساوی بل</a> — روایت اینکه بشر چطور فهمید جهان این‌قدر عجیب است.</p></div></li>
+<li class="qp-guide-step"><span class="qp-guide-step__num">۶</span><div class="qp-guide-step__body"><span class="qp-guide-step__level">سطح: عمیق</span><h3 class="qp-guide-step__title"><a href="https://qpedia.ir/topic/interpretations/">تفسیرها و معنا</a></h3><p class="qp-guide-step__desc"><a href="https://qpedia.ir/copenhagen-interpretation/">کپنهاگی</a>، <a href="https://qpedia.ir/many-worlds-interpretation/">چندجهانی</a> و دعوای صدساله بر سر اینکه «واقعاً چه خبر است؟»</p></div></li>
+</ol>
+</div>
+
+<div class="qp-guide-box qp-guide-box--green" id="qp-mood">
+<h2 class="qp-guide-box__title"><span class="qp-guide-box__icon">🎯</span> بر اساس حال‌وهوای تو</h2>
+<p>مسیر بالا حوصله‌ات را سر برد؟ اشکالی ندارد — از دری وارد شو که به سلیقه‌ات می‌خورد:</p>
+<div class="qp-guide-grid">
+<div class="qp-guide-card"><h3 class="qp-guide-card__title">🔭 کنجکاوم، فرمول نمی‌خوام</h3><p class="qp-guide-card__desc">داستان و شگفتی، بدون ریاضی:</p><ul><li><a href="https://qpedia.ir/schrodinger-cat/">گربهٔ شرودینگر</a></li><li><a href="https://qpedia.ir/quantum-teleportation/">تلپورتاسیون کوانتومی</a></li><li><a href="https://qpedia.ir/double-slit-experiment/">آزمایش دوشکاف</a></li></ul></div>
+<div class="qp-guide-card qp-guide-card--cyan"><h3 class="qp-guide-card__title">🎓 دانشجوام، دقیق بگو</h3><p class="qp-guide-card__desc">مفهوم‌های پایه با دقت علمی:</p><ul><li><a href="https://qpedia.ir/photon/">فوتون</a></li><li><a href="https://qpedia.ir/electron/">الکترون</a></li><li><a href="https://qpedia.ir/planck-constant/">ثابت پلانک</a></li><li><a href="https://qpedia.ir/energy-levels/">ترازهای انرژی</a></li></ul></div>
+<div class="qp-guide-card qp-guide-card--rose"><h3 class="qp-guide-card__title">💭 اهل فکرم، معنا می‌خوام</h3><p class="qp-guide-card__desc">فلسفه و معنای نظریه:</p><ul><li><a href="https://qpedia.ir/quantum-interpretation-debate/">آیا فیزیک‌دانان بر سر معنا توافق دارند؟</a></li><li><a href="https://qpedia.ir/is-many-worlds-real/">آیا چندجهانی واقعی است؟</a></li><li><a href="https://qpedia.ir/copenhagen-interpretation/">تفسیر کپنهاگی</a></li></ul></div>
+</div>
+</div>
+
+<div class="qp-guide-box qp-guide-box--cyan" id="qp-map">
+<h2 class="qp-guide-box__title"><span class="qp-guide-box__icon">🗺</span> نقشهٔ سایت در یک نگاه</h2>
+<p>کل دانشنامه همین ۷ مسیر است، به‌علاوهٔ تالار دانشمندان. هر چیپ یک درِ ورود است:</p>
+<div class="qp-guide-chips"><a href="https://qpedia.ir/topic/fundamentals/">مبانی</a><a href="https://qpedia.ir/topic/phenomena/">پدیده‌ها</a><a href="https://qpedia.ir/topic/mathematics/">ریاضیات</a><a href="https://qpedia.ir/topic/technology/">فناوری</a><a href="https://qpedia.ir/topic/history-experiments/">تاریخ و آزمایش‌ها</a><a href="https://qpedia.ir/topic/interpretations/">تفسیرها</a><a href="https://qpedia.ir/topic/pseudoscience/">نقد شبه‌علم</a><a href="https://qpedia.ir/scientists/">👩‍🔬 دانشمندان</a></div>
+<p style="margin-top:12px">پیشنهاد ما: از <a href="https://qpedia.ir/topic/fundamentals/">مبانی</a> شروع کن، بعد برو سراغ <a href="https://qpedia.ir/scientists/">دانشمندان</a> — آشنایی با آدم‌ها (پلانک، اینشتین، بور، هایزنبرگ، شرودینگر، بل) علم را از فرمول خشک بیرون می‌آورد و تبدیلش می‌کند به یک ماجرای انسانی.</p>
+</div>
+
+<div class="qp-guide-box qp-guide-box--rose" id="qp-warn">
+<h2 class="qp-guide-box__title"><span class="qp-guide-box__icon">⚠️</span> یک هشدار دوستانه: کوانتوم واقعی با شبه‌علم فرق دارد</h2>
+<p>قبل از اینکه وارد شوی، این را بدان — چون بیرون از این سایت، از کلمهٔ «کوانتوم» زیاد سوءاستفاده می‌شود:</p>
+<ul><li><strong>کوانتوم واقعی</strong> آزمایش‌پذیر است، مقالهٔ علمی دارد و از دلش فناوری واقعی بیرون آمده: لیزر، <a href="https://qpedia.ir/mri-quantum/">MRI</a>، ترانزیستور، ساعت اتمی.</li><li><strong>شبه‌علم</strong> ادعای بزرگ می‌کند بدون مدرک: «انرژی‌درمانی کوانتومی»، «قانون جذب کوانتومی»، «داروی کوانتومی». هر جا «کوانتوم» را به معجزه و پول چسباندند، زنگ خطر را بشنو.</li></ul>
+<p><strong>۳ نشانهٔ شبه‌علم در یک نگاه:</strong> ۱) وعدهٔ قطعی برای چیزهای پیچیده ۲) «دانشمندان نمی‌خواهند بدانید!» ۳) قیمت‌گذاری روی ناآگاهی تو.</p>
+<p>ما طرف علم‌ایم، نه طرف هیجان. بیشتر بخوان: <a href="https://qpedia.ir/spot-pseudoscience-one-sentence/">چگونه ادعای شبه‌علمی را در یک دقیقه بشناسیم؟</a>، <a href="https://qpedia.ir/everything-is-energy-claim/">ادعای «همه‌چیز انرژی است»</a>، <a href="https://qpedia.ir/is-the-brain-quantum/">آیا مغز کوانتومی است؟</a></p>
+</div>
+
+<div class="qp-guide-cta">
+<h2 class="qp-guide-cta__title">قول ما به تو 🤝</h2>
+<ul class="qp-guide-promise"><li>بدون بزرگ‌نمایی</li><li>با منبع علمی</li><li>به زبان ساده</li><li>هرجا نمی‌دانیم، می‌گوییم نمی‌دانیم</li></ul>
+<p class="qp-guide-cta__desc">کوانتوم‌پدیا قرار نیست تو را «متخصص کوانتوم» کند؛ قرار است کاری کند که دیگر هیچ‌کس نتواند با کلمهٔ «کوانتوم» سرت کلاه بگذارد — و اگر روزی خواستی عمیق شوی، پلهٔ اول را محکم زیر پایت گذاشته باشی. حالا وقتش است: یک در را انتخاب کن و وارد شو.</p>
+<div class="qp-guide-cta__actions"><a class="qp-front-btn qp-front-btn--primary" href="https://qpedia.ir/topic/fundamentals/">شروع از مبانی</a><a class="qp-front-btn qp-front-btn--ghost" href="https://qpedia.ir/scientists/">آشنایی با دانشمندان</a></div>
+</div>
+
+<h2>سوالات متداول</h2>
+<div class="qp-guide-faq">
+<details><summary><strong>۱. برای فهم کوانتوم باید ریاضی بلد باشم؟</strong></summary><p>برای شروع نه. سواد پایهٔ کوانتوم — اینکه بدانی برهم‌نهی و درهم‌تنیدگی یعنی چه — هیچ فرمولی نمی‌خواهد و همین صفحه کافی است. اما اگر بخواهی عمیق شوی و واقعاً «حساب کنی»، دیر یا زود به جبر خطی و معادلات دیفرانسیل می‌رسی. خبر خوب: لازم نیست از همان‌جا شروع کنی.</p></details>
+<details><summary><strong>۲. از کجا بفهمم یک ادعای کوانتومی واقعی است یا شبه‌علم؟</strong></summary><p>سه سؤال بپرس: آیا در نشریهٔ علمی معتبر چاپ شده؟ آیا آزمایش مستقل آن را تأیید کرده؟ آیا فروشنده از ناآگاهی تو پول درمی‌آورد؟ جزئیاتش را در مقالهٔ <a href="https://qpedia.ir/spot-pseudoscience-one-sentence/">شناخت شبه‌علم در یک دقیقه</a> گفته‌ایم.</p></details>
+<details><summary><strong>۳. یادگیری کوانتوم چقدر طول می‌کشد؟</strong></summary><p>سواد پایه: چند هفته مطالعهٔ سبک. فهم دانشگاهی: چند سال. و صادقانه بگوییم: حتی فیزیک‌دان‌ها هم می‌گویند «کوانتوم را نمی‌شود فهمید، فقط می‌شود به آن عادت کرد». پس عجله نکن — مسیر ۶ گام بالای صفحه را آرام برو.</p></details>
+<details><summary><strong>۴. آیا کوانتوم یعنی «هر چیزی ممکن است»؟</strong></summary><p>نه — دقیقاً برعکس. کوانتوم یکی از دقیق‌ترین و قانون‌مندترین نظریه‌های تاریخ علم است؛ پیش‌بینی‌هایش تا چند رقم اعشار با آزمایش می‌خواند. «هر چیزی ممکن است» شعار شبه‌علم است، نه فیزیک.</p></details>
+</div>
+
+<h2>قدم‌های بعدی</h2>
+<ul><li><a href="https://qpedia.ir/quantum-career-future-learn/">آیندهٔ شغلی: آیا باید فیزیک کوانتوم یاد بگیریم؟</a> — اگر به کوانتوم به چشم مسیر حرفه‌ای نگاه می‌کنی.</li><li><a href="https://qpedia.ir/topic/pseudoscience/">دستهٔ نقد شبه‌علم</a> — واکسن ذهنی در برابر کلاهبرداری‌های «کوانتومی».</li><li><a href="https://qpedia.ir/scientists/">تالار دانشمندان</a> — علم را از چشم آدم‌هایی ببین که ساختندش.</li></ul>
+
+</div></body></html>
