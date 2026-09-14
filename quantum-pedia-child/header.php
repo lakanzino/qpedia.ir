@@ -63,7 +63,7 @@ if ( ! is_wp_error( $qpedia_header_categories ) && ! empty( $qpedia_header_categ
 		<div class="qp-global-header__brand">
 			<a class="qp-brand" href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home">
 				<span class="qp-brand__logo-wrap">
-					<img class="qp-brand__logo" src="<?php echo esc_url( get_stylesheet_directory_uri() . '/assets/images/qpedia-logo-white.png' ); ?>" alt="<?php esc_attr_e( 'لوگوی کوانتوم پدیا', 'quantum-pedia-child' ); ?>" width="52" height="52" decoding="async" />
+					<img class="qp-brand__logo" src="<?php echo esc_url( get_stylesheet_directory_uri() . '/assets/images/qpedia-logo-neon.png' ); ?>" alt="<?php esc_attr_e( 'لوگوی کوانتوم پدیا', 'quantum-pedia-child' ); ?>" width="52" height="52" decoding="async" />
 				</span>
 				<span class="qp-brand__text">
 					<span class="qp-brand__title">کوانتوم پدیا فارسی</span>

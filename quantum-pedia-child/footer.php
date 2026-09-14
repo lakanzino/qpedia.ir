@@ -11,7 +11,7 @@ defined( 'ABSPATH' ) || exit;
 	<div class="container qp-global-footer__inner">
 		<div class="qp-global-footer__brand">
 			<div class="qp-global-footer__brand-top">
-				<img class="qp-global-footer__logo" src="<?php echo esc_url( get_stylesheet_directory_uri() . '/assets/images/qpedia-logo-white.png' ); ?>" alt="<?php esc_attr_e( 'لوگوی کوانتوم پدیا', 'quantum-pedia-child' ); ?>" width="44" height="44" decoding="async" />
+				<img class="qp-global-footer__logo" src="<?php echo esc_url( get_stylesheet_directory_uri() . '/assets/images/qpedia-logo-neon.png' ); ?>" alt="<?php esc_attr_e( 'لوگوی کوانتوم پدیا', 'quantum-pedia-child' ); ?>" width="44" height="44" decoding="async" />
 				<div class="qp-global-footer__title">کوانتوم پدیا فارسی</div>
 			</div>
 			<p class="qp-global-footer__desc">منبعی مینیمال و دقیق برای مرور مفاهیم، فناوری‌ها و روایت‌های مهم دنیای کوانتوم.</p>

@@ -3,7 +3,7 @@ Contributors: qpedia
 Requires at least: 6.0
 Tested up to: 6.5
 Requires PHP: 7.4
-Stable tag: 1.1.1
+Stable tag: 1.2.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Tags: rtl-language-support, custom-menu, featured-images, threaded-comments, translation-ready
@@ -37,6 +37,12 @@ Tags: rtl-language-support, custom-menu, featured-images, threaded-comments, tra
 
 نسخهٔ جدید زیپ را از همین روش بارگذاری کنید؛ وردپرس فایل‌های قالب فرزند را جایگزین می‌کند.
 تنظیمات، برگه‌ها و مقالات شما دست نمی‌خورند.
+
+== تغییرات 1.2.0 ==
+* بازطراحی مینیمال صفحه اصلی: دو لینک اصلی (شروع + دانشمندان)
+* حذف بخش اسلایدر دانشمندان از صفحه اصلی + پاک‌سازی CSS مرده
+* لوگوی نئونی جدید اتم (جایگزین لوگوهای قبلی) با نمایش دایره‌ای
+* بهینه‌سازی functions.php: حذف توابع تکراری، یکدست‌سازی، افزودن start به برگه‌های ثابت
 
 == تغییرات 1.1.1 ==
 * افزودن استایل برگه راهنمای ورود (qpedia-guide.css) با باکس‌های رنگی

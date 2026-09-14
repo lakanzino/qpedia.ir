@@ -1,10 +1,11 @@
 <?php
 /**
- * Front page template.
+ * Front page template — minimal landing (v1.2.0).
  *
- * ساختار دائمی صفحهٔ نخست سایت.
- * این فایل مستقل از برگهٔ سفارشی عمل می‌کند و با وجود آن،
- * وردپرس مستقیماً همین فایل را برای صفحهٔ اول به‌کار می‌گیرد.
+ * صفحهٔ نخست مینیمال با دو لینک اصلی: برگهٔ شروع + دانشمندان.
+ * بخش اسلایدر دانشمندان حذف شده؛ دانشمندان فقط از لینک اصلی در دسترس‌اند.
+ * این فایل مستقل از برگهٔ سفارشی عمل می‌کند و وردپرس مستقیماً همین فایل
+ * را برای صفحهٔ اول به‌کار می‌گیرد.
  *
  * @package Quantum_Pedia_Child
  */
@@ -13,10 +14,8 @@ defined( 'ABSPATH' ) || exit;
 
 get_header();
 
-$article_counts   = wp_count_posts( 'quantum_article' );
-$scientist_counts = wp_count_posts( 'quantum_scientist' );
-$article_total    = isset( $article_counts->publish ) ? (int) $article_counts->publish : 0;
-$scientist_total  = isset( $scientist_counts->publish ) ? (int) $scientist_counts->publish : 0;
+$article_counts = wp_count_posts( 'quantum_article' );
+$article_total  = isset( $article_counts->publish ) ? (int) $article_counts->publish : 0;
 
 $parent_categories = get_terms(
 	array(
@@ -27,23 +26,7 @@ $parent_categories = get_terms(
 		'order'      => 'DESC',
 	)
 );
-
-$subcategories = get_terms(
-	array(
-		'taxonomy'   => 'quantum_category',
-		'hide_empty' => true,
-		'orderby'    => 'count',
-		'order'      => 'DESC',
-	)
-);
-$sub_total = 0;
-if ( ! is_wp_error( $subcategories ) && ! empty( $subcategories ) ) {
-	foreach ( $subcategories as $sub_term ) {
-		if ( ! empty( $sub_term->parent ) ) {
-			$sub_total++;
-		}
-	}
-}
+$parent_total = ( ! is_wp_error( $parent_categories ) && ! empty( $parent_categories ) ) ? count( $parent_categories ) : 0;
 
 $cat_descriptions = array(
 	'fundamentals'        => 'سنگ‌بنای مکانیک کوانتومی؛ از مفاهیم پایه تا ذرات بنیادی.',
@@ -65,40 +48,15 @@ $cat_icons = array(
 	'pseudoscience'       => 'نقد',
 );
 
-$quick_links = array(
-	array(
-		'title' => 'شروع از مبانی',
-		'desc'  => 'اگر تازه واردی، از مفاهیم پایه و مقاله‌های مقدماتی شروع کن.',
-		'url'   => home_url( '/topic/fundamentals/' ),
-	),
-	array(
-		'title' => 'مرور دسته‌ها',
-		'desc'  => 'اگر دنبال مسیر موضوعی هستی، از دسته‌بندی‌های اصلی وارد شو.',
-		'url'   => '#qp-front-cats',
-	),
-	array(
-		'title' => 'آشنایی با دانشمندان',
-		'desc'  => 'نقش چهره‌های اصلی این علم را در شکل‌گیری نظریه ببین.',
-		'url'   => home_url( '/scientists/' ),
-	),
-);
+// دو لینک اصلی صفحهٔ نخست.
+$start_url = function_exists( 'qpedia_child_find_page_url' )
+	? qpedia_child_find_page_url( array( 'start', 'شروع', 'از-کجا-شروع-کنیم' ), '/start/' )
+	: home_url( '/start/' );
+$scientists_url = home_url( '/scientists/' );
 
 $latest_articles = new WP_Query(
 	array(
 		'post_type'              => 'quantum_article',
-		'posts_per_page'         => 6,
-		'post_status'            => 'publish',
-		'orderby'                => 'date',
-		'order'                  => 'DESC',
-		'ignore_sticky_posts'    => true,
-		'no_found_rows'          => true,
-		'update_post_meta_cache' => false,
-	)
-);
-
-$featured_scientists = new WP_Query(
-	array(
-		'post_type'              => 'quantum_scientist',
 		'posts_per_page'         => 6,
 		'post_status'            => 'publish',
 		'orderby'                => 'date',
@@ -122,16 +80,8 @@ $featured_scientists = new WP_Query(
 					<span class="qp-front-stat__label">مقاله</span>
 				</div>
 				<div class="qp-front-stat">
-					<span class="qp-front-stat__num"><?php echo esc_html( number_format_i18n( is_wp_error( $parent_categories ) ? 0 : count( $parent_categories ) ) ); ?></span>
+					<span class="qp-front-stat__num"><?php echo esc_html( number_format_i18n( $parent_total ) ); ?></span>
 					<span class="qp-front-stat__label">دستهٔ اصلی</span>
-				</div>
-				<div class="qp-front-stat">
-					<span class="qp-front-stat__num"><?php echo esc_html( number_format_i18n( $sub_total ) ); ?></span>
-					<span class="qp-front-stat__label">زیردسته</span>
-				</div>
-				<div class="qp-front-stat">
-					<span class="qp-front-stat__num"><?php echo esc_html( number_format_i18n( $scientist_total ) ); ?></span>
-					<span class="qp-front-stat__label">دانشمند</span>
 				</div>
 			</div>
 
@@ -140,27 +90,29 @@ $featured_scientists = new WP_Query(
 			</div>
 
 			<div class="qp-front-hero__actions">
-				<a class="qp-front-btn qp-front-btn--primary" href="<?php echo esc_url( home_url( '/topic/fundamentals/' ) ); ?>">شروع از مبانی</a>
-				<a class="qp-front-btn qp-front-btn--ghost" href="#qp-front-cats">مرور دسته‌ها</a>
+				<a class="qp-front-btn qp-front-btn--primary" href="<?php echo esc_url( $start_url ); ?>">از کجا شروع کنیم؟</a>
+				<a class="qp-front-btn qp-front-btn--ghost" href="<?php echo esc_url( $scientists_url ); ?>">دانشمندان</a>
 			</div>
 		</section>
 
-		<section class="qp-front-section qp-front-section--path">
-			<div class="qp-front-section__head">
-				<div>
-					<div class="qp-front-section__eyebrow">مسیر سریع</div>
-					<h2 class="qp-front-section__title">از کجا شروع کنم؟</h2>
-				</div>
-			</div>
-
-			<div class="qp-front-paths">
-				<?php foreach ( $quick_links as $item ) : ?>
-					<a class="qp-front-path" href="<?php echo esc_url( $item['url'] ); ?>">
-						<h3 class="qp-front-path__title"><?php echo esc_html( $item['title'] ); ?></h3>
-						<p class="qp-front-path__desc"><?php echo esc_html( $item['desc'] ); ?></p>
-						<span class="qp-front-path__more">ورود به بخش</span>
-					</a>
-				<?php endforeach; ?>
+		<section class="qp-front-section qp-front-section--cta" aria-label="دو مسیر اصلی">
+			<div class="qp-front-cta-grid">
+				<a class="qp-front-cta-card qp-front-cta-card--start" href="<?php echo esc_url( $start_url ); ?>">
+					<span class="qp-front-cta-card__icon" aria-hidden="true">🧭</span>
+					<span class="qp-front-cta-card__body">
+						<span class="qp-front-cta-card__title">از کجا شروع کنیم؟</span>
+						<span class="qp-front-cta-card__desc">نقشهٔ راه ورود به سایت: ۶۰ ثانیه، ۵ دقیقه یا مسیر کامل — انتخاب با توست.</span>
+					</span>
+					<span class="qp-front-cta-card__arrow" aria-hidden="true">←</span>
+				</a>
+				<a class="qp-front-cta-card qp-front-cta-card--scientists" href="<?php echo esc_url( $scientists_url ); ?>">
+					<span class="qp-front-cta-card__icon" aria-hidden="true">👩‍🔬</span>
+					<span class="qp-front-cta-card__body">
+						<span class="qp-front-cta-card__title">دانشمندان کوانتوم</span>
+						<span class="qp-front-cta-card__desc">با چهره‌هایی آشنا شو که این علم را ساختند: از پلانک و اینشتین تا بل و فاینمن.</span>
+					</span>
+					<span class="qp-front-cta-card__arrow" aria-hidden="true">←</span>
+				</a>
 			</div>
 		</section>
 
@@ -239,48 +191,6 @@ $featured_scientists = new WP_Query(
 							</div>
 							<h3 class="qp-front-article__title"><?php the_title(); ?></h3>
 							<p class="qp-front-article__excerpt"><?php echo esc_html( get_the_excerpt() ); ?></p>
-						</a>
-					<?php endwhile; ?>
-				</div>
-				<?php wp_reset_postdata(); ?>
-			<?php endif; ?>
-		</section>
-
-		<section class="qp-front-section qp-front-section--scientists">
-			<div class="qp-front-section__head">
-				<div>
-					<div class="qp-front-section__eyebrow">تالار دانشمندان</div>
-					<h2 class="qp-front-section__title">چهره‌های مهم کوانتوم</h2>
-				</div>
-				<a class="qp-front-section__link" href="<?php echo esc_url( home_url( '/scientists/' ) ); ?>">همهٔ دانشمندان</a>
-			</div>
-
-			<?php if ( $featured_scientists->have_posts() ) : ?>
-				<div class="qp-front-scientists">
-					<?php while ( $featured_scientists->have_posts() ) : $featured_scientists->the_post(); ?>
-						<?php
-						$en_name = trim( (string) get_post_meta( get_the_ID(), '_scientist_en_name', true ) );
-						$initial = '';
-						if ( $en_name ) {
-							$initial = strtoupper( function_exists( 'mb_substr' ) ? mb_substr( $en_name, 0, 1, 'UTF-8' ) : substr( $en_name, 0, 1 ) );
-						} else {
-							$initial = 'Q';
-						}
-						?>
-						<a class="qp-front-scientist" href="<?php the_permalink(); ?>">
-							<div class="qp-front-scientist__media">
-								<?php if ( has_post_thumbnail() ) : ?>
-									<?php echo get_the_post_thumbnail( get_the_ID(), 'medium_large', array( 'class' => 'qp-front-scientist__image' ) ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
-								<?php else : ?>
-									<span class="qp-front-scientist__placeholder"><?php echo esc_html( $initial ); ?></span>
-								<?php endif; ?>
-							</div>
-							<div class="qp-front-scientist__body">
-								<h3 class="qp-front-scientist__name"><?php the_title(); ?></h3>
-								<?php if ( $en_name ) : ?>
-									<p class="qp-front-scientist__latin"><?php echo esc_html( $en_name ); ?></p>
-								<?php endif; ?>
-							</div>
 						</a>
 					<?php endwhile; ?>
 				</div>
