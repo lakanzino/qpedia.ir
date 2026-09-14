@@ -3,7 +3,7 @@ Contributors: qpedia
 Requires at least: 6.0
 Tested up to: 6.5
 Requires PHP: 7.4
-Stable tag: 1.3.0
+Stable tag: 1.3.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Tags: rtl-language-support, custom-menu, featured-images, threaded-comments, translation-ready
@@ -37,6 +37,10 @@ Tags: rtl-language-support, custom-menu, featured-images, threaded-comments, tra
 
 نسخهٔ جدید زیپ را از همین روش بارگذاری کنید؛ وردپرس فایل‌های قالب فرزند را جایگزین می‌کند.
 تنظیمات، برگه‌ها و مقالات شما دست نمی‌خورند.
+
+== تغییرات 1.3.1 ==
+* همگام‌سازی front-page با طرح جدید: ۴ شمارشگر داینامیک، حذف دکمه‌های هیرو
+* کادرهای حرفه‌ای 01/02 بدون ایموجی + تیترهای بولد (بیوگرافی دانشمندان)
 
 == تغییرات 1.3.0 ==
 * بیلد کامل و تمیز از صفر: بازگردانی front-page با طرح مینیمال جدید (دو لینک اصلی)

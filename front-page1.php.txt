@@ -1,6 +1,6 @@
 <?php
 /**
- * Front page template — minimal landing (v1.3.0).
+ * Front page template — minimal landing (v1.3.1).
  *
  * صفحهٔ نخست مینیمال با دو لینک اصلی: برگهٔ شروع + دانشمندان.
  * بخش اسلایدر دانشمندان حذف شده؛ دانشمندان فقط از لینک اصلی در دسترس‌اند.
@@ -27,6 +27,24 @@ $parent_categories = get_terms(
 	)
 );
 $parent_total = ( ! is_wp_error( $parent_categories ) && ! empty( $parent_categories ) ) ? count( $parent_categories ) : 0;
+
+$scientist_counts = wp_count_posts( 'quantum_scientist' );
+$scientist_total  = isset( $scientist_counts->publish ) ? (int) $scientist_counts->publish : 0;
+
+$all_categories = get_terms(
+	array(
+		'taxonomy'   => 'quantum_category',
+		'hide_empty' => true,
+	)
+);
+$sub_total = 0;
+if ( ! is_wp_error( $all_categories ) && ! empty( $all_categories ) ) {
+	foreach ( $all_categories as $term ) {
+		if ( ! empty( $term->parent ) ) {
+			$sub_total++;
+		}
+	}
+}
 
 $cat_descriptions = array(
 	'fundamentals'        => 'سنگ‌بنای مکانیک کوانتومی؛ از مفاهیم پایه تا ذرات بنیادی.',
@@ -83,32 +101,36 @@ $latest_articles = new WP_Query(
 					<span class="qp-front-stat__num"><?php echo esc_html( number_format_i18n( $parent_total ) ); ?></span>
 					<span class="qp-front-stat__label">دستهٔ اصلی</span>
 				</div>
+				<div class="qp-front-stat">
+					<span class="qp-front-stat__num"><?php echo esc_html( number_format_i18n( $sub_total ) ); ?></span>
+					<span class="qp-front-stat__label">زیردسته</span>
+				</div>
+				<div class="qp-front-stat">
+					<span class="qp-front-stat__num"><?php echo esc_html( number_format_i18n( $scientist_total ) ); ?></span>
+					<span class="qp-front-stat__label">دانشمند</span>
+				</div>
 			</div>
 
 			<div class="qp-front-search">
 				<?php get_search_form(); ?>
 			</div>
 
-			<div class="qp-front-hero__actions">
-				<a class="qp-front-btn qp-front-btn--primary" href="<?php echo esc_url( $start_url ); ?>">از کجا شروع کنیم؟</a>
-				<a class="qp-front-btn qp-front-btn--ghost" href="<?php echo esc_url( $scientists_url ); ?>">دانشمندان</a>
-			</div>
 		</section>
 
 		<section class="qp-front-section qp-front-section--cta" aria-label="دو مسیر اصلی">
 			<div class="qp-front-cta-grid">
 				<a class="qp-front-cta-card qp-front-cta-card--start" href="<?php echo esc_url( $start_url ); ?>">
-					<span class="qp-front-cta-card__icon" aria-hidden="true">🧭</span>
+					<span class="qp-front-cta-card__icon" aria-hidden="true">01</span>
 					<span class="qp-front-cta-card__body">
-						<span class="qp-front-cta-card__title">از کجا شروع کنیم؟</span>
+						<span class="qp-front-cta-card__title"><strong>از کجا شروع کنیم؟</strong></span>
 						<span class="qp-front-cta-card__desc">نقشهٔ راه ورود به سایت: ۶۰ ثانیه، ۵ دقیقه یا مسیر کامل — انتخاب با توست.</span>
 					</span>
 					<span class="qp-front-cta-card__arrow" aria-hidden="true">←</span>
 				</a>
 				<a class="qp-front-cta-card qp-front-cta-card--scientists" href="<?php echo esc_url( $scientists_url ); ?>">
-					<span class="qp-front-cta-card__icon" aria-hidden="true">👩‍🔬</span>
+					<span class="qp-front-cta-card__icon" aria-hidden="true">02</span>
 					<span class="qp-front-cta-card__body">
-						<span class="qp-front-cta-card__title">دانشمندان کوانتوم</span>
+						<span class="qp-front-cta-card__title"><strong>بیوگرافی دانشمندان</strong></span>
 						<span class="qp-front-cta-card__desc">با چهره‌هایی آشنا شو که این علم را ساختند: از پلانک و اینشتین تا بل و فاینمن.</span>
 					</span>
 					<span class="qp-front-cta-card__arrow" aria-hidden="true">←</span>
