@@ -3,7 +3,7 @@ Contributors: qpedia
 Requires at least: 6.0
 Tested up to: 6.5
 Requires PHP: 7.4
-Stable tag: 1.5.0
+Stable tag: 1.6.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Tags: rtl-language-support, custom-menu, featured-images, threaded-comments, translation-ready
@@ -37,6 +37,11 @@ Tags: rtl-language-support, custom-menu, featured-images, threaded-comments, tra
 
 نسخهٔ جدید زیپ را از همین روش بارگذاری کنید؛ وردپرس فایل‌های قالب فرزند را جایگزین می‌کند.
 تنظیمات، برگه‌ها و مقالات شما دست نمی‌خورند.
+
+== تغییرات 1.6.0 ==
+* بازطراحی صفحه اصلی با کارت‌های سرمه‌ای: همه شمارش‌ها زنده و آخرین مقاله‌ها خودکار
+* بلوک چهارم «دانشمندان» + یادداشت زنده کنار تیتر هر بخش (مثل: ۸ مورد از ۱۷۱ مقاله)
+* حذف بخش «دانشنامه در یک نگاه» و حذف فوتر از قالب صفحه اصلی
 
 == تغییرات 1.5.0 ==
 * ۳ بلوک گوتنبرگ صفحه اصلی: هیرو، دسته‌بندی‌ها، مطالب — ویرایش دیداری بدون شورت‌کد

@@ -316,3 +316,35 @@
 .qp-sc-ava img{width:100%;height:100%;object-fit:cover;display:block}
 .qp-sc-name{margin:0;font-size:.95rem;font-weight:800;color:var(--qp-ink,#0f172a)}
 .qp-sc-latin{margin:4px 0 0;font-size:.78rem;color:var(--qp-dim,#6b7280);direction:ltr}
+
+/* ── صفحه اصلی v2: کارت‌های سرمه‌ای با داده زنده (v1.6.0) ── */
+.qp-home-canvas{background:#e9eef5;padding:26px 0 44px}
+.qp-v2{margin:0 0 34px}
+.qp-v2-head{display:flex;align-items:flex-end;justify-content:space-between;gap:12px;margin:0 0 14px;flex-wrap:wrap}
+.qp-v2-title{margin:0;font-size:1.35rem;font-weight:800;color:#0f172a;display:flex;align-items:center;gap:10px}
+.qp-v2-num{background:#0b0b0e;color:#2bff88;border-radius:8px;min-width:34px;height:34px;padding:0 8px;display:inline-flex;align-items:center;justify-content:center;font-size:.95rem;font-weight:800}
+.qp-v2-note{margin:0;font-size:.78rem;color:#8a94a6}
+.qp-v2-hero{text-align:center;padding:26px 0 8px}
+.qp-v2-hero h1{margin:0 0 8px;font-size:2rem;font-weight:900;color:#111827}
+.qp-v2-hero p{margin:0;color:#5b6472;font-size:.95rem}
+.qp-v2-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px}
+.qp-v2-card{background:linear-gradient(165deg,#14265a 0%,#0c1a3f 70%);border-radius:14px;padding:18px 16px;color:#fff;text-decoration:none;display:block}
+.qp-v2-card__top{display:flex;justify-content:space-between;align-items:flex-start;gap:10px}
+.qp-v2-card__title{margin:0;font-size:1rem;font-weight:800;color:#fff}
+.qp-v2-card__count{color:#2bff88;font-weight:800;white-space:nowrap;font-size:1.15rem}
+.qp-v2-card__count small{font-size:.68rem;font-weight:400}
+.qp-v2-card__desc{margin:8px 0 0;font-size:.78rem;line-height:1.9;color:#a9b7d4}
+.qp-v2-card__subs{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+.qp-v2-card__subs span{background:rgba(255,255,255,.08);border-radius:7px;padding:3px 10px;font-size:.7rem;color:#cdd8ee}
+.qp-v2-rows{display:grid;gap:10px}
+.qp-v2-row{background:linear-gradient(165deg,#14265a,#0c1a3f);border-radius:12px;padding:14px 16px;display:flex;align-items:center;justify-content:space-between;gap:10px;text-decoration:none}
+.qp-v2-row__main{display:flex;flex-direction:column;gap:4px;min-width:0}
+.qp-v2-row__title{font-size:.92rem;font-weight:700;color:#2bff88}
+.qp-v2-row__excerpt{font-size:.75rem;color:#a9b7d4;line-height:1.9}
+.qp-v2-row__id{background:rgba(255,255,255,.07);color:#8b96ad;border-radius:7px;padding:3px 10px;font-size:.7rem;white-space:nowrap}
+.qp-v2-sc-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px}
+.qp-v2-sc{background:#fff;border-radius:14px;padding:20px 12px;text-align:center;text-decoration:none;color:inherit;box-shadow:0 1px 3px rgba(15,23,42,.06);display:block}
+.qp-v2-sc__name{margin:0 0 4px;font-size:.9rem;font-weight:800;color:#0f172a}
+.qp-v2-sc__latin{margin:0;font-size:.72rem;color:#9aa3b2;direction:ltr}
+.qp-v2-sc__desc{margin:6px 0 0;font-size:.75rem;color:#5b6472;line-height:1.9}
+@media(max-width:600px){.qp-v2-hero h1{font-size:1.5rem}.qp-v2-title{font-size:1.1rem}}

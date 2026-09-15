@@ -590,27 +590,20 @@ function qpedia_sc_stats( $atts ) {
 }
 add_shortcode( 'qp_stats', 'qpedia_sc_stats' );
 
-/* ── هیرو: [qp_hero badge="..." title="..." desc="..." stats="yes" stats_items="..."] ── */
+/* ── هیرو: [qp_hero title="..." desc="..."] ── */
 function qpedia_sc_hero( $atts ) {
 	$a = shortcode_atts(
 		array(
-			'badge'       => 'دانشنامهٔ فارسی فیزیک کوانتوم',
-			'title'       => 'کوانتوم را از پایه، دقیق و روان یاد بگیرید',
-			'desc'        => 'از مبانی نظری تا فناوری‌های واقعی — با مقاله‌های کوتاه، دسته‌بندی روشن و مسیر مطالعهٔ قابل‌فهم.',
-			'stats'       => 'yes',
-			'stats_items' => 'articles,cats,subs,scientists',
+			'title' => 'کوانتوم پدیا فارسی',
+			'desc'  => 'دانشنامه‌ای دقیق، کاربردی و خوش‌خوان برای یادگیری کوانتوم',
 		),
 		$atts,
 		'qp_hero'
 	);
 
-	$out  = '<div class="qp-guide-hero">';
-	$out .= '<div class="qp-guide-hero__badge">' . esc_html( $a['badge'] ) . '</div>';
-	$out .= '<h1 class="qp-guide-hero__title">' . esc_html( $a['title'] ) . '</h1>';
-	$out .= '<p class="qp-guide-hero__desc">' . esc_html( $a['desc'] ) . '</p>';
-	if ( 'yes' === $a['stats'] ) {
-		$out .= qpedia_sc_stats( array( 'items' => $a['stats_items'] ) );
-	}
+	$out  = '<div class="qp-v2 qp-v2-hero">';
+	$out .= '<h1>' . esc_html( $a['title'] ) . '</h1>';
+	$out .= '<p>' . esc_html( $a['desc'] ) . '</p>';
 	return $out . '</div>';
 }
 add_shortcode( 'qp_hero', 'qpedia_sc_hero' );
@@ -652,16 +645,15 @@ function qpedia_sc_cta_cards( $atts ) {
 }
 add_shortcode( 'qp_cta_cards', 'qpedia_sc_cta_cards' );
 
-/* ── دسته‌ها (زنده): [qp_cats eyebrow="..." title="..." desc="..." count="7" show_subs="yes" show_count="yes"] ── */
+/* ── دسته‌ها (زنده): [qp_cats title="..." num="۰۱" note="" count="7" show_subs="yes"] ── */
 function qpedia_sc_cats( $atts ) {
 	$a = shortcode_atts(
 		array(
-			'eyebrow'    => 'ساختار دانشنامه',
-			'title'      => 'دسته‌بندی موضوعات',
-			'desc'       => 'هفت مسیر اصلی برای خواندن موضوعی مقاله‌ها.',
-			'count'      => 7,
-			'show_subs'  => 'yes',
-			'show_count' => 'yes',
+			'title'     => 'دسته‌بندی موضوعات',
+			'num'       => '۰۱',
+			'note'      => '',
+			'count'     => 7,
+			'show_subs' => 'yes',
 		),
 		$atts,
 		'qp_cats'
@@ -676,15 +668,6 @@ function qpedia_sc_cats( $atts ) {
 		'interpretations'     => 'خوانش‌های فلسفی و تفسیری از معنای نظریهٔ کوانتوم.',
 		'pseudoscience'       => 'مرزبندی علم دقیق با سوءاستفاده‌های بازاری و شبه‌علم.',
 	);
-	$icons = array(
-		'fundamentals'        => 'مبانی',
-		'technology'          => 'فناوری',
-		'history-experiments' => 'تاریخ',
-		'phenomena'           => 'پدیده',
-		'mathematics'         => 'ریاضی',
-		'interpretations'     => 'تفسیر',
-		'pseudoscience'       => 'نقد',
-	);
 
 	$parents = get_terms(
 		array(
@@ -697,24 +680,26 @@ function qpedia_sc_cats( $atts ) {
 		)
 	);
 
-	$out  = '<section class="qp-front-section qp-front-section--cats">';
-	$out .= '<div class="qp-front-section__head"><div><div class="qp-front-section__eyebrow">' . esc_html( $a['eyebrow'] ) . '</div>';
-	$out .= '<h2 class="qp-front-section__title">' . esc_html( $a['title'] ) . '</h2>';
-	$out .= '<p class="qp-front-section__desc">' . esc_html( $a['desc'] ) . '</p></div></div>';
+	$note = trim( (string) $a['note'] );
+	if ( '' === $note ) {
+		$all_terms = get_terms( array( 'taxonomy' => 'quantum_category', 'hide_empty' => true ) );
+		$total     = ( ! is_wp_error( $all_terms ) && ! empty( $all_terms ) ) ? count( $all_terms ) : 0;
+		$note      = sprintf( '%s دسته و زیرشاخه', number_format_i18n( $total ) );
+	}
+
+	$out  = '<section class="qp-v2">';
+	$out .= '<div class="qp-v2-head"><h2 class="qp-v2-title"><span class="qp-v2-num">' . esc_html( $a['num'] ) . '</span>' . esc_html( $a['title'] ) . '</h2>';
+	$out .= '<p class="qp-v2-note">' . esc_html( $note ) . '</p></div>';
 
 	if ( ! is_wp_error( $parents ) && ! empty( $parents ) ) {
-		$out .= '<div class="qp-front-cats">';
+		$out .= '<div class="qp-v2-grid">';
 		foreach ( $parents as $cat ) {
 			$slug = isset( $cat->slug ) ? $cat->slug : '';
-			$out .= '<a class="qp-front-cat" href="' . esc_url( get_term_link( $cat ) ) . '">';
-			$out .= '<div class="qp-front-cat__top"><span class="qp-front-cat__icon">' . esc_html( isset( $icons[ $slug ] ) ? $icons[ $slug ] : 'موضوع' ) . '</span>';
-			if ( 'yes' === $a['show_count'] ) {
-				$out .= '<span class="qp-front-cat__count">' . esc_html( number_format_i18n( (int) $cat->count ) ) . ' مقاله</span>';
-			}
-			$out .= '</div>';
-			$out .= '<h3 class="qp-front-cat__title">' . esc_html( $cat->name ) . '</h3>';
+			$out .= '<a class="qp-v2-card" href="' . esc_url( get_term_link( $cat ) ) . '">';
+			$out .= '<div class="qp-v2-card__top"><h3 class="qp-v2-card__title">' . esc_html( $cat->name ) . '</h3>';
+			$out .= '<span class="qp-v2-card__count">' . esc_html( number_format_i18n( (int) $cat->count ) ) . ' <small>مقاله</small></span></div>';
 			if ( isset( $descriptions[ $slug ] ) ) {
-				$out .= '<p class="qp-front-cat__desc">' . esc_html( $descriptions[ $slug ] ) . '</p>';
+				$out .= '<p class="qp-v2-card__desc">' . esc_html( $descriptions[ $slug ] ) . '</p>';
 			}
 			if ( 'yes' === $a['show_subs'] ) {
 				$children = get_terms(
@@ -726,9 +711,9 @@ function qpedia_sc_cats( $atts ) {
 					)
 				);
 				if ( ! is_wp_error( $children ) && ! empty( $children ) ) {
-					$out .= '<div class="qp-front-cat__subs">';
+					$out .= '<div class="qp-v2-card__subs">';
 					foreach ( $children as $child ) {
-						$out .= '<span class="qp-front-cat__sub">' . esc_html( $child->name ) . '</span>';
+						$out .= '<span>' . esc_html( $child->name ) . '</span>';
 					}
 					$out .= '</div>';
 				}
@@ -741,19 +726,20 @@ function qpedia_sc_cats( $atts ) {
 }
 add_shortcode( 'qp_cats', 'qpedia_sc_cats' );
 
-/* ── مطالب (زنده): [qp_posts eyebrow="..." title="..." count="6" orderby="date" order="DESC" category="" exclude="" show_excerpt="yes"] ──
+/* ── مطالب (زنده): [qp_posts title="..." num="۰۲" note="" count="8" orderby="date" order="DESC" category="" exclude="start,شروع" show_excerpt="no"] ──
    orderby: تاریخ date | ویرایش modified | پربحث‌ترین comment_count | تصادفی rand | الفبا title */
 function qpedia_sc_posts( $atts ) {
 	$a = shortcode_atts(
 		array(
-			'eyebrow'      => 'تازه‌ترین‌ها',
-			'title'        => 'آخرین مقاله‌ها',
-			'count'        => 6,
+			'title'        => 'تازه‌ترین مقاله‌ها',
+			'num'          => '۰۲',
+			'note'         => '',
+			'count'        => 8,
 			'orderby'      => 'date',
 			'order'        => 'DESC',
 			'category'     => '',
-			'exclude'      => '',
-			'show_excerpt' => 'yes',
+			'exclude'      => 'start,شروع',
+			'show_excerpt' => 'no',
 		),
 		$atts,
 		'qp_posts'
@@ -773,12 +759,13 @@ function qpedia_sc_posts( $atts ) {
 		'no_found_rows'          => true,
 		'update_post_meta_cache' => false,
 	);
-	if ( '' !== trim( $a['category'] ) ) {
+	$cat_slugs = array_filter( array_map( 'trim', explode( ',', sanitize_text_field( $a['category'] ) ) ) );
+	if ( ! empty( $cat_slugs ) ) {
 		$args['tax_query'] = array(
 			array(
 				'taxonomy' => 'quantum_category',
 				'field'    => 'slug',
-				'terms'    => array_map( 'trim', explode( ',', sanitize_text_field( $a['category'] ) ) ),
+				'terms'    => $cat_slugs,
 			),
 		);
 	}
@@ -806,27 +793,36 @@ function qpedia_sc_posts( $atts ) {
 	}
 
 	$query = new WP_Query( $args );
+	$shown = (int) $query->post_count;
 
-	$out  = '<section class="qp-front-section qp-front-section--articles">';
-	$out .= '<div class="qp-front-section__head"><div><div class="qp-front-section__eyebrow">' . esc_html( $a['eyebrow'] ) . '</div>';
-	$out .= '<h2 class="qp-front-section__title">' . esc_html( $a['title'] ) . '</h2></div></div>';
+	if ( 1 === count( $cat_slugs ) ) {
+		$term  = get_term_by( 'slug', $cat_slugs[0], 'quantum_category' );
+		$total = ( $term && ! is_wp_error( $term ) ) ? (int) $term->count : 0;
+	} else {
+		$counts = wp_count_posts( 'quantum_article' );
+		$total  = isset( $counts->publish ) ? (int) $counts->publish : 0;
+	}
+
+	$note = trim( (string) $a['note'] );
+	if ( '' === $note ) {
+		$note = sprintf( '%s مورد از %s مقاله', number_format_i18n( $shown ), number_format_i18n( $total ) );
+	}
+
+	$out  = '<section class="qp-v2">';
+	$out .= '<div class="qp-v2-head"><h2 class="qp-v2-title"><span class="qp-v2-num">' . esc_html( $a['num'] ) . '</span>' . esc_html( $a['title'] ) . '</h2>';
+	$out .= '<p class="qp-v2-note">' . esc_html( $note ) . '</p></div>';
 
 	if ( $query->have_posts() ) {
-		$out .= '<div class="qp-front-articles">';
+		$out .= '<div class="qp-v2-rows">';
 		while ( $query->have_posts() ) {
 			$query->the_post();
-			$terms      = get_the_terms( get_the_ID(), 'quantum_category' );
-			$term_label = ( ! is_wp_error( $terms ) && ! empty( $terms ) ) ? $terms[0]->name : '';
-			$out .= '<a class="qp-front-article" href="' . esc_url( get_permalink() ) . '">';
-			$out .= '<div class="qp-front-article__meta">';
-			if ( $term_label ) {
-				$out .= '<span class="qp-front-article__term">' . esc_html( $term_label ) . '</span>';
-			}
-			$out .= '<time datetime="' . esc_attr( get_the_date( 'c' ) ) . '">' . esc_html( get_the_date( 'j F Y' ) ) . '</time></div>';
-			$out .= '<h3 class="qp-front-article__title">' . esc_html( get_the_title() ) . '</h3>';
+			$out .= '<a class="qp-v2-row" href="' . esc_url( get_permalink() ) . '">';
+			$out .= '<span class="qp-v2-row__main"><span class="qp-v2-row__title">' . esc_html( get_the_title() ) . '</span>';
 			if ( 'yes' === $a['show_excerpt'] ) {
-				$out .= '<p class="qp-front-article__excerpt">' . esc_html( get_the_excerpt() ) . '</p>';
+				$out .= '<span class="qp-v2-row__excerpt">' . esc_html( get_the_excerpt() ) . '</span>';
 			}
+			$out .= '</span>';
+			$out .= '<span class="qp-v2-row__id">شناسه ' . esc_html( number_format_i18n( get_the_ID() ) ) . '</span>';
 			$out .= '</a>';
 		}
 		$out .= '</div>';
@@ -836,12 +832,13 @@ function qpedia_sc_posts( $atts ) {
 }
 add_shortcode( 'qp_posts', 'qpedia_sc_posts' );
 
-/* ── دانشمندان (زنده، اختیاری): [qp_scientists eyebrow="..." title="..." count="6" orderby="date"] ── */
+/* ── دانشمندان (زنده): [qp_scientists title="چهره‌های کوانتوم" num="۰۳" note="" count="6" orderby="date"] ── */
 function qpedia_sc_scientists( $atts ) {
 	$a = shortcode_atts(
 		array(
-			'eyebrow' => 'تالار دانشمندان',
-			'title'   => 'چهره‌های مهم کوانتوم',
+			'title'   => 'چهره‌های کوانتوم',
+			'num'     => '۰۳',
+			'note'    => '',
 			'count'   => 6,
 			'orderby' => 'date',
 		),
@@ -865,28 +862,31 @@ function qpedia_sc_scientists( $atts ) {
 		)
 	);
 
-	$out  = '<section class="qp-front-section qp-front-section--scientists">';
-	$out .= '<div class="qp-front-section__head"><div><div class="qp-front-section__eyebrow">' . esc_html( $a['eyebrow'] ) . '</div>';
-	$out .= '<h2 class="qp-front-section__title">' . esc_html( $a['title'] ) . '</h2></div>';
-	$out .= '<a class="qp-front-section__link" href="' . esc_url( home_url( '/scientists/' ) ) . '">همهٔ دانشمندان</a></div>';
+	$counts = wp_count_posts( 'quantum_scientist' );
+	$total  = isset( $counts->publish ) ? (int) $counts->publish : 0;
+
+	$note = trim( (string) $a['note'] );
+	if ( '' === $note ) {
+		$note = sprintf( 'همه %s دانشمند در تالار چهره‌ها', number_format_i18n( $total ) );
+	}
+
+	$out  = '<section class="qp-v2">';
+	$out .= '<div class="qp-v2-head"><h2 class="qp-v2-title"><span class="qp-v2-num">' . esc_html( $a['num'] ) . '</span>' . esc_html( $a['title'] ) . '</h2>';
+	$out .= '<p class="qp-v2-note">' . esc_html( $note ) . '</p></div>';
 
 	if ( $query->have_posts() ) {
-		$out .= '<div class="qp-sc-grid">';
+		$out .= '<div class="qp-v2-sc-grid">';
 		while ( $query->have_posts() ) {
 			$query->the_post();
 			$en_name = trim( (string) get_post_meta( get_the_ID(), '_scientist_en_name', true ) );
-			$initial = $en_name ? strtoupper( function_exists( 'mb_substr' ) ? mb_substr( $en_name, 0, 1, 'UTF-8' ) : substr( $en_name, 0, 1 ) ) : 'Q';
-			$out .= '<a class="qp-sc-card" href="' . esc_url( get_permalink() ) . '">';
-			$out .= '<span class="qp-sc-ava">';
-			if ( has_post_thumbnail() ) {
-				$out .= get_the_post_thumbnail( get_the_ID(), 'thumbnail' );
-			} else {
-				$out .= esc_html( $initial );
-			}
-			$out .= '</span>';
-			$out .= '<h3 class="qp-sc-name">' . esc_html( get_the_title() ) . '</h3>';
+			$out .= '<a class="qp-v2-sc" href="' . esc_url( get_permalink() ) . '">';
+			$out .= '<h3 class="qp-v2-sc__name">' . esc_html( get_the_title() ) . '</h3>';
 			if ( $en_name ) {
-				$out .= '<p class="qp-sc-latin">' . esc_html( $en_name ) . '</p>';
+				$out .= '<p class="qp-v2-sc__latin">' . esc_html( $en_name ) . '</p>';
+			}
+			$excerpt = get_the_excerpt();
+			if ( $excerpt ) {
+				$out .= '<p class="qp-v2-sc__desc">' . esc_html( wp_trim_words( $excerpt, 15 ) ) . '</p>';
 			}
 			$out .= '</a>';
 		}
@@ -948,17 +948,24 @@ function qpedia_block_atts( $attributes, $keys ) {
 }
 
 function qpedia_block_hero( $attributes ) {
-	$atts = qpedia_block_atts( $attributes, array( 'badge', 'title', 'desc' ) );
-	$atts['stats'] = ( ! isset( $attributes['showStats'] ) || false !== $attributes['showStats'] ) ? 'yes' : 'no';
-	return qpedia_sc_hero( $atts );
+	return qpedia_sc_hero( qpedia_block_atts( $attributes, array( 'title', 'desc' ) ) );
 }
 
 function qpedia_block_cats( $attributes ) {
-	return qpedia_sc_cats( qpedia_block_atts( $attributes, array( 'eyebrow', 'title', 'desc', 'count' ) ) );
+	$atts = qpedia_block_atts( $attributes, array( 'title', 'num', 'note', 'count' ) );
+	$atts['show_subs'] = ( isset( $attributes['showSubs'] ) && false === $attributes['showSubs'] ) ? 'no' : 'yes';
+	return qpedia_sc_cats( $atts );
 }
 
 function qpedia_block_posts( $attributes ) {
-	return qpedia_sc_posts( qpedia_block_atts( $attributes, array( 'title', 'count', 'orderby', 'exclude' ) ) );
+	$atts = qpedia_block_atts( $attributes, array( 'title', 'num', 'note', 'count', 'orderby' ) );
+	$atts['exclude'] = isset( $attributes['exclude'] ) ? $attributes['exclude'] : 'start,شروع';
+	$atts['show_excerpt'] = ( isset( $attributes['showExcerpt'] ) && false !== $attributes['showExcerpt'] ) ? 'yes' : 'no';
+	return qpedia_sc_posts( $atts );
+}
+
+function qpedia_block_scientists( $attributes ) {
+	return qpedia_sc_scientists( qpedia_block_atts( $attributes, array( 'title', 'num', 'note', 'count', 'orderby' ) ) );
 }
 
 function qpedia_register_blocks() {
@@ -966,14 +973,14 @@ function qpedia_register_blocks() {
 		'qpedia-blocks',
 		get_stylesheet_directory_uri() . '/assets/js/blocks.js',
 		array( 'wp-blocks', 'wp-element', 'wp-block-editor', 'wp-components', 'wp-i18n' ),
-		'1.5.0',
+		'1.6.0',
 		true
 	);
 	wp_register_style(
 		'qpedia-blocks-editor',
 		get_stylesheet_directory_uri() . '/assets/css/blocks-editor.css',
 		array(),
-		'1.5.0'
+		'1.6.0'
 	);
 
 	register_block_type(
@@ -982,10 +989,8 @@ function qpedia_register_blocks() {
 			'editor_script'   => 'qpedia-blocks',
 			'editor_style'    => 'qpedia-blocks-editor',
 			'attributes'      => array(
-				'badge'     => array( 'type' => 'string' ),
-				'title'     => array( 'type' => 'string' ),
-				'desc'      => array( 'type' => 'string' ),
-				'showStats' => array( 'type' => 'boolean', 'default' => true ),
+				'title' => array( 'type' => 'string' ),
+				'desc'  => array( 'type' => 'string' ),
 			),
 			'render_callback' => 'qpedia_block_hero',
 		)
@@ -996,10 +1001,11 @@ function qpedia_register_blocks() {
 			'editor_script'   => 'qpedia-blocks',
 			'editor_style'    => 'qpedia-blocks-editor',
 			'attributes'      => array(
-				'eyebrow' => array( 'type' => 'string' ),
-				'title'   => array( 'type' => 'string' ),
-				'desc'    => array( 'type' => 'string' ),
-				'count'   => array( 'type' => 'number', 'default' => 7 ),
+				'title'    => array( 'type' => 'string' ),
+				'num'      => array( 'type' => 'string', 'default' => '۰۱' ),
+				'note'     => array( 'type' => 'string' ),
+				'count'    => array( 'type' => 'number', 'default' => 7 ),
+				'showSubs' => array( 'type' => 'boolean', 'default' => true ),
 			),
 			'render_callback' => 'qpedia_block_cats',
 		)
@@ -1010,13 +1016,32 @@ function qpedia_register_blocks() {
 			'editor_script'   => 'qpedia-blocks',
 			'editor_style'    => 'qpedia-blocks-editor',
 			'attributes'      => array(
-				'title'   => array( 'type' => 'string' ),
-				'count'   => array( 'type' => 'number', 'default' => 6 ),
-				'orderby' => array( 'type' => 'string', 'default' => 'date' ),
-				'exclude' => array( 'type' => 'string', 'default' => 'start,شروع' ),
+				'title'       => array( 'type' => 'string' ),
+				'num'         => array( 'type' => 'string', 'default' => '۰۲' ),
+				'note'        => array( 'type' => 'string' ),
+				'count'       => array( 'type' => 'number', 'default' => 8 ),
+				'orderby'     => array( 'type' => 'string', 'default' => 'date' ),
+				'exclude'     => array( 'type' => 'string', 'default' => 'start,شروع' ),
+				'showExcerpt' => array( 'type' => 'boolean', 'default' => false ),
 			),
 			'render_callback' => 'qpedia_block_posts',
 		)
 	);
+	register_block_type(
+		'qp/scientists',
+		array(
+			'editor_script'   => 'qpedia-blocks',
+			'editor_style'    => 'qpedia-blocks-editor',
+			'attributes'      => array(
+				'title'   => array( 'type' => 'string' ),
+				'num'     => array( 'type' => 'string', 'default' => '۰۳' ),
+				'note'    => array( 'type' => 'string' ),
+				'count'   => array( 'type' => 'number', 'default' => 6 ),
+				'orderby' => array( 'type' => 'string', 'default' => 'date' ),
+			),
+			'render_callback' => 'qpedia_block_scientists',
+		)
+	);
 }
+
 add_action( 'init', 'qpedia_register_blocks' );

@@ -1,6 +1,6 @@
 /* ══════════════════════════════════════════════════════════════
-   بلوک‌های صفحه اصلی کوانتوم‌پدیا (v1.5.0) — بدون بیلد، JS ساده
-   سه بلوک داینامیک: هیرو، دسته‌ها، مطالب. رندر سمت سرور (PHP).
+   بلوک‌های صفحه اصلی کوانتوم‌پدیا (v1.6.0) — بدون بیلد، JS ساده
+   چهار بلوک داینامیک با کارت‌های سرمه‌ای و داده زنده.
    ══════════════════════════════════════════════════════════════ */
 (function (blocks, element, blockEditor, components, i18n) {
 	if (!blocks || !element || !blockEditor || !components) {
@@ -40,18 +40,29 @@
 		};
 	}
 
-	/* ─── ۱) هیرو + شمارشگرهای زنده ─── */
+	function orderOptions(scientist) {
+		var opts = [
+			{ label: 'تازه‌ترین‌ها', value: 'date' },
+			{ label: 'تازه‌ویرایش‌شده‌ها', value: 'modified' }
+		];
+		if (!scientist) {
+			opts.push({ label: 'پربحث‌ترین‌ها (جذاب‌ترین)', value: 'comment_count' });
+		}
+		opts.push({ label: 'تصادفی', value: 'rand' });
+		opts.push({ label: 'الفبا', value: 'title' });
+		return opts;
+	}
+
+	/* ─── ۱) هیرو ─── */
 	blocks.registerBlockType('qp/hero', {
 		title: 'هیروی صفحه اصلی',
-		description: 'تیتر، توضیح و شمارشگرهای زنده دانشنامه.',
+		description: 'تیتر و توضیح بالای صفحه اول.',
 		icon: 'cover-image',
 		category: 'common',
-		keywords: ['صفحه اصلی', 'هیرو', 'آمار'],
+		keywords: ['صفحه اصلی', 'هیرو'],
 		attributes: {
-			badge: { type: 'string', default: 'دانشنامهٔ فارسی فیزیک کوانتوم' },
-			title: { type: 'string', default: 'کوانتوم را از پایه، دقیق و روان یاد بگیرید' },
-			desc: { type: 'string', default: 'از مبانی نظری تا فناوری‌های واقعی — با مقاله‌های کوتاه، دسته‌بندی روشن و مسیر مطالعهٔ قابل‌فهم.' },
-			showStats: { type: 'boolean', default: true }
+			title: { type: 'string', default: 'کوانتوم پدیا فارسی' },
+			desc: { type: 'string', default: 'دانشنامه‌ای دقیق، کاربردی و خوش‌خوان برای یادگیری کوانتوم' }
 		},
 		edit: function (props) {
 			var a = props.attributes;
@@ -61,12 +72,10 @@
 				el(
 					InspectorControls,
 					{ key: 'ins' },
-					el(TextControl, { label: 'نشان (بالای تیتر)', value: a.badge, onChange: onAttr(props, 'badge') }),
 					el(TextControl, { label: 'تیتر اصلی', value: a.title, onChange: onAttr(props, 'title') }),
-					el(TextareaControl, { label: 'توضیح زیر تیتر', value: a.desc, onChange: onAttr(props, 'desc') }),
-					el(ToggleControl, { label: 'نمایش شمارشگرها', checked: a.showStats, onChange: onAttr(props, 'showStats') })
+					el(TextareaControl, { label: 'توضیح زیر تیتر', value: a.desc, onChange: onAttr(props, 'desc') })
 				),
-				ph('◈', 'هیروی صفحه اصلی', [a.title, a.showStats ? 'همراه شمارشگرهای زنده' : 'بدون شمارشگر'])
+				ph('◈', 'هیروی صفحه اصلی', [a.title])
 			);
 		},
 		save: function () {
@@ -77,15 +86,16 @@
 	/* ─── ۲) دسته‌بندی‌ها (زنده) ─── */
 	blocks.registerBlockType('qp/cats', {
 		title: 'دسته‌بندی‌های صفحه اصلی',
-		description: 'گرید دسته‌های دانشنامه با تعداد واقعی مقاله‌ها.',
+		description: 'کارت‌های سرمه‌ای دسته‌ها با شمارش زنده مقاله‌ها.',
 		icon: 'grid-view',
 		category: 'common',
 		keywords: ['صفحه اصلی', 'دسته', 'موضوع'],
 		attributes: {
-			eyebrow: { type: 'string', default: 'ساختار دانشنامه' },
 			title: { type: 'string', default: 'دسته‌بندی موضوعات' },
-			desc: { type: 'string', default: 'هفت مسیر اصلی برای خواندن موضوعی مقاله‌ها.' },
-			count: { type: 'number', default: 7 }
+			num: { type: 'string', default: '۰۱' },
+			note: { type: 'string', default: '' },
+			count: { type: 'number', default: 7 },
+			showSubs: { type: 'boolean', default: true }
 		},
 		edit: function (props) {
 			var a = props.attributes;
@@ -95,10 +105,11 @@
 				el(
 					InspectorControls,
 					{ key: 'ins' },
-					el(TextControl, { label: 'ابرتیتر', value: a.eyebrow, onChange: onAttr(props, 'eyebrow') }),
 					el(TextControl, { label: 'تیتر بخش', value: a.title, onChange: onAttr(props, 'title') }),
-					el(TextareaControl, { label: 'توضیح بخش', value: a.desc, onChange: onAttr(props, 'desc') }),
-					el(RangeControl, { label: 'تعداد دسته‌ها', value: a.count, min: 1, max: 20, onChange: onAttr(props, 'count') })
+					el(TextControl, { label: 'شماره بخش', value: a.num, onChange: onAttr(props, 'num') }),
+					el(TextControl, { label: 'یادداشت کنار تیتر', value: a.note, onChange: onAttr(props, 'note'), help: 'خالی بماند = خودکار و زنده' }),
+					el(RangeControl, { label: 'تعداد دسته‌ها', value: a.count, min: 1, max: 20, onChange: onAttr(props, 'count') }),
+					el(ToggleControl, { label: 'نمایش زیردسته‌ها', checked: a.showSubs, onChange: onAttr(props, 'showSubs') })
 				),
 				ph('▦', 'دسته‌بندی موضوعات', [a.title, 'نمایش ' + a.count + ' دسته'])
 			);
@@ -111,15 +122,18 @@
 	/* ─── ۳) مطالب (زنده) ─── */
 	blocks.registerBlockType('qp/posts', {
 		title: 'مطالب صفحه اصلی',
-		description: 'فهرست خودکار مقاله‌ها: تازه‌ترین، پربحث‌ترین یا تصادفی.',
+		description: 'فهرست خودکار مقاله‌ها با شمارش زنده.',
 		icon: 'list-view',
 		category: 'common',
 		keywords: ['صفحه اصلی', 'مقاله', 'آخرین'],
 		attributes: {
-			title: { type: 'string', default: 'آخرین مقاله‌ها' },
-			count: { type: 'number', default: 6 },
+			title: { type: 'string', default: 'تازه‌ترین مقاله‌ها' },
+			num: { type: 'string', default: '۰۲' },
+			note: { type: 'string', default: '' },
+			count: { type: 'number', default: 8 },
 			orderby: { type: 'string', default: 'date' },
-			exclude: { type: 'string', default: 'start,شروع' }
+			exclude: { type: 'string', default: 'start,شروع' },
+			showExcerpt: { type: 'boolean', default: false }
 		},
 		edit: function (props) {
 			var a = props.attributes;
@@ -130,22 +144,60 @@
 					InspectorControls,
 					{ key: 'ins' },
 					el(TextControl, { label: 'تیتر بخش', value: a.title, onChange: onAttr(props, 'title') }),
+					el(TextControl, { label: 'شماره بخش', value: a.num, onChange: onAttr(props, 'num') }),
+					el(TextControl, { label: 'یادداشت کنار تیتر', value: a.note, onChange: onAttr(props, 'note'), help: 'خالی بماند = خودکار و زنده (مثل: ۸ مورد از ۱۷۱ مقاله)' }),
 					el(RangeControl, { label: 'تعداد مطالب', value: a.count, min: 1, max: 12, onChange: onAttr(props, 'count') }),
 					el(SelectControl, {
 						label: 'ترتیب مطالب',
 						value: a.orderby,
-						options: [
-							{ label: 'تازه‌ترین‌ها', value: 'date' },
-							{ label: 'تازه‌ویرایش‌شده‌ها', value: 'modified' },
-							{ label: 'پربحث‌ترین‌ها (جذاب‌ترین)', value: 'comment_count' },
-							{ label: 'تصادفی', value: 'rand' },
-							{ label: 'الفبا', value: 'title' }
-						],
+						options: orderOptions(false),
 						onChange: onAttr(props, 'orderby')
 					}),
-					el(TextControl, { label: 'حذف از لیست (نامک یا تیتر، با ویرگول)', value: a.exclude, onChange: onAttr(props, 'exclude'), help: 'مقاله‌هایی که نباید در لیست بیایند.' })
+					el(TextControl, { label: 'حذف از لیست (نامک یا تیتر، با ویرگول)', value: a.exclude, onChange: onAttr(props, 'exclude'), help: 'مقاله‌هایی که نباید در لیست بیایند.' }),
+					el(ToggleControl, { label: 'نمایش خلاصه مقاله', checked: a.showExcerpt, onChange: onAttr(props, 'showExcerpt') })
 				),
 				ph('☰', 'مطالب صفحه اصلی', [a.title, 'نمایش ' + a.count + ' مطلب'])
+			);
+		},
+		save: function () {
+			return null;
+		}
+	});
+
+	/* ─── ۴) دانشمندان (زنده) ─── */
+	blocks.registerBlockType('qp/scientists', {
+		title: 'دانشمندان صفحه اصلی',
+		description: 'کارت‌های چهره‌های کوانتوم با شمارش زنده.',
+		icon: 'groups',
+		category: 'common',
+		keywords: ['صفحه اصلی', 'دانشمند', 'چهره'],
+		attributes: {
+			title: { type: 'string', default: 'چهره‌های کوانتوم' },
+			num: { type: 'string', default: '۰۳' },
+			note: { type: 'string', default: '' },
+			count: { type: 'number', default: 6 },
+			orderby: { type: 'string', default: 'date' }
+		},
+		edit: function (props) {
+			var a = props.attributes;
+			return el(
+				Fragment,
+				{},
+				el(
+					InspectorControls,
+					{ key: 'ins' },
+					el(TextControl, { label: 'تیتر بخش', value: a.title, onChange: onAttr(props, 'title') }),
+					el(TextControl, { label: 'شماره بخش', value: a.num, onChange: onAttr(props, 'num') }),
+					el(TextControl, { label: 'یادداشت کنار تیتر', value: a.note, onChange: onAttr(props, 'note'), help: 'خالی بماند = خودکار و زنده' }),
+					el(RangeControl, { label: 'تعداد دانشمندان', value: a.count, min: 1, max: 12, onChange: onAttr(props, 'count') }),
+					el(SelectControl, {
+						label: 'ترتیب',
+						value: a.orderby,
+						options: orderOptions(true),
+						onChange: onAttr(props, 'orderby')
+					})
+				),
+				ph('◉', 'چهره‌های کوانتوم', [a.title, 'نمایش ' + a.count + ' دانشمند'])
 			);
 		},
 		save: function () {

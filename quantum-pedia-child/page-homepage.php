@@ -1,7 +1,7 @@
 <?php
 /**
  * Template Name: صفحه اصلی
- * Description: بوم خالی تمام‌عرض برای برگهٔ «صفحه اصلی» — بدون تیتر، بدون سایدبار. محتوا را با شورت‌کدهای qp_hero و... بسازید.
+ * Description: بوم خالی تمام‌عرض برای برگهٔ «صفحه اصلی» — بدون تیتر، سایدبار و فوتر. محتوا را با شورت‌کدهای qp_hero و... بسازید.
  *
  * @package Quantum_Pedia_Child
  */
@@ -20,5 +20,6 @@ get_header();
 		?>
 	</div>
 </main>
-<?php
-get_footer();
+<?php wp_footer(); ?>
+</body>
+</html>
