@@ -1,6 +1,6 @@
 <?php
 /**
- * Quantum Pedia Child — functions (v1.2.0)
+ * Quantum Pedia Child — functions (v1.6.1)
  *
  * پوستهٔ فرزند سبک و تمیز: فقط ساختارهای ضروری سایت.
  *
@@ -10,12 +10,15 @@
  * ۳. لینک تخت مقاله‌ها (/slug/) + رفع باگ ۴۰۴ برگه‌ها
  * ۴. متای سئو و OpenGraph + اسکیمای ScholarlyArticle + نقشهٔ سایت /quantum-sitemap.xml
  * ۵. وصلهٔ سایت‌مپ بومی وردپرس + کوئری‌های اصلی + نرمال‌سازی جست‌وجوی فارسی
+ * ۶. شورت‌کدها و بلوک‌های صفحهٔ اصلی (num/note + بلوک دانشمندان)
+ * ۷. سئوی فنی: canonical سراسری + ریدایرکت sitemap.xml + قفل تاکسونومی‌های قدیمی
  *
- * تغییرات 1.2.0 نسبت به قبل:
- * - ادغام دو تابع تکراری بارگذاری ترجمه در یک تابع
- * - ادغام دو تابع تکراری enqueue (ثبت دوبارهٔ qpedia-layouts حذف شد)
- * - افزودن «start» به برگه‌های ثابت (لینک اصلی صفحهٔ نخست هیچ‌وقت ۴۰۴ نمی‌شود)
- * - یکدست‌سازی تورفتگی‌ها و مستندسازی بخش‌ها
+ * تغییرات 1.6.1 نسبت به قبل:
+ * - canonical یکتا برای همهٔ صفحات (خانه، دسته‌ها، آرشیو دانشمندان و...)
+ * - ریدایرکت ۳۰۱ مسیرهای sitemap.xml و sitemap_index.xml به wp-sitemap.xml
+ * - معرفی نقشهٔ سایت در robots.txt
+ * - حذف ریدایرکت قدیمی /glossary/ (تا ساخت برگهٔ واقعی، ۴۰۴ صادقانه)
+ * - قفل تاکسونومی‌های قدیمی scientist_field و article_domain
  *
  * @package Quantum_Pedia_Child
  */
@@ -24,7 +27,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'QPEDIA_CHILD_VERSION', '2026.09.14' );
+define( 'QPEDIA_CHILD_VERSION', '2026.09.16' );
 
 /* ── ۱. راه‌اندازی: بارگذاری ترجمه (رفع خطای Doing it Wrong) ── */
 function qpedia_child_setup() {
