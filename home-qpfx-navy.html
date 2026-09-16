@@ -1,0 +1,298 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>کوانتوم پدیا فارسی | دانشنامهٔ فیزیک کوانتوم</title>
+<meta name="description" content="دانشنامهٔ فارسی فیزیک کوانتوم: از مبانی و پدیده‌ها تا فناوری و نقد شبه‌علم.">
+<meta name="theme-color" content="#14265a">
+<style>
+/* ==========================================================
+   کوانتوم پدیا فارسی — صفحهٔ نخست
+   مینیمال سایبری: سفید مطلق · سرمه‌ای · فسفری ۰۰FF66
+   بدون تصویر، بدون ایموجی، بدون انیمیشن پس‌زمینه
+   ========================================================== */
+.qpfx{
+  --qp-black:#121212;
+  --qp-navy:#14265a;
+  --qp-navy2:#0c1a3f;
+  --qp-green:#00ff66;
+  --qp-gray:#666;
+  --qp-gray2:#888;
+  --qp-hair:#e9e9e9;
+  --qp-sans:'Segoe UI',Tahoma,'Vazirmatn','Iran Sans',system-ui,Arial,sans-serif;
+  --qp-mono:'Cascadia Mono',Consolas,'Courier New',monospace;
+  --qp-shadow:0 12px 30px rgba(18,18,18,.10),0 2px 6px rgba(18,18,18,.06);
+  --qp-shadow-hi:0 18px 44px rgba(18,18,18,.18),0 4px 10px rgba(18,18,18,.08);
+}
+.qpfx,.qpfx *,.qpfx *::before,.qpfx *::after{box-sizing:border-box;margin:0;padding:0}
+.qpfx{background:#fff;color:var(--qp-black);font-family:var(--qp-sans);font-size:16px;line-height:1.7}
+.qpfx ::selection{background:var(--qp-black);color:var(--qp-green)}
+.qpfx a{color:inherit;text-decoration:none}
+.qpfx-shell{max-width:1120px;margin:0 auto;padding:0 clamp(16px,4vw,32px)}
+
+/* ---------- ۱ · هدر ---------- */
+.qpfx-header{padding:56px 0 0;text-align:center}
+.qpfx-logo{
+  font-size:clamp(26px,4.6vw,40px);
+  font-weight:800;
+  letter-spacing:.12em;
+  color:var(--qp-black);
+  line-height:1.4;
+}
+.qpfx-logo b{color:var(--qp-green);font-weight:800}
+.qpfx-tagline{margin-top:10px;color:var(--qp-gray);font-size:14.5px;font-weight:500}
+.qpfx-hrule{height:1px;background:var(--qp-black);opacity:.85;margin:26px 0 0}
+
+/* ---------- سرتیتر بخش‌ها ---------- */
+.qpfx-section{padding:64px 0 8px}
+.qpfx-sechead{display:flex;align-items:flex-end;gap:14px;margin-bottom:26px;flex-wrap:wrap}
+.qpfx-sechead__no{
+  font-family:var(--qp-mono);font-size:13px;font-weight:700;color:var(--qp-green);
+  background:linear-gradient(165deg,var(--qp-navy),var(--qp-navy2));border-radius:8px;padding:4px 12px;letter-spacing:.15em;
+  transform:translateY(-4px);
+}
+.qpfx-sechead__title{font-size:clamp(20px,3vw,26px);font-weight:800;line-height:1.35}
+.qpfx-sechead__note{
+  margin-inline-start:auto;font-size:12px;color:var(--qp-gray);
+  letter-spacing:.04em;white-space:nowrap;
+}
+
+/* ---------- ۲ · دسته‌ها ---------- */
+.qpfx-cats{display:grid;grid-template-columns:repeat(auto-fill,minmax(235px,1fr));gap:16px}
+.qpfx-cat{
+  display:flex;flex-direction:column;gap:8px;
+  background:linear-gradient(165deg,var(--qp-navy),var(--qp-navy2));border-radius:18px;padding:24px 22px 20px;
+  box-shadow:var(--qp-shadow);transition:box-shadow .18s ease,transform .18s ease;
+}
+.qpfx-cat:hover{box-shadow:var(--qp-shadow-hi);transform:translateY(-2px)}
+.qpfx-cat__row{display:flex;align-items:baseline;justify-content:space-between;gap:10px}
+.qpfx-cat__name{font-size:15.5px;font-weight:800;color:#fff;line-height:1.5}
+.qpfx-cat__count{
+  font-size:30px;font-weight:800;color:var(--qp-green);line-height:1;white-space:nowrap;
+  text-shadow:0 0 18px rgba(0,255,102,.28);
+}
+.qpfx-cat__unit{font-size:11px;font-weight:600;color:rgba(0,255,102,.6);margin-inline-start:3px}
+.qpfx-cat__desc{font-size:12.5px;color:#a9b7d4;line-height:1.8}
+.qpfx-cat__subs{display:flex;flex-wrap:wrap;gap:6px;margin-top:2px}
+.qpfx-cat__subs span{font-size:11px;color:#cdd8ee;background:rgba(255,255,255,.08);border-radius:7px;padding:2px 9px}
+
+/* ---------- ۳ · مقالات (نوارهای افقی) ---------- */
+.qpfx-bars{display:grid;gap:12px}
+.qpfx-bar{
+  display:flex;align-items:center;justify-content:space-between;gap:18px;
+  background:linear-gradient(165deg,var(--qp-navy),var(--qp-navy2));border-radius:14px;padding:15px 22px;
+  box-shadow:var(--qp-shadow);transition:box-shadow .18s ease,transform .18s ease;
+}
+.qpfx-bar:hover{box-shadow:var(--qp-shadow-hi);transform:translateX(7px)}
+.qpfx-bar__title{font-size:clamp(14px,2.4vw,16.5px);font-weight:700;color:var(--qp-green);line-height:1.6;min-width:0}
+.qpfx-bar__id{
+  flex:none;font-family:var(--qp-mono);font-size:11.5px;letter-spacing:.06em;color:var(--qp-gray2);
+  border:1px solid rgba(255,255,255,.14);border-radius:7px;padding:3px 10px;
+  transition:color .18s ease,border-color .18s ease;white-space:nowrap;
+}
+.qpfx-bar__id b{color:#a9a9a9;font-weight:600}
+.qpfx-bar:hover .qpfx-bar__id{color:var(--qp-green);border-color:rgba(0,255,102,.45)}
+.qpfx-bar:hover .qpfx-bar__id b{color:rgba(0,255,102,.7)}
+.qpfx-more{
+  display:inline-block;margin-top:18px;font-size:12.5px;font-weight:700;color:var(--qp-gray);
+  letter-spacing:.05em;border-bottom:1px solid var(--qp-black);padding-bottom:2px;
+  transition:color .18s ease,border-color .18s ease;
+}
+.qpfx-more:hover{color:var(--qp-black);border-color:var(--qp-green)}
+
+/* ---------- ۴ · دانشمندان ---------- */
+.qpfx-sci{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.qpfx-sci__box{
+  display:block;background:#fff;border:1px solid #e4e4e4;border-radius:18px;
+  padding:24px 16px 22px;text-align:center;
+  transition:background .18s ease,border-color .18s ease,box-shadow .18s ease;
+}
+.qpfx-sci__name{font-size:16.5px;font-weight:800;color:var(--qp-black);transition:color .18s ease}
+.qpfx-sci__role{display:block;margin-top:6px;font-size:12px;font-weight:600;color:var(--qp-gray);transition:color .18s ease}
+.qpfx-sci__yrs{display:block;margin-top:4px;font-family:var(--qp-mono);font-size:10.5px;color:#aaa;letter-spacing:.05em;transition:color .18s ease}
+.qpfx-sci__box:hover{background:linear-gradient(165deg,var(--qp-navy),var(--qp-navy2));border-color:var(--qp-navy2);box-shadow:var(--qp-shadow-hi)}
+.qpfx-sci__box:hover .qpfx-sci__name{color:var(--qp-green)}
+.qpfx-sci__box:hover .qpfx-sci__role{color:rgba(0,255,102,.72)}
+.qpfx-sci__box:hover .qpfx-sci__yrs{color:#8f8f8f}
+
+/* ---------- فوتر ---------- */
+.qpfx-footer{
+  margin-top:72px;padding:26px 0 44px;border-top:1px solid var(--qp-hair);text-align:center;
+}
+.qpfx-footer p{font-size:13px;color:var(--qp-gray)}
+.qpfx-footer small{display:block;margin-top:6px;font-size:11px;color:#b5b5b5;letter-spacing:.05em}
+
+/* ---------- ریسپانسیو ---------- */
+@media (max-width:880px){
+  .qpfx-sci{grid-template-columns:repeat(2,1fr)}
+  .qpfx-sechead__note{display:none}
+}
+@media (max-width:440px){
+  .qpfx-cats{grid-template-columns:1fr}
+  .qpfx-header{padding-top:40px}
+  .qpfx-section{padding-top:48px}
+  .qpfx-bar{padding:13px 16px;gap:10px}
+  .qpfx-bar:hover{transform:translateX(4px)}
+  .qpfx-bar__id{font-size:10.5px;padding:2px 8px}
+}
+</style>
+
+
+<div class="qpfx">
+<div class="qpfx-shell">
+
+  <!-- ============ ۱ · هدر ============ -->
+  <header class="qpfx-header">
+    <h1 class="qpfx-logo">کوانتوم <b>پدیا</b> فارسی</h1>
+    <p class="qpfx-tagline">دانشنامه‌ای دقیق، کاربردی و خوش‌خوان برای یادگیری کوانتوم</p>
+    <div class="qpfx-hrule" aria-hidden="true"></div>
+  </header>
+
+  <main>
+    <!-- ============ ۲ · دسته‌بندی‌ها ============ -->
+    <section class="qpfx-section" aria-labelledby="qpfx-t-cats">
+      <div class="qpfx-sechead">
+        <span class="qpfx-sechead__no">۰۱</span>
+        <h2 class="qpfx-sechead__title" id="qpfx-t-cats">دسته‌بندی موضوعات</h2>
+        <span class="qpfx-sechead__note">۱۳ دسته و زیردستهٔ غیرخالی · صفر دستهٔ خالی</span>
+      </div>
+
+      <nav class="qpfx-cats" aria-label="دسته‌های موضوعی">
+        <a class="qpfx-cat" href="https://qpedia.ir/topic/technology/">
+          <span class="qpfx-cat__row">
+            <span class="qpfx-cat__name">فناوری و کاربردها</span>
+            <span><span class="qpfx-cat__count">۴۴</span><span class="qpfx-cat__unit">مقاله</span></span>
+          </span>
+          <span class="qpfx-cat__desc">از رایانش و رمزنگاری تا زیست‌سنجی؛ پربازدیدترین مسیر دانشنامه.</span>
+          <span class="qpfx-cat__subs"><span>رایانش و ارتباطات ۳۰</span><span>فناوری‌های روزمره ۱۳</span><span>زیست‌شناسی ۸</span></span>
+        </a>
+        <a class="qpfx-cat" href="https://qpedia.ir/topic/fundamentals/">
+          <span class="qpfx-cat__row">
+            <span class="qpfx-cat__name">مبانی و مفاهیم</span>
+            <span><span class="qpfx-cat__count">۳۱</span><span class="qpfx-cat__unit">مقاله</span></span>
+          </span>
+          <span class="qpfx-cat__desc">سنگ‌بنای مکانیک کوانتومی؛ از مفاهیم پایه تا ذرات بنیادی.</span>
+          <span class="qpfx-cat__subs"><span>مفاهیم پایه ۱۹</span><span>ذرات بنیادی ۱۲</span></span>
+        </a>
+        <a class="qpfx-cat" href="https://qpedia.ir/topic/history-experiments/">
+          <span class="qpfx-cat__row">
+            <span class="qpfx-cat__name">تاریخ و آزمایش‌ها</span>
+            <span><span class="qpfx-cat__count">۲۰</span><span class="qpfx-cat__unit">مقاله</span></span>
+          </span>
+          <span class="qpfx-cat__desc">روایت تاریخی نظریه و آزمایش‌هایی که فهم ما را تغییر دادند.</span>
+          <span class="qpfx-cat__subs"><span>تاریخ کوانتوم ۱۸</span><span>آزمایش‌ها ۱۰</span></span>
+        </a>
+        <a class="qpfx-cat" href="https://qpedia.ir/topic/phenomena/">
+          <span class="qpfx-cat__row">
+            <span class="qpfx-cat__name">پدیده‌های کوانتومی</span>
+            <span><span class="qpfx-cat__count">۲۰</span><span class="qpfx-cat__unit">مقاله</span></span>
+          </span>
+          <span class="qpfx-cat__desc">درهم‌تنیدگی، تونل‌زنی و پدیده‌هایی که شهود کلاسیک را می‌شکنند.</span>
+        </a>
+        <a class="qpfx-cat" href="https://qpedia.ir/topic/pseudoscience/">
+          <span class="qpfx-cat__row">
+            <span class="qpfx-cat__name">نقد شبه‌علم</span>
+            <span><span class="qpfx-cat__count">۱۸</span><span class="qpfx-cat__unit">مقاله</span></span>
+          </span>
+          <span class="qpfx-cat__desc">مرزبندی علم دقیق با سوءاستفاده‌های بازاری و شبه‌علم.</span>
+        </a>
+        <a class="qpfx-cat" href="https://qpedia.ir/topic/interpretations/">
+          <span class="qpfx-cat__row">
+            <span class="qpfx-cat__name">تفسیرها و فلسفه</span>
+            <span><span class="qpfx-cat__count">۱۲</span><span class="qpfx-cat__unit">مقاله</span></span>
+          </span>
+          <span class="qpfx-cat__desc">خوانش‌های فلسفی و تفسیری از معنای نظریهٔ کوانتوم.</span>
+        </a>
+      </nav>
+    </section>
+
+    <!-- ============ ۳ · تازه‌ترین مقاله‌ها ============ -->
+    <section class="qpfx-section" aria-labelledby="qpfx-t-arts">
+      <div class="qpfx-sechead">
+        <span class="qpfx-sechead__no">۰۲</span>
+        <h2 class="qpfx-sechead__title" id="qpfx-t-arts">تازه‌ترین مقاله‌ها</h2>
+        <span class="qpfx-sechead__note">۸ مورد از ۱۷۱ مقاله</span>
+      </div>
+
+      <nav class="qpfx-bars" aria-label="تازه‌ترین مقاله‌ها">
+        <a class="qpfx-bar" href="https://qpedia.ir/quantum-ai-marketing-hype/">
+          <span class="qpfx-bar__title">هوش مصنوعی کوانتومی؛ بیشترش برچسب است</span>
+          <span class="qpfx-bar__id"><b>شناسه</b> ۲۷۶۵</span>
+        </a>
+        <a class="qpfx-bar" href="https://qpedia.ir/crystal-healing-debunked/">
+          <span class="qpfx-bar__title">کریستال درمانی؛ سنگ شفا نمی دهد</span>
+          <span class="qpfx-bar__id"><b>شناسه</b> ۲۷۶۴</span>
+        </a>
+        <a class="qpfx-bar" href="https://qpedia.ir/objective-collapse/">
+          <span class="qpfx-bar__title">فروپاشی عینی؛ گربه بدون ناظر می میرد</span>
+          <span class="qpfx-bar__id"><b>شناسه</b> ۲۷۶۳</span>
+        </a>
+        <a class="qpfx-bar" href="https://qpedia.ir/qbism/">
+          <span class="qpfx-bar__title">کیوبیسم؛ احتمال مال شماست نه مال جهان</span>
+          <span class="qpfx-bar__id"><b>شناسه</b> ۲۷۶۲</span>
+        </a>
+        <a class="qpfx-bar" href="https://qpedia.ir/transactional-interpretation/">
+          <span class="qpfx-bar__title">تفسیر تراکنشی؛ دست دادن موج رفت و برگشت</span>
+          <span class="qpfx-bar__id"><b>شناسه</b> ۲۷۶۱</span>
+        </a>
+        <a class="qpfx-bar" href="https://qpedia.ir/topological-superconductivity/">
+          <span class="qpfx-bar__title">ابررسانایی توپولوژیک؛ زنج با گره در لبه</span>
+          <span class="qpfx-bar__id"><b>شناسه</b> ۲۷۵۹</span>
+        </a>
+        <a class="qpfx-bar" href="https://qpedia.ir/lamb-shift/">
+          <span class="qpfx-bar__title">شکاف لمب؛ دو تراز که نباید جدا می شدند</span>
+          <span class="qpfx-bar__id"><b>شناسه</b> ۲۷۵۸</span>
+        </a>
+        <a class="qpfx-bar" href="https://qpedia.ir/aharonov-bohm-effect/">
+          <span class="qpfx-bar__title">اثر آهارونوف-بوههم؛ فاز بدون میدان محلی</span>
+          <span class="qpfx-bar__id"><b>شناسه</b> ۲۷۵۷</span>
+        </a>
+        <a class="qpfx-more" href="https://qpedia.ir/topic/fundamentals/">مشاهدهٔ همهٔ دسته‌ها و مسیرهای مطالعه</a>
+      </nav>
+    </section>
+
+    <!-- ============ ۴ · دانشمندان ============ -->
+    <section class="qpfx-section" aria-labelledby="qpfx-t-sci">
+      <div class="qpfx-sechead">
+        <span class="qpfx-sechead__no">۰۳</span>
+        <h2 class="qpfx-sechead__title" id="qpfx-t-sci">چهره‌های کوانتوم</h2>
+        <span class="qpfx-sechead__note">همهٔ ۶۲ دانشمند در تالار چهره‌ها</span>
+      </div>
+
+      <nav class="qpfx-sci" aria-label="دانشمندان برگزیده">
+        <a class="qpfx-sci__box" href="https://qpedia.ir/scientists/">
+          <span class="qpfx-sci__name">ماکس پلانک</span>
+          <span class="qpfx-sci__role">پدر نظریهٔ کوانتوم</span>
+          <span class="qpfx-sci__yrs">۱۸۵۸ — ۱۹۴۷</span>
+        </a>
+        <a class="qpfx-sci__box" href="https://qpedia.ir/scientists/">
+          <span class="qpfx-sci__name">آلبرت اینشتین</span>
+          <span class="qpfx-sci__role">اثر فوتوالکتریک و کوانتایش نور</span>
+          <span class="qpfx-sci__yrs">۱۸۷۹ — ۱۹۵۵</span>
+        </a>
+        <a class="qpfx-sci__box" href="https://qpedia.ir/scientists/">
+          <span class="qpfx-sci__name">نیلز بور</span>
+          <span class="qpfx-sci__role">مدل اتمی و اصل مکملیت</span>
+          <span class="qpfx-sci__yrs">۱۸۸۵ — ۱۹۶۲</span>
+        </a>
+        <a class="qpfx-sci__box" href="https://qpedia.ir/scientists/">
+          <span class="qpfx-sci__name">ورنر هایزنبرگ</span>
+          <span class="qpfx-sci__role">اصل عدم‌قطعیت</span>
+          <span class="qpfx-sci__yrs">۱۹۰۱ — ۱۹۷۶</span>
+        </a>
+        <a class="qpfx-sci__box" href="https://qpedia.ir/scientists/">
+          <span class="qpfx-sci__name">اروین شرودینگر</span>
+          <span class="qpfx-sci__role">معادلهٔ موج و گربهٔ مشهور</span>
+          <span class="qpfx-sci__yrs">۱۸۸۷ — ۱۹۶۱</span>
+        </a>
+        <a class="qpfx-sci__box" href="https://qpedia.ir/scientists/">
+          <span class="qpfx-sci__name">پل دیراک</span>
+          <span class="qpfx-sci__role">پیش‌بینی پادماده</span>
+          <span class="qpfx-sci__yrs">۱۹۰۲ — ۱۹۸۴</span>
+        </a>
+      </nav>
+    </section>
+  </main>
+
+  
+
+</div>
+</div>
