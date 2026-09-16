@@ -102,17 +102,16 @@
 /* ---------- ۴ · دانشمندان ---------- */
 .qpfx-sci{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
 .qpfx-sci__box{
-  display:block;background:#fff;border:1px solid #e4e4e4;border-radius:18px;
+  display:block;background:linear-gradient(160deg,#fb923c 0%,#f97316 55%,#c2410c 100%);
+  border:1px solid rgba(255,255,255,.22);border-radius:18px;
   padding:24px 16px 22px;text-align:center;
-  transition:background .18s ease,border-color .18s ease,box-shadow .18s ease;
+  box-shadow:0 16px 40px rgba(194,65,12,.30),0 3px 8px rgba(194,65,12,.18);
+  transition:box-shadow .18s ease,transform .18s ease,filter .18s ease;
 }
-.qpfx-sci__name{font-size:16.5px;font-weight:800;color:var(--qp-black);transition:color .18s ease}
-.qpfx-sci__role{display:block;margin-top:6px;font-size:12px;font-weight:600;color:var(--qp-gray);transition:color .18s ease}
-.qpfx-sci__yrs{display:block;margin-top:4px;font-family:var(--qp-mono);font-size:10.5px;color:#aaa;letter-spacing:.05em;transition:color .18s ease}
-.qpfx-sci__box:hover{background:linear-gradient(165deg,var(--qp-navy),var(--qp-navy2));border-color:var(--qp-navy2);box-shadow:var(--qp-shadow-hi)}
-.qpfx-sci__box:hover .qpfx-sci__name{color:var(--qp-green)}
-.qpfx-sci__box:hover .qpfx-sci__role{color:rgba(0,255,102,.72)}
-.qpfx-sci__box:hover .qpfx-sci__yrs{color:#8f8f8f}
+.qpfx-sci__name{font-size:16.5px;font-weight:800;color:#fff;text-shadow:0 1px 8px rgba(0,0,0,.25)}
+.qpfx-sci__role{display:block;margin-top:6px;font-size:12px;font-weight:600;color:rgba(255,255,255,.88)}
+.qpfx-sci__yrs{display:inline-block;margin-top:10px;font-family:var(--qp-mono);font-size:10.5px;color:#fff;letter-spacing:.05em;background:rgba(0,0,0,.22);border:1px solid rgba(255,255,255,.25);border-radius:20px;padding:2px 12px}
+.qpfx-sci__box:hover{box-shadow:0 26px 60px rgba(194,65,12,.42),0 6px 16px rgba(194,65,12,.28);transform:translateY(-3px);filter:brightness(1.06)}
 
 /* ---------- ریسپانسیو ---------- */
 @media (max-width:880px){
