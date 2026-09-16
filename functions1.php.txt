@@ -1127,3 +1127,9 @@ function qpedia_hide_retired_taxonomies() {
 	}
 }
 add_action( 'init', 'qpedia_hide_retired_taxonomies', 99 );
+
+/* ── ۲۳. viewport موبایل (اگر هدر قدیمی نداشته باشد؛ تکرارش بی‌ضرر است) ── */
+function qpedia_viewport_meta() {
+	echo '<meta name="viewport" content="width=device-width, initial-scale=1">' . "\n";
+}
+add_action( 'wp_head', 'qpedia_viewport_meta', 0 );
