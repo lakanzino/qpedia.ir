@@ -1,0 +1,21 @@
+# WordPress / PHP sensitive & runtime files — never commit to public repo
+error_log
+error_log*
+*.log
+wp-config.php
+.env
+.env.*
+*.sql
+*.sqlite
+*.sqlite3
+# keys & credentials
+*.pem
+*.key
+*.p12
+*.pfx
+credentials.json
+secrets.json
+# OS / editor junk
+.DS_Store
+Thumbs.db
+.sudo_as_admin_successful
