@@ -6,7 +6,7 @@
 <style>
 /* ==========================================================
    کوانتوم پدیا فارسی — صفحهٔ نخست
-   مینیمال سایبری: سفید مطلق · سرمه‌ای · فسفری ۰۰FF66
+   مینیمال سایبری: آبی دودی · سرمه‌ای · فسفری ۰۰FF66
    بدون تصویر، بدون ایموجی، بدون انیمیشن پس‌زمینه
    ========================================================== */
 .qpfx{
@@ -23,7 +23,7 @@
   --qp-shadow-hi:0 26px 60px rgba(10,22,70,.35),0 6px 16px rgba(10,22,70,.22);
 }
 .qpfx,.qpfx *,.qpfx *::before,.qpfx *::after{box-sizing:border-box;margin:0;padding:0}
-.qpfx{background:linear-gradient(180deg,#f7f9fd 0%,#edf1f7 100%);color:var(--qp-black);font-family:var(--qp-sans);font-size:16px;line-height:1.7}
+.qpfx{background:linear-gradient(180deg,#dde5f0 0%,#c6d1e2 100%);color:var(--qp-black);font-family:var(--qp-sans);font-size:16px;line-height:1.7}
 .qpfx ::selection{background:var(--qp-black);color:var(--qp-green)}
 .qpfx a{color:inherit;text-decoration:none}
 .qpfx-shell{max-width:1120px;margin:0 auto;padding:0 clamp(16px,4vw,32px)}
@@ -31,14 +31,14 @@
 /* ---------- ۱ · هدر ---------- */
 .qpfx-header{padding:56px 0 0;text-align:center}
 .qpfx-logo{
-  font-size:clamp(26px,4.6vw,40px);
-  font-weight:800;
-  letter-spacing:.12em;
-  color:var(--qp-black);
-  line-height:1.4;
+  font-size:clamp(30px,5.2vw,46px);
+  font-weight:900;
+  letter-spacing:0;
+  color:var(--qp-navy2);
+  line-height:1.5;
 }
-.qpfx-logo b{color:var(--qp-green);font-weight:800}
-.qpfx-tagline{margin-top:10px;color:var(--qp-gray);font-size:14.5px;font-weight:500}
+.qpfx-logo b{color:#00a651;font-weight:900}
+.qpfx-tagline{margin-top:12px;color:#475569;font-size:15.5px;font-weight:600}
 .qpfx-hrule{height:1px;background:var(--qp-black);opacity:.85;margin:26px 0 0}
 
 /* ---------- سرتیتر بخش‌ها ---------- */
@@ -102,16 +102,16 @@
 /* ---------- ۴ · دانشمندان ---------- */
 .qpfx-sci{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
 .qpfx-sci__box{
-  display:block;background:linear-gradient(160deg,#fb923c 0%,#f97316 55%,#c2410c 100%);
-  border:1px solid rgba(255,255,255,.22);border-radius:18px;
+  display:block;background:linear-gradient(160deg,var(--qp-navy) 0%,#13234f 55%,var(--qp-navy2) 100%);
+  border:1px solid rgba(255,255,255,.10);border-radius:18px;
   padding:24px 16px 22px;text-align:center;
-  box-shadow:0 16px 40px rgba(194,65,12,.30),0 3px 8px rgba(194,65,12,.18);
-  transition:box-shadow .18s ease,transform .18s ease,filter .18s ease;
+  box-shadow:var(--qp-shadow);
+  transition:box-shadow .18s ease,transform .18s ease;
 }
-.qpfx-sci__name{font-size:16.5px;font-weight:800;color:#fff;text-shadow:0 1px 8px rgba(0,0,0,.25)}
-.qpfx-sci__role{display:block;margin-top:6px;font-size:12px;font-weight:600;color:rgba(255,255,255,.88)}
-.qpfx-sci__yrs{display:inline-block;margin-top:10px;font-family:var(--qp-mono);font-size:10.5px;color:#fff;letter-spacing:.05em;background:rgba(0,0,0,.22);border:1px solid rgba(255,255,255,.25);border-radius:20px;padding:2px 12px}
-.qpfx-sci__box:hover{box-shadow:0 26px 60px rgba(194,65,12,.42),0 6px 16px rgba(194,65,12,.28);transform:translateY(-3px);filter:brightness(1.06)}
+.qpfx-sci__name{font-size:16.5px;font-weight:800;color:#fff}
+.qpfx-sci__role{display:block;margin-top:6px;font-size:12px;font-weight:600;color:#a9b7d4}
+.qpfx-sci__yrs{display:inline-block;margin-top:10px;font-family:var(--qp-mono);font-size:10.5px;color:#cdd8ee;letter-spacing:.05em;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.14);border-radius:20px;padding:2px 12px}
+.qpfx-sci__box:hover{box-shadow:var(--qp-shadow-hi);transform:translateY(-2px)}
 
 /* ---------- ریسپانسیو ---------- */
 @media (max-width:880px){
