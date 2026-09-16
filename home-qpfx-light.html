@@ -5,20 +5,20 @@
 <meta name="theme-color" content="#1b5e20">
 <style>
 /* ==========================================================
-   کوانتوم پدیا فارسی — صفحهٔ نخست (نسخهٔ روشن و مینیمال)
-   سفید · خاکستری روشن · آبی صورمه‌ای · سبز تیره
-   خوانایی بالا، کنتراست استاندارد، بدون شلوغی
+   کوانتوم پدیا فارسی — صفحهٔ نخست (روشن و مینیمال)
+   سفید · مشکی · آبی صورمه‌ای · سبز تیره (فونت) · سبز روشن (کاور)
    ========================================================== */
 .qpfx{
   --qp-navy:#1e3a5f;
   --qp-green:#1b5e20;
-  --qp-green-soft:#e8f5e9;
-  --qp-ink:#3c4043;
-  --qp-muted:#5f6368;
-  --qp-line:#e3e6ea;
+  --qp-green-bright:#00a651;
+  --qp-green-soft:#e0f3e5;
+  --qp-ink:#111;
+  --qp-line:#d7dce3;
   --qp-chip:#eef2f7;
   --qp-sans:'Vazirmatn','Segoe UI',Tahoma,'Iran Sans',system-ui,Arial,sans-serif;
-  --qp-shadow:0 1px 2px rgba(30,58,95,.07),0 4px 14px rgba(30,58,95,.06);
+  --qp-shadow:0 18px 45px rgba(30,58,95,.20),0 4px 10px rgba(30,58,95,.14);
+  --qp-shadow-bar:0 10px 26px rgba(30,58,95,.14),0 2px 6px rgba(30,58,95,.10);
 }
 .qpfx,.qpfx *,.qpfx *::before,.qpfx *::after{box-sizing:border-box;margin:0;padding:0}
 .qpfx{background:#fff;color:var(--qp-ink);font-family:var(--qp-sans);font-size:16px;line-height:2}
@@ -28,100 +28,68 @@
 
 /* ---------- ۱ · هدر ---------- */
 .qpfx-header{padding:60px 0 6px;text-align:center}
-.qpfx-badge{display:inline-block;font-size:13px;font-weight:700;color:var(--qp-green);background:var(--qp-green-soft);border-radius:999px;padding:5px 20px;margin-bottom:14px}
+.qpfx-badge{display:inline-block;font-size:13px;font-weight:800;color:var(--qp-green);background:var(--qp-green-soft);border-radius:999px;padding:6px 22px;margin-bottom:14px}
 .qpfx-logo{font-size:clamp(32px,5.5vw,48px);font-weight:900;color:var(--qp-navy);line-height:1.6}
 .qpfx-logo b{color:var(--qp-green);font-weight:900}
-.qpfx-tagline{margin-top:10px;color:var(--qp-muted);font-size:16px}
-.qpfx-actions{display:flex;gap:12px;justify-content:center;margin-top:24px;flex-wrap:wrap}
-.qpfx-btn{display:inline-block;font-size:14px;font-weight:700;border-radius:12px;padding:10px 28px;transition:background .18s ease,color .18s ease,border-color .18s ease}
-.qpfx-btn--solid{background:var(--qp-green);color:#fff}
-.qpfx-btn--solid:hover{background:#144a17}
-.qpfx-btn--line{border:1.5px solid var(--qp-navy);color:var(--qp-navy)}
-.qpfx-btn--line:hover{background:var(--qp-navy);color:#fff}
+.qpfx-tagline{margin-top:10px;color:var(--qp-ink);font-size:16px;font-weight:600}
+.qpfx-actions{display:flex;gap:14px;justify-content:center;margin-top:26px;flex-wrap:wrap}
+.qpfx a.qpfx-btn{display:inline-block;font-size:15px;font-weight:800;border-radius:14px;padding:13px 38px;transition:background .18s ease,color .18s ease,border-color .18s ease}
+.qpfx a.qpfx-btn--solid{background:var(--qp-green-bright);color:#fff;border:1.5px solid var(--qp-green-bright)}
+.qpfx a.qpfx-btn--solid:hover{background:#008f46;border-color:#008f46;color:#fff}
+.qpfx a.qpfx-btn--line{border:2px solid var(--qp-navy);color:var(--qp-navy)}
+.qpfx a.qpfx-btn--line:hover{background:var(--qp-navy);color:#fff}
 
 /* ---------- سرتیتر بخش‌ها ---------- */
 .qpfx-section{padding:54px 0 4px}
-.qpfx-sechead{display:flex;align-items:baseline;gap:12px;margin-bottom:24px;flex-wrap:wrap;border-bottom:1px solid var(--qp-line);padding-bottom:12px}
-.qpfx-sechead__no{font-size:14px;font-weight:800;color:var(--qp-green)}
+.qpfx-sechead{display:flex;align-items:baseline;gap:12px;margin-bottom:26px;flex-wrap:wrap;border-bottom:2px solid var(--qp-navy);padding-bottom:12px}
+.qpfx-sechead__no{font-size:15px;font-weight:900;color:var(--qp-green)}
 .qpfx-sechead__title{font-size:clamp(20px,3vw,25px);font-weight:800;color:var(--qp-navy);line-height:1.6}
-.qpfx-sechead__note{margin-inline-start:auto;font-size:12.5px;color:var(--qp-muted);white-space:nowrap}
+.qpfx-sechead__note{margin-inline-start:auto;font-size:12.5px;font-weight:600;color:var(--qp-ink);white-space:nowrap}
 
 /* ---------- ۲ · دسته‌ها ---------- */
-.qpfx-cats{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:14px}
+.qpfx-cats{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:20px}
 .qpfx-cat{
   display:flex;flex-direction:column;gap:8px;
-  background:#fff;border:1px solid var(--qp-line);border-radius:16px;padding:22px 20px 18px;
+  background:#fff;border:1px solid var(--qp-line);border-radius:16px;padding:24px 22px 20px;
   box-shadow:var(--qp-shadow);transition:border-color .18s ease,transform .18s ease;
 }
-.qpfx-cat:hover{border-color:var(--qp-green);transform:translateY(-2px)}
+.qpfx-cat:hover{border-color:var(--qp-green-bright);transform:translateY(-3px)}
 .qpfx-cat__row{display:flex;align-items:baseline;justify-content:space-between;gap:10px}
-.qpfx-cat__name{font-size:16px;font-weight:800;color:var(--qp-navy);line-height:1.7}
-.qpfx-cat__count{font-size:26px;font-weight:800;color:var(--qp-green);line-height:1;white-space:nowrap}
-.qpfx-cat__unit{font-size:11px;font-weight:600;color:var(--qp-muted);margin-inline-start:3px}
-.qpfx-cat__desc{font-size:13px;color:var(--qp-muted);line-height:2}
+.qpfx-cat__name{font-size:16.5px;font-weight:800;color:var(--qp-navy);line-height:1.7}
+.qpfx-cat__count{font-size:28px;font-weight:800;color:var(--qp-green);line-height:1;white-space:nowrap}
+.qpfx-cat__unit{font-size:11px;font-weight:700;color:var(--qp-ink);margin-inline-start:3px}
+.qpfx-cat__desc{font-size:13px;color:var(--qp-ink);line-height:2}
 .qpfx-cat__subs{display:flex;flex-wrap:wrap;gap:6px;margin-top:2px}
-.qpfx-cat__subs span{font-size:11px;color:var(--qp-navy);background:var(--qp-chip);border-radius:7px;padding:2px 9px}
+.qpfx-cat__subs span{font-size:11px;font-weight:700;color:var(--qp-navy);background:var(--qp-chip);border-radius:7px;padding:2px 9px}
 
 /* ---------- ۳ · مقالات (فهرست زنده) ---------- */
-.qpfx-bars{display:grid;gap:10px}
+.qpfx-bars{display:grid;gap:14px}
 .qpfx-bar{
   display:flex;align-items:center;justify-content:space-between;gap:18px;
-  background:#fff;border:1px solid var(--qp-line);border-radius:14px;padding:14px 20px;
-  box-shadow:var(--qp-shadow);transition:border-color .18s ease,transform .18s ease;
+  background:#fff;border:1px solid var(--qp-line);border-radius:14px;padding:15px 22px;
+  box-shadow:var(--qp-shadow-bar);transition:border-color .18s ease,transform .18s ease;
 }
-.qpfx-bar:hover{border-color:var(--qp-green);transform:translateX(6px)}
+.qpfx-bar:hover{border-color:var(--qp-green-bright);transform:translateX(6px)}
 .qpfx-bar__title{font-size:clamp(14px,2.4vw,16px);font-weight:700;color:var(--qp-navy);line-height:1.9;min-width:0}
-.qpfx-bar__id{
-  flex:none;font-size:11.5px;font-weight:700;color:var(--qp-green);white-space:nowrap;
-  background:var(--qp-green-soft);border-radius:8px;padding:3px 12px;
-}
-.qpfx-bar__id b{font-weight:700}
+.qpfx-bar::after{content:'←';flex:none;font-size:18px;font-weight:800;color:var(--qp-green-bright)}
 .qpfx-more{
-  display:inline-block;margin-top:18px;font-size:13px;font-weight:700;color:var(--qp-green);
-  border-bottom:1px solid var(--qp-green);padding-bottom:2px;
+  display:inline-block;margin-top:18px;font-size:13.5px;font-weight:800;color:var(--qp-green);
+  border-bottom:2px solid var(--qp-green);padding-bottom:2px;
 }
 .qpfx-more:hover{color:var(--qp-navy);border-color:var(--qp-navy)}
-.qpfx-loading,.qpfx-err{font-size:13px;color:var(--qp-muted);text-align:center;padding:18px 0}
-
-/* ---------- ۴ · دانشمندان ---------- */
-.qpfx-sci{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
-.qpfx-sci__box{
-  display:block;background:#fff;border:1px solid var(--qp-line);border-radius:16px;
-  padding:26px 16px 24px;text-align:center;
-  box-shadow:var(--qp-shadow);
-  transition:border-color .18s ease,transform .18s ease;
-}
-.qpfx-sci__box:hover{border-color:var(--qp-green);transform:translateY(-2px)}
-.qpfx-sci__ava{
-  width:56px;height:56px;border-radius:50%;margin:0 auto 12px;
-  display:flex;align-items:center;justify-content:center;
-  background:var(--qp-green-soft);color:var(--qp-green);
-  font-size:24px;font-weight:800;line-height:1;
-}
-.qpfx-sci__name{font-size:16.5px;font-weight:800;color:var(--qp-navy)}
-.qpfx-sci__role{display:block;margin-top:6px;font-size:12.5px;color:var(--qp-muted);line-height:1.9}
-.qpfx-sci__yrs{display:inline-block;margin-top:10px;font-size:11.5px;font-weight:700;color:var(--qp-green);background:var(--qp-green-soft);border-radius:20px;padding:2px 14px}
-
-/* ---------- ۵ · نوار پایانی ---------- */
-.qpfx-foot{margin:54px 0 60px;background:var(--qp-green-soft);border-radius:20px;padding:36px 28px;text-align:center}
-.qpfx-foot__title{font-size:20px;font-weight:800;color:var(--qp-navy)}
-.qpfx-foot__desc{margin-top:8px;font-size:14px;color:var(--qp-muted)}
+.qpfx-loading,.qpfx-err{font-size:13px;color:var(--qp-ink);text-align:center;padding:18px 0}
 
 /* ---------- ریسپانسیو ---------- */
 @media (max-width:880px){
-  .qpfx-sci{grid-template-columns:repeat(2,1fr)}
   .qpfx-sechead__note{display:none}
 }
 @media (max-width:440px){
   .qpfx-cats{grid-template-columns:1fr}
-  .qpfx-sci{grid-template-columns:1fr 1fr}
   .qpfx-header{padding-top:44px}
   .qpfx-section{padding-top:44px}
-  .qpfx-bar{padding:12px 16px;gap:10px}
+  .qpfx a.qpfx-btn{padding:12px 30px;font-size:14px}
+  .qpfx-bar{padding:13px 16px;gap:10px}
   .qpfx-bar:hover{transform:translateX(3px)}
-  .qpfx-bar__id{font-size:10.5px;padding:2px 9px}
-  .qpfx-sci__box{padding:20px 10px 18px}
-  .qpfx-sci__ava{width:48px;height:48px;font-size:20px}
 }
 </style>
 
@@ -211,61 +179,7 @@
       </nav>
       <a class="qpfx-more" href="https://qpedia.ir/topic/fundamentals/">مشاهدهٔ همهٔ دسته‌ها و مسیرهای مطالعه</a>
     </section>
-
-    <!-- ============ ۴ · دانشمندان ============ -->
-    <section class="qpfx-section" aria-labelledby="qpfx-t-sci">
-      <div class="qpfx-sechead">
-        <span class="qpfx-sechead__no">۰۳</span>
-        <h2 class="qpfx-sechead__title" id="qpfx-t-sci">چهره‌های کوانتوم</h2>
-        <span class="qpfx-sechead__note">همهٔ ۶۲ دانشمند در تالار چهره‌ها</span>
-      </div>
-
-      <nav class="qpfx-sci" aria-label="دانشمندان برگزیده">
-        <a class="qpfx-sci__box" href="https://qpedia.ir/scientists/max-plank/">
-          <span class="qpfx-sci__ava" aria-hidden="true">P</span>
-          <span class="qpfx-sci__name">ماکس پلانک</span>
-          <span class="qpfx-sci__role">پدر نظریهٔ کوانتوم</span>
-          <span class="qpfx-sci__yrs">۱۸۵۸ — ۱۹۴۷</span>
-        </a>
-        <a class="qpfx-sci__box" href="https://qpedia.ir/scientists/albert-einstein-2/">
-          <span class="qpfx-sci__ava" aria-hidden="true">E</span>
-          <span class="qpfx-sci__name">آلبرت اینشتین</span>
-          <span class="qpfx-sci__role">اثر فوتوالکتریک و کوانتایش نور</span>
-          <span class="qpfx-sci__yrs">۱۸۷۹ — ۱۹۵۵</span>
-        </a>
-        <a class="qpfx-sci__box" href="https://qpedia.ir/scientists/niels-bohr/">
-          <span class="qpfx-sci__ava" aria-hidden="true">B</span>
-          <span class="qpfx-sci__name">نیلز بور</span>
-          <span class="qpfx-sci__role">مدل اتمی و اصل مکملیت</span>
-          <span class="qpfx-sci__yrs">۱۸۸۵ — ۱۹۶۲</span>
-        </a>
-        <a class="qpfx-sci__box" href="https://qpedia.ir/scientists/werner-heisenberg/">
-          <span class="qpfx-sci__ava" aria-hidden="true">H</span>
-          <span class="qpfx-sci__name">ورنر هایزنبرگ</span>
-          <span class="qpfx-sci__role">اصل عدم‌قطعیت</span>
-          <span class="qpfx-sci__yrs">۱۹۰۱ — ۱۹۷۶</span>
-        </a>
-        <a class="qpfx-sci__box" href="https://qpedia.ir/scientists/erwin-schrodinger/">
-          <span class="qpfx-sci__ava" aria-hidden="true">S</span>
-          <span class="qpfx-sci__name">اروین شرودینگر</span>
-          <span class="qpfx-sci__role">معادلهٔ موج و گربهٔ مشهور</span>
-          <span class="qpfx-sci__yrs">۱۸۸۷ — ۱۹۶۱</span>
-        </a>
-        <a class="qpfx-sci__box" href="https://qpedia.ir/scientists/paul-dirac/">
-          <span class="qpfx-sci__ava" aria-hidden="true">D</span>
-          <span class="qpfx-sci__name">پل دیراک</span>
-          <span class="qpfx-sci__role">پیش‌بینی پادماده</span>
-          <span class="qpfx-sci__yrs">۱۹۰۲ — ۱۹۸۴</span>
-        </a>
-      </nav>
-    </section>
   </main>
-
-  <!-- ============ ۵ · نوار پایانی ============ -->
-  <footer class="qpfx-foot">
-    <div class="qpfx-foot__title">قول ما به تو</div>
-    <p class="qpfx-foot__desc">بدون بزرگ‌نمایی · با منبع علمی · به زبان ساده</p>
-  </footer>
 
 </div>
 </div>
@@ -274,7 +188,6 @@
 (function(){
   var box=document.getElementById('qpfx-latest');
   if(!box)return;
-  function faNum(n){try{return Number(n).toLocaleString('fa-IR');}catch(e){return n;}}
   function esc(s){return String(s).replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'');}
   fetch('/?feed=rss2&post_type=quantum_article',{credentials:'same-origin'})
     .then(function(r){if(!r.ok)throw 0;return r.text();})
@@ -286,10 +199,7 @@
       for(var i=0;i<n;i++){
         var it=items[i];
         var gt=function(tag){var e=it.getElementsByTagName(tag);return e.length?e[0].textContent:'';};
-        var chip,gm=gt('guid').match(/[?&]p=(\d+)/);
-        if(gm){chip='<b>شناسه</b> '+faNum(gm[1]);}
-        else{var d=new Date(gt('pubDate'));chip=isNaN(d)?'تازه':d.toLocaleDateString('fa-IR');}
-        html+='<a class="qpfx-bar" href="'+esc(gt('link')||'#')+'"><span class="qpfx-bar__title">'+esc(gt('title')||'بدون عنوان')+'</span><span class="qpfx-bar__id">'+chip+'</span></a>';
+        html+='<a class="qpfx-bar" href="'+esc(gt('link')||'#')+'"><span class="qpfx-bar__title">'+esc(gt('title')||'بدون عنوان')+'</span></a>';
       }
       box.innerHTML=html;
     })
