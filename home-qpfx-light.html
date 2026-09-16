@@ -31,7 +31,6 @@
 .qpfx-badge{display:inline-block;font-size:13px;font-weight:800;color:var(--qp-green);background:var(--qp-green-soft);border-radius:999px;padding:6px 22px;margin-bottom:14px}
 .qpfx-logo{font-size:clamp(32px,5.5vw,48px);font-weight:900;color:var(--qp-navy);line-height:1.6}
 .qpfx-logo b{color:var(--qp-green);font-weight:900}
-.qpfx-tagline{margin-top:10px;color:var(--qp-ink);font-size:16px;font-weight:600}
 .qpfx-actions{display:flex;gap:14px;justify-content:center;margin-top:26px;flex-wrap:wrap}
 .qpfx a.qpfx-btn{display:inline-block;font-size:15px;font-weight:800;border-radius:14px;padding:13px 38px;transition:background .18s ease,color .18s ease,border-color .18s ease}
 .qpfx a.qpfx-btn--solid{background:var(--qp-green-bright);color:#fff;border:1.5px solid var(--qp-green-bright)}
@@ -49,18 +48,12 @@
 /* ---------- ۲ · دسته‌ها ---------- */
 .qpfx-cats{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:20px}
 .qpfx-cat{
-  display:flex;flex-direction:column;gap:8px;
-  background:#fff;border:1px solid var(--qp-line);border-radius:16px;padding:24px 22px 20px;
+  display:block;text-align:center;
+  background:#fff;border:1px solid var(--qp-line);border-radius:16px;padding:26px 18px;
   box-shadow:var(--qp-shadow);transition:border-color .18s ease,transform .18s ease;
+  font-size:17px;font-weight:800;color:var(--qp-navy);line-height:1.9;
 }
 .qpfx-cat:hover{border-color:var(--qp-green-bright);transform:translateY(-3px)}
-.qpfx-cat__row{display:flex;align-items:baseline;justify-content:space-between;gap:10px}
-.qpfx-cat__name{font-size:16.5px;font-weight:800;color:var(--qp-navy);line-height:1.7}
-.qpfx-cat__count{font-size:28px;font-weight:800;color:var(--qp-green);line-height:1;white-space:nowrap}
-.qpfx-cat__unit{font-size:11px;font-weight:700;color:var(--qp-ink);margin-inline-start:3px}
-.qpfx-cat__desc{font-size:13px;color:var(--qp-ink);line-height:2}
-.qpfx-cat__subs{display:flex;flex-wrap:wrap;gap:6px;margin-top:2px}
-.qpfx-cat__subs span{font-size:11px;font-weight:700;color:var(--qp-navy);background:var(--qp-chip);border-radius:7px;padding:2px 9px}
 
 /* ---------- ۳ · مقالات (فهرست زنده) ---------- */
 .qpfx-bars{display:grid;gap:14px}
@@ -101,7 +94,6 @@
   <header class="qpfx-header">
     <span class="qpfx-badge">دانشنامهٔ فارسی فیزیک کوانتوم</span>
     <h1 class="qpfx-logo">کوانتوم <b>پدیا</b></h1>
-    <p class="qpfx-tagline">دانشنامه‌ای دقیق، کاربردی و خوش‌خوان برای یادگیری کوانتوم</p>
     <div class="qpfx-actions">
       <a class="qpfx-btn qpfx-btn--solid" href="https://qpedia.ir/start/">از کجا شروع کنیم؟</a>
       <a class="qpfx-btn qpfx-btn--line" href="https://qpedia.ir/scientists/">تالار دانشمندان</a>
@@ -118,51 +110,12 @@
       </div>
 
       <nav class="qpfx-cats" aria-label="دسته‌های موضوعی">
-        <a class="qpfx-cat" href="https://qpedia.ir/topic/technology/">
-          <span class="qpfx-cat__row">
-            <span class="qpfx-cat__name">فناوری و کاربردها</span>
-            <span><span class="qpfx-cat__count">۴۴</span><span class="qpfx-cat__unit">مقاله</span></span>
-          </span>
-          <span class="qpfx-cat__desc">از رایانش و رمزنگاری تا زیست‌سنجی؛ پربازدیدترین مسیر دانشنامه.</span>
-          <span class="qpfx-cat__subs"><span>رایانش و ارتباطات ۳۰</span><span>فناوری‌های روزمره ۱۳</span><span>زیست‌شناسی ۸</span></span>
-        </a>
-        <a class="qpfx-cat" href="https://qpedia.ir/topic/fundamentals/">
-          <span class="qpfx-cat__row">
-            <span class="qpfx-cat__name">مبانی و مفاهیم</span>
-            <span><span class="qpfx-cat__count">۳۱</span><span class="qpfx-cat__unit">مقاله</span></span>
-          </span>
-          <span class="qpfx-cat__desc">سنگ‌بنای مکانیک کوانتومی؛ از مفاهیم پایه تا ذرات بنیادی.</span>
-          <span class="qpfx-cat__subs"><span>مفاهیم پایه ۱۹</span><span>ذرات بنیادی ۱۲</span></span>
-        </a>
-        <a class="qpfx-cat" href="https://qpedia.ir/topic/history-experiments/">
-          <span class="qpfx-cat__row">
-            <span class="qpfx-cat__name">تاریخ و آزمایش‌ها</span>
-            <span><span class="qpfx-cat__count">۲۰</span><span class="qpfx-cat__unit">مقاله</span></span>
-          </span>
-          <span class="qpfx-cat__desc">روایت تاریخی نظریه و آزمایش‌هایی که فهم ما را تغییر دادند.</span>
-          <span class="qpfx-cat__subs"><span>تاریخ کوانتوم ۱۸</span><span>آزمایش‌ها ۱۰</span></span>
-        </a>
-        <a class="qpfx-cat" href="https://qpedia.ir/topic/phenomena/">
-          <span class="qpfx-cat__row">
-            <span class="qpfx-cat__name">پدیده‌های کوانتومی</span>
-            <span><span class="qpfx-cat__count">۲۰</span><span class="qpfx-cat__unit">مقاله</span></span>
-          </span>
-          <span class="qpfx-cat__desc">درهم‌تنیدگی، تونل‌زنی و پدیده‌هایی که شهود کلاسیک را می‌شکنند.</span>
-        </a>
-        <a class="qpfx-cat" href="https://qpedia.ir/topic/pseudoscience/">
-          <span class="qpfx-cat__row">
-            <span class="qpfx-cat__name">نقد شبه‌علم</span>
-            <span><span class="qpfx-cat__count">۱۸</span><span class="qpfx-cat__unit">مقاله</span></span>
-          </span>
-          <span class="qpfx-cat__desc">مرزبندی علم دقیق با سوءاستفاده‌های بازاری و شبه‌علم.</span>
-        </a>
-        <a class="qpfx-cat" href="https://qpedia.ir/topic/interpretations/">
-          <span class="qpfx-cat__row">
-            <span class="qpfx-cat__name">تفسیرها و فلسفه</span>
-            <span><span class="qpfx-cat__count">۱۲</span><span class="qpfx-cat__unit">مقاله</span></span>
-          </span>
-          <span class="qpfx-cat__desc">خوانش‌های فلسفی و تفسیری از معنای نظریهٔ کوانتوم.</span>
-        </a>
+        <a class="qpfx-cat" href="https://qpedia.ir/topic/technology/">فناوری و کاربردها</a>
+        <a class="qpfx-cat" href="https://qpedia.ir/topic/fundamentals/">مبانی و مفاهیم</a>
+        <a class="qpfx-cat" href="https://qpedia.ir/topic/history-experiments/">تاریخ و آزمایش‌ها</a>
+        <a class="qpfx-cat" href="https://qpedia.ir/topic/phenomena/">پدیده‌های کوانتومی</a>
+        <a class="qpfx-cat" href="https://qpedia.ir/topic/pseudoscience/">نقد شبه‌علم</a>
+        <a class="qpfx-cat" href="https://qpedia.ir/topic/interpretations/">تفسیرها و فلسفه</a>
       </nav>
     </section>
 
