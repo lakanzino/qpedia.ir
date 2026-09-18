@@ -1,0 +1,473 @@
+<div id="qpedia-home" dir="rtl">
+
+<style>
+/* ===== Color Palette ===== */
+#qpedia-home{
+  --accent:#00b8e6;
+  --accent-rgb:0,184,230;
+  --accent-a-04:rgba(0,184,230,0.04);
+  --accent-a-15:rgba(0,184,230,0.15);
+  --accent-a-40:rgba(0,184,230,0.40);
+  --bg:#0a0e14;
+  --bg-2:#101820;
+  --text:#e6f1f7;
+  --text-muted:#8a9aa5;
+}
+
+#qpedia-home *,
+#qpedia-home *::before,
+#qpedia-home *::after{box-sizing:border-box;}
+#qpedia-home h1,#qpedia-home h2,#qpedia-home p,#qpedia-home ul{margin:0;padding:0;}
+#qpedia-home ul{list-style:none;}
+#qpedia-home a{text-decoration:none;}
+
+#qpedia-home{
+  position:relative;
+  width:100%;
+  min-height:100vh;
+  margin:0;
+  padding:0;
+  color:var(--text);
+  background:
+    linear-gradient(rgba(0,184,230,.04) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(0,184,230,.04) 1px,transparent 1px),
+    radial-gradient(circle at 50% 0%,#102430 0%,#0a0e14 70%);
+  background-size:34px 34px,34px 34px,100% 100%;
+  background-color:var(--bg);
+  font-family:Vazirmatn,"Segoe UI",Tahoma,Arial,sans-serif;
+  line-height:1.8;
+  isolation:isolate;
+}
+
+#qpedia-home .qp-container{
+  width:min(1100px,calc(100% - 28px));
+  margin:0 auto;
+  position:relative;
+  z-index:2;
+}
+
+/* ===== HERO ===== */
+#qpedia-home .qp-hero{
+  min-height:560px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  padding:80px 20px 70px;
+  position:relative;
+}
+#qpedia-home .qp-hero::before,
+#qpedia-home .qp-hero::after{
+  content:"";
+  position:absolute;
+  border:1px solid rgba(0,184,230,.15);
+  border-radius:50%;
+  pointer-events:none;
+}
+#qpedia-home .qp-hero::before{width:520px;height:220px;transform:rotate(-13deg);}
+#qpedia-home .qp-hero::after{width:420px;height:180px;transform:rotate(22deg);}
+
+#qpedia-home .qp-brand{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  color:var(--accent);
+  font-size:13px;
+  font-weight:700;
+  margin-bottom:22px;
+  position:relative;
+  z-index:2;
+  letter-spacing:.2px;
+}
+#qpedia-home .qp-brand-dot{
+  width:8px;height:8px;border-radius:50%;
+  background:var(--accent);
+  box-shadow:0 0 0 5px rgba(0,184,230,.15);
+}
+
+#qpedia-home .qp-title{
+  position:relative;z-index:2;margin:0;
+  font-size:clamp(42px,8vw,78px);
+  line-height:1.15;font-weight:900;letter-spacing:-1.5px;
+  color:#ffffff;
+}
+#qpedia-home .qp-title span{color:var(--accent);}
+
+#qpedia-home .qp-subtitle{
+  position:relative;z-index:2;
+  max-width:650px;margin-top:22px;
+  color:var(--text-muted);
+  font-size:clamp(14px,2vw,17px);
+  line-height:2;
+}
+
+#qpedia-home .qp-actions{
+  position:relative;z-index:2;
+  display:flex;justify-content:center;flex-wrap:wrap;gap:12px;margin-top:34px;
+}
+#qpedia-home .qp-btn{
+  display:inline-flex;align-items:center;justify-content:center;
+  min-width:170px;padding:12px 26px;border-radius:10px;
+  border:1px solid rgba(0,184,230,.40);
+  background:rgba(0,184,230,.06);
+  color:var(--accent);
+  font-size:13px;font-weight:700;
+  transition:transform .25s ease,box-shadow .25s ease,background .25s ease;
+}
+#qpedia-home .qp-btn-primary{
+  color:#04141c;
+  background:linear-gradient(135deg,#00b8e6,#5ee6ff);
+  border-color:transparent;
+  box-shadow:0 8px 24px rgba(0,184,230,.22);
+}
+#qpedia-home .qp-btn:hover{transform:translateY(-2px);background:rgba(0,184,230,.14);}
+#qpedia-home .qp-btn-primary:hover{background:linear-gradient(135deg,#22c9f2,#7ceaff);}
+
+/* ===== SECTION ===== */
+#qpedia-home .qp-section{
+  position:relative;
+  background:var(--bg-2);
+  border:1px solid rgba(0,184,230,.15);
+  border-radius:16px;
+  padding:48px 30px;
+  margin-bottom:28px;
+  box-shadow:0 10px 35px rgba(0,0,0,.45);
+  overflow:hidden;
+}
+#qpedia-home .qp-section::before,
+#qpedia-home .qp-section::after{
+  content:"";position:absolute;width:22px;height:22px;pointer-events:none;
+}
+#qpedia-home .qp-section::before{top:16px;right:16px;border-top:2px solid var(--accent);border-right:2px solid var(--accent);}
+#qpedia-home .qp-section::after{bottom:16px;left:16px;border-bottom:2px solid var(--accent);border-left:2px solid var(--accent);}
+
+#qpedia-home .qp-section-head{display:flex;align-items:center;gap:14px;margin-bottom:30px;}
+#qpedia-home .qp-section-number{
+  width:38px;height:38px;flex:none;
+  display:flex;align-items:center;justify-content:center;
+  border-radius:50%;
+  background:rgba(0,184,230,.10);
+  color:var(--accent);
+  border:1px solid rgba(0,184,230,.40);
+  font-size:11px;font-weight:800;
+}
+#qpedia-home .qp-section-title{font-size:clamp(21px,4vw,29px);font-weight:800;color:#ffffff;}
+#qpedia-home .qp-section-title span{color:var(--accent);}
+#qpedia-home .qp-section-line{
+  flex:1;height:1px;
+  background:linear-gradient(90deg,rgba(0,184,230,.40),transparent);
+}
+
+/* ===== CATEGORY GRID ===== */
+#qpedia-home .qp-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;}
+#qpedia-home .qp-card{
+  display:block;position:relative;min-height:125px;padding:24px 20px;
+  border:1px solid rgba(0,184,230,.15);border-radius:12px;
+  background:rgba(255,255,255,.02);
+  color:var(--text);text-align:center;
+  transition:transform .25s ease,border-color .25s ease,box-shadow .25s ease,background .25s ease;
+}
+#qpedia-home .qp-card:hover{
+  transform:translateY(-3px);
+  border-color:var(--accent-a-40);
+  background:rgba(0,184,230,.06);
+  box-shadow:0 14px 34px rgba(0,0,0,.5);
+}
+#qpedia-home .qp-card-title{position:relative;font-size:15px;font-weight:800;color:#ffffff;margin-bottom:6px;}
+#qpedia-home .qp-card-desc{font-size:11.5px;line-height:1.8;color:var(--text-muted);}
+
+/* ===== LATEST ARTICLES ===== */
+#qpedia-home .qp-articles{display:grid;gap:9px;}
+#qpedia-home .qp-article{
+  display:flex;align-items:center;justify-content:space-between;gap:14px;width:100%;
+  padding:13px 16px;
+  background:rgba(255,255,255,.02);
+  border:1px solid rgba(0,184,230,.10);
+  border-radius:9px;color:var(--text);
+  transition:background .2s ease,border-color .2s ease,transform .2s ease;
+}
+#qpedia-home .qp-article:hover{
+  background:rgba(0,184,230,.07);
+  border-color:var(--accent-a-40);
+  transform:translateX(-3px);
+}
+#qpedia-home .qp-article-title{
+  min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;
+  font-size:12.5px;font-weight:600;color:var(--text);
+}
+#qpedia-home .qp-article-arrow{
+  flex:none;width:27px;height:27px;
+  display:flex;align-items:center;justify-content:center;border-radius:6px;
+  background:rgba(0,184,230,.12);color:var(--accent);font-size:14px;
+}
+#qpedia-home .qp-article:hover .qp-article-arrow{background:var(--accent);color:#04141c;}
+#qpedia-home .qp-loading,#qpedia-home .qp-error{
+  color:var(--text-muted);font-size:12px;text-align:center;padding:15px;
+}
+#qpedia-home .qp-error{color:#ff9aa2;line-height:2;}
+
+#qpedia-home .qp-more{
+  display:inline-flex;align-items:center;gap:8px;margin-top:20px;
+  color:var(--accent);font-size:12px;font-weight:700;
+}
+
+/* ===== FOOTER ===== */
+#qpedia-home .qp-footer{
+  width:100%;margin-top:45px;
+  background:#080c11;
+  border-top:3px solid var(--accent-a-40);
+  color:var(--text);
+  padding:22px 16px 26px;
+}
+#qpedia-home .qp-footer-inner{
+  width:min(1100px,calc(100% - 20px));margin:auto;
+  display:flex;flex-direction:column;align-items:center;text-align:center;gap:8px;
+}
+#qpedia-home .qp-footer-brand{
+  font-family:Inter,"Segoe UI",Arial,sans-serif;
+  font-size:11px;font-weight:600;letter-spacing:.8px;
+  color:var(--accent);opacity:.9;
+}
+#qpedia-home .qp-authors{
+  width:100%;max-width:900px;margin-top:4px;
+  display:flex;flex-wrap:wrap;justify-content:center;gap:5px 22px;
+}
+#qpedia-home .qp-author{
+  font-family:Inter,"Segoe UI",Arial,sans-serif;
+  font-size:9px;line-height:1.6;color:var(--text-muted);letter-spacing:.05px;
+}
+#qpedia-home .qp-author strong{color:var(--text);font-weight:600;}
+#qpedia-home .qp-copyright{
+  margin-top:6px;font-family:Inter,"Segoe UI",Arial,sans-serif;
+  font-size:8.5px;color:rgba(230,241,247,.45);
+}
+
+#qpedia-home a:focus-visible{outline:2px solid var(--accent);outline-offset:3px;}
+
+@media(max-width:850px){
+  #qpedia-home .qp-grid{grid-template-columns:repeat(2,minmax(0,1fr));}
+}
+@media(max-width:600px){
+  #qpedia-home .qp-container{width:calc(100% - 18px);}
+  #qpedia-home .qp-hero{min-height:520px;padding:70px 12px 70px;}
+  #qpedia-home .qp-title{font-size:clamp(40px,14vw,60px);}
+  #qpedia-home .qp-subtitle{font-size:13px;}
+  #qpedia-home .qp-actions{width:100%;flex-direction:column;max-width:320px;}
+  #qpedia-home .qp-btn{width:100%;}
+  #qpedia-home .qp-section{padding:35px 16px;}
+  #qpedia-home .qp-grid{grid-template-columns:1fr;}
+  #qpedia-home .qp-section-head{align-items:flex-start;}
+  #qpedia-home .qp-section-line{display:none;}
+  #qpedia-home .qp-article{padding:12px;}
+  #qpedia-home .qp-article-title{font-size:11.5px;}
+  #qpedia-home .qp-authors{flex-direction:column;gap:4px;}
+}
+@media(prefers-reduced-motion:reduce){
+  #qpedia-home *,#qpedia-home *::before,#qpedia-home *::after{transition:none !important;}
+}
+</style>
+
+<header class="qp-hero">
+  <div class="qp-brand"><span class="qp-brand-dot"></span>کوانتوم پدیا فارسی</div>
+  <h1 class="qp-title">کوانتوم <span>پدیا</span></h1>
+  <p class="qp-subtitle">دانشنامهٔ فارسی فیزیک کوانتوم؛ از مبانی و پدیده‌ها تا آزمایش‌ها، فناوری‌ها و نقد شبه‌علم.</p>
+  <div class="qp-actions">
+    <a class="qp-btn qp-btn-primary" href="/start/">از کجا شروع کنیم؟</a>
+    <a class="qp-btn" href="/scientists/">تالار دانشمندان</a>
+  </div>
+</header>
+
+<div class="qp-container">
+
+  <section class="qp-section">
+    <div class="qp-section-head">
+      <div class="qp-section-number">۰۱</div>
+      <h2 class="qp-section-title">دسته‌بندی <span>موضوعات</span></h2>
+      <div class="qp-section-line"></div>
+    </div>
+    <div class="qp-grid">
+      <a class="qp-card" href="/topic/technology/">
+        <div class="qp-card-title">فناوری و کاربردها</div>
+        <div class="qp-card-desc">از رایانش کوانتومی تا رمزنگاری و حسگرهای دقیق</div>
+      </a>
+      <a class="qp-card" href="/topic/fundamentals/">
+        <div class="qp-card-title">مبانی و مفاهیم</div>
+        <div class="qp-card-desc">تابع موج، برهم‌نهی، اندازه‌گیری و احتمال بورن</div>
+      </a>
+      <a class="qp-card" href="/topic/history-experiments/">
+        <div class="qp-card-title">تاریخ و آزمایش‌ها</div>
+        <div class="qp-card-desc">از تابش جسم سیاه تا آزمایش دو شکاف</div>
+      </a>
+      <a class="qp-card" href="/topic/phenomena/">
+        <div class="qp-card-title">پدیده‌های کوانتومی</div>
+        <div class="qp-card-desc">درهم‌تنیدگی، تونل‌زنی و دیگر پدیده‌های کوانتومی</div>
+      </a>
+      <a class="qp-card" href="/topic/pseudoscience/">
+        <div class="qp-card-title">نقد شبه‌علم</div>
+        <div class="qp-card-desc">مرز میان فیزیک علمی و ادعاهای بی‌سند</div>
+      </a>
+      <a class="qp-card" href="/topic/interpretations/">
+        <div class="qp-card-title">تفسیرها و فلسفه</div>
+        <div class="qp-card-desc">کپنهاگی، جهان‌های متعدد و پرسش‌های باز</div>
+      </a>
+    </div>
+  </section>
+
+  <section class="qp-section">
+    <div class="qp-section-head">
+      <div class="qp-section-number">۰۲</div>
+      <h2 class="qp-section-title">تازه‌ترین <span>مقاله‌ها</span></h2>
+      <div class="qp-section-line"></div>
+    </div>
+    <div class="qp-articles" id="qp-articles">
+      <div class="qp-loading">در حال دریافت تازه‌ترین مقاله‌ها…</div>
+    </div>
+    <a class="qp-more" href="/topics/">مشاهدهٔ همهٔ مقاله‌ها <span>←</span></a>
+  </section>
+
+</div>
+
+<footer class="qp-footer">
+  <div class="qp-footer-inner">
+    <div class="qp-footer-brand">QPEDIA · PERSIAN QUANTUM ENCYCLOPEDIA</div>
+    <div class="qp-authors">
+      <div class="qp-author"><strong>Reza Darvishi</strong> — B.Sc. Chemistry Engineering, Petroleum University of Technology</div>
+      <div class="qp-author"><strong>Adil Lak</strong> — Assoc. in Physics · B.Sc. Electronics, Shiraz Technical College · Naqsh-e-Jahan, Isfahan</div>
+      <div class="qp-author"><strong>Mohammadreza Bordia (Lak)</strong> — Founder &amp; Manager, Jundishapur University of Ahvaz</div>
+    </div>
+    <div class="qp-copyright">© QPedia · Persian Quantum Encyclopedia</div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  "use strict";
+  var box = document.getElementById("qp-articles");
+  if(!box){ return; }
+
+  var LIMIT = 8;
+  var t = Date.now();
+
+  /* چند مسیر مختلف، به ترتیب امتحان می‌شوند */
+  var endpoints = [
+    "/wp-json/wp/v2/quantum_article?per_page=" + LIMIT + "&orderby=date&order=desc&_fields=link,title&_=" + t,
+    "/?rest_route=/wp/v2/quantum_article&per_page=" + LIMIT + "&orderby=date&order=desc&_fields=link,title&_=" + t,
+    "/wp-json/wp/v2/posts?per_page=" + LIMIT + "&orderby=date&order=desc&_fields=link,title&_=" + t,
+    "/?rest_route=/wp/v2/posts&per_page=" + LIMIT + "&orderby=date&order=desc&_fields=link,title&_=" + t
+  ];
+
+  function text(html){
+    var d = document.createElement("div");
+    d.innerHTML = String(html || "");
+    return (d.textContent || d.innerText || "").trim() || "بدون عنوان";
+  }
+
+  function safeURL(link){
+    var fallback = "/topics/";
+    if(typeof link !== "string" || !link){ return fallback; }
+    try{
+      var u = new URL(link, window.location.href);
+      if(u.protocol === "http:" || u.protocol === "https:"){ return u.href; }
+    }catch(e){}
+    return fallback;
+  }
+
+  function row(titleText, url){
+    var a = document.createElement("a");
+    a.className = "qp-article";
+    a.href = url;
+    var s = document.createElement("span");
+    s.className = "qp-article-title";
+    s.textContent = titleText;
+    var ar = document.createElement("span");
+    ar.className = "qp-article-arrow";
+    ar.setAttribute("aria-hidden","true");
+    ar.textContent = "⟵";
+    a.appendChild(s);
+    a.appendChild(ar);
+    return a;
+  }
+
+  function render(list){
+    box.innerHTML = "";
+    for(var i=0;i<list.length && i<LIMIT;i++){
+      box.appendChild(row(list[i].title, list[i].url));
+    }
+  }
+
+  function fromJSON(data){
+    if(!Array.isArray(data) || !data.length){ return []; }
+    return data.map(function(a){
+      return {
+        title: text(a && a.title && a.title.rendered ? a.title.rendered : ""),
+        url: safeURL(a && a.link)
+      };
+    });
+  }
+
+  /* فallback آخر: خواندن لینک‌های صفحهٔ /topics/ */
+  function fromTopicsPage(){
+    return fetch("/topics/", {method:"GET", credentials:"omit", cache:"no-store"})
+      .then(function(r){ if(!r.ok){ throw new Error("HTTP " + r.status); } return r.text(); })
+      .then(function(html){
+        var doc = new DOMParser().parseFromString(html, "text/html");
+        var out = [], seen = {};
+        var links = doc.querySelectorAll('a[href*="/quantum/"], article a[href], h2 a[href], h3 a[href]');
+        for(var i=0;i<links.length && out.length<LIMIT;i++){
+          var href = links[i].getAttribute("href") || "";
+          var name = (links[i].textContent || "").trim();
+          if(!href || !name || seen[href]){ continue; }
+          if(href.indexOf("/topic/") > -1){ continue; }
+          seen[href] = 1;
+          out.push({title:name, url:safeURL(href)});
+        }
+        if(!out.length){ throw new Error("No links"); }
+        return out;
+      });
+  }
+
+  function fail(msg){
+    box.innerHTML = "";
+    var d = document.createElement("div");
+    d.className = "qp-error";
+    d.innerHTML = "دریافت مقاله‌ها ناموفق بود (" + msg + ").<br>این پیام را برای پشتیبانی بفرستید.";
+    box.appendChild(d);
+  }
+
+  function tryEndpoint(i){
+    if(i >= endpoints.length){
+      return fromTopicsPage().then(render).catch(function(e){ fail(e.message || "نامشخص"); });
+    }
+    return fetch(endpoints[i], {
+      method:"GET",
+      credentials:"omit",
+      headers:{ "Accept":"application/json" },
+      cache:"no-store"
+    }).then(function(r){
+      if(!r.ok){ throw new Error("HTTP " + r.status); }
+      return r.json();
+    }).then(function(data){
+      var list = fromJSON(data);
+      if(!list.length){ throw new Error("empty"); }
+      render(list);
+    }).catch(function(e){
+      return tryEndpoint(i + 1);
+    });
+  }
+
+  function start(){ tryEndpoint(0); }
+
+  if(document.readyState === "loading"){
+    document.addEventListener("DOMContentLoaded", start);
+  }else{
+    start();
+  }
+  /* تلاش دوم بعد از load کامل (اگر کش یا اسکریپت‌های دیگر مزاحم شدند) */
+  window.addEventListener("load", function(){
+    if(box.querySelector(".qp-loading") || box.querySelector(".qp-error")){ start(); }
+  });
+})();
+</script>
+
+</div>
